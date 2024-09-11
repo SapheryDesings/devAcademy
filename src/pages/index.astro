@@ -1,7 +1,14 @@
 ---
-import Iniciado from "../components/Iniciado.astro"
 import PlantillaPrincipal from "../layouts/PlantillaPrincipal.astro"
+import Card from "../components/Card.astro"
 ---
-<PlantillaPrincipal>
-	<Iniciado/>
+<PlantillaPrincipal titulopagina = "devAcademy | by Juan A. López">
+	<section>
+		<Card titulo = "Html" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre Html.."/>
+  		<div class="separador"></div>
+  	<Card titulo = "Css" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre Css.."/>
+	</section>
+	<section>
+		<Card titulo = "JavaScript" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre JavaScript.."/>
+	</section>
 </PlantillaPrincipal>

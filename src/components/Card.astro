@@ -1,6 +1,9 @@
 ---
-
+const  { titulo, descripcion, tituloBoton } = Astro.props;
+import BotonMas from "./BotonMas.astro";
 ---
-<div>
-  
+<div id="html">
+  <div class="titulo">{ titulo }</div>
+  <div class="descripcion">{ descripcion }</div>
+  <BotonMas tituloBoton = { tituloBoton }/>
 </div>

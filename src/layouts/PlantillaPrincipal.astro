@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css"
+const { titulopagina } = Astro.props;
 ---
 <html lang="en">
 	<head>
@@ -9,7 +10,7 @@ import "../styles/global.css"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{ titulopagina }</title>
 	</head>
 	<body>
 		<Header/>
