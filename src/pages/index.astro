@@ -2,13 +2,39 @@
 import PlantillaPrincipal from "../layouts/PlantillaPrincipal.astro"
 import Card from "../components/Card.astro"
 ---
-<PlantillaPrincipal titulopagina = "devAcademy | by Juan A. López">
+<PlantillaPrincipal titulopagina = "Inicio">
+	<a href="/div/">prueba</a>
 	<section>
-		<Card titulo = "Html" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre Html.."/>
-  		<div class="separador"></div>
-  	<Card titulo = "Css" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre Css.."/>
+		<Card 
+			titulo = "DIW" 
+			descripcion = "Diseño de interfaces web" 
+			tituloBoton = "Ir a los apuntes"
+		/>
+			<div class="separador"></div>
+		<Card 
+			titulo = "Empresa" 
+			descripcion = "Empresa e Inciativa Emprendedora" 
+			tituloBoton = "Ir a los apuntes"
+		/>
 	</section>
 	<section>
-		<Card titulo = "JavaScript" descripcion = "Lorem ipsum dolor sit amet." tituloBoton = "Más sobre JavaScript.."/>
+		<Card 
+			titulo = "Html" 
+			descripcion = "Lorem ipsum dolor sit amet." 
+			tituloBoton = "Más sobre Html.."
+		/>
+  		<div class="separador"></div>
+  	<Card 
+			titulo = "Css" 
+			descripcion = "Lorem ipsum dolor sit amet." 
+			tituloBoton = "Más sobre Css.."
+		/>
+	</section>
+	<section>
+		<Card 
+			titulo = "JavaScript" 
+			descripcion = "Lorem ipsum dolor sit amet." 
+			tituloBoton = "Más sobre JavaScript.."
+		/>
 	</section>
 </PlantillaPrincipal>

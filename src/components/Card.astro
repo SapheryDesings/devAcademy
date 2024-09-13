@@ -1,9 +1,14 @@
 ---
-const  { titulo, descripcion, tituloBoton } = Astro.props;
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+  tituloBoton?: string;
+}
+const  { titulo = "Título Card", descripcion = "Descripción Card", tituloBoton = "Botón"} = Astro.props;
 import BotonMas from "./BotonMas.astro";
 ---
 <div id="html">
   <div class="titulo">{ titulo }</div>
   <div class="descripcion">{ descripcion }</div>
-  <BotonMas tituloBoton = { tituloBoton }/>
+  <BotonMas tituloBoton = { tituloBoton}/>
 </div>

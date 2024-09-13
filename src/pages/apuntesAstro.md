@@ -1,3 +1,7 @@
+---
+layout: ../layouts/PlantillaPrincipal.astro
+---
+
 # Astro
 
 ### Instalación
