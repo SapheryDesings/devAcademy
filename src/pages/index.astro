@@ -3,38 +3,42 @@ import PlantillaPrincipal from "../layouts/PlantillaPrincipal.astro"
 import Card from "../components/Card.astro"
 ---
 <PlantillaPrincipal titulopagina = "Inicio">
-	<a href="/div/">prueba</a>
 	<section>
 		<Card 
 			titulo = "DIW" 
-			descripcion = "Diseño de interfaces web" 
-			tituloBoton = "Ir a los apuntes"
+			descripcion = "Asignatura - Diseño de interfaces web" 
+			link = "/div"
+			etiqueta = "Más sobre diseño.."
 		/>
 			<div class="separador"></div>
 		<Card 
 			titulo = "Empresa" 
-			descripcion = "Empresa e Inciativa Emprendedora" 
-			tituloBoton = "Ir a los apuntes"
+			descripcion = "Asignatura - Empresa e Inciativa Emprendedora" 
+			link = "/emp"
+			etiqueta = "y sobre empresa.."
 		/>
 	</section>
 	<section>
 		<Card 
 			titulo = "Html" 
 			descripcion = "Lorem ipsum dolor sit amet." 
-			tituloBoton = "Más sobre Html.."
+			link = "/html"
+			etiqueta = "Ver más"
 		/>
   		<div class="separador"></div>
   	<Card 
 			titulo = "Css" 
 			descripcion = "Lorem ipsum dolor sit amet." 
-			tituloBoton = "Más sobre Css.."
+			link = "/css"
+			etiqueta = "Ver más"
 		/>
 	</section>
 	<section>
 		<Card 
 			titulo = "JavaScript" 
 			descripcion = "Lorem ipsum dolor sit amet." 
-			tituloBoton = "Más sobre JavaScript.."
+			link = "/javascript"
+			etiqueta = "Ver más"
 		/>
 	</section>
 </PlantillaPrincipal>

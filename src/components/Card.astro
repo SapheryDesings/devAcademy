@@ -1,14 +1,22 @@
 ---
-interface Props {
+import BotonMas from "./BotonMas.astro";
+export interface CardProps {
   titulo?: string;
   descripcion?: string;
-  tituloBoton?: string;
+  link?: string;
+  etiqueta?: string;
 }
-const  { titulo = "Título Card", descripcion = "Descripción Card", tituloBoton = "Botón"} = Astro.props;
-import BotonMas from "./BotonMas.astro";
+const  { 
+  titulo = "Título Card",
+  descripcion = "Descripción Card",
+  link = "Botón",
+  etiqueta = "Ver más"
+} = Astro.props;
+
+
 ---
 <div id="html">
   <div class="titulo">{ titulo }</div>
   <div class="descripcion">{ descripcion }</div>
-  <BotonMas tituloBoton = { tituloBoton}/>
+  <BotonMas href={link} label = { etiqueta }/>
 </div>

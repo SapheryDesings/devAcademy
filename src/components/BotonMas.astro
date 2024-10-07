@@ -1,9 +1,14 @@
 ---
-const { tituloBoton = "Botón" } = Astro.props
+export interface ButtonProps {
+  href: string;
+  label: string;
+}
+
+const {href, label } = Astro.props;
 ---
 
-<a href="" class="bg-gray-800 text-gray-400 rounded-full p-1 pl-2 w-48 text-center hover:text-gray-50">
+<a href={href} class="bg-gray-800 text-gray-400 rounded-full p-1 pl-2 w-48 text-center hover:text-gray-50">
   <button>
-    <span>{ tituloBoton }</span>
+    <span>{label}</span>
   </button>
 </a>

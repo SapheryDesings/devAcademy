@@ -50,3 +50,14 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+/* Para markdown */
+ol {
+  margin-left: 1rem;
+  & li {
+    list-style: none outside none;
+    margin-left: 2rem;
+    padding: 0.5rem;
+  }
+}
+
