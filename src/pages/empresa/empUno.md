@@ -1,10 +1,10 @@
 ---
-layout: ../layouts/PlantillaPrincipal.astro
+layout: ../../layouts/PlantillaMd.astro
 ---
 
 # Empresa e Inciciativa Emprendedora
 
-### Tema 1.- Iniciativa emprendedora
+## Tema 1.- Iniciativa emprendedora
 
 La **iniciativa emprendedora** es un proceso con el que los individuos materializan en actividades prácticas sus ideas y las oportunidades de innovación. Puede ser individual o colectivo, se da en un contexto social, cultural y económico determinado.
 
@@ -18,11 +18,11 @@ La **cultura emprendedora** es el conjunto de habilidades, cualidades y conocimi
 
 La persona con espíritu emprendedor tiene capacidad de innovar y voluntad de probar a hacer las cosas de modo diferente. Hay quien nace con estas cualidades, pero se puede fomentar y formar.
 
-## 1.1. Innovación y desarrollo económico
+### 1.1. Innovación y desarrollo económico
 
 La **innovación** es clave para el desarrollo económico de un país, es el motor. En las teorías clásicas la riqueza de una nación se basaba en la posesión de capital y recursos naturales. Ahora, la cultura emprendedora e innovadora, junto con una buena organización social, constituye la base de la riqueza de un país. Otros factores son, la formación de la población y las infraestructuras de transporte y telecomunicaciones.
 
-![desarrolloEconomico](../assets/desarrolloEconomico.png "Diagrama desarrollo economico")
+![desarrolloEconomico](../../assets/desarrolloEconomico.png "Diagrama desarrollo economico")
 
 El desarrollo no debe entenderse solo desde el punto de vista económico, sino también como una mejora de la calidad de vida. Desde el punto de vista del desarrollo integrado, que hace compatibles la competitividad económica (desarrollo económico), el bienestar social (desarrollo social) y la sostenibilidad ambiental (desarrollo sostenible).
 
@@ -30,7 +30,7 @@ La innovación es la creación e implementación de cambios importantes en los p
 
 Se diferencian tres clases de innovación: **de producto, de proceso y tecnológica.**
 
-### Innovación de producto
+#### Innovación de producto
 
 Innovar puede ser tanto crear un producto nuevo como introducir cambios o modificaciones importantes en uno existente, para que el público lo perciba como nuevo o distinto. Hay tres tipos diferentes de innovación:
 
@@ -38,17 +38,17 @@ Innovar puede ser tanto crear un producto nuevo como introducir cambios o modifi
 + **Innovaciones que aportan algo nuevo al producto:** se mejora un producto que ya se encuentra en el mercado. El cliente, lo percibe como algo nuevo, ya que la mejora es sustanciosa. Este tipo de innovaciónes son las más habituales y frecuentes.
 + **Innovación que no aporta nada nuevo:** por definición consiste en añadir alguna novedad. La empresa entra en el mercado con un producto ya existente o fabricado. La innovación reside en la empresa que se ha decidido a producir y vender el producto, pero no se precibe por el gran público o en el producto.
 
-### Innovación de proceso
+#### Innovación de proceso
 
 Lo nuevo no está en el producto, sino en la forma de hacerlo. Introduce una manera diferente de hacer las cosas, que puede ser tanto a nivel de producción como de comercialización y de gestión.
 
-### Innovación tecnológica
+#### Innovación tecnológica
 
 El conocimiento científico, con base en la investigación y la experimentación, se pone al servicio de la actividad de la empresa. Puede aplicarse tanto en la creación de un producto nuevo como en la mejora de los sistemas de producción, de gestión o de comercialización. Suele ir encaminada a abaratar costes de producción y a aumentar la eficacia y la productividad, pero también genra unos costes. Para introducir la innovación tecnológica, se recomienda adquirir patentes y licencias de marcas registradas, de servicios científicos y técnicos relacionados con la implantación de la innovación y comprar paquetes de software, maquinaria y equipos.
 
 Para innovar, es importante la atención y la observación para asegurar qué, cómo, cuándo y dónde hacerlo. Tener un conocimiento del mercado y de las necesidades de los clientes. Conocer el contexto en el que queremos innovar y saber introducir la nueva idea, tanto cubriendo una necesidad del mercado o creando la propia necesidad para cubrirla.
 
-## 1.5. El empresario. Actitudes y requisitos de la actividad empresarial
+### 1.5. El empresario. Actitudes y requisitos de la actividad empresarial
 
 El **empresario** organiza y combina los diferentes factores productivos. Fija objetivos para la empresa y debe encargarse de alcanzarlos mediante la planificación, dirección y control de la actividad empresarial. Su labor consiste en detectar e identificar una necesidad, para reunir y organizar recursos y así satisfacerla.
 
@@ -82,13 +82,13 @@ Los **riesgos** son parte intrínseca del empresario. No puede entenderse la act
 
 La asunción de riesgos económicos y personales es uno de los grandes **inconvenientes** de ser empresario. Sacrificio de todo el tiempo, incluyendo el de ocio, obligación de hacer de todo y de solucionar todos los problemas y necesidad de aprender continuamente. También existen muchas **ventajas** para el empresario: ser el propio jefe, creación de trabajo y riqueza, obtención de beneficio económico, satisfacción por el trabajo bien hecho, posibilidad de desarrollar libremente las propias iniciativas y obtención de prestigio social y reconocimiento profesional.
 
-![diagramaEmpresario](../assets/diagramaEmpresario.png "diagramaEmpresario")
+![diagramaEmpresario](../../assets/diagramaEmpresario.png "diagramaEmpresario")
 
-## 1.6. Objetivos personales vs. objetivos empresariales: misión, visión y valores de empresa
+### 1.6. Objetivos personales vs. objetivos empresariales: misión, visión y valores de empresa
 
 Los objetivos personales del emprendedor deben estar coordinados con los objetivos empresariales. Si solo piensa en sus objetivos personales sería contraproducente para la empresa. A tener en cuenta tres aspectos: la misión de la empresa, la visión y los valores.
 
-### Misión de la empresa
+#### Misión de la empresa
 
 La misión de una empresa es el propósito principal, el gran objetivo, el motivo por el cual se desarrolla la empresa. Debe cumplir dos objetivos: debe representar la personalidad y la identidad de la empresa en la actualidad y, por otro lado, debe encarnar la que se desea alcanzar en el futuro de la empresa. La misión debe responder a la siguiente pregunta: ¿cómo es la empresa y cómo se va a desarrollar?
 
@@ -98,7 +98,7 @@ La misión puede ser amplia o estricta, en función del número de factores que 
 
 Para que sea efectiva, debe formularse a largo plazo y la dirección de la empresa debe estar comprometida totalmente en su definición y desarrollo. También debe ser creíble en su planteamiento y realista para su realización. Además, todos los miembros de la organización tienen que asumirla y su presencia tendrá que ser necesaria en todo momento.
 
-### Visión de la empresa
+#### Visión de la empresa
 
 La visión de la empresa es la esencia del negocio, se refiere a aquello a lo que la empresa aspira a ser. Se concreta con el **propósito estratégico** de la empresa y sus características son:
 
@@ -108,7 +108,7 @@ La visión de la empresa es la esencia del negocio, se refiere a aquello a lo qu
 
 La visión aumenta la motivación y el entusiasmo de todos los componentes de la organización, desarrolla el espíritu competitivo de la empresa, haciendo partícipes a todas las personas de los objetivos empresariales, y establece puntos clave de control y valoración de la actividad empresarial, fijando, a partir de estos, los caminos por seguir.
 
-### Los valores de la empresa
+#### Los valores de la empresa
 
 La ideología de una empresa se ve representada por sus valores, que deben ser desarrollados y resumidos por todos sus trabajadores, sobre todo por sus directivos. Los valores representan los juicios éticos basados en varias sistuaciones de la vida social y que son aprobados por casi toda la sociedad.
 
@@ -167,10 +167,3 @@ Es tan importante obtener beneficios como la forma de conseguirlos. El empresari
 Aplicarán de forma práctica un conjunto de valores, de principios y de normas que constituyen la ética empresarial y así poder alcanzar una complicidad con la sociedad que les rodea y una adaptación a todos los entornos, pero siempre respetando los valores y los derechos reconocidos por la sociedad a la que se dirigen.
 
 Tener un código ético de conducta, junto con un compromiso por parte de la empresa para cumplirlo, proporcionará una guía de cuáles son las buenas prácticas empresariales que la empresa deberá llevar a cabo.
-
-********************************************************************
-
-### Tema 2.- La empresa y su entorno
-
-
-********************************************************************
