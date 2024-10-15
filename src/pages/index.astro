@@ -1,44 +1,10 @@
 ---
 import PlantillaPrincipal from "../layouts/PlantillaPrincipal.astro"
-import Card from "../components/Card.astro"
+import EmpSectionDaw from "../components/EmpSectionDaw.astro"
+import DiwSectionDaw from "../components/DiwSectionDaw.astro"
 ---
 <PlantillaPrincipal titulopagina = "Inicio">
-	<section>
-		<Card 
-			titulo = "DIW" 
-			descripcion = "Asignatura - Diseño de interfaces web" 
-			link = "/div/divUno"
-			etiqueta = "Más sobre diseño.."
-		/>
-			<div class="separador"></div>
-		<Card 
-			titulo = "Empresa" 
-			descripcion = "Asignatura - Empresa e Inciativa Emprendedora" 
-			link = "/empresa/empUno"
-			etiqueta = "y sobre empresa.."
-		/>
-	</section>
-	<section>
-		<Card 
-			titulo = "Html" 
-			descripcion = "Lorem ipsum dolor sit amet." 
-			link = "/html"
-			etiqueta = "Ver más"
-		/>
-  		<div class="separador"></div>
-  	<Card 
-			titulo = "Css" 
-			descripcion = "Lorem ipsum dolor sit amet." 
-			link = "/css"
-			etiqueta = "Ver más"
-		/>
-	</section>
-	<section>
-		<Card 
-			titulo = "JavaScript" 
-			descripcion = "Lorem ipsum dolor sit amet." 
-			link = "/javascript"
-			etiqueta = "Ver más"
-		/>
-	</section>
+		<DiwSectionDaw/>
+		<hr>
+		<EmpSectionDaw/>
 </PlantillaPrincipal>

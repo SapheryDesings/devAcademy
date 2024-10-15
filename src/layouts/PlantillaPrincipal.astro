@@ -15,7 +15,9 @@ const { titulopagina } = Astro.props;
 	</head>
 	<body>
 		<Header/>
-		<slot/>
+			<section class="contenidoPrincipal">
+				<slot/>
+			</section>
 		<Footer/>
 	</body>
 </html>

@@ -3,3 +3,186 @@ layout: ../../layouts/PlantillaMd.astro
 ---
 
 ## Tema 2.- La empresa y su entorno
+
+El **entorno** condiciona el funcionamiento de cualquier organización o actividad empresarial. Podemos hablar de **macroentorno**, formado por los factores que escapal al control de la empresa y **microentorno** al que está integrado por aquellos factores que la organización si puede controlar.
+
+La empresa tiene que estar atenta a este entorno y prever de qué manera puede afectar a su actividad. Es tan importante que la empresa se estructura y se organiza para protegerse del entorno e influir en él.
+
+### 2.1. Funciones básicas de la empresa
+
+El objetivo básico de la empresa es, producir y coordinar sus propios recursos. La finalidad es satisfacer la demanda del mercado, obteniendo beneficios. La empresa se estructura en áreas básicas, cada una con sus funciones:
++ **Área directiva:** se encarga de planificar, organizar, gestionar y controlar. Fija objetivos, diseña estrategias, ordena recursos materiales y humanos, ejecuta decisiones y comprueba que las demás áreas funcionen correctamente.
++ **Área de recursos humanos:** selecciona y contrata el personal y ejerce de protectora de las personas y de los bienes materiales de la empresa.
++ **Área de compras:** adquiere los materiales y los servicios exteriores que se van a utilizar para elaborar el producto. Está en contacto con los proveedores y también se encarga de todos los trabajos de gestión del almacén. Hay empresas que son productivas y compran para producir, y otras que son comerciales, que compran para vender, sin transformar.
++ **Área de producción:** se encarga de la elaboración del producto o de la realización del servicio. Transforma el material en un producto o servicio terminado. Es un trabajo técnico.
++ **Área administrativa:** se encarga de la contabilidad, del control administrativo, de la burocracia, de las obligaciones fiscales y de la relación con las Administraciones públicas.
++ **Área comercial:** decide cómo promover y vender el producto. Relaciona la empresa con los distribuidores y los clientes. Elabora estudios de mercado y diseña estrategias para lograr mejores ventas y una mejor distribución. Establece también el precio.
++ **Área financiera:** obtiene y administra los recursos económicos necesarios para la elaboración del producto o prestación del servicio.
+
+### 2.2. La empresa como sistema
+
+Una empresa es una unidad económica que combina los factores de producción: tierra, trabajo, capital y organización para obtener bienes y servicios con el fin de satisfacer unas necesidades del mercado y obtener un beneficio. Es un sistema abierto que recibe en su entorno socioeconómico unos inputs y ofrece unos outputs después de que los inputs hayan pasado por proceso de transformación.
+
+La estructura organizativa de una empresa se diseña a partir de la definición de las funciones a desarrollar, de las personas que las llevarán a cabo, de las relaciones entre ellas y de los procesos de control que permiten alcanzar los objetivos. La representación gráfica de la estructura organizativa y de sus áreas de trabajo es el **organigrama**, en él se aprecian los distintos niveles jerárquicos de la empresa, la autoridad y los canales de transmisión de la información.
+
+Tiene que ser comprensible, mostrar los elementos importantes, presentar la jerarquía y nombrar cada unidad representada.
+
+Hay muchos tipos de organigramas, destacan los **generales** (estructura general) y los **específicos** (solo un área); los **verticales** y **horizontales**, según la forma de representar las ramificaciones de las distintas unidades; los **integrales** y los **funcionales**, si representan al detalle las unidades de organización o solo incluyen funciones específicas de acada unidad.
+
+#### Recursos de la empresa
+
+Recursos que requiere la empresa:
+
++ **Recursos materiales:** son los bienes para desarrollar la actividad productiva, sea la elaboración de un producto o la prestación de un servicio. Pueden ser la materia prima con la que se fabrica el producto o las herramientas para hacerlo o para prestar el servicio. Se puede distinguir entre bienes duraderos (se mantienen en la empresa a lo largo de varios ciclos productivos, maquinaria) y bienes no duraderos (se consumen en el momento de la elaboración dle producto, como la materia prima).
++ **Recursos humanos:** el propietario de la empresa o capitalista (persona física o jurídica que aporta el capital necesario para desarrollar la actividad), el empresario (representa y gestiona la empresa, aunque en grandes compañías este rol lo asumen los administradores o directivos) y los trabajadores o empleados (esenciales para el éxito empresarial y que reciben un salario a cambio de su trabajo). Las figuras del empresario y del propietario pueden coincidir en la misma persona.
++ **Recursos inmateriales:** son intangibles que hacen que una empresa tenga más valor que la suma de los recursos humanos y materiales. Ej.: la cultura de empresa, su forma de organizarse, sus marcas y patentes, su conjunto de conocimientos técnicos y económicos, capacidades, experiencias, información, etc. Estos recursos, sumados a los materiales, constituyen el valor o capital de la empresa.
++ **Entorno:** son elementos que rodean a la empresa:
++ - **Macroentorno:** variables externas a la empresa que incluso pueden afectar al conjunto de la población, entre los que se encuentran la conjetura económica, sociocultural, tecnológica, legal...
++ - **Microentorno:** variables cercanas a la empresa y en las que podemos actuar, que influyen también en su capacidad de satisfacer a los clientes. Ej.: proveedores, clientes, competencia, etc.
+
+#### Objetivos de la empresa
+
+Los objetivos son la razón de ser, la justificación de su existencia. La empresa tiene como finalidad la consecución de los objetivos. Obtener el máximo posible de beneficios ya no es el único objetivo de la empresa, otros como ser rentables, muy importantes en empresas privadas. También el crecimiento de la empresa y al incremento de su cuota de mercado en la relación con la compentencia, la estabilidad y la integración con el entorno y a los objetivos sociales, como la cooperación social.
+
+#### Métodos de gestión
+
+Para que la empresa funciones y sea efectiva, es necesario que todos sus miembros tengan su función y su jerarquía dentro de ella. Existen varios modelos siendo el más común el que hace referencia al principio de jerarquía y de división del trabajo. Según esta clasificación puede ser **vertical** u **horizontal**.
+
+La vertical se basa en el orden jerárquico y en la cadena de mando. Las órdenes llegan al trabajador procedentes del primer nivel jerárquico. Este modelo dificulta el trabajo en equipo.
+
+La horizontal se basa en el reparto del trabajo, en la especialización y en la funcionalidad. Así, se rompe la línea de mando, favoreciendo el trabajo en equipo.
+
+Es muy habitual tener externalizadas determinadas funciones. Ej.: la limpieza, la vigilancia y los servicios legales.
+
+### 2.3. Componentes del macroentorno
+
+El entorno influye en la empresa y su actividad. Muchos factores que no están vinculados directamente con la actividad empresarial y que conforma el macroentorno. Conviene analizar a fondo estos factores y conocerlos para actuar consecuentemente y mantener la competitividad.
+
+El **macroentorno** es el medio externo que rodea la empresa, formado por variables influyentes y no controlables. La crisis económica o la deslocalización en busca de mercados favorables forman parte del macroentorno. Componentes:
+
++ **Económicos:** la situación económica (inflación, paro, tipos de interés..) del país, condiciona parte de sus decisiones, ej.: previsión de ventas o salario de sus trabajadores.
++ **Político-legales:** las empresas adaptan su funcionamiento a las normativas para cumplirlas. Ej.: en materia de contratación de trabajadores o de impuestos. Aspectos fundamentales (legislación fiscal y mercantil, normas laborales, legislación de patentes y marcas..) los marcan los poderes públicos.
++ **Socioculturales:** los aspectos sociales y culturales de la sociedad en la que se desarrolla, condicionan el estilo de vida y los hábitos de consumo de los clientes potenciales. Debe estar atenta a ellos y a los cambios para se competitiva. Ej.: modas, movimientos ecologistas, estética personal, una vida más saludable, etc.
++ **Demográficos:** el sexo, la edad o los ingresos económicos de los consumidores influyen en la empresa a la hora de adaptar sus productos o servicios al mercado.
++ **Ambientales:** los problemas medioambientales actuales hacen que se tomen medidas para reducir el uso de contaminantes o fomentar el reciclaje. Esto conlleva un aumento de costos productivos, pero hay empresas que los ven como una oportunidad de negocio.
++ **Tecnológicos:** los avances tecnológicos y las nuevas tecnologías abren, nuevas posibilidades de negocio y pueden abaratar el proceso de producción. Puede influir a nivel productivo o de fabricación, en las características del propio producto o servicio o en la gestión empresarial.
+
+### 2.4. Componentes del microentorno
+
+El **microentorno** es el próximo a la empresa y al sector de su actividad. Posee una serie de factores que tienen la capacidad de influenciar de forma específica, pero pueden ser controlables por la empresa. En necesario controlar la evolución del sector para conocer la competencia, los componentes y optimizar los beneficios y la rentabilidad de la empresa. Sus componentes:
+
++ **Proveedores:** personas o empresas que abastecen del material necesario para la fabricación del producto o la prestación del servicio. Si existen pocos proveedores o la empresa no es importante, estará en desventaja en situaciones de negociación.
++ **Clientes:** destinatarios finales del producto o servicio. Pueden ser consumidores finales o empresas que necesitan el producto dentro de su proceso productivo. Son el elemento clave, ya que la actividad se orienta a satisfacer sus necesidades y por lo tanto, es importante estudiar sus hábitos y el grupo al que pertenecen. El resultado del estudio de mercado puede llegar a variar el producto o a diversificar su producción.
+
+Para vender su producto, se debe conocer cuáles son las motivaciones del cliente potencial para comprarlo, independientemente del precio. Pueden ser racionales (características del producto, comparación con otros, fidelidad al producto...) o emocionales (por prestigio o moda). Los que buscan un producto de características similares forman el **segmento de mercado**.
+
++ **Competidores:** existen y existirán otras que ofrecen el mismo producto, similar u alternativo. Cuantos más haya o menos compradores existan, más alta será la competencia. Esta será perfecta cuando existen muchos compradores y muchos vendedores que comercian un producto sin ningún tipo de ventaja. Cuando hay una sola empresa que ofrece un producto, hablamos de monopolio. Un oligopoliio se da cuando pocas empresas comercializan un mismo producto y hay muchos demandantes.
+
+El número de competidores es un factor que hace aumentar la competencia. Otros podrían ser la entrada de nuevos competidores, la diferenciación del producto o el crecimiento del sector.
+
++ **Productos sustitutivos:** aquellos productos distintos con un mismo uso, satisfaciendo una misma necesidad. Su entrada en el mercado provoca una rebaja de precios y una menor rentabilidad.
+
++ **Sociedad:** la estructura social, sus valores medioambientales y sus estilos de vida condicionarán la actividad de la empresa. Otros elementos como las entidades financieras (las que prestan dinero), las Administraciones públicas (ayudan con subvenciones, recaudan impuestos, dan licencias...) o el mercado laboral (según qué condiciones se den, la empresa puede preferir una u otra localización).
+
+### 2.5. Elementos de la cultura empresarial y valores éticos dentro de la empresa. Imagen corporativa
+
+La **cultura empresarial** es el conjunto de valores, creencias y principios básicos compartidos por sus miembros y que representan la esencia de la empresa. Algunos **elementos** esenciales dentro de la cultura empresarial como la **misión** (el objetivo principal de la empresa), la **visión** (lo que la empresa quiere ser), los **valores** (las cualidades presentes en la empresa e influyentes en el comportamiento de sus miembros) o las **políticas** (líneas de acción con las que se define su identidad).
+
+La cultura de empresa de proyecta al exterior a través de la **imagen corporativa**, la imagen que da significado a la empresa en su entorno socioeconómico. Esta debe ser atractiva al público y tiene que transmitir de manera eficaz su cultura empresarial.
+
+La imagen es diseñada por la propia empresa, pero no puede controlar los agentes externos, como accionistas, clientes o proveedores, que también influyen en la imagen.
+
+Hay características que poseen gran influencia sobre al imagen corporativa, como el nombre comercial, el logotipo y la marca.
+
+La **ética** está muy presente en el mundo empresarial y sus valores básicos son la libertad, el diálogo, la igualdad, la solidaridad y el respeto. El comportamiento ético solo conlleva buenas cosas (mejora la imagen exterior, atrayendo, entre otras cosas, personal y clientes de primer nivel) e implantar códigos de ética para su personal que complementen los códigos de conducta, las normas, las leyes y las políticas, sin sustituirlas.
+
+La ética empresarial son el conjunto de valores, normas y principios reflejados en la cultura de una empresa con el objetivo de lograr empatía con la sociedad y adaptarse mejor a todos los entornos y en las condiciones que supone el respeto por los derechos que reconoce la sociedad, así como los valores compartidos.
+
+Algunas prácticas son crear riqueza con el máximo de eficacia, distribuirla equitativamente, cumplir los códigos de conducta, respetar los contratos y los compromisos adquiridos, respetar el medio ambiente y los derechos humanos y servir a la sociedad con productos útiles y justos en cuanto a condiciones.
+
+### 2.6. Relaciones de una empresa con las administraciones y los agentes sociales
+
+Los agentes sociales pueden facilitar o dificultar la actividad empresarial hasta el punto que suponen la diferencia entre su éxito o su fracaso.
+
+Las **entidades financieras** tienen la tarea de aportar financiación mediante varios elementos. Las **fuentes de financiación** más habituales son:
+
++ **Sociedades de capital riesgo:** empresas que invierten en otras empresas más pequeñas pero con un futuro prometedor.
++ **Préstamo:** cantidad de dinero que una entidad de crédito deja a una empresa por un tiempo determinado y a cambio de intereses. Tipos como a largo plazo o comerciales directos.
++ **Renting:** proporciona a las empresas bienes materiales con todos sus servicios complementarios a cambio de una mensualidad.
++ **Leasing:** consiste en alquilar un bien material o un bien inmueble con la opción de poderlo comprar en un futuro.
++ **Financiación por parte de los proveedores:** si la compra de activos implica una suma de dinero importante, el proveedor puede ofrecer un sistema de financiación como la venta a plazos.
++ **Subvenciones y ayudas:** son un fondo público que las empresas piden a las Administraciones y que se conceden a fondo perdido. El principal requisito es justificar la subvención y uno de sus inconvenientes es que no se recibe inmediatamente lo que supone que ese dinero no se podrá utilizar durante un largo periodo de tiempo.
+
+Otras forman de financiación:
+
++ **Cuenta de crédito:** cuenta que la entidad bancaria pone a disposición de la empresa con una cantidad y unos plazos determinados.
++ **Descubierto bancario:** extensión de un cheque por una cantidad superior al dinero que existe en la cuenta corriente de la empresa.
++ **Factoring:** operación mediante la cual una empresa contrata a otra para que se haga responsable de los pagos de todas las facturas de sus clientes, pudiendo así llegar a adelantar los cobros, consiste en la cesión de los créditos a cobrar por la empresa a favor de, una entidad financiera.
++ **Confirming:** medio en el que una entidad financiera se encarga de pagar a los proveedores puntualmente, aunque la empresa no tenga dinero, es un servicio que entrega la administración de los pagos a sus proveedores a una entidad financiera y ofrece a los proveedores la posibilidad de anticipar el cobro.
++ **Alargar el plazo de pago a los proveedores:** se pide a los proveedores que se les deje pagar el producto en un plazo más largo, pero no se tienen otras ventajas, como descuentos por pronto pago.
++ **Descuento comercial:** la empresa presenta las letras de cambio que tiene de sus clientes ante una entidad bancaria y solicita el pago por adelantado al banco, a cambio de una comisión.
+
+Las **Administraciones públicas** condicionan a la empresa desde su creación (se debe constituir legalmente). La organización tiene obligaciones fiscales con la Administración central y esta, puede obligar al cumplimiento de ciertas normativas como, en material medioambiental.
+
+La **Agencia Tributaria** (controla fiscalmente la empresa y gestiona los impuestos que no son municipales) y el **Ministerio de Empleo y Seguridad Social**, a través de la Tesorería de la Seguridad Social (controla la inscripción de las empresas en la Seguridad Social y sus altas y sus bajas), la Delegación Provincial de Trabajo y la Inspección de Trabajo y Seguridad Social (controla el cumplimiento de la normativa laboral y de seguridad y ofrece asesoramiento).
+
+Las **Administraciones locales** condicionan a las empresas mediante sus trámites de instalaciones, apertura de locales y de urbanismo, pero también ayudan a los emprendedores con ayudas y subvenciones y fiscalizan los impuestos de titularidad municipal. Es importante, antes de establecer la localización de la empresa conocer la normativa urbanística de la localidad por si puede suponer algún problema.
+
+### 2.7. La responsabilidad social de la empresa
+
+Las empresas también tienen una serie de objetivos sociales con la finalidad de colaborar en el desarrollo de las personas y en su bienestar.
+
+La **responsabilidad social de la empresa** consiste en alcanzar el éxito empresarial respetando siempre los valores éticos, a la gente, a las comunidades y el medio ambiente. La actividad empresarial produce un impacto en ciertos grupos o sectores, por eso debe cumplir con una serie de obligaciones y compromisos legales y éticos.
+
+Hay que diferenciar, el concepto de *responsabilidad social* de la empresa del de *ética empresarial*. La **ética** es la forma que tiene la empresa de establecer su escala de valores y fija los límites éticos de su actividad. La **responsabilidad social** es la obligación de conseguir que su impacto en el entorno sea lo más positivo posible, minimizando el impacto negativo. Trabaja en tres áreas:
+
++ **Sociocultural:** se intenta colaborar en la mejora del bienestar social. Se participa en la política pública y se respetan las leyes, las costumbres y la cultura de la sociedad.
++ **Económica:** trata de obtener el máximo beneficio y la máxima producción partiendo siempre desde la responsabilidad en el uso de los recursos y de la energía y dando un trato justo y digno a sus trabajadores y proveedores.
++ **Medioambiental:** la actividad empresarial no debe tener un impacto negativo en el medio ambiente ni comprometer las necesidades, sean actuales o futuras. La apuesta reside en el desarrollo sostenible.
+
+Las ventajas de contar con una adecuada política de RSE son:
++ Mejora la imagen de la empresa
++ Aumenta el grado de compromiso de los empleados
++ Potencia la lealtad de los clientes
++ Genera confianza en sus accionistas
+
+***
+**FIN TEMA - 2.8 Y 2.9 NO ENTRA EN EL EXAMEN**
+***
+
+### 2.8. Elaboración del balance social
+
+El **balance social** es una herramienta importante en este sentido, pues es un instrumento de gestión que se usa para planificar, organizar, dirigir, registrar, controlar y evaluar cuantitativa y cualitativamente la gestión social de una empresa durante un tiempo determinado y respecto de unas metas preestablecidas. De lo que diga este balance, se deducirá una actuación empresarial favorable o negativa para la sociedad. No servirá únicamente para evaluar, sino que el balance social permitirá a la dirección de la empresa corregir su actuación, para cumplir con los objetivos sociales marcados.
+
+El balance social define los grupos con los que la empresa se relaciona y que esperan acciones encaminadas al cumplimiento de la responsabilidad social y los campos de actividad relacionados con estos grupos y que se deben controlar y evaluar, definiendo así variables e indicadores. Los **objetivos** del balance social son claros:
+
++ Realizar el diagnóstico de la gestión empresarial en torno al cumplimiento de su responsabilidad social durante un periodo de tiempo determinado.
++ Poder facilitar la información a la opinión pública sobre las actividades sociales de la empresa.
++ Analizar el coste y el beneficio generado por cada acción social.
++ Facilitar la actualización de las políticas y los programas de responsabilidad social de la empresa.
+
+Está estructurado teniendo en cuenta dos grandes áreas, la interna y la externa:
+
++ **Área interna:** se refiere a las respuestas y acciones de la empresa respecto a sus trabajadores a nivel sociolaboral (características y condiciones del personal laboral), de servicios sociales (servicios y beneficios que la empresa ofrece a sus trabajadores y colaboradores) y de integración y desarrollo (con relación al crecimiento personal y profesional de los empleados).
++ **Área externa:** se refiere al cumplimiento de la responsabilidad social con los otros interlocutores sociales con los que la empresa se relaciona. Se distinguen las relaciones primarias (con el personal que hace posible el producto o servicio), las relaciones con la comunidad y las relaciones con otras instituciones (universidad, medios de comunicación, asociaciones, gremios...).
+
+### 2.9. Generación de ideas de negocio
+
+La **idea de negocio** es la solución que satisface las necesidades de otras personas, creando valor por sí misma. Fuentes generadoras de nuevas ideas de negocio:
+
++ **Invención e innovación:** para tener éxito en un mercado, es fundamental explotar comercialmente una patente.
++ **Observación de una carencia o deficiencia:** las necesidades no cubiertas deben resolverse para atraer a nuevos clientes.
++ **Formación académica de los emprendedores:** una formación académica diferencial reporta un plus a la empresa.
++ **Experiencia profesional de los emprendedores:** la experiencia y el bagaje profesional proporcionan nuevas ideas por la apreciación de una necesidad.
++ **Aficiones de los emprendedores:** conocer detalladamente una afición y todo lo que la rodea supone conocer también las necesidades que conllevan las propias ideas de negocio.
++ **Desarrollo de nuevas tecnologías:** facilita enormemente la creación de nuevas ideas de negocio.
++ **Observación de nuevas tendencias:** las nuevas tendencias suponen también nuevas ideas de negocio.
++ **Estudio de diferentes mercados:** la globalización permite llevar a otros mercados ideas de negocio que les son desconocidas.
+
+La delimitación y el análisis de una idea se basa en tres preguntas:
+
++ **¿Qué necesidades se pretenden cubrir?** La respuesta concretará el tipo de mercado que se quiere cubrir.
++ **¿Cómo se satisfacen estas necesidades?** Así se delimita el campo de actuación empresarial y la forma de llevarlo a cabo.
++ **¿Cómo se crea valor y cómo se genera beneficio?** Se deben analizar las capacidades y los recursos del emprendedor, junto a la forma de aplicarlos para conseguir beneficios.
+
+Existen varias técnicas para generar ideas de negocio. Las **técnicas intuitivas** (basadas en la creatividad) y las **técnicas racionales** (basadas en el estudio y en el análisis sistemático de datos).

@@ -1,0 +1,38 @@
+---
+import BotonMas from "./BotonMas.astro";
+
+export interface DiwCardProps {
+  titulo : string;
+  link : string;
+  etiqueta : string;
+}
+
+const {
+  titulo = "Título",
+  link = "Botón",
+  etiqueta = "Ir al tema"
+} = Astro.props;
+---
+<div class="CardDaw">
+  <div class="titulo">{ titulo }</div>
+  <BotonMas href= { link } label = { etiqueta }/>
+</div>
+
+<style>
+  .CardDaw {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    min-height: 180px;
+    padding: 1rem;
+    border: 2px solid #f8fafc10;
+    border-radius: .4rem;
+    background-color: #0f172a10;
+  }
+
+  .titulo {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+</style>

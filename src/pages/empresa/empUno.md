@@ -2,8 +2,6 @@
 layout: ../../layouts/PlantillaMd.astro
 ---
 
-# Empresa e Inciciativa Emprendedora
-
 ## Tema 1.- Iniciativa emprendedora
 
 La **iniciativa emprendedora** es un proceso con el que los individuos materializan en actividades prácticas sus ideas y las oportunidades de innovación. Puede ser individual o colectivo, se da en un contexto social, cultural y económico determinado.
