@@ -120,3 +120,121 @@ Disponemos de un grán número de herramientas que nos facilitan las tareas de p
 
 ### 1.7. Lenguaje de marcas
 
+Un **lenguaje de marcas** o **lenguaje de marcado** es un tipo de lenguaje que no tiene variables ni funciones aritméticas. Se combina el texto con etiquetas. Algunos de ellos son HTML, XML o RDF.
+
+**HTML (Hypertext Markup Language)** es el más conocido para el desarrollo de páginas web, lo podemos utilizar para definir la estructura y deternimar el contenido de una página web.
+
+Dispone de unas etiquetas o marcas dentro del propio documento que informarán al navegador sobre la presentación dentro de un documento, podremos indicar si se trata de un título, un tamaño de letra, posición determinada, vínculos, etc...
+
+En su **primera versión** solamente mostraba textos con estilo, las etiquetas que se utilizaban eran para títulos, párrafos, viñetas y listas entre otros elementos. **W3C (World Wide Web Consortium)** fue creado para organizar el crecimiento de HTML, se encargó de crear estándares para todos los temas relacionados. En 1995 publicó la versión 2.0 de HTML.
+
+La nueva **versión 2.0** aportó compatibilidades con los navegadores y nuevas etiquetas adicionales para incorporar imágenes, tablas, vínculos y formularios, permitiendo incorporar intercambios de información con el navegador.
+
+La **versión 3.0** en la cual empresas como Nestcape y Microsoft aportaron nuevas etiquetas. Otros lenguajes fueron aparenciendo, como PHP (Hypertext Preprocessor) y ASP (Active Server Pages), los cuales se propusieron para funcionar con bases de datos y aprovechar esta interactividad con la web.
+
+El 24 de abril de 1998 se publicó la **versión 4.0**, en la que se incorporaron las hojas de estilos CSS, permitió el uso de *scripts*, se mejoró la accesibilidad web, se mejoró la agilidad en los formularios y se permitió realizar tablas complejas. Apareció Java, una plataforma que entretenía a los navegantes con juegos y aplicaciones.
+
+En 2004, empresas como Mozilla, Opera y Apple formaron la asociación Web Hypertext Application Technology Working Group (WHATWG), su actividad se centró en el actual estándar **HTML 5**, consiguiendo una revolución en el desarrollo web, como elementos multimedia, entre otras.
+
+### 1.8. Componentes de una interfaz web
+
+Los componentes de una interfaz web son **todas las partes** que forman parte de un sitio web.
+
+En este tiempo, se han asentado una serie de elementos que se utilizan en la mayoría de las interfaces, como pueden ser los pies de página, los formularios de datos, la cabecera, etc...
+
+#### Cabecera
+
+La **cabecera** o **header** es la zona situada en la parte superior de la interfaz web, se utiliza normalmente para situar el logotipo de la empresa o su nombre. Otros elementos como imágenes, textos descriptivos o formularios de acceso, entre otros.
+
+Sus **objetivos** son:
+
++ **Identificar el sitio web con la empresa** que representa a través del logotipo y el nombre de esta.
++ **Identificar y unificar todas las páginas** que pertenezcan al mismo sitio web.
++ **Separar el borde superior de la interfaz de la parte central** para facilitar la visualización.
+
+Por jerarquía visual, se encuentra en la parte superior y el logotipo en la parte izquierda.
+
+Aunque no es obligatorio se suele utilizar cabeceras de forma rectangular y que presente un mayor impacto visual con el tema.
+
+#### Sistemas de navegación
+
+Los **sistemas de navegación** permiten navegar por las distintas páginas que componen una página web.
+
+Estos sistemas se presentan en forma de **menús** con una serie de opciones mediante las cuales el usuario puede interaccionar al seleccionarlas.
+
+Pueden estar formados pr iconos, textos o ambos y es posible incorporar **efectos dinámicos** que permitan ofrecer interacción con las diferentes opciones.
+
+Otra posibilidad es mediante la utilización de capas, utilizando CSS y javascript. Las opciones pueden aparecer y desaparecer dependiendo de las acciones que el usuario ejecute sobre las principales funciones, se denomina **menú de árbol**.
+
+Otro tipo es el de **pestañas**, también muy extendido y se basa en simular el clásico aspecto de un archivador. Aparece la pestaña que esté activa en primer plano, con un color distinto que la destaca del resto de pestañas.
+
+Son muy importantes, ya que permiten que el usuario se mueva por las diferentes partes del sitio web. Los menús lista y árbol suelen situarse en la parte lateral izquierda por motivos técnicos de funcionalidad y uso. Su ubicación es un estándar.
+
+Con menús con demasiadas opciones, es más recomendable utilizar varios menús dobles jerarquizando las diferentes opciones.
+
+
+#### Cuerpo de página
+
+El **cuerpo de la página web** es donde se mostrarán los contenidos, por lo que se debe situar en la zona más importante, que suele ser la parte central, bajo la cabecera y al lado de un menú lateral (si lo hay).
+
+Los contenidos pueden variar de si se trata de una página de texto o con formularios, tables o fichas, etc. Existen varios elementos que sí será conveniente que estén presentes.
+
+Suele estar formado por un título que identifique la página, en la parte superior y, a veces, dispone de un menú de navegación. Es conveniente que las palabras del menú tengan un mayor tamaño o color distinto para que destaque del resto del texto.
+
+#### Pie de página
+
+El **pie de página** o **footer** está situado en la parte inferior, bajo el cuerpo de página. Otra parte importante ya que sirve para visualizar los distintos enlaces a servicios concretos.
+
+Suele utilizarse para mostrar enlaces a servicios, formularios de contacto, ofertas de empleo, etc. También es posible para hacer referencia a la empresa propietaria del sitio web o a la persona que ha desarrollado la página web.
+
+Puede disponer de menú auxiliar que permite a los usuarios navegar por la interfaz sin necesidad de volver al menú principal.
+
+#### Espacios en blanco
+
+Los **espacios en blanco** también son un elemento esencial en las interfaces web, ya que se encargan de definir las zonas que no van a tener elementos gráficos.
+
+Algunos diseñadores los definen desde el principio como cualquier otro elemento, considerando su presencia desde el monumento inicial.
+
+Son fundamentales para lograr un **diseño que no sea sobrecargado**.
+
+### 1.9. Mapa de navegación. Prototipos
+
+Los sitios web están compuestos por un número elevado de páginas a las que es posible acceder desde algún punto en concreto. Los **mapas de navegación** se utilizan para representar la estructura de las páginas de un sitio web, para facilitar al desarrollador y al usuario conocer qué páginas llevan a otras. Se debe realizar un esquema que permita visualizar las secciones en las que se ha dividido el sitio web y la relación entre los bloques antes de diseñar el sitio web.
+
+Su objetivo es definir de forma clara la estructura de los contenidos antes de crear el diseño del sitio web, esto permite que los usuarios encuentren de forma sencilla la información que están buscando.
+
+Los prototipos son herramientas que permiten optimizar tiempo, ya que muestran un esquema del sitio una vez que se finalice, pero empleando mucho menos tiempo. Consiste en la creación de un borrador a partir el cual se empezará a desarrollar la idea original del diseño del sitio. Realizar modificaciones en un prototipo es mucho más sencillo que hacerlo en la web real. Se resuelven aspectos:
+
++ Qué elementos formarán la interfaz de cada página.
++ Qué elementos tendrán en común las distintas páginas del sitio web.
++ En qué orden se verán las páginas, ordenar el mapa de navegación.
++ Qué aspectos se deben tener en cuenta para desarrollar el sitio web, como son los aspectos técnicos de accesibilidad y usabilidad.
+
+Una vez diseñado los prototipos y los mapas de navegación, lo siguiente es realizar el desarrolo del sitio web. Es posible utilizar plantillas ya elaboradas o trabajar con alguna propia.
+
+### 1.10. Maquetación web. Elementos de ordenación
+
+La maquetación toma como referencia el espacio que tenemos disponible para situar en él los diferentes elementos que forman una página web.
+
+Se encarga de separar el contenido correspondiente de la página de presentación. Así se consigue el mantenimiento y cambio en los contenidos de una manera más sencilla.
+
+Antes se utilizaban tablas, pero el código era complejo de entender e incluso había problemas con algún navegador. Actualmente, se realiza utilizando capas, conocidas como divisiones o contenedores. Se colocan utilizando hojas de estilos o CSS. Permite posicionar un elemento en una posición distinta con tan solo cambiar la hoja de estilos.
+
+#### Distribución de elementos en la interfaz: capas
+
+Los principales elementos de la maquetación son las **capas** y los **marcos**
+
+Las **capas** se pueden definir como contenedores en los que podemos colocar las diferentes imágenes, textos, etc. Sus principales características son:
+
++ **Capas anidadas:** pueden estar ubicadas una dentro de otra. Se define cómo se posicionan, el tamaño que van a tener y dónde van a estar ubicadas.
++ **Las capas son diferentes bloques** con contenido HTML que se posicionan de forma dinámica. Permiten la utilización de CSS para los estilos.
+
+Las capas no se definen solo con HTML, sino que es necesario aplicar un lenguaje de estilos CSS.
+
+### 1.11. Plantilla de diseño
+
+Hace referencia a los diferentes sitios web (ya prediseñados) que podemos utilizar como base a la hora de diseñar una web. Debemos adaptar la plantilla a las necesidades planteadas.
+
+Al utilizar una plantilla, la tarea del diseñador será más rápida y sencilla, lo que permitirá ahorrar tiempo.
+
+Existen muchos sitios que suministran plantillas de diseño de forma económica. La mayoría ofrecen alojamiento gratuito de los *sites* durante un tiempo determinado.
