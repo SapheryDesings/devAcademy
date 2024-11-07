@@ -262,3 +262,141 @@ Relación de los tipos de formatos de vídeo que se pueden usar y sus respectivo
 + **.mov:** contenedor de QuickTime, propiedad de Apple. Casi idéntico a .mp4. Al ser propiedad de Apple, tendrá menos soporte en otras plataformas.
 
 ##### Conversión de formatos
+
+Al igual que sucede con el audio, podemos convertir los distintos formatos de vídeo. También tenemos el mismo problema con los navegadores:**no existe un formato estándar**.
+
+En HTML5, los formatos que más se usan tendrán los siguientes códecs de audio y vídeo:
+
++ MP4 = H.264(vídeo) y ACC(audio)
++ OGG y OGV = Theora(vídeo) y Vorbis(audio)
++ WEBM = VP8(vídeo) y Vorbis(audio)
+
+Herramientas para la conversión:
+
++ **Miro Video Converter:** utilidad sencilla para convertir cualquier formato de vídeo, incluso OGV y WEBM
++ **FreeStudio:** es una potente herramienta que no solo trabaja en formatos de vídeo, sino que también con audio e imagen. Solo para Windows
++ **AtubeCatcher:** además de vídeo nos da la posibilidad de descargar vídeos desde distintos sitios web, como YouTube, Google Videos o Vimeo
+
+##### Insertar vídeos en una web
+
+En HTML5, disponemos de la etiqueta **video**, que tendrá los mismos atributos que tenía la etiqueta **audio**, y podemos ofrecer controles con Javascript.
+
+La diferencia es que **para el vídeo necesitaremos asignarle un tamaño**, por lo que tendrá los atributos **height**(alto) y **width**(ancho).
+
+```html
+<video poster= “imagen/fondo.png” src=”misvideos/receta.
+mp4” controls width=”460” height=”230”></video>
+```
+
+También podrá tener un atributo llamado **poster**, el cual un vídeo usará una imagen como portada antes de comenzar la reproducción.
+
+En el ejemplo, algunos navegadores no serían capaces de reproducirlo. Podemos solucionarlo usando la etiqueta **source**. Al igual que con el audio solo es posible con HTML5 y utilizaremos la etiqueta **object**.
+
+Podemos enlazar vídeos desde distintas webs, enlazandolos con la etiqueta **iframe**. También se podrán usar estilos CSS en las etiquetas de video.
+
+### 3.7. Animación de imágenes y texto
+
+Según Wikipedia, una animación es "un proceso utilizado para dar la sensación de movimiento a imágenes o dibujos. Los cuadros se pueden generar dibujando, pintando o fotografiando los minúsculos cambios hechos repetidamente a un modelo de la realidad o a un modelo tridimensional virtual".
+
+Su uso principal es mostrar imágenes animadas en la web, como iconos y logotipos. Podemos utilizar varios formatos, GIF o SVG:
+
++ **SWF:** formato de archivo de gráficos vectoriales. Creado por Macromedia (Adobe Systems). Se emplea mucho debido a su pequeño tamaño y la gran interactividad de los usuarios. Contiene texto, audio, vídeo e imagen y, es capaz de reconocer gestos del ratón.
++ **MNG:** es un formato que está libre de derechos y es una extensión del formato de imagen PNG.
+
+##### Elementos de una animación
+
+Hay dos elementos que se complementan entre sí: los objetos gráficos y los elementos propios de la animación.
+
++ **Objetos gráficos:** representan cada uno de los fotogramas. Permanecerán inmóviles en cada uno de ellos. Se encargan de las características.
++ **Elementos propios de la animación:** representan cambios en los objetos a lo largo de los fotogramas. Se encargan del diseño.
+
+##### Herramientas de programación
+
+Nos centraremos en las dos que más se utilizan:
+
+1. **HTML y Javascript**
+  El HTML dinámico permite crear animaciones al combinarlo con Javascript.
+  **JQuery** es una biblioteca de Javascript de software libre y código abierto que permite ahorrar tiempo y espacio al desarrollar nuestras animaciones, así podmos simplificar la manera de interactuar con documentos HTML.
+
+2. **HTML5, CSS3 y Javascript**
+  Las animaciones con Flash han perdido popularidad debido al problema de implementación en varias plataformas, lo que ha originado la aparición de este conjunto(HTML + CSS + Javascript).
+  Javascript permite animaciones potentes y emplearlas en multitud de plataformas.
+  Para no tener que escribir todo el código, se proponen estas alternativas:
+  + **Entornos gráficos:** crean animaciones visualmente y guardarlas en formato SWF, podemos generar el código HTML5 de dicha animación.
+  + **Adobe Edge:** permite crear animaciones web y contenido interactivo. Posee una interfaz intuitiva y con claridad. Permite importar documentos y soporta formatos de imagen más conocidos. Posee gran cantidad de efectos. Disponible en Windows, Mac y no es gratuita.
+  + **Hype:** es casi idéntica pero para Mac OSX. No es gratuita.
+  + **Sencha:** crea animaciones en CSS3, disponible en varios sistemas operativos pero no es gratuita.
+
+##### Aplicaciones de conversión de archivos Flash
+
+Ya que Flash no puede verse en muchos navegadores actuales podemos convertirlos con:
+
++ **Wallaby:** de Adobe que convierte .fla en HTML5.
++ **Swiffy:** de Google, gratuita que convierte de .swf a HTML5.
+
+##### Animación de imágenes
+
+Flash permite realizar dos tipos de animaciones: **fotograma a fotograma** y por **interpolación de fotogramas**.
+
+En la primera cada fotograma sufre un pequeño cambio o variación con respecto al anterior. Para ello debemos crear un fotograma clave e ir copiando el fotograma y aplicar los cambios que deseemos en el nuevo fotograma.
+
+En la **interpolación**, que esta pensada para animaciones sencillas, necesitaremos dos fotogramas clave distintos, uno para el inicio y otro para el final. La interpolación se encargara de realizar todos los fotogramas intermedios. Existen dos tipos:
+
++ **De forma:** transforma un objeto en otro. No pueden formar parte de un grupo.
++ **De movimiento:** cambia un objeto de posición, tamaño o rotación. Se puede realizar tanto con objetos agrupados como con símbolos.
+
+##### Animación de texto
+
+En flash tendremos **dos motores de texto:**
+
++ **Texto clásico:** única versión de texto hasta la llegada de la nueva versión CS5 de Flash.
++ **Texto TLF:** se incorpora en la nueva versión CS5, incluyendo mejoras respecto a la versión anterior.
+
+**Características:**
+
++ **Posición:** valores X e Y que van a corresponder con el espacio desde la esquina superior izquierda del objeto de texto hasta la esquina superior izquierda del escenario.
++ **Tamaño:** valores de alto y ancho que tendrá la caja de texto medida en píxeles.
++ **Carácter:** son valores como la fuente, estilo, tamaño, color, espaciado o interlineado.
++ **Párrafo:** son valores como la alineación del párrafo, sangría de primera línea o márgenes.
+
+### 3.8. Integración de audio y vídeo en una animación
+
+#### Integración de audio
+
+Los formatos de audio más utilizados en animaciones flash son WAV y MP3.
+
+Para integrar el sonido:
+
+1. Dos formas: arrastrando el archivo a la biblioteca o seleccionándolo en el menú Archivo > Importar > Importar a la biblioteca.
+2. Después debemos crear una capa para ese archivo. Si son varios tendremos que crear una capa para cada uno.
+3. Crearemos un fotograma clave en blanco para arrastrar el archivo a la escena en ese fotograma.
+
+Si tenemos varios archivos deberemos crear el siguiente fotograma clave cuando terminel el anterior para que no se superpongan.
+
+Tenemos opciones de sincronización:
+
++ **Sincronismo de tipo _Evento_:** el sonido se reproducirá de forma automática y hasta el final. Se pueden producir solapamientos de sonido.
++ **Sincronismo de tipo _Inicio_:** es casi idéntico al anterior, solo que evita la duplicidad del sonido.
++ **Sincronismo de tipo _Detener_:** impide que el sonido se reproduzca más allá del fotograma que indiquemos.
++ **Sincronismo de tipo _Flujo_:** el archivo de sonido se irá descargando de internet conforme se va reproduciendo la animación.
+
+#### Integración de vídeo
+
+Los formatos más utilizados son **FLV** y **F4V**.
+
+Al igual que el audio hay que importarlo a la biblioteca, Archivo > Importar > Importar vídeo.
+
+Si está en una dirección remota, se indica la ruta. Si es local lo haremos con un componente de reproducción o directamente en le línea de tiempo.
+
+Nos pedirá que elijamos entre una lista de formatos de reproductores. A continuación se creará un componente Flash Vídeo en el escenario, que debemos configurar para reproducirlo localmente.
+
+Si cogemos la segunda opción, nos dará tres alternativas para su inserción: vídeo incorporado, clip de película y gráfico.
+
+
+### 3.9. Guía de estilos
+
+El diseño gráfico abarca la **tipografía**, **colores** y **espacios** en el sitio web. Los manuales se centran en los aspectos técnicos y visuales de la publicación, el texto y el uso correcto de la lengua, gramática y ortografía, sobre todo en la estética. La aplicación de reglas de este manual proporciona uniformidad al aspecto visual de un documento.
+
+La guía esta dirigida al departamento de diseño y desarrollo. Recoge los aspectos del diseño y sirve de guía para futuros empleados. Ayuda a tomar decisiones en cualquier fase de la creación y mantenimiento del sitio web.
+
+Podemos encontrar características de las fotografías, logos, imágenes, colores, combinaciones de colores, iconos, tipos de letra y otros aspectos de la maquetación web.
