@@ -126,11 +126,78 @@ Son las formadas por una o varias personas que reúnen un fonde patrimonial com�
     La transmisión de las participaciones de la sociedad solo es libre entre los socios y sus cónyuges, y sus ascendientes y descendientes. La transmisión a terceros está sometida a limitaciones fijadas en la ley o en los estatutos.
 
     Sus órganos de gobierno son tanto la junta general como el administrador o administradores. El número mínimo de socios es uno.
-  + **Sociedad anónima:** pág 66
+  + **Sociedad anónima:** independientemente de su objeto, tendrá carácter _mercantil_. El capital se divide en _acciones_ y el mínimo que se exigen para su constitución es de 60.000€. Los socios tienen _responsabilidad limitada_ por la aportación que realizan. Los socios no tendrán que responder con su patrimonio personal de las deudas sociales de la empresa.
+
+    La denominación es libre, aunque no podrá ser la misma que la de otras sociedades inscritas. El nombre deberá ir _acompañado_ de la indicación **"sociedad anónima"** o **"S.A."**.
+
+    Son sociedades capitalistas y tienen carácter mercantil. La identidad de los socios no importa, solo la aportación que estos realizan. El capital se divide en acciones y, al menos una cuarta parte de este deberá estar desembolsado y suscrito en el mometno de la constitución. Se constituye mediante escritura pública y se inscribe en el Registro Mercantil. Adquiere personalidad jurídica propia.
+
+    Las _aportaciones_ que se hacen a la sociedad anónima pueden ser: **dinerarias** y **no dinerarias**. Al titular que aporte dichas acciones, se le otorga la condición de socio y el derecho a participar en el reparto de ganancias sociales y en el patrimonio generado de la liquidación, incluyendo el derecho de suscripción preferente en la emisiión de nuevas acciones.
+
+    La condición de accionista implica, el derecho de participación en los beneficios. Esta participación se denomina dividendo.
+
+    Los órganos de gobierno en una sociedad anónima son la junta general, los administradores y el consejo de administración.
+  + **Sociedades de economía social:** son empresas privadas creadas para satisfacer las necesidades de sus socios a través del mercado, produciendo bienes y servicios, y en las que la distribución del beneficio y la toma de decisiones no están ligadas directamente con el capital aportado por cada socio, sino con la actividad que este socio desarrolla en la sociedad.
+  + **Sociedad laboral:** su finalidad es conseguir nuevos métodos de creación de ocupación, fomentando la participación de los trabajadores en la empresa. Las sociedades laborales anónimas o de responsabilidad limitada son aquellas en la mayoría del capital social es propiedad de trabajadores que prestan servicios por tiempo indefinido, retribuidos en forma personal y directa. Las empresas podrán obtener la clasificación de sociedad laboral, y los socios solo responderán de las deudas sociales hasta el límite de sus aportaciones.
+  
+    Son sociedades mercantiles que en su denominación figura **"sociedad anónima laboral"**, **"sociedad de responsabilidad limitada laboral"** o sus siglas **S.A.** o **S.L.L.**
+
+    El capital se divide en acciones nominativas o en participaciones sociales. Su funcionamiento se regula por las leyes de sociedades anónimas y de sociedades de responsabilidad limitada. El capital mínimo para formar una sociedad laboral es de 1€ y se dividirá en participaciones sociales que se deberán desembolsar totalmente en la constitución de dicha sociedad. Si es sociedad anónima laboral, el capital mínimo para su creación es de 60.000€, divididos en acciones nominativas que en su constitución, deberán ser desembolsadas al menos en un 25%.
+
+    Los miembros pueden ser **socios trabajadores** (propietarios al menos del 51% del capital y vinculados con un contrato indefinido y a jornada completa), **socios no trabajadores** (pueden ser personas físicas o jurídicas y son propietarios de acciones o participaciones, pero no están vinculados mediante relación laboral) y **trabajadores asalariados** (sin adquirir la condición de socios, estos trabajadores están asalariados por tiempo indefinido y no tienen ni acciones ni participaciones).
+
+    La sociedad laboral deberá constituirse mediante escritura pública e inscribirse en el Registro Mercantil. Desde ese momento tendrá personalidad jurídica propia.
+  + **Cooperativa:** pertenecen al grupo de **sociedades de interés social** dentro de las sociedades mercantiles y su lema **"la unión hace la fuerza"**. Las cooperativas se crean porque varias personas con intereses comunes deciden unir tanto sus esfuerzos como su capital para realizar una actividad empresarial que no podría llevarse a cabo si cada uno trabajara por separado.
+
+    **En el sector primario, estas cooperativas son muy comunes**. Ej.: las cooperativas de producción de aceite, y en otros sectores como **la enseñanza, el transporte, la sanidad, la vivienda, las entidades de crédito**, etc. Se clasifican en varios grados, de **primer grado** sus socios son personas físicas o jurídicas. De **segundo grado** en las que sus socios son cooperativas de _primer grado_. Y **tercer grado**, que se forman por cooperativas de _segundo grado_. Si superamos el primer grado, hablamos de cooperativa de cooperativas. Sus características:
+      - La **responsabilidad que tienen los socios** se limita el capital aportado. Si uno de los socios aporta 4.000€, se arriesga a perder ese capital, pero no más de esa cifra.
+      - **El número mínimo de socios** depende del grado de la cooperativa. De _primer grado_ han de constituirse con un mínimo de tres socios, las de _segundo grado_ han de ser al menos dos. En ciertas comunidades autónomas existen límites superiores e inferiores.
+      - El capital mínimo para constituir una cooperativa deberá estar reflejado en los estatutos de esta.
+      - La **razón social** será el nombre de la compañia seguirdo de **"sociedad cooperativa"** o, su abreviatura, **"S.Coop."**.
+      - La transmisión de la propiedad, la única opción es que los socios de den de baja.
+      - Es una entidad de **funcionamiento democrático**. Significa que cada socio tiene derecho a un voto, sin importar cual sea su aportación.
+      - Tiene su propio **domicilio** dentro del municipio donde se centralice la gestión administrativa o donde sus socios realicen la actividad principal de la compañía.
 
 ##### Sociedades No Mercantiles
 
+El empresario individual se puede asociar colectivamente mediante sociedades civiles y comunidades de bienes. Se regulan en el Código Civil y no dan lugar a personalidad jurídica diferente de la de sus socios.
+
++ **Comunidad de bienes:** cuando la propiedad de una cosa o un derecho pertenece proindiviso a varias personas. Se rigen por el Código Civil y su objeto puede ser la puesta en común de un patrimonio para crear una empresa y repartir las pérdidas y las ganancias. La denominación no está regulada y por eso podrá adoptar cualquier nombre acompañado de **"comunidad de bienes"** o **CB**.
+  
+  No exige una aportación mínima obligatoria y sus miembros responderán ante terceros de forma ilimitada. Se constituye mediante escritura pública cuando se aporten bienes inmuebles.
+
+  No tiene personalidad jurídica propia y las participaciones correspondientes a los comuneros se presumirán iguales mientras no se pruebe lo contrario. Cada uno participará en las pérdidas y en las ganancias en proporción a sus cuotas de participación respectivas.
+
+  Ante terceros, la comunidad responderá con todos sus bienes y, si no son suficientes, responderán con su patrimonio personal.
+
+  _El número mímino de socios es dos_.
++ **Sociedad civil:** es un contrato personalísimo basado en la confianza. El Código Civil establece que la sociedad civil se podrá constituir en cualquier forma, con la excepción de que aporte bienes inmuebles o derechos reales, situación en la que será necesario el otorgamiento de una escritura pública.
+
+  La denominación de sociedad civil privada es libre, seguida de **"sociedad civil privada"** o **S.C.P.**. Según la aportación de los socios, _sociedades civiles universales_ (de todos los bienes o de todas las ganancias), _sociedad civil universal de bienes_ (las partes ponen en común todos los bienes que en la actualidad les pertenecen con ánimo de ponerlos a disposición de la sociedad y también las ganancias que generen), _sociedad civil universal de ganancias_ (comprende todo aquello que adquieren los socios para la actividad de la empresa mientras la sociedad está vigente) y _sociedades civiles particulares_ (tiene por objeto cosas determinadas como su uso, sus frutos, una empresa concreta o el ejercicio de una profesión o un arte).
+
+  El número de socios no está regulado y se entiende que el número mínimo para su constitución es de dos personas.
+
+  En la sociedad civil, la responsabilidad es personal, ilimitada, subsidiaria y mancomunada. Responde con todo su capital ante las deudas sociales y sino responden los socios por la cuota que les corresponda. Si los pactos entre los socios no son públicos, la responsabilidad que se genera es solidaria.
+
+Otra forma de ser empresario:
+  + **La franquicia:** es un contrato por el cual una de las partes (el franquiciador) cede a la otra (el franquiciado) el derecho a la explotación exclusiva de su marca o sistema empresarial, así como de su imágen y de su _know-how_ (saber hacer).
+    - **El franquiciador aporta:**
+      + La imagen y la marca
+      + El nombre comercial
+      + El producto o servicio
+      + La publicidad genérica
+      + La formación y el asesoramiento
+      + El _Know-how_ (saber hacer), que es el conocimiento de una actividad y la capacidad de poner en práctica este conocimiento.
+    - **El franquiciado aporta:**
+      + Canon de entrada
+      + Local
+      + Los empleados
+      + Un desembolso periódico o royalties que, según se pacte, serán unos derechos fijos o un porcentaje sobre las ventas.
+      + Un canon de publicidad que no siempre se pagará, ya que depende de la franquicia.
+
 
 ### 4.4. La fiscalidad según el tipo de actividad y de forma jurídica
+
+pág 72
 
 ### 4.8. Determinación de la viabilidad económica y financiera
