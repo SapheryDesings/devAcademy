@@ -198,6 +198,80 @@ Otra forma de ser empresario:
 
 ### 4.4. La fiscalidad según el tipo de actividad y de forma jurídica
 
-pág 72
+Cualquier empresa, distintamente de la personalidad jurídica que tenga, está sujeta al pago de una serie de **impuestos**. Estos impuestos son la _fuente principal del Estado para financiar los servicios públicos_.
+
+Más adelante, detallaremos los diferentes tipos de impuestos. Ahora veremos qué impuestos deben pagar las empresas en función de actividad y de su forma jurídica.
+
++ **Empresa individual:** impuesto sobre la renta de las personas físicas(IRPF) e impuesto sobre el valor añadido (IVA).
++ **Comunidad de bienes:** impuesto sobre la renta de las personas físicas (IRPF), al que está sujeto cada socio (no la comunidad de bienes), e impuesto sobre el valor añadido (IVA), al que está sujeta la comunidad de bienes.
++ **Sociedades mercantiles:** impuesto sobre actividades económicas (IAE), impuesto de sociedades e impuesto sobre el valor añadido(IVA).
+
+Además de estos, existen otros, gestionados también por la Agencia Tributaria pero que se pagan a los Ayuntamientos o a las comunidades autónomas. Hablamos del impuesto sobre bienes inmuebles (IBI), del impuesto sobre vehículos de tracción mécanica, del impuesto sobre construcciónes, instalaciones y obras y del impuesto sobre transmisiones patrimoniales y actos jurídicos documentados.
+
+#### Obligaciones fiscales
+
+Empresarios individuales y las sociedades están obligados a realizar:
+
++ La **declaración o relación anual de operaciones con terceras personas:** es obligatorio presentar una declaración anual de las operaciones económicas que se han realizado con terceras personas (se detallan personas, sociedades o entidades) y que hayan superado en conjunto los 3.000€. Se debe cumplimentar y presentar el modelo 347.
++ **Retenciones e ingresos a cuenta:** las empresas individuales, las comunidades de bienes y las sociedades están obligadas a retener una parte de la renta en el momento de abonarla durante el ejercicio de sus actividades, e ingresarla después a la Agencia Tributaria. Las rentas sujetas a retención son: los rendimientos del trabajo (la parte a retener depende del sueldo anual y del número de hijos del trabajador), los rendimientos del capital inmobiliario, los rendimientos del capital mobiliario, los rendimientos de actividades profesionales y premios, los rendimientos por la prestación de asistencia técnica y los rendimientos por actividades agrícolas y ganaderas.
+
+  Las retenciones se ingresan de forma trimestral, durante los 20 primeros días de los meses de abril, julio, octubre y enero. Además, del 1 al 20 de enero se debe presentar un resumen anual de las retenciones y los ingresos hechos a cuenta.
+
+#### Calendario fiscal
+
+El **calendario fiscal** es una herramienta que se puede consultar en la web de la Agencia Tributaria y que recuerda a todos los contribuyentes el cumplimiento de las obligaciones tributarias principales a lo largo del año.
+
+En la primera página, se habla de la periodicidad de las autoliquidaciones y de la forma de presentarlas, y también de las novedades del año.
 
 ### 4.8. Determinación de la viabilidad económica y financiera
+
+Tanto en el plan de empresa como en de viabilidad económica y financiera es que se deben tener en cuenta las realidades y no las posibilidades. Se debe contar con lo que se tiene y no con lo que podría tenerse. No se incluyen las ayudas y las subvenciones.
+
+Determinar si una empresa es viable económica y financieramente es posible gracias al plan financiero, que consta dle plan de tesorería, la cuenta de resultados, previsional, el balance previsional y el punto muerto.
+
+#### Plan de tesorería
+
+Refleja la entrada y salida de dinero mensual en la empresa, y permitirá ver cuando se va a necesitar más liquidez. Todo tiene que ser real, las entradas se registran cuando son ejectivas, no cuando se prevén. Siempre se deben estimar a la baja las entradas y al alza las salidas.
+
+La liquidez se obtiene restando las salidas de las entradas. En caso de déficit, hace falta más dinero del que proporciona la actividad diaria de la empresa. Gracias al plan, se podría programar la solicitud de crédito y la cuantía adecuada. Si hay superávit de tesorería, se podrá invertir el dinero sobrante para rentabilizar el que no se utiliza.
+
+#### Cuenta de resultados provisional
+
+Es un informe en el que se reflejan las pérdidas o beneficios generados por la empresa, y se basan en los ingresos y los gastos estimados al final del ejercicio.
+
+En la puesta en marcha de la empresa, se recomienda que la cuenta de resusltados sea para los tres primeros ejercicios, ya que en el primero se dan muchos gastos y pocas ventas y los números no mejoran a partir del segundo año.
+
+En el capítulo de gastos, figuran los del año y otros que tienen un carácter especial y que se denominan amortizaciones. Todo gasto que es una inversión, como la maquinaria, los ordenadores o el mobiliario, no se refleja en su totalidad en el año de adquisición, sino que la cantidad de dinero se divide entre los años que se supone que va a durar el material para obtener la cifra de amortización anual.
+
+En la cuenta se anotan los ingresos como los gastos de explotación y financieros previstos. Al principio los gastos financieros son elevados (préstamos, intereses...), pero irán desapareciendo. No se deben mezclar los resultados de explotación con los resultados financieros, sino que deben analizarse por separado, si no, el resultado podría ser engañoso.
+
+La información que nos da es muy valiosa. Si los resultados son positivos, indica que la empresa va bien. Si son negativos, habrá que ver los de explotación, ya que puede ocurrir que sean positivos, pero que acaben absorbiendo todo el déficit financiero. Si en ambos casos es negativo, se deberá hacer un replanteamiento de todo. Cuando las pérdidas son pequeñas pero la empresa tiene potencial, se puede seguir adelante, en caso contrario, debería replantearse el plan empresarial.
+
+#### Balance previsional
+
+Se define como la representación contable del patrimonio de la organización empresarial. Del conjunto de bienes, derechos y obligaciones de la empresa. El patrimonio neto hace referencia a los bienes de la empresa, más lo que se le debe y menos lo que debe.
+
+El balance se divide en **activo** y **pasivo más patrimonio neto**. El activo es el conjunto de bienes y derechos (lo que tiene y lo que le deben) de la empresa. El pasivo está formado por las obligaciones que tiene la empresa.
+
+El **activo** se divide a su vez en:
+
++ **Activo no corriente:** son los bienes que estarán mucho tiempo en la empresa (maquinaria, mobiliario, herramientas...). Se divide en inmovilizado intagible (bienes intangibles como derechos, propiedades industriales...), inmovilizado material (bienes materiales como las herramientas o la maquinaria de largo uso), inversiones inmobiliarias (terrenos o inmuebles que no se utilizan en la cadena de producción y que se alquilan o se venden) e inmovilizado financiero (inversiones de más de un año, como una partida de acciones o excedentes del banco destinados a plazo fijo).
++ **Activo corriente:** son los bienes que tienen que estar poco tiempo en la empresa, como la materia prima. Se divide en existencias (productos para ser vendidos), créditos pendientes de cobro (deudas a cobrar a corto plazo), inversiones financieras a corto plazo y efectivo y otros activos líquidos (dinero en caja y bancos).
+
+El **pasivo más patrimonio neto** se divide en patrimonio neto (bienes o fondos propiedad de la empresa), **pasivo no corriente** (deudas a devolver a largo plazo, en un tiempo superior a un año) y **pasivo corriente** (deudas a devolver a corto plazo o en menos de un año).
+
+El **balance previsional** se hace para prever cuál va a ser la situación patrimonial de la empresa después del ejercicio anual. El equilibrio entre el plan de inversión y el plan de financiación en un momento determinado se refleja en el balance. La inversión se corresponde con el activo del balance y la financiación con el neto patrimonial y el pasivo. Estudiar las masas patrimoniales, y su proporción o peso frente a las otras, concede un análisis de la situación financiera de la empresa. Podemos estudiar si hay equilibrio entre recursos ajenos y propios o si el nivel de endeudamiento es el adecuado. Este examen se realiza a través de las llamadas ratios(tema 5).
+
+Si vinculamos la rentabilidad a la estructura financiera de la empresa, podemos concluir que solo interesa permanecer endeudados cuando los beneficios obtenidos por la producción de la empresa son superiores a los costes de los recursos por cuenta ajena.
+
+#### Punto muerto o umbral de rentabilidad
+
+Es la cantidad mínima a vender para cubrir gastos, es aquella cifra de ventas a partir de la cual se empiezan a obtener beneficios. En el punto muerto, no hay ni pérdidas ni ganancias. El beneficio es 0 y las pérdidas también. Para calcular el punto muerto de la empresa:
+
+```
+PM = Gastos Fijos / Precio - gasto variable por unidad
+```
+
+Los **gastos fijos** son los que no dependen de la cantidad producida: son iguales tanto si se produce poco como si se produce mucho. Ej.: Alquiler del local, los seguros, la parte fija de los recibos de teléfono, agua, gas, electricidad, etc..
+
+Los **gastos variables**, varían según la cantidad de producción. Cuanta más producción, mayores gastos. Ej.: Materia prima, parte variable de las facturas de agua, gas, electricidad, teléfono, etc...
