@@ -197,4 +197,48 @@ Tramites y gestiones más habituales:
 
 ##### El cheque
 
-pág 113
+Permite que una entidad de crédito esté obligada a pagar una cantidad de dinero a un individuo o a una entidad por orden de uno de sus clientes.
+
+El banco o entidad bancaria pagará el cheque siempre y cuando existan fondos en la cuenta del librador. Si no tiene saldo suficiente, puede pagar parcialmente.
+
+La denominación de _cheque_ debe aparecer en el título. También debe contener el nombre de quien paga o libra, que será un banco o una entidad financiera, la cantidad a pagar, el lugar de pago, la fecha y lugar de emisión y la firma del librador.
+
++ **Cheque conformado:** la validez o autenticidad de la firma del librador o emisor del cheque es garantizada por la entidad bancaria, así como la existencia de fondos suficientes para hacer frente a la cuantía del cheque.
++ **Cheque barrado o cruzado:** no puede ser cobrado en efectivo, solo a través de ingreso en la cuenta bancaria de la persona beneficiaria. Tiene dibujadas dos barras paralelas en la parte delantera. Solo puede ser abonado en la cuenta bancaria sirve para evitar que un tercero pueda cobrar el cheque en caso de extravío.
++ **cheque nominativo a favor de una persona determinada:** sí que se incluyen los datos del beneficiario, por lo que, para cobrarlo, es imprescindible identificarse.
++ **Cheque emitido al portador:** de los más empleados, puede ser cobrado por cualquier persona que lo lleve al banco. Por ello no es lo suficientemente seguro.
++ **Cheque de viaje:** empleado cuando se viaja a otro país. Puede ser emitido por una entidad bancaria y se pueden canjear en efectivo o emplearse como efectivo cuando se paga en establecimientos. Se pueden emitir en múltiples divises y no tienen fecha de caducidad.
+
+El cheque debe contener:
+
++ La expresión "pagar por este cheque" insertada en el mismo texto del título o documento.
++ La orden de pagar una determinada cantidad en euros o en moneda extranjera convertible admitida a cotización oficial. Esta oreden está implícita en la fórmula "pagar por este cheque a .... euros".
++ El nombre de quien debe pagar el cheque cuando se presente, nombrado como librado, que necesariamente debe de ser un banco o una entidad de crédito.
++ El lugar donde se deberá efectuar el pago.
++ La fecha y el lugar de emisión del cheque.
++ La firma de la persona que expide el cheque, del librador. Esta firma debe ser a mano. No se admite la versión impresa o estampada.
+
+##### El pagaré
+
+Documento por escrito en el cual una persona se compromete a pagar a otra persona una determinada cantidad de dinero en una fecha previamente fijada. El cargo suele hacerse a una cuenta corriente.
+
+Es muy similar a la letra de cambio. El deudor libra el pagaré. Existen dos tipos: nominativos o al portador.
+
++ **nominativos:** es emitido a nombre de una persona física o jurídica que lo cobra.
++ **al portador:** no es emitido a nombre de nadie.
+
+Partes del pagaré:
+
++ **librado:** persona que se compromete a pagar la cantidad del pagaré, bien a la vista, o en una fecha fijada en el futuro. Coincide con la persona que emite el pagaré, el librador.
++ **beneficiario o tenedor:** destinatario de la orden de pago y de la cantidad establecida en el pagaré.
++ **avalador:** es quien garantiza que el pago será efectuado.
+
+Debe contener la denominación de _pagaré_, el vencimiento o fecha en la que se debe pagar, el importe de la cantidad a abonar, el sitio en el que se debe efectuar el pago, el nombre y apellidos de la persona a quien se debe pagar, el sitio y la fecha de la entrega y la firma del deudor.
+
+Existen otros métodos de pago como, transferencia bancaria, domiciliación bancaria, tarjeta de débito, tarjeta de crédito, PayPal, etc.
+
+##### El recibo
+
+Documento que justifica el pago de una factura. Lo expide la persona que recibe cierta cantidad (el vendedor) para que le sirva al pagador (el comprador) como un justificante de la entrega de dinero. No es único como justificante de pago, también son válidos el justificante de un pago bancario, la constancia del pago en la factura, etc. pero el recibo es el documento mercantil justificativo de la entrega de una cantidad de dinero como pago de una factura o a una cuenta de una futura compra. Da fe del valor, de las condiciones y circustancias en las que se ha hecho un pago.
+
+Las partes son: cabecera con los datos identificativos del emisor, número de recibo, identificación de quien lo entrega, importe expresado en letras, concepto por el cual se recibe el dinero, lugar y fecha de la expedición, firma y sello de quien recibe el dinero e importe expresado en letras y números.
