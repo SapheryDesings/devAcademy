@@ -3,3 +3,113 @@ layout: ../../layouts/PlantillaMd.astro
 ---
 
 ## Tema 5.- Desarrollo de web accesibles
+
+La accesibilidad web es un acceso universal a la web, que todo el mundo pueda tener acceso a la web independientemente del contexto que utilice, el idioma, la cultura, el lugar geográfico, etc.
+
+Dio lugar a la **Iniciativa de Accesibilidad Web (WAI, Web Accesibility Iniciative)**, cuyo objetivo era poder **facilitar el acceso a aquellos usuarios que presentaran algún tipo de discapacidad**. Se abre un nuevo campo en el que se apuesta por desarrollar una labor educativa y concienciar sobre el diseño de sitios web accesibles.
+
+La página web podrá ser utilizada por cualquier persona, tenga algún tipo de discapacidad o no.
+
+> Mediante la accesibilidad se pretende desarrollar sitios web más accesibles para todos los usuarios que deseen acceder a algún tipo de información.
+
+Las webs accesibles representan uno de los recursos más importantes para determinados aspectos de la vida, con el empleo, la educación, la sanidad o el comercio.
+
+Ayudan a todos los usuarios que deseen interactuar con ellas participen más en la sociedad.
+
+### 5.1. Consorcio World Wide Web (W3C)
+
+Es una asociación internacional compuesta por un conjunto de organizaciones que apuestan por trabajar de forma conjunta para conseguir desarrollar una serie de estándares y normas que debe tener una web.
+
+Su función es _"guiar a la web hacia su máximo potencial a través del desarrollo de protocolos y pautas que aseguren el crecimiento futuro de la web"_.
+
++ Mediante el trabajo, potencia la web para todos los usuarios. Su objetivo principal es conseguir que todos los usuarios puedan acceder a todas las posibilidades planteadas.
++ Facilita el acceso a la web desde cualquier tipo de dispositivo, independientemente de la forma de interactuar usada (formularios, gestos, voz, etc).
++ Ayuda y apuesta por una buena calidad en los contenidos que presente la web.
++ Colabora con la evolución que vaya adquiriendo la web, aumentando sus posibilidades en tres dimensiones diferentes: la coraboración (web 2.0), la semántica (web 3.0) y la universal (web 4.0).
++ Añade nuevos mecanismos que garanticen seguridad, privacidad, protección y cifrado de la información disponible en el web.
+
+### 5.2. Principios generales de diseño accesible
+
+Para conseguir que las webs puedan llegar a mayor número de usuarios, debemos hacerlas accesibles para todos, independientemente del usuario.
+
+El W3C fija e identifica una serie de principios de diseño a tener en cuenta.
+
+En 1999, las guías de accesibilidad **WCAG 1.0** indicaron **catorce principios para el diseño accesible:**
+
+1. Suministra una serie de alternativas para los contenidos, tanto visuales como auditivos.
+2. No es conveniente centrarse tanto en el color, ya que existen dispositivos que no los pueden visualizar, bien sea por las características o por las condiciones que presente la máquina del usuario.
+3. Es conveniente hacer uso de marcadores y hojas de estilo de forma adecuada.
+4. Reconocer el lenguaje natural que se utilice. Si no lo reconocemos, es posible que se produzcan diferentes errores en las abreviaciones que no se podrán traducir por los dispositivos Braille o lectores de pantalla.
+5. A la hora de crear tablas, nos debemos asegurar de que son fáciles de trasformar a través de las diferentes aplicaciones y de los navegadores accesibles.
+6. Comprobar que las páginas que hagan uso de las nuevas tecnologías se puedan transformar correctamente.
+7. Comprobar que todos los objetos que se encuentran en movimiento están controlados.
+8. Garantizar la accesibilidad directa de las diferentes interfaces que se utilicen.
+9. A la hora de realizar el diseño, debemos tener en cuenta todos los dispositivos (ratón, teclado, voz, etc).
+10. Tener disponibilidad de las soluciones provisionales.
+11. Hacer uso de tecnologías y pautas W3C.
+12. Ayudar a los diferentes usuarios a entender las páginas mediante orientación e información de contexto.
+13. Ayudar a los diferentes usuarios a encontrar la información que buscan a través de la utilización de mecanismos claros y consistentes.
+14. Mediante el uso de documentos claros y sencillos, garantizar la comprensión de los usuarios.
+
+![accesibilidad](/src/assets/accesibilidad.PNG "accesibilidad")
+
+En 2009, **WCAG 2.0**, reduce a cuatro los principios anteriores.
+
+1. Sitios web sencillos de concebir para que los usuarios puedan navegar sin problema.
+2. Sitios web sencillos para operar de forma sencilla.
+3. Es fundamental para que los sitios web sean sencillos de comprender para todos los usuarios.
+4. Sitios web fuertes para poder trabajar con diferentes agentes de usuarios y tecnologías necesarias para aquellas personas que presenten alguna discapacidad.
+
+### 5.3. Pautas de accesibilidad al contenido en la web WCAG
+
+Siempre es conveniente que el diseñador conozca los principios y los ponga en práctica con el fin de que los sitios web lleguen a muchos más usuarios.
+
+![accesibilidad2](/src/assets/accesibilidad2.PNG "accesibilidad2")
+
+### 5.4. Técnicas para satisfacer los requisitos definidos en las WCAG
+
+Se ha diseñado un documento que cubra las necesidades de todos aquellos que necesiten un estándar técnico estable que garantice la accesibilidad a un sitio web.
+
+Existen otros documentos basados basados en las pautas 2.0, que cumplen una serie de requisitos adicionales.
++ **El cumplimiento de las pautas 2.0:** listado de todas las pautas, criterios de éxito y diferentes técnicas que se pueden utilizar en el desarrollo del contenido web.
++ **La puesta en práctica de las pautas 2.0:** documento que contiene la compresión de las diferentes pautas junto con sus correspondientes criterias de éxito.
++ **Las técnicas para satisfacer las pautas 2.0:** conjunto de las diferentes técnicas conocidas y de los errores junto con una descripción de estos.
++ **La compresión de las propias pautas 2.0:** diagrama en el que identificamos la relación existente entre los diferentes documentos técnicos.
+
+Es importante destacar que los documentos definidos van a ofrecer una serie de criterios de éxito que podremos utilizar en algunas ocasiones. Para cumplir con estos requisitos, contamos con tres tipos de niveles, desde A, el más bajo, hasta el AAA, el más alto.
+
+![requisitos](/src/assets/requisitosWCAG.PNG "requisitosWCAG")
+
+### 5.5. Métodos para realizar revisiones preliminares y evaluaciones de adecuación o conformidad de documentos web
+
+El diseñador, va a poder diferenciar entre dos tipos de actividades:
+
++ **Dirigir el proceso de desarrollo** de los diferentes sitios web, asegurarse de que un determinado sitio web cumple los criterios de accesibilidad recomendados.
++ **Comprobar los diseños web** en función de los criterios de accesibilidad utilizados.
+
+Herramientas que permiten evaluar la forma de forma sencilla un sitio web y comprobar que cumple los requisitos de una web accesible.
+
+1. Seleccionamos una pequeña muestra de diferentes páginas.
+2. Mediante navegadores gráficos, evaluamos las páginas con sus correspondientes configuraciones.
+3. Utilizamos navegador de voz o de texto para que todas las personas puedan tener acceso acceso al sitio web.
+4. Utilizamos herramientas de evaluación de accesibilidad.
+5. Es recomendable que hagamos un resumen de los resultados obtenidos.
+
+### 5.6. Herramientas de análisis de accesibilidad web
+
+Disponemos de herramientas que nos permiten saber si existen problemas de accesibilidad, pero ninguna que nos lo indique al 100%.
+
+Existen herramientas que pretenden automatizar este proceso de evaluación de la accesibilidad, aunque suelen dar algunos falsos positivos que deben ser resuelto de forma manual por parte del usuario.
+
+Es recomendable añadir análisis con evaluaciones manuales a estas herramientas de análisis y evaluación automáticas.
+
+### 5.7. Revisión de la accesibilidad web desde diferentes navegadores
+
+Los navegadores permiten facilitar el proceso de evaluación de la accesibilidad de forma manual mendiante una serie de extensiones que permiten, modificar la resolución de forma rápida, comprobar los colores de un sitio web, etc.
+
++ **Web Developer** para Firefox con las diferentes opciones que pueden utilizar los desarrolladores.
++ **Firefox Accessibility Extension:** para la barra de herramientas, con diferentes opciones que facilitan la navegación por los diferentes contenidos de aquellos usuarios con alguna discapacidad.
++ **Web Accessibility Toolbar:** utilizado en IE que permite una evaluación manual sencilla de la accesibilidad de un sitio web.
++ **Firebug:** permite que los desarrolladores puedan realizar modificaciones sobre el código fuente HTML, CSS, Javascript, etc.
++ **Fangs:** permite mostrar el contenido de una determinada página como si fuera un lector de pantalla.
++ **HTML Validator Tidy:** para Mozilla que permite agregar un validador de HTML en el interior de Firefox.
