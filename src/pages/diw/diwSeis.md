@@ -67,6 +67,42 @@ La velocidad de conexión afecta a la carga del contenido, por lo que se ve afec
 
 ### 6.4. Tipo de usuario
 
-pag 92
+Como todos los usuarios son distintos, es conveniente elaborar un perfil de aquellos que pueden acceder para saber que aspectos tienen en común y qué diferencias existen entre ellos.
+
++ A los usuarios no les gusta que una página principal tenga algún elemento de Flash que necesite más de tres segundos para descargarse y, si no tienen posibilidad de poder saltarse este proceso, abandonan la página.
++ En las páginas con muchos elementos decorativos, los usuarios suelen abandonar las páginas porque tardan demasiado tiempo en descargarse.
++ Las páginas que tiene demasiadas interrrupciones en la lectura provocadas por las diferentes ventanas que las componen también son abandonadas por los usuarios.
++ Lás páginas con mucho texto y que ocupa toda la ventana no son favorables para los usuarios.
+
+Se debe pensar siempre en el usuario potencial, considerando sus expectativas, capacidades y aptitudes, así como la información requerida, la foma de acceso a la web, la experencia previa sobre la utilidad de la web, etc.
+
+Importante, también, es conocer las limitaciones técnicas que pueden tener los usuarios potenciales de un determinado sitio, la plataforma que se debe utilizar y la conexión.
+
+> Steve krug: "usabilidad es que algo funciona bien: significa que una persona de capacidad y aptitudes medias (o, incluso, por debajo de la media) pueda usar algo, tanto si es un sitio web, un mando a distancia o una puerta giratoria, para lo que se supone que sirve, sin frustarse desesperadamente mientras lo hace".
+
+Algunos sitios han sido diseñados con la intención de poder ser utilizados por distintos usuarios:
+
++ Visitante o invitado
++ Usuario registrado o colaborador
++ Usuario experto o administrador
+
+Independientemente del usuario, se va a desarrollar una experiencia diferente.
+
+Es fundamental que se garantice la usabilidad para el tipo de usuario que interaccione con el sitio.
 
 ### 6.5. Información fácilmente accesible
+
+Para un mejor acceso a la información:
+
++ Tener organizados los contenidos del sitio correspondiente.
++ Hacer un buen diseño del sistema de navegación.
+
+Lo cierto es que, si un usuario tiene dificultades para manejarse por la página, **acabará abandonándola sin encontrar lo que buscaba**.
+
+Para orientar y guiar al usuario, se suele incorporar menús de navegación, incluido la información más importante del sitio. Además podemos tener acceso a otras páginas del mismo sitio (enlaces internos) o de otros (enlaces externos).
+
+A modo de resumen, en relación con la información de una sitio:
+
++ Los **contenidos sean accesibles** desde el menú de navegación principal o desde algún enlace.
++ No es conveniente que existan **enlaces** que no nos lleven a ningún sitio concreto, debemos validar que los _links_ estén operativos.
++ Los enlaces deben mostrar el contenido esperado.
