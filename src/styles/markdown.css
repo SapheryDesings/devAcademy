@@ -3,6 +3,7 @@
   margin: 1rem auto;
   font-size: 1.2rem;
   content-visibility: auto;
+  color: var(--color-fuente-sombras1);
 
   & h1 {
     font-size: 2rem;
@@ -12,37 +13,62 @@
   }
 
   & h2 {
+    margin-bottom: 2rem;
     font-size: 1.6rem;
-    border-bottom: 3px solid black;
-    display: inline-block;
+    border-bottom: 3px solid var(--color-detalles-md-azul);
   }
 
-  & h3 { font-size: 1.3rem; 
-    font-weight: 600;
-    border-left: 8px solid hotpink;
-    margin: 3rem 0 1rem 0; 
-    padding: 0.6rem 0 0.6rem 1rem; /* arr de ab iz*/
+  & h3, h4 { 
+    font-size: 1.3rem; 
+    font-weight: 500;
+    margin: 2rem 0; /* arr de ab iz*/
   }
   
   & h4 {
-    font-weight: bold;
-    margin: 2rem 0 1rem 0;
+    max-width: 30%;
+    min-width: fit-content;
+    padding: .8rem .5rem;
+    background-color: #c5d0e810;
+    border-radius: .6rem;
   }
 
-  & p { margin: 0.5rem 0; padding:0 1.5rem;}
+  & p { margin: 1rem 0;}
 
-  & strong { color: darkorange;}
+  & strong { color: var(--color-detalles-md-ocre);}
 
   & img { 
     margin: 3rem auto;
   }
-
-  & ol {
+  /* -- Listas -- */
+  & ol, ul {
     margin-left: 1rem;
     & li {
-      list-style: none outside none;
-      margin-left: 2rem;
-      padding: 0.5rem;
+      list-style: square outside none;
+      margin-left: 1.5rem;
+      padding: 0.2rem;
     }
+    & li::marker{
+      color: var(--color-detalles-md-azul);
+    }
+  }
+  /* -- Tablas -- */
+  & table {
+    border-collapse: collapse;
+  }
+  & th {
+    padding: .2rem .5rem;
+    border: 1px solid var(--color-fuente-sombras1);
+  }
+  & td {
+    padding: .2rem .5rem;
+    border: 1px solid var(--color-fuente-sombras3);
+  }
+
+  /* -- Código -- */
+  & pre {
+    border: 1px solid var(--color-fuente-sombras4);
+    border-radius: .6rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem auto;
   }
 }

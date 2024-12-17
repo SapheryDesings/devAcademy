@@ -1,0 +1,23 @@
+---
+export interface EPostProps {
+  curso: string;
+  asignatura: string;
+}
+
+const {curso, asignatura} = Astro.props;
+---
+<div>
+  <span>Curso: {curso}</span><br/>
+  <span>Asignatura: {asignatura}</span><br/>
+</div>
+
+<style>
+  div {
+    width: fit-content;
+    margin: .5rem 0 5rem;
+    padding: 1rem;
+    color: #6c778c;
+    border: 2px solid #444e62;
+    border-radius: 1rem;
+  }
+</style>

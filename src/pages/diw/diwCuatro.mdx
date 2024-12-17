@@ -1,6 +1,9 @@
 ---
 layout: ../../layouts/PlantillaMd.astro
 ---
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "DAW" asignatura = "Desarrollo de Interfaces Web"/>
 
 ## Tema 4.- Integración de contenido interactivo
 
@@ -80,8 +83,14 @@ La función que más utilizaremos será **$()**, similar a _getElementByTagName(
 
 Tendremos multitud de eventos con los que poder interactuar. **Podemos usar un evento de dos formas:**
 
-+ **Pasándole una función** que nos especifique como se comportará. $("p").click(function() {alert($(this).text());})
-+ **Sin pasarle una función**, por lo que generará un evento estándar de Javascript. No tendremos que usar el prefijo on. $("p").click()
++ **Pasándole una función** que nos especifique como se comportará. 
+    ```javascript
+        $("p").click(function() {alert($(this).text());})
+    ```
++ **Sin pasarle una función**, por lo que generará un evento estándar de Javascript. No tendremos que usar el prefijo on. 
+    ```javascript
+      $("p").click()
+    ```
 
 Eventos importantes:
 

@@ -9,11 +9,24 @@
   --color-fuente-principal-blanco: #f8fafc; /* Slate 50 */
   --color-naranja-logo: #f97316; /* Orange 500 */
   --color-azul-logo: #0ea5e9; /* Sky 500 */
+  --color-altoContraste: #FFC745; /* de #1e293b */
+
+  --color-fuente-sombras4: #444e62;
+  --color-fuente-sombras3: #6c778c;
+  --color-fuente-sombras2: #98a2b9;
+  --color-fuente-sombras1: #c5d0e8;
+
+  --color-detalles-md-azul: #47A8BD;
+  --color-detalles-md-amarillo: #F5E663;
+  --color-detalles-md-ocre: #FFAD69;
+  --color-detalles-md-rojo: #9C3848;
+  --fuente-principal: "Montserrat";
 }
 
 body {
   background-color: var(--color-principal-gris);
   color: var(--color-fuente-principal-blanco);
+  font-family: var(--fuente-principal);
 }
 
 header {
@@ -31,7 +44,7 @@ header {
 
     width: 70%; /* 70% */
     margin: 0 auto;
-    border: 1px dashed darkcyan;
+    /*border: 1px dashed darkcyan;*/
 
     & .sectionDaw {
       display: flex;
