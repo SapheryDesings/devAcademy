@@ -5,26 +5,30 @@
   content-visibility: auto;
   color: var(--color-fuente-sombras1);
 
-  & h1 {
+
+  h1 {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
     padding: 1rem 0;
   }
 
-  & h2 {
-    margin-bottom: 2rem;
+  h2 {
     font-size: 1.6rem;
     border-bottom: 3px solid var(--color-detalles-md-azul);
   }
 
-  & h3, h4 { 
+  h3, h4, h5 { 
     font-size: 1.3rem; 
     font-weight: 500;
-    margin: 2rem 0; /* arr de ab iz*/
+    margin: 3rem 0 1rem; /* arr de ab iz*/
+  }
+
+  h3 {
+    margin: 150px 0 1rem; /* arr de ab iz*/
   }
   
-  & h4 {
+  h4 {
     max-width: 30%;
     min-width: fit-content;
     padding: .8rem .5rem;
@@ -32,43 +36,51 @@
     border-radius: .6rem;
   }
 
-  & p { margin: 1rem 0;}
+  p { margin: 1rem 0;}
 
-  & strong { color: var(--color-detalles-md-ocre);}
+  strong { color: var(--color-detalles-md-ocre);}
 
-  & img { 
+  img { 
     margin: 3rem auto;
   }
   /* -- Listas -- */
-  & ol, ul {
+  ol, ul {
     margin-left: 1rem;
-    & li {
+    li {
       list-style: square outside none;
       margin-left: 1.5rem;
       padding: 0.2rem;
+
+      li p {
+        margin: .2rem 0;
+      }
     }
-    & li::marker{
+    li::marker{
       color: var(--color-detalles-md-azul);
     }
   }
   /* -- Tablas -- */
-  & table {
+  table {
     border-collapse: collapse;
   }
-  & th {
+  th {
     padding: .2rem .5rem;
     border: 1px solid var(--color-fuente-sombras1);
   }
-  & td {
+  td {
     padding: .2rem .5rem;
     border: 1px solid var(--color-fuente-sombras3);
   }
 
   /* -- Código -- */
-  & pre {
+  pre {
     border: 1px solid var(--color-fuente-sombras4);
     border-radius: .6rem;
     padding: 1rem 1.5rem;
     margin: 1rem auto;
   }
+}
+
+.contenedorMd h3:first-of-type {
+  margin: 1rem 0;
 }
