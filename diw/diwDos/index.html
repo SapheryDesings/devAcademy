@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="es"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap" rel="stylesheet"><meta name="generator" content="Astro v5.0.5"><title>devAcademy | </title><link rel="stylesheet" href="/_astro/css.xvJpYEMv.css">
+<style>.contenedorMd{width:80%;margin:1rem auto;font-size:1.2rem;content-visibility:auto;color:var(--color-fuente-sombras1);h1{font-size:2rem;font-weight:700;margin-bottom:1rem;padding:1rem 0}h2{font-size:1.6rem;border-bottom:3px solid var(--color-detalles-md-azul)}h3,h4,h5{font-size:1.3rem;font-weight:500;margin:3rem 0 1rem}h3{margin:150px 0 1rem}h4{max-width:30%;min-width:-moz-fit-content;min-width:fit-content;padding:.8rem .5rem;background-color:#c5d0e810;border-radius:.6rem}p{margin:1rem 0}strong{color:var(--color-detalles-md-ocre)}img{margin:3rem auto}ol,ul{margin-left:1rem;li{list-style:square outside none;margin-left:1.5rem;padding:.2rem;li p{margin:.2rem 0}}li::marker{color:var(--color-detalles-md-azul)}}table{border-collapse:collapse}th{padding:.2rem .5rem;border:1px solid var(--color-fuente-sombras1)}td{padding:.2rem .5rem;border:1px solid var(--color-fuente-sombras3)}pre{border:1px solid var(--color-fuente-sombras4);border-radius:.6rem;padding:1rem 1.5rem;margin:1rem auto}}.contenedorMd h3:first-of-type{margin:1rem 0}[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}div[data-astro-cid-fi4xxori]{width:-moz-fit-content;width:fit-content;margin:.5rem 0 5rem;padding:1rem;color:#6c778c;border:2px solid #444e62;border-radius:1rem}
+*{box-sizing:border-box;margin:0;padding:0}:root{--color-principal-gris: #1e293b;--color-fuente-principal-blanco: #f8fafc;--color-naranja-logo: #f97316;--color-azul-logo: #0ea5e9;--color-altoContraste: #FFC745;--color-fuente-sombras4: #444e62;--color-fuente-sombras3: #6c778c;--color-fuente-sombras2: #98a2b9;--color-fuente-sombras1: #c5d0e8;--color-detalles-md-azul: #47A8BD;--color-detalles-md-amarillo: #F5E663;--color-detalles-md-ocre: #FFAD69;--color-detalles-md-rojo: #9C3848;--fuente-principal: "Montserrat"}body{background-color:var(--color-principal-gris);color:var(--color-fuente-principal-blanco);font-family:var(--fuente-principal)}header{background-color:var(--color-fuente-principal-blanco);display:flex;justify-content:center;align-items:center;min-height:150px}.contenidoPrincipal{display:flex;flex-flow:column;justify-content:center;width:70%;margin:0 auto;.sectionDaw{display:flex;flex-flow:column;& h2{font-size:clamp(1rem,2vw + 1rem,2rem);margin:2rem}.contenedorCard{padding:1rem 0;display:flex;flex-flow:row wrap;justify-content:center;align-items:center;gap:1rem}}}hr{margin:3rem 0;border-width:2px;border-color:#f8fafc10}footer{background-color:var(--color-fuente-principal-blanco);color:var(--color-principal-gris);min-height:100px;margin-top:5rem;display:flex;justify-content:center;align-items:center;font-size:clamp(.8rem,1.6vw,1rem)}@media (width < 1280px){.contenidoPrincipal{width:80%}}@media (width < 1024px){.contenidoPrincipal{width:90%}}@media (width < 768px){.contenidoPrincipal{width:98%}}
+</style></head> <body> <header> <h1 class="font-bold text-4xl"> <a href="/"> <span class="text-orange-500">dev</span><span class="text-sky-500">Academy</span> </a> </h1> </header> <section class="contenidoPrincipal">  <div class="contenedorMd"> <div data-astro-cid-fi4xxori> <span data-astro-cid-fi4xxori>Curso: DAW</span><br data-astro-cid-fi4xxori> <span data-astro-cid-fi4xxori>Asignatura: Desarrollo de Interfaces Web</span><br data-astro-cid-fi4xxori> </div> 
+<h2 id="tema-2--uso-de-estilos">Tema 2.- Uso de estilos</h2>
+<p>Las hojas de estilo son la parte del diseño de aplicaciones web.</p>
+<p>Ahorran tiempo al diseñar sitios web y se pueden conseguir efectos potentes soportados por los navegadores.</p>
+<p>Una ventaja es que permiten separar el contenido (información) del diseño (apariencia), lo que permite un mantenimiento más eficiente.</p>
+<p>Resumiendo, se utiliza la etiqueta <em>body</em> para definir la <em>estructura</em> HTML, y por otro, un <em>archivo externo</em> o en el <em>head</em> para definir la apariencia. Así es posible modificar el contenido sin afectar al aspecto y viceversa.</p>
+<p>Otra ventaja es la adaptación a los diferentes dispositivos, móvil, tablet, pc, desktop..</p>
+<h3 id="21-estilos-en-línea-basados-en-etiquetas-en-clases-y-en-identificadores">2.1. Estilos en línea basados en etiquetas, en clases y en identificadores</h3>
+<p>CSS está formado por reglas.</p>
+<h4 id="selectores-basados-en-etiquetas">Selectores basados en etiquetas</h4>
+<p>Para definir una regla tenemos que usar las propias etiquetas del documento HTML como selectores.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>selector { atributo: valor }</span></span></code></pre>
+<p>El <em>atributo</em> son las características que se pretenden modificar del <em>selector</em>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8"> }</span></span></code></pre>
+<p>Para hacer referencia a un selector, lo definimos sin las llaves &lt; &gt;, la declaración debe ir entre .</p>
+<p>Es posible definir atributos para varios selectores y varios atributos.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">selector1, selector2 { </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">1: valor1; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">2: valor2}</span></span></code></pre>
+<p>o aplicar el mismo estilo a dos selectores diferentes</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Dentro del fichero HTML las declaraciones las insertaremos entre las etiquetas style y /style que se incluirá en el head.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#85E89D">    h1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">; </span><span style="color:#79B8FF">background-color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<h4 id="selectores-basados-en-clases">Selectores basados en clases</h4>
+<p>Si lo que pretendemos es establecer estilos diferentes para unos mismos selectores podemos usar clases. Así es posible definir un estilo directamente a una etiqueta HTML. Hay diferentes tipos:</p>
+<ul>
+<li>Las clases asociadas directamente a una etiqueta HTML:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#B392F0">.color1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8"> }</span></span></code></pre>
+<ul>
+<li>Las clases genéricas aplicadas a cualquier etiqueta:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.color2</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8"> }</span></span></code></pre>
+<p>Las clases asociadas a las etiquetas HTML se definen de la siguiente manera:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">Etiqueta</span><span style="color:#B392F0">.clase</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor;... }</span></span></code></pre>
+<p>Esta alternativa permite aplicar a una misma etiqueta diferentes estilos.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#85E89D">    h1</span><span style="color:#B392F0">.color1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#85E89D">    h1</span><span style="color:#B392F0">.color2</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">    h1</span><span style="color:#B392F0">.color3</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Para indicar a una etiqueta h1 qué estilo se pretende aplicar:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color verde &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color2”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color azul &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color3”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color rojo &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Las clases genéricas no se aplican directamente a una etiqueta HTML:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">nombreclase { </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor;... }</span></span></code></pre>
+<p>Así, una clase es posible aplicarla a cualquier elemento:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> class=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> … &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> … &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8"> class=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> … &lt;/</span><span style="color:#85E89D">div</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Se realiza mediante la siguiente declaración:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#B392F0">    .color1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#B392F0">    .color2</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">    .color3</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Es posible aplicarla de la siguiente forma:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color verde &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> class=”color2”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color azul &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8"> class=”color3”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Texto color rojo &lt;/</span><span style="color:#85E89D">h2</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Otra de las ventajas es que permiten asignar más de una clase a la misma etiqueta, siempre y cuando no haya conflicto entre ellas:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#B392F0">    .color2</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#B392F0">    .fondo1</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">background-color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Se aplica de la siguiente forma:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> class=”color2 fondo1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Título en color azul y</span></span>
+<span class="line"><span style="color:#E1E4E8">fondo rojo &lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> class=”color2”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Párrafo en color rojo y fondo</span></span>
+<span class="line"><span style="color:#E1E4E8">predefinido por la página &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<h4 id="selectores-basados-en-identificadores">Selectores basados en identificadores</h4>
+<p>Este tipo de selector tiene una sintaxis parecida, pero con la diferencia de que estos <em>solo</em> pueden utilizarse por un <em>único</em> elemento.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">Etiqueta</span><span style="color:#B392F0">#nombre</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; …}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">#nombre</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">:valor; …}</span></span></code></pre>
+<p>Para indicar a una etiqueta qué estilo se pretende aplicar se utiliza el atributo <em>id</em> en la etiqueta:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#B392F0">    #color1</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> id=”color1”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> El párrafo se muestra en color</span></span>
+<span class="line"><span style="color:#E1E4E8">  verde &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Las clases se utilizarán cuando se pretende aplicar un estilo a <em>uno o más elementos</em>, mientras que los identificadores se definirán para aplicar en un <em>único elemento</em>.</p>
+<p>Los identificadores se utilizan para bloques o secciones principales, como la cabecera, el contenido y el pie de página.</p>
+<p>Otro uso es definir un enlace hacia un elemento de la página.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#B392F0">    #color1</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">      background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">#CCC</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">      border</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#F97583">px</span><span style="color:#79B8FF"> solid</span><span style="color:#79B8FF"> black</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">      margin</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8"> id=”cabecera”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Cabecera de la página &lt;/</span><span style="color:#85E89D">div</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  …</span></span>
+<span class="line"><span style="color:#E1E4E8">  …</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">a</span><span style="color:#E1E4E8"> href=”</span><span style="color:#B392F0">#cabecera”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ir </span><span style="color:#85E89D">a</span><span style="color:#E1E4E8"> la cabecera &lt;/</span><span style="color:#85E89D">a</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<h4 id="agrupación-de-selectores">Agrupación de selectores</h4>
+<p>Es posible agrupar los selectores o anidarlos para conseguir un fichero más optimizado, concreto y definido, que resulte más sencillo detectar posibles errores y solucionarlos.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">Selector1, selector2 {</span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">1:valor1; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">2:valor2; …}</span></span></code></pre>
+<p>Así, es posible aplicar el mismo estilo a un conjunto de selectores:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">font-family</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">Verdana</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Es posible agrupar los selectores de clase y los de identificador aplicando las siguientes reglas:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.color1</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">.color2</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">.color3</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">font-family</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">Verdana</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">#cabecera</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">#contenido</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">#piepagina</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">font-family</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">Verdana</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Es posible realizar una agrupación con los diferentes grupos de selectores:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">#cabecera</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">.color1</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">font-family</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">Verdana</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="anidamiento-de-selectores">Anidamiento de selectores</h4>
+<p>Para un estilo más definido y concreto, es posible anidar los selectores permitiendo aplicar un estilo a un elemento dependiendo de los elementos de su alrededor.</p>
+<h5 id="selector-anidado-común">Selector anidado común</h5>
+<p>Se aplica sobre los elementos que se encuentran en el interior de otros elementos:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">Selector1 selector2 {</span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">1:valor1; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">2:valor2; …}</span></span></code></pre>
+<p>Entre los selectores <em>hay un espacio en blanco</em>.</p>
+<h5 id="selector-hijo-anidado">Selector hijo anidado</h5>
+<p>En el anterior se comporta de la misma manera independientemente de si tiene una etiqueta anterior. Si queremos restringir las etiquetas y solamente se muestre la etiqueta situada dentro sin ningún elemento entre medias:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">Selector1 </span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> selector2 {</span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">1:valor1; </span><span style="color:#79B8FF">atributo</span><span style="color:#E1E4E8">2:valor2; …}</span></span></code></pre>
+<h4 id="atributos">Atributos</h4>
+<p>Tenemos cuatro formas diferentes de seleccionar:</p>
+<ul>
+<li>[atributo]: selecciona los elementos que tienen ese mismo atributo, sin importar su valor.</li>
+<li>[atributo = valor]: selecciona los elementos que tienen ese mismo atributo con el valor que se pasa.</li>
+<li>[atributo ~= valor]: selecciona los elementos que tienen ese mismo atributo con al menos un valor igual al especificado.</li>
+<li>[atributo|= valor]: selecciona los elementos que tienen ese mismo atributo y la palabra debe comenzar por el valor que se pasa.</li>
+</ul>
+<h4 id="pseudoclases">Pseudoclases</h4>
+<p>Permite seleccionar elementos según las indicaciones del usuario. Las más frecuentes son:</p>
+<ul>
+<li>:link: los enlaces que nunca se visitan.</li>
+<li>:visited: los enlaces que se han visitado una vez como mínimo.</li>
+<li>:hover: los elementos indicados por el usuario, pero sin necesidad de ser activados.</li>
+<li>:active: los elementos que se activan.</li>
+<li>:focus: los elementos que tienen el foco.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:visited</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">black</span><span style="color:#E1E4E8">;}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:active</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;}</span></span></code></pre>
+<h4 id="pseudoelementos">Pseudoelementos</h4>
+<p>Algunos de los pseudoelementos principales son:</p>
+<ul>
+<li>:first-line: para referirnos a la primera línea de un texto.</li>
+<li>:first-letter: para referirnos a la letra de un texto.</li>
+<li>:before: genera texto antes del contenido de un elemento.</li>
+<li>:after: genera texto después del contenido de un elemento.</li>
+</ul>
+<p>Para poder utilizar estos pseudoelementos se utilizará ”::” en lugar de ”:”.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">p</span><span style="color:#B392F0">::first-letter</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#85E89D">p</span><span style="color:#B392F0">::first-line</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#85E89D">h1</span><span style="color:#B392F0">::after</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">content</span><span style="color:#E1E4E8">:”.”; }</span></span>
+<span class="line"><span style="color:#85E89D">h1</span><span style="color:#B392F0">::before</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">content</span><span style="color:#E1E4E8">:=”Ejemplo de ”; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8"> id=”ejemplo”</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8">Pseudo-elementos&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ejemplo de código &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">div</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Es posible modificar el texto del título cuando el usuario seleccione una parte, para ello se añadirá un nuevo pseudoelemento ::selection.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#B392F0">::selection</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">yellow</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="22-crear-y-vincular-hojas-de-estilo">2.2. Crear y vincular hojas de estilo</h3>
+<p>Es posible insertar las propiedades de estilo de tres formas diferentes:</p>
+<ul>
+<li><strong>CSS en línea:</strong> el atributo <strong>style</strong> se encuentra en la misma línea de código que un elemento, afectado únicamente a este elemento.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Esto es un párrafo normal &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> style=”</span><span style="color:#85E89D">background-color</span><span style="color:#E1E4E8">:red;”</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Esto es un párrafo</span></span>
+<span class="line"><span style="color:#E1E4E8">con estilo &lt;/</span><span style="color:#85E89D">p</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<ul>
+<li><strong>CSS interno:</strong> la etiqueta <strong>style</strong> está situada al principio del documento, concretamente entre las etiquetas <em>head</em>, afectando de forma global a los elementos de esa misma página.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ilerna Online &lt;/</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#85E89D">    p</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">background-color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<ul>
+<li><strong>CSS externo:</strong> los estilos están situados en un archivo externo al documento. Para poder hacer referencia a este archivo, se tiene que incluir un enlace link hacia la hoja de estilo. Las propiedades que se definan en esta hoja se aplican en todos los documentos que hagan referencia a la misma hoja.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ilerna Online &lt;/</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">link</span><span style="color:#E1E4E8"> rel=”stylesheet” type=”text/css” href=”…/ruta/hoja/estilo</span><span style="color:#B392F0">.css”</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<p>Es posible que una misma propiedad esté situada en diferentes sitios: si no entran en conflicto, el navegador aplicará todos los estilos. Pero existe la posibilidad de que entren en conflicto, en este caso, se aplicarán según su orden de preferencia:</p>
+<ol>
+<li>Primero se aplicarán los estilos en línea.</li>
+<li>En segundo lugar, se aplicarán los estilos internos.</li>
+<li>Por último, se aplicarán los estilos situados en una hoja externa.</li>
+</ol>
+<p>En un estilo en línea tiene la máxima prioridad, y al aplicarlo sobre un elemento anulará los estilos internos y externos.</p>
+<p>Otra forma que tenemos de unir archivos es mediante la regla <strong>@import</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ilerna Online &lt;/</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#F97583">      @import</span><span style="color:#E1E4E8"> “…/css/estilo.css”;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<blockquote>
+<p>En las tres formas definidas para insertar una propiedad de estilo, en caso de que se intente aplicar un estilo diferente al mismo elemento, <strong>se aplicará la última regla indicada</strong>.</p>
+</blockquote>
+<p>Si queremos que una instrucción tenga la mayor prioridad y que las siguientes instrucciones no puedan modificarla. Para ello se utilizará la palabra reservada <strong>!important</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span><span style="color:#E1E4E8"> Ilerna Online &lt;/</span><span style="color:#85E89D">title</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#85E89D">      p</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">background-color</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">red</span><span style="color:#F97583"> !important</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">style</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#F97583">&gt;</span></span></code></pre>
+<h3 id="23-herramientas-y-test-de-verificación">2.3. Herramientas y test de verificación</h3>
+<p>Para que los desarrolladores puedan comprobar que los estilos cumplen el estándar, el consorcio de estándares <strong>3WC</strong> proporciona herramientas para validar tanto HTML como CSS.</p>
+<p>Su enlace es <a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a></p>
+<p>Si en el proceso no se encuentra ningún error es posible incluir un icono que certifique que se cumplen dichos entándares.</p>
+<h3 id="24-guía-de-estilo">2.4. Guía de estilo</h3>
+<p>Hemos definido la guía de estilos como el documento de ayuda para diseñadores y desarrolladores, que ayuda a tomar decisiones en los aspectos relacionados con el diseño web. Recoge tanto los aspectos de combinación de color, texto o tipo de letra utilizados como las características de cada página.</p>
+<p>La guía también detalla la implementación de las clases de CSS y la forma en la que se ha desarrollado.</p> </div>  </section> <footer> <h3>- Sitio web realizado con Astro - | - by SapheryDesings 2024 -</h3> </footer> </body></html>
