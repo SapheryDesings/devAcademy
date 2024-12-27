@@ -7,8 +7,23 @@ export interface ButtonProps {
 const {href, label } = Astro.props;
 ---
 
-<a href={href} class="bg-slate-700 bg-opacity-30 text-slate-500 rounded-full p-1 w-48 text-center hover:text-slate-400">
+<a href={href} >
   <button>
     <span>{label}</span>
   </button>
 </a>
+
+<style>
+  a {
+    background-color: rgb(51, 65, 85);
+    color: rgb(100 116 139);
+    border-radius: 9999px;
+    padding: 0.25rem;
+    width: 12rem;
+    text-align: center;
+  }
+
+  a:hover {
+    color: rgb(148 163 184)
+  }
+</style>
