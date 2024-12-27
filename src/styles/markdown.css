@@ -62,6 +62,8 @@
   /* -- Tablas -- */
   table {
     border-collapse: collapse;
+    table-layout: fixed;
+    overflow-x: auto;
   }
   th {
     padding: .2rem .5rem;

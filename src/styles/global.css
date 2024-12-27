@@ -87,9 +87,9 @@ footer {
 }
 
 @media (width < 1024px) {
-  .contenidoPrincipal { width: 90%;}
+  .contenidoPrincipal { width: 95%;}
 }
 
 @media (width < 768px) {
-  .contenidoPrincipal { width: 98%;}
+  .contenidoPrincipal { width: 100%;}
 }
