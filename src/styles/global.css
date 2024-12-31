@@ -50,7 +50,10 @@ header {
       display: flex;
       flex-flow: column;
 
-      h2 {font-size: clamp(1rem, 2vw + 1rem ,2rem); margin: 2rem;}
+      h2 {
+        font-size: clamp(1rem, 2vw + 1rem ,2rem); 
+        margin: 2rem;
+      }
       
       .contenedorCard {
         padding: 1rem 0;
