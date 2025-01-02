@@ -66,6 +66,45 @@ header {
     }
 }
 
+.container-academy {
+  width: 80%;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+
+  border: 2px dashed #f8fafc30;
+
+  .description {
+
+  }
+
+  .acceso-academy {
+
+    .btn-academy {
+      background-color: var(--color-naranja-logo);
+      color: var(--color-fuente-principal-blanco);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--color-azul-logo);
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
 hr {
   margin: 3rem 0;
   border-width: 2px;

@@ -15,16 +15,16 @@ const {href, label } = Astro.props;
 
 <style>
   button {
-    background-color: rgb(51, 65, 85);
-    color: rgb(100 116 139);
-    border-radius: 9999px;
+    background-color: var(--color-naranja-logo);
+    color: var(--color-fuente-principal-blanco);
+    padding: 0.5rem 1rem;
     border: none;
-    padding: 0.25rem;
-    width: 12rem;
-    text-align: center;
-  }
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-  button:hover {
-    color: rgb(148 163 184)
+    &:hover {
+        background-color: var(--color-azul-logo);
+    }
   }
 </style>
