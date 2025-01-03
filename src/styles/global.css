@@ -70,7 +70,7 @@ header {
   width: 80%;
 
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -80,7 +80,7 @@ header {
   border: 2px dashed #f8fafc30;
 
   .description {
-
+    width: 50%;
   }
 
   .acceso-academy {
@@ -120,6 +120,11 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: clamp(0.8rem, 1.6vw, 1rem);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 
