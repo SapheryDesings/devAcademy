@@ -1,8 +1,9 @@
 ---
 import PlantillaPrincipal from "./PlantillaPrincipal.astro";
 import "../styles/markdown.css"
+const { frontmatter } = Astro.props;
 ---
-<PlantillaPrincipal>
+<PlantillaPrincipal titulopagina={frontmatter.titulo}>
   <div class="contenedorMd">
     <slot/>
   </div>

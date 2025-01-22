@@ -1,0 +1,300 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Astro"/>
+
+### 10. **Integración con Herramientas y APIs en Astro**
+
+Una de las principales fortalezas de **Astro** es su flexibilidad para integrarse con una amplia variedad de **herramientas externas** y **APIs** para enriquecer la funcionalidad de un sitio web estático. Desde la integración con **APIs de datos dinámicos** hasta el uso de **bibliotecas de JavaScript** y **herramientas de análisis**, Astro proporciona varias formas de extender su funcionalidad y mejorar la experiencia de usuario.
+
+En este tema, exploraremos cómo integrar **herramientas externas** y **APIs** dentro de un proyecto Astro. Esto incluirá cómo trabajar con **APIs de contenido**, **gestores de estado**, **bases de datos** y **librerías de JavaScript**, además de cómo usar **ASTRO API** para crear contenido dinámico en un sitio estático.
+
+---
+
+#### **1. Uso de APIs para Obtener Datos Dinámicos**
+
+Astro permite integrar fácilmente **APIs de contenido** o **APIs de servicios externos** para que puedas cargar datos dinámicos y mostrarlos en tus páginas estáticas. Aunque Astro genera sitios estáticos, puedes traer información dinámica a través de llamadas a APIs y renderizarla en el momento de la compilación.
+
+##### **1.1. Obtener Datos desde una API Externa**
+
+Puedes obtener datos desde una API RESTful o GraphQL de la misma manera en que lo harías en un entorno tradicional de JavaScript. Una forma común de hacerlo es usando **`fetch`** dentro de tus componentes o archivos `.astro`.
+
+**Ejemplo de integración con una API REST:**
+
+Supongamos que deseas mostrar una lista de artículos en tu sitio desde una API externa. Puedes hacer lo siguiente en un archivo `.astro`:
+
+```astro
+---
+const response = await fetch('https://api.example.com/articles');
+const articles = await response.json();
+---
+
+<html>
+  <head>
+    <title>Artículos</title>
+  </head>
+  <body>
+    <h1>Lista de Artículos</h1>
+    <ul>
+      {articles.map((article) => (
+        <li key={article.id}>{article.title}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
+
+En este ejemplo, se realiza una solicitud `GET` a la API y se mapea la respuesta para generar una lista de artículos. Los datos son procesados **en el momento de la construcción** para que el sitio resultante sea estático.
+
+##### **1.2. Uso de GraphQL para Obtener Datos**
+
+Si la API que utilizas ofrece un endpoint de **GraphQL**, puedes usar **`graphql-request`** o cualquier otra librería compatible para obtener los datos.
+
+**Ejemplo con GraphQL:**
+
+```astro
+---
+import { request } from 'graphql-request';
+
+const query = `
+  query {
+    articles {
+      id
+      title
+    }
+  }
+`;
+
+const { articles } = await request('https://api.example.com/graphql', query);
+---
+
+<html>
+  <head>
+    <title>Artículos con GraphQL</title>
+  </head>
+  <body>
+    <h1>Lista de Artículos</h1>
+    <ul>
+      {articles.map((article) => (
+        <li key={article.id}>{article.title}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
+
+Aquí, estamos utilizando **GraphQL** para obtener datos de artículos de una API. Al igual que con la API REST, los datos se obtienen en el **momento de la compilación**, lo que hace que la página resultante sea estática.
+
+---
+
+#### **2. Integración con Sistemas de Gestión de Contenido (CMS)**
+
+Astro se integra de manera sencilla con una variedad de **CMS (Content Management Systems)** para gestionar el contenido de un sitio web. Algunos CMS populares incluyen **Contentful**, **Sanity**, **Strapi**, y **WordPress**, entre otros.
+
+##### **2.1. Integración con Contentful**
+
+**Contentful** es un CMS basado en la nube que ofrece una API para obtener contenido estructurado. Puedes utilizar Contentful en Astro para cargar artículos, productos o cualquier tipo de contenido de manera dinámica.
+
+**Pasos para integrar Contentful con Astro:**
+
+1. **Instalar la librería `contentful`:**
+
+   ```bash
+   npm install contentful
+   ```
+
+2. **Configurar la conexión en tu archivo `.astro`:**
+
+   ```astro
+   ---
+   import { createClient } from 'contentful';
+
+   const client = createClient({
+     space: 'your-space-id',
+     accessToken: 'your-access-token',
+   });
+
+   const entries = await client.getEntries({ content_type: 'blogPost' });
+   ---
+
+   <html>
+     <head>
+       <title>Blog</title>
+     </head>
+     <body>
+       <h1>Artículos del Blog</h1>
+       <ul>
+         {entries.items.map((entry) => (
+           <li key={entry.sys.id}>{entry.fields.title}</li>
+         ))}
+       </ul>
+     </body>
+   </html>
+   ```
+
+   En este caso, se realiza una llamada a la API de Contentful para obtener los artículos del blog y mostrarlos en la página estática.
+
+##### **2.2. Integración con Sanity**
+
+**Sanity** es otro CMS headless popular que permite obtener contenido mediante su API. Al igual que con Contentful, puedes usar `fetch` o la librería oficial de Sanity para integrar tu contenido en Astro.
+
+**Ejemplo básico:**
+
+1. **Instalar la librería `@sanity/client`:**
+
+   ```bash
+   npm install @sanity/client
+   ```
+
+2. **Obtener datos desde Sanity:**
+
+   ```astro
+   ---
+   import sanityClient from '@sanity/client';
+
+   const client = sanityClient({
+     projectId: 'your-project-id',
+     dataset: 'production',
+     useCdn: true,
+   });
+
+   const posts = await client.fetch('*[_type == "post"]');
+   ---
+
+   <html>
+     <head>
+       <title>Blog de Sanity</title>
+     </head>
+     <body>
+       <h1>Artículos</h1>
+       <ul>
+         {posts.map((post) => (
+           <li key={post._id}>{post.title}</li>
+         ))}
+       </ul>
+     </body>
+   </html>
+   ```
+
+Este ejemplo obtiene datos de Sanity y los utiliza para mostrar una lista de artículos. Como con otros CMS, los datos se recuperan durante el proceso de construcción para generar un sitio estático.
+
+---
+
+#### **3. Integración con Herramientas de JavaScript y Librerías Externas**
+
+Astro permite la integración con **librerías y frameworks de JavaScript** para funcionalidades interactivas. Algunas de las librerías más comunes incluyen **React**, **Vue**, **Svelte** y **Preact**. Puedes cargar y utilizar estos componentes para mejorar la interactividad de tu sitio sin comprometer el rendimiento.
+
+##### **3.1. Uso de React en Astro**
+
+Para integrar React en un proyecto Astro, puedes utilizar el componente `React` y cargarlo como un componente cliente si es necesario.
+
+**Ejemplo de componente React:**
+
+1. **Instalar React y ReactDOM:**
+
+   ```bash
+   npm install react react-dom
+   ```
+
+2. **Crear un componente React:**
+
+   ```jsx
+   // src/components/Counter.jsx
+   import React, { useState } from 'react';
+
+   const Counter = () => {
+     const [count, setCount] = useState(0);
+     return (
+       <div>
+         <button onClick={() => setCount(count + 1)}>
+           Contador: {count}
+         </button>
+       </div>
+     );
+   };
+
+   export default Counter;
+   ```
+
+3. **Usar el componente en un archivo `.astro`:**
+
+   ```astro
+   ---
+   import Counter from '../components/Counter.jsx';
+   ---
+
+   <html>
+     <head>
+       <title>Contador React en Astro</title>
+     </head>
+     <body>
+       <h1>Bienvenido al contador</h1>
+       <Counter client:load />
+     </body>
+   </html>
+   ```
+
+En este caso, el componente `Counter` de React se carga en el cliente después de que la página se haya renderizado estáticamente, lo que permite mantener la rapidez del sitio sin perder interactividad.
+
+##### **3.2. Integración con Otras Librerías**
+
+Astro es completamente flexible y permite integrar librerías como **D3.js** para visualizaciones de datos, **Lottie** para animaciones, **Tailwind CSS** para el diseño, entre muchas otras. Puedes incluir estas librerías de manera global o específica dentro de un componente Astro.
+
+**Ejemplo de integración con Lottie:**
+
+1. **Instalar la librería Lottie:**
+
+   ```bash
+   npm install lottie-web
+   ```
+
+2. **Usar Lottie en un componente Astro:**
+
+   ```astro
+   ---
+   import { useEffect } from 'astro/jsx-runtime';
+   import lottie from 'lottie-web';
+
+   useEffect(() => {
+     lottie.loadAnimation({
+       container: document.querySelector('#animation'),
+       animationData: require('./animation.json'), // El archivo JSON de Lottie
+     });
+   }, []);
+   ---
+
+   <div id="animation" style="width: 300px; height: 300px;"></div>
+   ```
+
+---
+
+#### **4. Uso de Formularios y Envío de Datos**
+
+Astro también permite integrar **formularios** y **enviar datos** a APIs externas, lo cual es útil para casos como el envío de formularios de contacto, registros de usuario, comentarios, entre otros.
+
+**Ejemplo de formulario simple:**
+
+```astro
+<form action="https://api.example.com/contact" method="POST">
+  <input type="text" name="name" placeholder="Tu nombre" required />
+  <input type="email" name="email" placeholder="Tu email" required />
+  <textarea name="message" placeholder="Tu mensaje" required></textarea>
+  <button type="submit">Enviar</button>
+</form>
+```
+
+Puedes utilizar métodos `POST` para enviar datos a un backend o API de forma segura.
+
+---
+
+### **Resumen**
+
+1. **Obtención de Datos Dinámicos**: Puedes obtener datos de APIs externas o CMS como Contentful o Sanity durante la construcción de tu sitio para generar contenido estático.
+2. **Integración con JavaScript**: Puedes integrar frameworks como React, Vue o Svelte para agregar interactividad a tu sitio sin perder el rendimiento.
+3. **Uso de Librerías Externas**: Puedes utilizar diversas librerías JavaScript, como D3.js o Lottie, para enriquecer el sitio con visualizaciones o animaciones.
+4. **Formularios y APIs**: Astro te permite integrar formularios y enviar datos a APIs externas para mejorar la funcionalidad dinámica de tu sitio.
+
+Astro ofrece una gran flexibilidad para integrar herramientas y APIs externas, permitiéndote crear sitios estáticos con contenido dinámico y funcionalidades avanzadas sin sacrificar el rendimiento.

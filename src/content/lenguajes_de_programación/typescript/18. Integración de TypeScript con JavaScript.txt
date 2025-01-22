@@ -1,0 +1,204 @@
+### **18. Integración de TypeScript con JavaScript**
+
+Uno de los principales beneficios de TypeScript es que está diseñado para ser compatible con JavaScript, lo que facilita su integración en proyectos existentes escritos en JavaScript. Además, al usar TypeScript junto con JavaScript, podemos aprovechar la verificación de tipos estática y otras características avanzadas de TypeScript mientras mantenemos la flexibilidad del código JavaScript.
+
+En este tema, exploraremos cómo integrar TypeScript en proyectos de JavaScript, cómo hacer que los dos lenguajes trabajen juntos sin problemas, y cómo migrar gradualmente de JavaScript a TypeScript.
+
+---
+
+#### **18.1. Integración Básica de TypeScript con JavaScript**
+
+Para integrar TypeScript con JavaScript, simplemente tenemos que seguir estos pasos:
+
+1. **Iniciar un Proyecto de JavaScript**:
+   
+   Si ya tienes un proyecto en JavaScript, puedes agregar TypeScript sin necesidad de rehacer todo el código. Supongamos que tienes un archivo de JavaScript como `app.js`.
+
+2. **Instalar TypeScript**:
+   
+   Para integrar TypeScript en un proyecto JavaScript, primero necesitamos instalar TypeScript como una dependencia de desarrollo:
+
+   ```bash
+   npm install --save-dev typescript
+   ```
+
+3. **Configurar TypeScript (tsconfig.json)**:
+
+   Aunque el proyecto está en JavaScript, podemos agregar un archivo `tsconfig.json` para configurar cómo TypeScript debe comportarse. Podemos generar este archivo usando el comando:
+
+   ```bash
+   npx tsc --init
+   ```
+
+   Un archivo `tsconfig.json` básico podría verse así:
+
+   ```json
+   {
+     "compilerOptions": {
+       "target": "ES6",
+       "module": "CommonJS",
+       "strict": true,
+       "allowJs": true,
+       "checkJs": true,
+       "outDir": "./dist"
+     },
+     "include": ["src/**/*.ts", "src/**/*.js"]
+   }
+   ```
+
+   Las opciones clave aquí son:
+   - **`allowJs`**: Permite que TypeScript procese archivos JavaScript.
+   - **`checkJs`**: Habilita la verificación de tipos para archivos JavaScript.
+   - **`include`**: Incluye tanto archivos `.ts` como `.js` en el directorio de origen.
+
+4. **Escribir Archivos en TypeScript y JavaScript**:
+
+   Ahora puedes tener archivos tanto en JavaScript como en TypeScript en el mismo proyecto. TypeScript puede trabajar con archivos `.js`, pero te recomendará que agregues tipos en tu código JavaScript para aprovechar su verificación de tipos.
+
+   **Ejemplo de archivo JavaScript (app.js):**
+
+   ```javascript
+   function suma(a, b) {
+     return a + b;
+   }
+   
+   const resultado = suma(5, '10'); // Error en TypeScript, ya que '10' es una cadena
+   console.log(resultado);
+   ```
+
+   Si tienes habilitada la opción **`checkJs`** en tu `tsconfig.json`, TypeScript marcará este archivo JavaScript como un error debido a la mezcla de tipos.
+
+   **Ejemplo de archivo TypeScript (math.ts):**
+
+   ```typescript
+   export function suma(a: number, b: number): number {
+     return a + b;
+   }
+   ```
+
+5. **Compilar el Proyecto**:
+
+   Una vez que hayas configurado tu proyecto, puedes compilar tanto los archivos JavaScript como TypeScript mediante el comando:
+
+   ```bash
+   npx tsc
+   ```
+
+   TypeScript generará los archivos de salida en el directorio especificado en **`outDir`**, que por defecto se encuentra en la carpeta `dist`.
+
+---
+
+#### **18.2. Llamar a Código JavaScript Desde TypeScript**
+
+Una de las ventajas de TypeScript es que puedes utilizar fácilmente código JavaScript existente. Si tienes una librería en JavaScript, puedes llamarla desde TypeScript sin ningún problema.
+
+Por ejemplo, supongamos que tienes una librería JavaScript llamada `math.js`:
+
+**math.js**:
+
+```javascript
+function multiply(a, b) {
+  return a * b;
+}
+```
+
+Puedes importar y usar esta función en un archivo TypeScript, y TypeScript no marcará errores si no tiene tipos definidos:
+
+**main.ts**:
+
+```typescript
+declare function multiply(a: number, b: number): number;
+
+const result = multiply(2, 3); // Sin problemas, TypeScript asume la firma de la función.
+console.log(result);
+```
+
+Si el código JavaScript no tiene tipos, puedes utilizar la palabra clave **`declare`** para indicarle a TypeScript que la función existe en el ámbito global.
+
+---
+
+#### **18.3. Llamar a Código TypeScript Desde JavaScript**
+
+A veces, es posible que quieras invocar código TypeScript desde un archivo JavaScript. Aunque JavaScript no tiene conocimiento directo de los tipos de TypeScript, puedes hacer esto fácilmente compilando tu código TypeScript a JavaScript y luego importándolo en tus archivos JavaScript.
+
+1. **Compilar TypeScript a JavaScript**:
+
+   Supongamos que tienes un archivo TypeScript `math.ts`:
+
+   ```typescript
+   export function add(a: number, b: number): number {
+     return a + b;
+   }
+   ```
+
+   Cuando lo compiles, TypeScript generará un archivo `math.js`.
+
+2. **Importar y Usar en JavaScript**:
+
+   Luego, en un archivo JavaScript, puedes importar y usar la función:
+
+   ```javascript
+   const { add } = require('./math');
+
+   console.log(add(2, 3)); // 5
+   ```
+
+Este flujo de trabajo te permite usar todas las ventajas de TypeScript (como la inferencia de tipos y las clases) en tu código, mientras sigues utilizando JavaScript donde lo necesites.
+
+---
+
+#### **18.4. Migración Gradual de JavaScript a TypeScript**
+
+Uno de los beneficios más importantes de integrar TypeScript con JavaScript es que puedes migrar tu proyecto de JavaScript a TypeScript de manera gradual. Aquí te mostramos cómo hacerlo:
+
+1. **Habilitar `allowJs` en `tsconfig.json`**:
+   
+   Al habilitar la opción **`allowJs`**, TypeScript permitirá que los archivos JavaScript coexistan con los archivos TypeScript en el mismo proyecto, sin necesidad de refactorizar todo el código de inmediato.
+
+2. **Agregar Archivos `.ts` Gradualmente**:
+
+   Puedes comenzar a escribir nuevos archivos en TypeScript y migrar el código JavaScript existente a TypeScript de manera gradual. A medida que avanzas en la migración, irás reemplazando los archivos JavaScript con archivos TypeScript.
+
+3. **Convertir Funciones y Clases**:
+
+   Una vez que te sientas cómodo con TypeScript, puedes empezar a convertir tus funciones y clases de JavaScript a TypeScript, agregando tipos de forma progresiva.
+
+   **Ejemplo**:
+
+   **JavaScript (original)**:
+   ```javascript
+   function greet(name) {
+     return 'Hello ' + name;
+   }
+   ```
+
+   **Migración a TypeScript**:
+   ```typescript
+   function greet(name: string): string {
+     return 'Hello ' + name;
+   }
+   ```
+
+4. **Uso de Tipos**:
+
+   A medida que migras, podrás aprovechar los tipos estáticos de TypeScript para mejorar la calidad de tu código. Puedes agregar anotaciones de tipo para asegurarte de que las funciones estén recibiendo los parámetros correctos y devolviendo los resultados esperados.
+
+---
+
+#### **18.5. Consideraciones en la Integración de TypeScript con JavaScript**
+
+Aunque la integración de TypeScript con JavaScript es bastante sencilla, hay algunas consideraciones a tener en cuenta:
+
+- **Manejo de Tipos en JavaScript**: Si deseas aprovechar los beneficios de TypeScript (como la verificación de tipos), es recomendable agregar comentarios de tipo a los archivos JavaScript utilizando JSDoc o habilitar la opción **`checkJs`**. Esto permitirá que TypeScript verifique los tipos en archivos `.js`.
+  
+- **Compatibilidad con Librerías JavaScript**: Si estás usando librerías JavaScript que no están escritas en TypeScript, puedes usar **`@types`** para obtener definiciones de tipos adicionales. Muchas librerías populares tienen paquetes de tipos disponibles en [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped).
+
+- **Archivos `.d.ts`**: Si tienes librerías de JavaScript sin tipos, puedes escribir tus propias definiciones de tipos utilizando archivos `.d.ts` para proporcionar los tipos a TypeScript.
+
+---
+
+#### **18.6. Conclusión**
+
+La integración de **TypeScript** con **JavaScript** es una excelente forma de mejorar la calidad y la robustez de tu código sin tener que reescribir todo tu proyecto desde cero. TypeScript ofrece una transición gradual, lo que facilita la migración de proyectos existentes de JavaScript a TypeScript, permitiendo que ambos lenguajes trabajen juntos sin problemas. 
+
+Al aprovechar las ventajas de la verificación de tipos, la inferencia de tipos y las características avanzadas de TypeScript, puedes mejorar la mantenibilidad y la escalabilidad de tus proyectos mientras sigues utilizando el código JavaScript que ya tienes en funcionamiento.

@@ -1,0 +1,207 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 9. **Etiquetas (Tags) en Git**
+
+Las **etiquetas** (o **tags**) en Git son una característica esencial para marcar puntos específicos en el historial de un proyecto. Normalmente, las etiquetas se utilizan para marcar versiones o hitos importantes en el desarrollo del software, como el lanzamiento de una versión estable del código.
+
+A diferencia de los **commits**, que son identificados por un hash único, las **etiquetas** proporcionan una forma más fácil de identificar y referirse a esos puntos importantes en el tiempo. Además, las etiquetas son inmutables una vez creadas, lo que las hace ideales para marcar versiones y mantener un registro de lanzamientos.
+
+---
+
+#### **1. Tipos de Etiquetas en Git**
+
+Git ofrece dos tipos principales de etiquetas: **ligeras** (lightweight) y **anotadas** (annotated).
+
+- **Etiquetas ligeras (lightweight tags)**:
+  
+  Son básicamente un puntero fijo a un commit específico. Las etiquetas ligeras no contienen información adicional como el nombre del autor, fecha, o un mensaje. Es una forma simple de marcar un commit, pero carece de metadatos adicionales.
+
+  **Comando para crear una etiqueta ligera**:
+
+  ```bash
+  git tag nombre_de_la_etiqueta
+  ```
+
+  Esta etiqueta solo apunta al commit actual en el que te encuentras. Si quieres etiquetar un commit diferente, puedes especificar el hash del commit:
+
+  ```bash
+  git tag nombre_de_la_etiqueta <hash_del_commit>
+  ```
+
+- **Etiquetas anotadas (annotated tags)**:
+
+  Son etiquetas más completas, ya que no solo marcan un commit, sino que también almacenan información adicional, como el autor de la etiqueta, la fecha de creación y un mensaje. Estas etiquetas se almacenan como objetos completos en el repositorio de Git, lo que las hace más adecuadas para marcadores de versiones y lanzamientos.
+
+  **Comando para crear una etiqueta anotada**:
+
+  ```bash
+  git tag -a nombre_de_la_etiqueta -m "Mensaje de la etiqueta"
+  ```
+
+  También puedes etiquetar un commit específico con una etiqueta anotada al igual que en el caso de las etiquetas ligeras:
+
+  ```bash
+  git tag -a nombre_de_la_etiqueta <hash_del_commit> -m "Mensaje de la etiqueta"
+  ```
+
+---
+
+#### **2. Ver las Etiquetas**
+
+Una vez que has creado etiquetas en tu repositorio, puedes visualizarlas fácilmente. Para ver todas las etiquetas existentes, utiliza el comando:
+
+```bash
+git tag
+```
+
+Este comando lista todas las etiquetas en el repositorio. Las etiquetas se ordenan cronológicamente según el commit al que apuntan.
+
+Si deseas buscar etiquetas que coincidan con un patrón específico (por ejemplo, versiones que comienzan con "v1"), puedes utilizar:
+
+```bash
+git tag -l "v1*"
+```
+
+---
+
+#### **3. Ver Información de una Etiqueta**
+
+Para ver los detalles de una etiqueta anotada, incluyendo su mensaje, autor y fecha, puedes usar el siguiente comando:
+
+```bash
+git show nombre_de_la_etiqueta
+```
+
+Esto mostrará información sobre el commit al que está asociada la etiqueta, el mensaje de la etiqueta (si es una etiqueta anotada), y otros detalles relacionados.
+
+---
+
+#### **4. Empujar Etiquetas al Repositorio Remoto**
+
+Por defecto, Git no empuja las etiquetas al repositorio remoto cuando haces un `git push`. Si deseas compartir tus etiquetas con otros colaboradores o mantenerlas en el repositorio remoto, debes empujarlas explícitamente.
+
+- **Empujar una etiqueta específica**:
+
+  Para empujar una etiqueta individual al repositorio remoto, utiliza el siguiente comando:
+
+  ```bash
+  git push origin nombre_de_la_etiqueta
+  ```
+
+- **Empujar todas las etiquetas**:
+
+  Si tienes varias etiquetas y deseas empujarlas todas al mismo tiempo, puedes usar el siguiente comando:
+
+  ```bash
+  git push --tags
+  ```
+
+---
+
+#### **5. Eliminar Etiquetas**
+
+A veces es necesario eliminar una etiqueta, ya sea porque fue creada por error o porque ya no es relevante. Git permite eliminar tanto etiquetas locales como remotas.
+
+- **Eliminar una etiqueta local**:
+
+  Para eliminar una etiqueta local (en tu repositorio local), puedes usar:
+
+  ```bash
+  git tag -d nombre_de_la_etiqueta
+  ```
+
+- **Eliminar una etiqueta remota**:
+
+  Para eliminar una etiqueta que ya ha sido empujada al repositorio remoto, primero elimínala localmente y luego empuja los cambios al repositorio remoto:
+
+  ```bash
+  git push --delete origin nombre_de_la_etiqueta
+  ```
+
+  Este comando elimina la etiqueta en el repositorio remoto. Ten en cuenta que eliminar una etiqueta remota solo elimina la referencia en el remoto, pero no afecta a los commits a los que apuntaba.
+
+---
+
+#### **6. Etiquetas y Versiones de Software**
+
+Una de las aplicaciones más comunes de las etiquetas en Git es marcar versiones específicas del software. Por ejemplo, puedes etiquetar un commit como "v1.0", "v1.1", "v2.0", etc., cada vez que se lanza una nueva versión del software.
+
+- **Ejemplo de etiquetado para versiones**:
+
+  Imagina que tienes un proyecto y acabas de hacer una actualización importante. Después de confirmar los cambios, puedes etiquetar ese commit como la primera versión de tu software:
+
+  ```bash
+  git tag -a v1.0 -m "Lanzamiento de la versión 1.0"
+  ```
+
+  Luego, puedes empujar esta etiqueta al repositorio remoto para que otros colaboradores y usuarios puedan acceder a ella:
+
+  ```bash
+  git push origin v1.0
+  ```
+
+  Posteriormente, cuando realices nuevas versiones, puedes etiquetar esos commits con "v1.1", "v2.0", etc.
+
+---
+
+#### **7. Usos Comunes de las Etiquetas**
+
+- **Marcar lanzamientos**: Las etiquetas se utilizan para marcar versiones oficiales o lanzamientos de software, como "v1.0", "v2.0", etc. Este uso es útil para indicar puntos importantes en el desarrollo del software, como características principales o versiones estables.
+  
+- **Referencia a puntos específicos en el proyecto**: Las etiquetas también se utilizan para señalar un estado específico del código que puede ser importante para un equipo o un usuario. Por ejemplo, podrías etiquetar un commit que contiene una corrección crítica de seguridad o una nueva funcionalidad.
+  
+- **Compatibilidad con herramientas de distribución**: Las herramientas que gestionan versiones de software, como los sistemas de empaquetado, utilizan etiquetas para identificar versiones específicas de un software que se puede distribuir o instalar.
+
+---
+
+#### **8. Comparar Diferentes Etiquetas**
+
+Git permite comparar las diferencias entre dos etiquetas específicas. Esto puede ser útil para ver qué cambios han ocurrido entre dos versiones del software.
+
+- **Comparar dos etiquetas**:
+
+  Si quieres comparar dos etiquetas, puedes utilizar:
+
+  ```bash
+  git diff nombre_etiqueta_1 nombre_etiqueta_2
+  ```
+
+  Este comando muestra las diferencias entre los dos commits a los que las etiquetas están asociadas.
+
+- **Ver el registro de commits entre dos etiquetas**:
+
+  También puedes ver el historial de commits entre dos etiquetas usando:
+
+  ```bash
+  git log nombre_etiqueta_1..nombre_etiqueta_2
+  ```
+
+  Esto te permitirá ver todos los commits realizados entre las dos versiones etiquetadas.
+
+---
+
+1. **Tipos de Etiquetas**:
+   - **Ligera**: Simplemente un puntero a un commit.
+   - **Anotada**: Contiene más información, como el autor y el mensaje.
+   
+2. **Comandos Principales**:
+   - Crear una etiqueta ligera: `git tag nombre_etiqueta`
+   - Crear una etiqueta anotada: `git tag -a nombre_etiqueta -m "Mensaje"`
+   - Ver etiquetas: `git tag`
+   - Ver detalles de una etiqueta: `git show nombre_etiqueta`
+   - Empujar etiquetas: `git push origin nombre_etiqueta`
+   - Eliminar una etiqueta local: `git tag -d nombre_etiqueta`
+   - Eliminar una etiqueta remota: `git push --delete origin nombre_etiqueta`
+
+3. **Usos Comunes**:
+   - Marcar versiones estables o lanzamientos importantes.
+   - Referenciar puntos importantes del proyecto.
+   - Comparar diferentes versiones del código.
+
+>Las etiquetas son una herramienta fundamental en Git para mantener un seguimiento organizado y fácil de comprender de los puntos clave en el desarrollo de un proyecto, como versiones o lanzamientos. Además, su inmutabilidad las convierte en una herramienta confiable para la gestión de versiones.

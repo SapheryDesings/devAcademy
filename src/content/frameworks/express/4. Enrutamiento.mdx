@@ -1,0 +1,238 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Express"/>
+
+# 4. Enrutamiento en Express
+
+El enrutamiento es uno de los aspectos más importantes al desarrollar aplicaciones web con Express. Se refiere al mecanismo que permite a tu aplicación manejar diferentes tipos de solicitudes HTTP y dirigirlas a las funciones correspondientes. Express proporciona un sistema de enrutamiento simple pero flexible para crear rutas que respondan a las solicitudes del cliente.
+
+## 4.1. ¿Qué es el Enrutamiento?
+
+El enrutamiento en Express se refiere a cómo se definen las rutas dentro de tu aplicación. Las rutas son combinaciones de un **método HTTP** (GET, POST, PUT, DELETE, etc.) y una **URL** que define un punto de acceso en tu aplicación. Cuando el servidor recibe una solicitud en una URL específica con un método particular, Express ejecutará el código asociado a esa ruta.
+
+## 4.2. Definición de Rutas en Express
+
+Las rutas se definen usando el objeto `app`, que es una instancia de Express. Puedes definir rutas para manejar diferentes métodos HTTP (GET, POST, PUT, DELETE) y asociarlas a funciones que procesan las solicitudes.
+
+### 4.2.1. Ruta GET
+
+La ruta `GET` se utiliza para obtener datos del servidor. Es el método más común para acceder a recursos.
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Definir una ruta GET
+app.get('/', (req, res) => {
+  res.send('¡Hola, mundo!');
+});
+
+// Iniciar el servidor
+app.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
+});
+```
+
+En este ejemplo, cuando un cliente hace una solicitud `GET` a la raíz (`/`), el servidor responde con "¡Hola, mundo!".
+
+### 4.2.2. Ruta POST
+
+El método `POST` se utiliza para enviar datos al servidor, típicamente al enviar formularios o hacer solicitudes a la API.
+
+```javascript
+// Ruta POST
+app.post('/enviar', (req, res) => {
+  res.send('Datos recibidos');
+});
+```
+
+En este ejemplo, el servidor responderá a una solicitud `POST` en `/enviar` con el mensaje "Datos recibidos".
+
+### 4.2.3. Ruta PUT
+
+El método `PUT` se usa para actualizar recursos en el servidor.
+
+```javascript
+// Ruta PUT
+app.put('/actualizar', (req, res) => {
+  res.send('Datos actualizados');
+});
+```
+
+Esta ruta manejará una solicitud `PUT` para actualizar datos en el servidor.
+
+### 4.2.4. Ruta DELETE
+
+El método `DELETE` se usa para eliminar recursos en el servidor.
+
+```javascript
+// Ruta DELETE
+app.delete('/eliminar', (req, res) => {
+  res.send('Datos eliminados');
+});
+```
+
+Este ejemplo responde a una solicitud `DELETE` eliminando algún recurso.
+
+## 4.3. Parámetros de Ruta
+
+Las rutas en Express pueden incluir **parámetros de ruta** que permiten capturar valores de la URL. Los parámetros se definen usando dos puntos (`:`) seguidos del nombre del parámetro.
+
+### 4.3.1. Parámetros en la Ruta
+
+```javascript
+// Ruta con parámetros
+app.get('/usuario/:id', (req, res) => {
+  const id = req.params.id;  // Obtiene el parámetro 'id' de la URL
+  res.send(`El ID del usuario es: ${id}`);
+});
+```
+
+Si el cliente hace una solicitud a `/usuario/123`, la respuesta será "El ID del usuario es: 123".
+
+### 4.3.2. Rutas con Varios Parámetros
+
+Puedes definir varias partes dinámicas en una ruta:
+
+```javascript
+// Ruta con múltiples parámetros
+app.get('/producto/:categoria/:id', (req, res) => {
+  const categoria = req.params.categoria;
+  const id = req.params.id;
+  res.send(`Producto de categoría: ${categoria} con ID: ${id}`);
+});
+```
+
+Si la solicitud es a `/producto/ropa/567`, la respuesta será "Producto de categoría: ropa con ID: 567".
+
+## 4.4. Parámetros de Consulta (Query Parameters)
+
+Además de los parámetros de ruta, también puedes trabajar con **parámetros de consulta** (query parameters). Estos se encuentran después del signo de interrogación (`?`) en la URL.
+
+### 4.4.1. Acceder a Parámetros de Consulta
+
+```javascript
+app.get('/buscar', (req, res) => {
+  const busqueda = req.query.query;  // Accede al parámetro de consulta 'query'
+  res.send(`Resultados de la búsqueda: ${busqueda}`);
+});
+```
+
+Si la solicitud es a `/buscar?query=zapatos`, la respuesta será "Resultados de la búsqueda: zapatos".
+
+## 4.5. Rutas con Expresiones Regulares
+
+Las rutas también pueden usar **expresiones regulares** para capturar partes de la URL más flexibles.
+
+### 4.5.1. Uso de Expresiones Regulares
+
+```javascript
+app.get(/\/producto\/\d+/, (req, res) => {
+  res.send('Accediendo a un producto');
+});
+```
+
+En este ejemplo, la ruta acepta cualquier URL que coincida con `/producto/` seguido de uno o más dígitos.
+
+## 4.6. Manejo de Múltiples Métodos en una Sola Ruta
+
+Express te permite manejar diferentes métodos HTTP en una sola ruta usando `app.route()`.
+
+### 4.6.1. Usando `app.route()`
+
+```javascript
+app.route('/usuario')
+  .get((req, res) => {
+    res.send('Obteniendo datos del usuario');
+  })
+  .post((req, res) => {
+    res.send('Creando nuevo usuario');
+  })
+  .put((req, res) => {
+    res.send('Actualizando usuario');
+  })
+  .delete((req, res) => {
+    res.send('Eliminando usuario');
+  });
+```
+
+Este ejemplo muestra cómo manejar varios métodos (GET, POST, PUT, DELETE) en la misma ruta (`/usuario`) de manera más ordenada.
+
+## 4.7. Rutas Anidadas
+
+Express también te permite crear rutas anidadas para organizar mejor tu aplicación. Esto se logra utilizando **router**.
+
+### 4.7.1. Uso de `express.Router()`
+
+```javascript
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Definir una ruta anidada usando un router
+router.get('/usuario', (req, res) => {
+  res.send('Información del usuario');
+});
+
+router.get('/producto', (req, res) => {
+  res.send('Información del producto');
+});
+
+// Usar el router en la aplicación
+app.use('/api', router);
+
+app.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
+});
+```
+
+En este ejemplo, las rutas `/api/usuario` y `/api/producto` son manejadas por el router anidado. Puedes estructurar rutas de forma más modular usando `express.Router()`.
+
+## 4.8. Manejo de Rutas con Middleware
+
+Puedes agregar **middleware** a las rutas para ejecutar lógica adicional antes de que se maneje la solicitud. Esto puede incluir la autenticación, la validación de datos, o cualquier otra operación previa.
+
+### 4.8.1. Middleware para una Ruta Específica
+
+```javascript
+app.get('/admin', (req, res, next) => {
+  if (!req.user || !req.user.isAdmin) {
+    return res.status(403).send('Acceso denegado');
+  }
+  next();  // Llamar al siguiente middleware o controlador
+}, (req, res) => {
+  res.send('Bienvenido al área de administración');
+});
+```
+
+En este ejemplo, el middleware verifica si el usuario está autenticado y tiene permisos de administrador antes de permitirle acceder a la ruta `/admin`.
+
+## 4.9. Rutas con Manejo de Errores
+
+Las rutas también pueden manejar errores utilizando middlewares de manejo de errores. Express permite capturar errores que puedan ocurrir en las rutas y devolver una respuesta adecuada al cliente.
+
+### 4.9.1. Manejo de Errores en Rutas
+
+```javascript
+app.get('/error', (req, res, next) => {
+  const error = new Error('Algo salió mal');
+  next(error);  // Pasar el error al siguiente middleware de manejo de errores
+});
+
+// Middleware de manejo de errores
+app.use((err, req, res, next) => {
+  res.status(500).send(`Error: ${err.message}`);
+});
+```
+
+En este ejemplo, si se produce un error en la ruta `/error`, el middleware de manejo de errores captura el error y responde con un mensaje adecuado.
+
+
+>El enrutamiento en Express es una herramienta poderosa para definir cómo debe comportarse tu aplicación frente a diferentes tipos de solicitudes HTTP. Puedes crear rutas simples o complejas, trabajar con parámetros de ruta, manejar múltiples métodos en una sola ruta, y aplicar middleware para procesar las solicitudes antes de que lleguen a su destino final. Al comprender el enrutamiento en Express, podrás estructurar tu aplicación de forma modular y eficiente.
+
+
+>Este tema cubre todo lo necesario sobre **enrutamiento en Express**, desde la creación de rutas básicas hasta el manejo de parámetros, rutas anidadas, middleware, y manejo de errores en rutas.

@@ -1,0 +1,139 @@
+Aquí tienes el desarrollo del **Tema 2: Conceptos Básicos de JavaScript**:  
+
+---
+
+### **2. Conceptos Básicos**
+
+#### **2.1. Variables y constantes**  
+Las variables y constantes se utilizan para almacenar datos en JavaScript.  
+- **Variables**: Se definen con `var`, `let`. Su valor puede cambiar.  
+- **Constantes**: Se definen con `const`. Su valor no puede cambiar.  
+
+**Ejemplo:**  
+```javascript
+// Variables
+let nombre = "Juan";
+var edad = 25;
+
+// Constantes
+const PI = 3.1416;
+
+// Modificar variables
+nombre = "Ana"; // Válido
+edad = 30;      // Válido
+
+// PI = 3.14; // Error: No se puede cambiar el valor de una constante
+```
+
+---
+
+#### **2.2. Tipos de datos**  
+JavaScript es un lenguaje de tipado dinámico, lo que significa que no necesitas declarar el tipo de dato. Los principales tipos son:  
+- **Primitivos**:  
+  - `string` (cadenas de texto): `"Hola"`, `'JavaScript'`  
+  - `number` (números): `42`, `3.14`  
+  - `boolean` (booleanos): `true`, `false`  
+  - `undefined` (indefinido): Una variable declarada pero no inicializada.  
+  - `null` (valor vacío): Representa la ausencia de valor.  
+- **Objeto**: Arrays, objetos, funciones, etc.  
+
+**Ejemplo:**  
+```javascript
+let cadena = "Hola, mundo"; // string
+let numero = 42;            // number
+let booleano = true;        // boolean
+let noDefinido;             // undefined
+let vacio = null;           // null
+```
+
+---
+
+#### **2.3. Operadores**  
+JavaScript incluye operadores para realizar operaciones con valores.  
+
+1. **Operadores aritméticos**:  
+   - Suma: `+`  
+   - Resta: `-`  
+   - Multiplicación: `*`  
+   - División: `/`  
+   - Módulo (resto): `%`  
+   - Exponenciación: `**`  
+
+   **Ejemplo:**  
+   ```javascript
+   let a = 10, b = 3;
+   console.log(a + b); // 13
+   console.log(a % b); // 1
+   ```
+
+2. **Operadores de comparación**:  
+   - Igualdad: `==`, `===`  
+   - Desigualdad: `!=`, `!==`  
+   - Mayor que, menor que: `>`, `<`, `>=`, `<=`  
+
+   **Ejemplo:**  
+   ```javascript
+   console.log(5 == "5");  // true (compara valor)
+   console.log(5 === "5"); // false (compara valor y tipo)
+   ```
+
+3. **Operadores lógicos**:  
+   - `&&` (AND): Devuelve `true` si ambos operandos son `true`.  
+   - `||` (OR): Devuelve `true` si al menos uno es `true`.  
+   - `!` (NOT): Invierte el valor lógico.  
+
+   **Ejemplo:**  
+   ```javascript
+   console.log(true && false); // false
+   console.log(!true);         // false
+   ```
+
+---
+
+#### **2.4. Comentarios en JavaScript**  
+Los comentarios se utilizan para añadir notas o explicar el código.  
+- **Comentario de una línea**:  
+  ```javascript
+  // Esto es un comentario de una línea
+  ```
+- **Comentario de múltiples líneas**:  
+  ```javascript
+  /*
+    Esto es un comentario
+    de múltiples líneas
+  */
+  ```
+
+---
+
+#### **2.5. Entrada y salida de datos**  
+JavaScript permite interactuar con el usuario mediante funciones como `alert`, `prompt` y `console.log`.  
+
+1. **Salida de datos con `alert` y `console.log`**:  
+   ```javascript
+   alert("Hola, esto es una alerta.");
+   console.log("Esto se muestra en la consola.");
+   ```
+
+2. **Entrada de datos con `prompt`**:  
+   Permite al usuario ingresar datos.  
+   ```javascript
+   let nombre = prompt("¿Cuál es tu nombre?");
+   alert("Hola, " + nombre);
+   ```
+
+3. **Escritura en el documento con `document.write`**:  
+   ```javascript
+   document.write("<h1>¡Hola desde document.write!</h1>");
+   ```
+
+---
+
+**Resumen de las prácticas**  
+1. Declara variables y constantes, e intenta cambiarlas.  
+2. Usa operadores aritméticos y lógicos para practicar.  
+3. Crea un programa que pida un nombre con `prompt` y lo muestre con `alert`.  
+
+---
+
+¿Te gustaría que incluya ejercicios o ejemplos prácticos adicionales? 😊

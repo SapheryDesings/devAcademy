@@ -1,0 +1,234 @@
+
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Backend" asignatura = "NodeJs"/>
+
+# 10. Autenticación y Autorización en Node.js
+
+La **autenticación** y **autorización** son dos de los aspectos más importantes de la seguridad en aplicaciones web. La autenticación es el proceso de verificar la identidad de un usuario, mientras que la autorización determina qué recursos o acciones tiene permitido acceder o realizar el usuario autenticado. En Node.js, existen múltiples formas de implementar estas dos funcionalidades, y en este tema aprenderás cómo hacerlo.
+
+## 10.1. Introducción a la Autenticación y Autorización
+
+- **Autenticación (Authentication)**: Es el proceso de verificar la identidad de un usuario. Generalmente, esto se hace mediante credenciales como nombre de usuario y contraseña. En sistemas más complejos, se utilizan otros mecanismos como autenticación multifactor (MFA), tokens de sesión o autenticación basada en redes sociales (OAuth).
+  
+- **Autorización (Authorization)**: Es el proceso de definir qué acciones o recursos puede acceder un usuario autenticado. Una vez que el usuario está autenticado, la autorización controla lo que puede hacer dentro de la aplicación.
+
+En Node.js, estas tareas se manejan típicamente a través de middleware que valida la autenticación y la autorización antes de permitir que el usuario acceda a ciertos recursos.
+
+## 10.2. Estrategias de Autenticación en Node.js
+
+### 10.2.1. Autenticación con JWT (JSON Web Tokens)
+
+El **JSON Web Token (JWT)** es un estándar abierto (RFC 7519) que define una forma compacta y autónoma para transmitir información de manera segura entre partes como un objeto JSON. Los JWT son comúnmente utilizados para la autenticación y autorización en aplicaciones web modernas.
+
+#### 10.2.1.1. Instalación de JWT
+
+Primero, instala la librería `jsonwebtoken` usando npm:
+
+```bash
+npm install jsonwebtoken
+```
+
+#### 10.2.1.2. Crear y Firmar un Token JWT
+
+Cuando un usuario se autentica correctamente, generamos un token JWT para enviar al cliente. Este token será utilizado para autenticar futuras solicitudes.
+
+```javascript
+const jwt = require('jsonwebtoken');
+
+// Secret key para firmar el token
+const secretKey = 'mi_clave_secreta';
+
+// Crear un payload (información del usuario)
+const payload = { userId: 123, username: 'juan' };
+
+// Firmar el token con el payload y la clave secreta
+const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+
+console.log('Token JWT:', token);
+```
+
+Este código crea un JWT con la información del usuario y lo firma con una clave secreta. El token tendrá una duración de una hora (`expiresIn: '1h'`).
+
+#### 10.2.1.3. Verificar un Token JWT
+
+Cuando un cliente envíe una solicitud con un token, debes verificar que el token sea válido.
+
+```javascript
+const token = 'token_aqui';  // Token enviado por el cliente
+
+jwt.verify(token, secretKey, (err, decoded) => {
+  if (err) {
+    console.error('Token no válido:', err);
+    return;
+  }
+  console.log('Token decodificado:', decoded);
+});
+```
+
+Si el token es válido, `jwt.verify` devolverá los datos del payload decodificados. Si el token ha expirado o no es válido, se generará un error.
+
+### 10.2.2. Autenticación con Passport.js
+
+**Passport.js** es un middleware para Node.js que facilita la autenticación de usuarios utilizando diversas estrategias (JWT, OAuth, etc.).
+
+#### 10.2.2.1. Instalación de Passport
+
+```bash
+npm install passport passport-local express-session
+```
+
+#### 10.2.2.2. Configuración de Passport para Autenticación Local
+
+```javascript
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+// Definir la estrategia de autenticación local
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    // Aquí buscarías al usuario en la base de datos
+    if (username === 'juan' && password === '1234') {
+      return done(null, { id: 1, username: 'juan' });
+    } else {
+      return done(null, false, { message: 'Credenciales incorrectas' });
+    }
+  }
+));
+
+// Serializar y deserializar al usuario
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  // Aquí buscarías el usuario por ID en la base de datos
+  done(null, { id: 1, username: 'juan' });
+});
+```
+
+En este ejemplo, hemos configurado Passport para usar la estrategia local de autenticación, donde se verifica el nombre de usuario y la contraseña.
+
+#### 10.2.2.3. Usar Passport en Rutas de Express
+
+```javascript
+const express = require('express');
+const session = require('express-session');
+const app = express();
+
+// Configurar express-session
+app.use(session({
+  secret: 'mi_clave_secreta',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Inicializar Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Ruta de inicio de sesión
+app.post('/login', passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/login' }));
+
+// Ruta de dashboard (requiere autenticación)
+app.get('/dashboard', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send('Bienvenido al dashboard');
+  } else {
+    res.redirect('/login');
+  }
+});
+```
+
+Este código configura Passport en las rutas de Express y crea una ruta de inicio de sesión que usa la estrategia local para autenticar al usuario. Si el inicio de sesión es exitoso, el usuario es redirigido al dashboard; si falla, es redirigido de nuevo al formulario de login.
+
+## 10.3. Estrategias de Autorización en Node.js
+
+Una vez que un usuario ha sido autenticado, es importante definir qué recursos y rutas tiene permitido acceder. Esto se hace mediante la **autorización**.
+
+### 10.3.1. Autorización basada en Roles
+
+La autorización basada en roles asigna a los usuarios diferentes roles (como administrador, usuario regular, etc.) y concede acceso a las rutas según esos roles.
+
+#### 10.3.1.1. Ejemplo de Middleware de Autorización
+
+```javascript
+const esAdmin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    return next();  // El usuario es administrador, continúa con la ruta
+  }
+  res.status(403).send('No autorizado');
+};
+
+app.get('/admin', esAdmin, (req, res) => {
+  res.send('Bienvenido al panel de administración');
+});
+```
+
+En este ejemplo, el middleware `esAdmin` verifica que el usuario tenga el rol de administrador antes de permitirle acceder a la ruta `/admin`.
+
+### 10.3.2. Autorización basada en Permisos
+
+A diferencia de los roles, los permisos proporcionan un control más granular. Un usuario puede tener varios permisos que le permitan realizar acciones específicas (crear, leer, actualizar, eliminar).
+
+#### 10.3.2.1. Ejemplo de Middleware de Permisos
+
+```javascript
+const tienePermiso = (permisoRequerido) => {
+  return (req, res, next) => {
+    if (req.user && req.user.permisos.includes(permisoRequerido)) {
+      return next();  // El usuario tiene el permiso requerido, continúa con la ruta
+    }
+    res.status(403).send('No autorizado');
+  };
+};
+
+// Ruta que solo puede ser accedida por usuarios con el permiso 'crear'
+app.post('/crear', tienePermiso('crear'), (req, res) => {
+  res.send('Elemento creado');
+});
+```
+
+En este ejemplo, el middleware `tienePermiso` verifica si el usuario tiene el permiso necesario para acceder a la ruta `/crear`.
+
+## 10.4. Gestión de Sesiones y Cookies
+
+Para mantener la autenticación en una aplicación web, es común almacenar el estado de la sesión del usuario en cookies o en sesiones de servidor. En Node.js, puedes usar `express-session` para manejar sesiones de usuario.
+
+### 10.4.1. Configuración de `express-session`
+
+```javascript
+const session = require('express-session');
+
+// Configuración de la sesión
+app.use(session({
+  secret: 'mi_clave_secreta',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }  // En producción, usa 'secure: true' con HTTPS
+}));
+
+// Ruta que inicia sesión
+app.post('/login', (req, res) => {
+  req.session.user = { username: 'juan', role: 'admin' };
+  res.send('Sesión iniciada');
+});
+```
+
+Este código configura `express-session` para almacenar la información del usuario en una cookie de sesión. La información del usuario se mantiene entre las solicitudes mientras dure la sesión.
+
+
+En este tema, hemos cubierto los siguientes puntos esenciales para implementar **autenticación y autorización** en Node.js:
+
+- **Autenticación**: Usamos JWT para crear y verificar tokens, y Passport.js para autenticar a los usuarios con estrategias como la autenticación local.
+- **Autorización**: Implementamos autorización basada en roles y permisos para controlar el acceso a las rutas y recursos.
+- **Sesiones y cookies**: Configuramos sesiones con `express-session` para mantener el estado de la autenticación en la aplicación.
+
+>Con estos conceptos, ahora puedes implementar un sistema completo de autenticación y autorización en tus aplicaciones Node.js, lo que te permitirá controlar de manera efectiva el acceso a los recursos y mantener la seguridad en tu aplicación.
+
+
+>Este desarrollo cubre el **Tema 10: Autenticación y Autorización en Node.js**, explicando cómo implementar la autenticación de usuarios con JWT y Passport.js, la autorización basada en roles y permisos, y cómo gestionar sesiones y cookies para mantener el estado de la autenticación en las aplicaciones Node.js.

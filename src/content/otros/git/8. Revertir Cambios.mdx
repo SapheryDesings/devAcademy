@@ -1,0 +1,193 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 8. **Revertir Cambios en Git**
+
+Uno de los aspectos más poderosos de Git es su capacidad para revertir cambios, lo cual te permite deshacer errores, corregir cambios no deseados y manejar el historial de tu proyecto de manera flexible. Existen varias formas de revertir cambios, dependiendo de lo que desees lograr: deshacer un commit, eliminar archivos del seguimiento, restablecer ramas, entre otros. En este tema, exploraremos los distintos métodos para revertir cambios de manera segura y eficiente.
+
+---
+
+#### **1. Revertir Cambios en Archivos No Confirmados**
+
+Antes de realizar un commit, puedes realizar cambios en archivos que aún no han sido confirmados (staged). Si decides que no quieres guardar esos cambios, Git ofrece varias formas de revertir estos cambios.
+
+- **Deshacer cambios en archivos no confirmados (modificaciones locales):**
+
+  Si has modificado un archivo pero aún no lo has agregado al área de preparación (staging area), puedes revertir los cambios realizados con:
+
+  ```bash
+  git checkout -- nombre_del_archivo
+  ```
+
+  Este comando descarta los cambios en el archivo y lo devuelve a su último estado confirmado. Ten en cuenta que esto **no se puede deshacer**.
+
+- **Eliminar archivos del área de preparación (unstage):**
+
+  Si has agregado un archivo al área de preparación usando `git add` pero decides que no deseas incluirlo en el próximo commit, puedes quitarlo del área de preparación (pero no eliminarlo del disco) usando:
+
+  ```bash
+  git reset nombre_del_archivo
+  ```
+
+  Esto mueve el archivo del área de preparación de vuelta al estado "modificado" en tu directorio de trabajo.
+
+---
+
+#### **2. Deshacer un Commit No Empujado (Local)**
+
+Si ya has realizado un commit pero aún no has empujado los cambios al repositorio remoto, tienes varias opciones para revertir o modificar el commit local.
+
+- **Deshacer el último commit pero mantener los cambios (soft reset):**
+
+  Si cometiste un error en el último commit pero quieres conservar los cambios realizados (es decir, mover los cambios al área de preparación), puedes hacer un "soft reset":
+
+  ```bash
+  git reset --soft HEAD~1
+  ```
+
+  Esto deshace el último commit pero mantiene los cambios en el área de preparación, para que puedas editarlos y realizar un nuevo commit si es necesario.
+
+- **Deshacer el último commit y eliminar los cambios (hard reset):**
+
+  Si quieres deshacer el último commit y eliminar todos los cambios asociados (es decir, los cambios no confirmados también), puedes usar:
+
+  ```bash
+  git reset --hard HEAD~1
+  ```
+
+  Este comando deshace el commit y también elimina los cambios del directorio de trabajo, volviendo al estado anterior del repositorio.
+
+  **Advertencia:** El uso de `--hard` puede causar pérdida de datos, así que asegúrate de que no haya cambios que desees conservar.
+
+- **Deshacer un commit más antiguo (reajustar la historia):**
+
+  Si necesitas deshacer un commit que no es el más reciente, puedes especificar el número de commits a retroceder. Por ejemplo, para deshacer los últimos 3 commits:
+
+  ```bash
+  git reset --hard HEAD~3
+  ```
+
+  **Nota:** Al hacer un "hard reset", cualquier cambio no confirmado o commits posteriores se perderán. Asegúrate de que esta acción sea lo que realmente deseas hacer.
+
+---
+
+#### **3. Revertir un Commit Empujado al Repositorio Remoto**
+
+Si ya has empujado un commit al repositorio remoto, la situación se vuelve más compleja porque cambiar el historial de un repositorio remoto podría afectar a otros colaboradores. En este caso, lo más recomendable no es usar `reset`, sino crear un nuevo commit que revierta el cambio realizado.
+
+- **Revertir un commit con `git revert`:**
+
+  Si quieres revertir un commit que ya se ha empujado al repositorio remoto, puedes usar el comando `git revert`. Este comando crea un nuevo commit que deshace los cambios de un commit anterior. Esto es ideal para no alterar el historial compartido en el repositorio remoto.
+
+  ```bash
+  git revert <hash_del_commit>
+  ```
+
+  El `git revert` toma el hash del commit que deseas revertir y crea un nuevo commit que deshace esos cambios, sin eliminar el commit original del historial. Es la forma más segura de revertir un commit en repositorios compartidos.
+
+  **Nota:** Si se desea revertir múltiples commits, puedes usar `git revert` con una serie de commits. Git te pedirá que resuelvas cualquier conflicto antes de crear el nuevo commit.
+
+---
+
+#### **4. Revertir Archivos a un Estado Anterior en el Historial**
+
+En ocasiones, es necesario revertir archivos específicos a un estado anterior sin deshacer commits completos. Esto puede ser útil cuando un archivo se corrompe o contiene errores que deben deshacerse sin afectar al resto del proyecto.
+
+- **Revertir un archivo a un commit anterior:**
+
+  Para revertir un archivo a su estado en un commit específico (sin afectar el resto del repositorio), puedes usar:
+
+  ```bash
+  git checkout <hash_del_commit> -- nombre_del_archivo
+  ```
+
+  Este comando recupera el archivo `nombre_del_archivo` desde el commit especificado y lo coloca en el directorio de trabajo. El archivo se encuentra modificado, por lo que tendrás que agregarlo al área de preparación si deseas confirmarlo.
+
+---
+
+#### **5. Deshacer un Merge (Fusión) con `git reset`**
+
+Si has realizado una fusión (merge) que no es correcta o que no deseas mantener, puedes revertirla. Hay varias formas de hacerlo dependiendo de si ya has confirmado la fusión o no.
+
+- **Deshacer una fusión que no ha sido confirmada:**
+
+  Si la fusión ha creado conflictos y aún no has hecho commit, puedes simplemente resetear el estado del repositorio a antes de la fusión:
+
+  ```bash
+  git reset --hard HEAD
+  ```
+
+  Esto deshace los cambios de la fusión y vuelve al estado anterior al merge.
+
+- **Deshacer una fusión ya confirmada:**
+
+  Si ya has hecho commit después de una fusión y quieres deshacerla, puedes usar `git reset` o `git revert` dependiendo de si deseas mantener o no los cambios.
+
+  Si no deseas mantener los cambios de la fusión, usa un `hard reset` al commit anterior a la fusión:
+
+  ```bash
+  git reset --hard <hash_del_commit_antes_del_merge>
+  ```
+
+  Alternativamente, si deseas revertir la fusión sin alterar el historial, puedes usar `git revert` con la opción `-m` para especificar el "padre" de la fusión:
+
+  ```bash
+  git revert -m 1 <hash_del_commit_de_fusión>
+  ```
+
+  Esto crea un nuevo commit que deshace la fusión.
+
+---
+
+#### **6. Eliminar un Archivo del Repositorio (Sin Borrarlo del Sistema de Archivos)**
+
+Si necesitas eliminar un archivo del repositorio, pero no deseas eliminarlo de tu sistema de archivos local (por ejemplo, deseas que el archivo deje de ser rastreado por Git pero aún lo mantienes en tu máquina), puedes usar:
+
+- **Eliminar un archivo del repositorio pero conservarlo localmente:**
+
+  ```bash
+  git rm --cached nombre_del_archivo
+  ```
+
+  Este comando elimina el archivo del repositorio pero lo deja intacto en tu sistema de archivos local. Luego, tendrás que hacer un commit de esta eliminación:
+
+  ```bash
+  git commit -m "Eliminado archivo del repositorio"
+  ```
+
+---
+
+#### **7. Borrar una Rama Local**
+
+Si deseas eliminar una rama local que ya no necesitas, puedes usar:
+
+- **Eliminar una rama local:**
+
+  ```bash
+  git branch -d nombre_de_la_rama
+  ```
+
+  Si la rama no ha sido completamente fusionada y deseas eliminarla de todos modos, puedes usar:
+
+  ```bash
+  git branch -D nombre_de_la_rama
+  ```
+
+  **Nota:** Ten cuidado al eliminar ramas, ya que podrías perder cambios no fusionados si no has hecho un commit o `merge` antes.
+
+---
+
+1. **Revertir cambios no confirmados**: Usa `git checkout -- archivo` para descartar cambios locales no confirmados.
+2. **Deshacer un commit local**: Usa `git reset --soft` o `git reset --hard` para deshacer el último commit.
+3. **Revertir un commit empujado**: Usa `git revert` para crear un nuevo commit que deshaga los cambios de un commit anterior.
+4. **Revertir un archivo a un estado anterior**: Usa `git checkout <hash> -- archivo` para restaurar un archivo desde un commit específico.
+5. **Deshacer una fusión (merge)**: Usa `git reset` o `git revert` para deshacer fusiones.
+6. **Eliminar un archivo del repositorio**: Usa `git rm --cached` para eliminar un archivo del seguimiento sin borrarlo localmente.
+7. **Eliminar una rama local**: Usa `git branch -d` o `git branch -D` para eliminar una rama local.
+
+>Revertir cambios en Git te permite manejar de manera flexible los errores y modificaciones no deseadas en el código, asegurando que puedas corregir sin perder información valiosa ni alterar irreversiblemente el historial del proyecto.

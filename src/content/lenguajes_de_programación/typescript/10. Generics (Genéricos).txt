@@ -1,0 +1,195 @@
+### **10. Generics (Genéricos)**
+
+Los **Generics** en TypeScript son una característica poderosa que permite crear componentes reutilizables y flexibles sin perder el beneficio del tipado estático. Los genéricos permiten definir tipos de manera abstracta, lo que significa que puedes crear funciones, clases e interfaces que trabajen con diferentes tipos de datos, pero manteniendo la seguridad de tipos.
+
+El uso de generics permite que los tipos sean determinados en el momento de la utilización de una función, clase o interfaz, lo que proporciona flexibilidad sin renunciar a la verificación de tipos en tiempo de compilación.
+
+En este tema, exploraremos cómo trabajar con generics en TypeScript, sus beneficios y algunos ejemplos prácticos.
+
+---
+
+#### **10.1. Introducción a los Generics**
+
+Los generics permiten crear funciones y estructuras que operan sobre un tipo que será especificado más adelante. En lugar de fijar un tipo concreto para una función, clase o interfaz, podemos usar un placeholder o parámetro genérico que será sustituido por un tipo específico cuando se utilice.
+
+**Sintaxis básica de los generics:**
+
+```typescript
+function nombreDeFuncion<T>(parametro: T): T {
+  return parametro;
+}
+```
+
+En este caso, `<T>` es el parámetro genérico. El tipo de `parametro` y el tipo de retorno de la función se determinan dinámicamente cuando la función es llamada.
+
+---
+
+#### **10.2. Ejemplo Básico de Generics en Funciones**
+
+Un ejemplo simple de cómo usar generics en funciones es el siguiente:
+
+```typescript
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+let resultado1 = identity(42);          // resultado1 es de tipo 'number'
+let resultado2 = identity("Hola");      // resultado2 es de tipo 'string'
+let resultado3 = identity([1, 2, 3]);  // resultado3 es de tipo 'number[]'
+```
+
+En este ejemplo, la función `identity` acepta un parámetro de tipo `T` y devuelve un valor del mismo tipo `T`. Esto permite que la función se adapte a diferentes tipos de entrada sin perder la verificación de tipos.
+
+---
+
+#### **10.3. Generics con Varios Tipos**
+
+También puedes trabajar con más de un parámetro genérico. Para esto, se separan los parámetros genéricos por comas dentro de los corchetes.
+
+**Ejemplo de generics con varios tipos:**
+
+```typescript
+function combinar<T, U>(a: T, b: U): [T, U] {
+  return [a, b];
+}
+
+let combinacion1 = combinar(10, "Hola"); // combinacion1 es de tipo [number, string]
+let combinacion2 = combinar([1, 2], { clave: "valor" }); // combinacion2 es de tipo [number[], { clave: string }]
+```
+
+Aquí, la función `combinar` acepta dos parámetros de tipos `T` y `U`, y devuelve una tupla que contiene ambos valores, uno de tipo `T` y otro de tipo `U`.
+
+---
+
+#### **10.4. Generics en Clases**
+
+Los generics también se pueden usar en clases para crear estructuras de datos reutilizables. Al igual que con las funciones, puedes definir un tipo genérico que se determinará cuando se cree una instancia de la clase.
+
+**Ejemplo de generics en clases:**
+
+```typescript
+class Caja<T> {
+  private contenido: T;
+
+  constructor(contenido: T) {
+    this.contenido = contenido;
+  }
+
+  obtenerContenido(): T {
+    return this.contenido;
+  }
+}
+
+let cajaDeNumero = new Caja<number>(123);
+console.log(cajaDeNumero.obtenerContenido()); // 123
+
+let cajaDeCadena = new Caja<string>("Hola Mundo");
+console.log(cajaDeCadena.obtenerContenido()); // "Hola Mundo"
+```
+
+En este ejemplo, la clase `Caja` es genérica, lo que significa que puede almacenar cualquier tipo de contenido. Al crear una instancia de la clase, se especifica el tipo del contenido, y la clase mantendrá ese tipo durante todo su ciclo de vida.
+
+---
+
+#### **10.5. Interfaces Genéricas**
+
+Las interfaces también pueden ser genéricas, lo que permite crear contratos reutilizables que funcionan con diferentes tipos de datos.
+
+**Ejemplo de interfaz genérica:**
+
+```typescript
+interface Par<T, U> {
+  primero: T;
+  segundo: U;
+}
+
+let parDeNumeros: Par<number, number> = { primero: 1, segundo: 2 };
+let parDeStringYNumeros: Par<string, number> = { primero: "uno", segundo: 1 };
+```
+
+En este caso, la interfaz `Par` es genérica, y tiene dos parámetros de tipo `T` y `U`. Esto permite crear objetos de tipo `Par` que pueden contener diferentes combinaciones de tipos, según sea necesario.
+
+---
+
+#### **10.6. Restricciones en Generics**
+
+Puedes aplicar restricciones a los parámetros genéricos para garantizar que solo se puedan utilizar ciertos tipos de datos. Esto se hace utilizando la palabra clave `extends` seguida del tipo base con el que debe ser compatible el parámetro genérico.
+
+**Ejemplo de restricción de tipo en generics:**
+
+```typescript
+function imprimirLongitud<T extends { length: number }>(item: T): number {
+  return item.length;
+}
+
+let longitudCadena = imprimirLongitud("Hola");  // Correcto, ya que string tiene la propiedad 'length'
+let longitudArray = imprimirLongitud([1, 2, 3]);  // Correcto, ya que array tiene la propiedad 'length'
+// let longitudNumero = imprimirLongitud(42); // Error: number no tiene la propiedad 'length'
+```
+
+En este ejemplo, el parámetro `T` está restringido a ser de un tipo que tenga la propiedad `length`, como las cadenas de texto o los arrays. Esto asegura que solo se puedan pasar objetos que tengan esa propiedad.
+
+---
+
+#### **10.7. Genéricos y Default Types**
+
+Puedes definir un valor predeterminado para los tipos genéricos, de manera que si el usuario no especifica un tipo, se utilizará el valor por defecto.
+
+**Ejemplo de genéricos con tipo por defecto:**
+
+```typescript
+function envolver<T = string>(valor: T): T {
+  return valor;
+}
+
+let valor1 = envolver(123);        // valor1 es de tipo 'number'
+let valor2 = envolver("Hola");     // valor2 es de tipo 'string'
+let valor3 = envolver([1, 2, 3]); // valor3 es de tipo 'number[]'
+```
+
+En este caso, el tipo genérico `T` tiene un valor predeterminado de `string`. Si no se especifica un tipo, `T` será `string` por defecto.
+
+---
+
+#### **10.8. Inferencia de Tipos en Generics**
+
+En muchos casos, TypeScript puede inferir el tipo de un parámetro genérico basándose en los valores pasados a la función o clase, lo que hace que no sea necesario declarar explícitamente el tipo.
+
+**Ejemplo de inferencia de tipos en generics:**
+
+```typescript
+function mostrar<T>(item: T): T {
+  return item;
+}
+
+let resultado = mostrar("Texto");  // TypeScript infiere que T es string
+let resultado2 = mostrar(100);    // TypeScript infiere que T es number
+```
+
+Aquí, TypeScript infiere automáticamente que el tipo de `T` es `string` cuando se pasa `"Texto"`, y `number` cuando se pasa `100`.
+
+---
+
+#### **10.9. Genéricos en Funciones de Orden Superior**
+
+Los genéricos también pueden ser útiles cuando se trabajan con funciones de orden superior, es decir, funciones que reciben otras funciones como argumentos o que devuelven funciones.
+
+**Ejemplo de genéricos en funciones de orden superior:**
+
+```typescript
+function aplicarOperacion<T>(array: T[], operacion: (elemento: T) => T): T[] {
+  return array.map(operacion);
+}
+
+let numeros = [1, 2, 3, 4];
+let resultado = aplicarOperacion(numeros, (num) => num * 2);  // [2, 4, 6, 8]
+console.log(resultado);
+```
+
+En este caso, la función `aplicarOperacion` acepta un array de elementos de tipo `T` y una operación que toma un elemento de tipo `T` y devuelve un valor de tipo `T`. TypeScript infiere el tipo adecuado de acuerdo con el tipo de los elementos del array.
+
+---
+
+#### **10.10. Conclusión**
+
+Los **Generics** son una característica clave de TypeScript que permite escribir código flexible y reutilizable mientras se mantiene la seguridad de tipos. Al trabajar con funciones, clases e interfaces genéricas, puedes crear estructuras que funcionen con cualquier tipo de dato, lo que hace que tu código sea más general y eficiente. Además, el uso de restricciones y tipos por defecto en los generics proporciona un control adicional sobre los tipos que se utilizan, lo que mejora la calidad del código y ayuda a prevenir errores. Los genéricos son fundamentales para escribir aplicaciones escalables, modulares y mantenibles en TypeScript.

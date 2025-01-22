@@ -1,0 +1,256 @@
+Aquí tienes el desarrollo del **Tema 6: Manipulación del DOM (Document Object Model) en JavaScript**:
+
+---
+
+### **6. Manipulación del DOM (Document Object Model)**
+
+El **DOM (Document Object Model)** es una representación estructurada de un documento HTML. Permite a JavaScript acceder, modificar y manipular elementos de una página web de manera dinámica.
+
+---
+
+#### **6.1. ¿Qué es el DOM?**
+
+- Es una representación en forma de árbol del contenido HTML y XML.
+- Cada nodo en el árbol representa una parte del documento (etiqueta, atributo, texto, etc.).
+- Permite:
+  - Cambiar contenido.
+  - Estilizar elementos.
+  - Agregar o eliminar nodos.
+
+**Ejemplo de árbol DOM:**
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <h1>Hola, mundo</h1>
+    <p>Este es un párrafo.</p>
+  </body>
+</html>
+```
+
+Representación del DOM:
+```
+html
+├── head
+│   └── title
+└── body
+    ├── h1
+    └── p
+```
+
+---
+
+#### **6.2. Selección de elementos del DOM**
+
+Para manipular el DOM, primero debes seleccionar los elementos.  
+
+##### **6.2.1. Métodos comunes de selección**
+
+1. **`getElementById`**  
+   Selecciona un elemento por su ID.  
+   ```javascript
+   let elemento = document.getElementById("miElemento");
+   ```
+
+2. **`getElementsByClassName`**  
+   Selecciona todos los elementos con una clase específica.  
+   ```javascript
+   let elementos = document.getElementsByClassName("miClase");
+   ```
+
+3. **`getElementsByTagName`**  
+   Selecciona todos los elementos con una etiqueta específica.  
+   ```javascript
+   let elementos = document.getElementsByTagName("p");
+   ```
+
+4. **`querySelector`**  
+   Selecciona el primer elemento que coincide con un selector CSS.  
+   ```javascript
+   let elemento = document.querySelector(".miClase");
+   ```
+
+5. **`querySelectorAll`**  
+   Selecciona todos los elementos que coinciden con un selector CSS.  
+   ```javascript
+   let elementos = document.querySelectorAll("div > p");
+   ```
+
+---
+
+#### **6.3. Modificación de contenido y atributos**
+
+1. **Modificar el contenido (`innerHTML`, `innerText`, `textContent`)**
+   - `innerHTML`: Cambia el contenido HTML de un elemento.  
+   - `innerText`: Cambia el texto visible (respeta estilos).  
+   - `textContent`: Cambia el texto (ignora estilos).
+
+   **Ejemplo:**
+   ```javascript
+   let titulo = document.getElementById("titulo");
+   titulo.innerHTML = "<strong>Nuevo título</strong>";
+   titulo.textContent = "Título simple";
+   ```
+
+2. **Modificar atributos (`setAttribute`, `getAttribute`, `removeAttribute`)**
+   - `setAttribute`: Establece un atributo.  
+   - `getAttribute`: Obtiene el valor de un atributo.  
+   - `removeAttribute`: Elimina un atributo.  
+
+   **Ejemplo:**
+   ```javascript
+   let enlace = document.querySelector("a");
+   enlace.setAttribute("href", "https://www.ejemplo.com");
+   console.log(enlace.getAttribute("href"));
+   enlace.removeAttribute("target");
+   ```
+
+---
+
+#### **6.4. Modificación de estilos**
+
+1. **Modificar estilos directamente:**
+   ```javascript
+   let elemento = document.querySelector(".miClase");
+   elemento.style.color = "red";
+   elemento.style.backgroundColor = "yellow";
+   ```
+
+2. **Agregar o quitar clases (`classList`):**
+   - `add`: Agrega una clase.  
+   - `remove`: Elimina una clase.  
+   - `toggle`: Agrega o elimina según si existe.  
+   - `contains`: Verifica si un elemento tiene una clase.  
+
+   **Ejemplo:**
+   ```javascript
+   let elemento = document.querySelector("#miElemento");
+   elemento.classList.add("activo");
+   elemento.classList.remove("oculto");
+   elemento.classList.toggle("seleccionado");
+   ```
+
+---
+
+#### **6.5. Creación y eliminación de elementos**
+
+1. **Crear elementos:**
+   ```javascript
+   let nuevoParrafo = document.createElement("p");
+   nuevoParrafo.textContent = "Este es un nuevo párrafo.";
+   ```
+
+2. **Agregar elementos al DOM:**
+   - `appendChild`: Agrega un nodo como hijo.  
+   - `insertBefore`: Inserta un nodo antes de otro.  
+
+   **Ejemplo:**
+   ```javascript
+   let contenedor = document.getElementById("contenedor");
+   contenedor.appendChild(nuevoParrafo);
+   ```
+
+3. **Eliminar elementos:**
+   ```javascript
+   let elemento = document.getElementById("miElemento");
+   elemento.remove();
+   ```
+
+---
+
+#### **6.6. Eventos en el DOM**
+
+Los eventos permiten interactuar con los elementos del DOM.  
+
+##### **6.6.1. Escuchadores de eventos (`addEventListener`)**
+```javascript
+let boton = document.getElementById("miBoton");
+boton.addEventListener("click", function () {
+    alert("¡Botón presionado!");
+});
+```
+
+##### **6.6.2. Tipos de eventos comunes**
+- `click`: Cuando se hace clic en un elemento.  
+- `mouseover`: Cuando el cursor pasa sobre un elemento.  
+- `keydown`: Cuando se presiona una tecla.  
+
+##### **6.6.3. El objeto `event`**
+Proporciona información sobre el evento que ocurrió.  
+```javascript
+document.addEventListener("keydown", function (event) {
+    console.log("Tecla presionada: " + event.key);
+});
+```
+
+---
+
+#### **6.7. Ejercicio práctico**
+
+1. **Seleccionar y modificar contenido:**
+   - Cambia el texto de un encabezado con ID `titulo` al hacer clic en un botón.
+
+   **HTML:**
+   ```html
+   <h1 id="titulo">Título original</h1>
+   <button id="cambiarTitulo">Cambiar título</button>
+   ```
+
+   **JavaScript:**
+   ```javascript
+   document.getElementById("cambiarTitulo").addEventListener("click", function () {
+       let titulo = document.getElementById("titulo");
+       titulo.textContent = "Nuevo título";
+   });
+   ```
+
+2. **Crear y agregar elementos:**
+   - Agrega un párrafo nuevo a un contenedor al presionar un botón.
+
+   **HTML:**
+   ```html
+   <div id="contenedor"></div>
+   <button id="agregarParrafo">Agregar párrafo</button>
+   ```
+
+   **JavaScript:**
+   ```javascript
+   document.getElementById("agregarParrafo").addEventListener("click", function () {
+       let contenedor = document.getElementById("contenedor");
+       let parrafo = document.createElement("p");
+       parrafo.textContent = "Este es un párrafo agregado dinámicamente.";
+       contenedor.appendChild(parrafo);
+   });
+   ```
+
+3. **Cambiar estilos dinámicamente:**
+   - Alterna la clase `resaltado` de un elemento al hacer clic.
+
+   **HTML:**
+   ```html
+   <p id="texto">Este texto se resaltará.</p>
+   <button id="alternarResaltado">Alternar resaltado</button>
+   ```
+
+   **JavaScript:**
+   ```javascript
+   document.getElementById("alternarResaltado").addEventListener("click", function () {
+       let texto = document.getElementById("texto");
+       texto.classList.toggle("resaltado");
+   });
+   ```
+
+   **CSS:**
+   ```css
+   .resaltado {
+       background-color: yellow;
+       font-weight: bold;
+   }
+   ```
+
+---
+
+¿Te gustaría más ejemplos o ejercicios adicionales sobre manipulación del DOM? 😊

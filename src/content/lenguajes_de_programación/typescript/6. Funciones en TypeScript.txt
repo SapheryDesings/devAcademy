@@ -1,0 +1,251 @@
+### **6. Funciones en TypeScript**
+
+Las funciones en TypeScript son bloques de código que se pueden definir una vez y reutilizar múltiples veces en un programa. Permiten modularizar el código y mejorar la legibilidad y la reutilización. TypeScript extiende las funcionalidades de las funciones de JavaScript al ofrecer un sistema de tipos estático que permite definir claramente los tipos de los parámetros y el valor de retorno, lo que ayuda a prevenir errores en tiempo de compilación.
+
+A continuación, exploraremos cómo declarar funciones, cómo definir tipos para los parámetros y el valor de retorno, y algunos conceptos avanzados relacionados con las funciones en TypeScript.
+
+---
+
+#### **6.1. Definición Básica de Funciones**
+
+En TypeScript, la sintaxis para declarar una función es muy similar a la de JavaScript, pero con la capacidad de definir tipos para los parámetros y el valor de retorno.
+
+**Sintaxis básica:**
+
+```typescript
+function nombreDeLaFuncion(param1: tipo1, param2: tipo2): tipoDeRetorno {
+  // Cuerpo de la función
+  return valor;
+}
+```
+
+**Ejemplo básico:**
+
+```typescript
+function sumar(a: number, b: number): number {
+  return a + b;
+}
+
+let resultado = sumar(5, 10);  // resultado es 15
+```
+
+En este ejemplo, la función `sumar` toma dos parámetros (`a` y `b`), ambos de tipo `number`, y devuelve un valor de tipo `number`.
+
+---
+
+#### **6.2. Parámetros Opcionales**
+
+En TypeScript, puedes hacer que un parámetro sea opcional utilizando el operador `?`. Esto significa que el parámetro puede no ser pasado al llamar a la función, y el valor de ese parámetro será `undefined` por defecto.
+
+**Sintaxis:**
+
+```typescript
+function nombreDeLaFuncion(param1: tipo1, param2?: tipo2): tipoDeRetorno {
+  // Cuerpo de la función
+}
+```
+
+**Ejemplo de parámetros opcionales:**
+
+```typescript
+function saludar(nombre: string, edad?: number): string {
+  if (edad) {
+    return `Hola, soy ${nombre} y tengo ${edad} años.`;
+  } else {
+    return `Hola, soy ${nombre}.`;
+  }
+}
+
+console.log(saludar("Ana", 30));  // "Hola, soy Ana y tengo 30 años."
+console.log(saludar("Luis"));     // "Hola, soy Luis."
+```
+
+En este ejemplo, el parámetro `edad` es opcional. Si no se proporciona, la función sigue funcionando correctamente y el valor de `edad` es `undefined`.
+
+---
+
+#### **6.3. Parámetros por Defecto**
+
+Si quieres proporcionar un valor predeterminado para un parámetro en caso de que no se le pase ningún valor, puedes usar el operador de asignación (`=`) para definir un valor por defecto.
+
+**Sintaxis:**
+
+```typescript
+function nombreDeLaFuncion(param1: tipo1 = valorPredeterminado): tipoDeRetorno {
+  // Cuerpo de la función
+}
+```
+
+**Ejemplo de parámetros por defecto:**
+
+```typescript
+function saludar(nombre: string, edad: number = 18): string {
+  return `Hola, soy ${nombre} y tengo ${edad} años.`;
+}
+
+console.log(saludar("Ana", 30));  // "Hola, soy Ana y tengo 30 años."
+console.log(saludar("Luis"));     // "Hola, soy Luis y tengo 18 años."
+```
+
+En este caso, si no se proporciona un valor para `edad`, el valor por defecto será `18`.
+
+---
+
+#### **6.4. Funciones Anónimas (Funciones Lambda)**
+
+En TypeScript, como en JavaScript, puedes crear funciones anónimas (también llamadas funciones lambda o flecha). Estas son funciones que no tienen un nombre y generalmente se usan para operaciones rápidas o como parámetros de otras funciones.
+
+**Sintaxis de funciones flecha:**
+
+```typescript
+const nombreDeLaFuncion = (param1: tipo1, param2: tipo2): tipoDeRetorno => {
+  // Cuerpo de la función
+  return valor;
+};
+```
+
+**Ejemplo de función flecha:**
+
+```typescript
+const multiplicar = (a: number, b: number): number => {
+  return a * b;
+};
+
+console.log(multiplicar(5, 10));  // 50
+```
+
+Las funciones flecha son especialmente útiles cuando se usan como callbacks, ya que mantienen el contexto de `this` de forma más predecible.
+
+---
+
+#### **6.5. Funciones con Tipos de Retorno Específicos**
+
+En TypeScript, puedes especificar el tipo de valor que una función debe devolver. Esto asegura que el valor retornado siempre será del tipo esperado, y si se intenta devolver un valor de otro tipo, TypeScript generará un error.
+
+**Sintaxis de retorno específico:**
+
+```typescript
+function nombreDeLaFuncion(param1: tipo1): tipoDeRetorno {
+  // Lógica de la función
+  return valorDeTipo;
+}
+```
+
+**Ejemplo de función con tipo de retorno específico:**
+
+```typescript
+function dividir(a: number, b: number): number {
+  return a / b;
+}
+
+console.log(dividir(10, 2));  // 5
+```
+
+En este caso, la función `dividir` garantiza que siempre devuelva un valor de tipo `number`.
+
+---
+
+#### **6.6. Funciones que No Devuelven un Valor (void)**
+
+Si una función no necesita devolver un valor, puedes usar el tipo `void` para especificarlo. Este tipo es útil para funciones que realizan acciones, como imprimir en consola o manipular el DOM, pero no necesitan retornar un valor.
+
+**Sintaxis de función `void`:**
+
+```typescript
+function nombreDeLaFuncion(param1: tipo1): void {
+  // Cuerpo de la función
+}
+```
+
+**Ejemplo de función `void`:**
+
+```typescript
+function saludar(nombre: string): void {
+  console.log(`Hola, ${nombre}!`);
+}
+
+saludar("Ana");  // "Hola, Ana!"
+```
+
+La función `saludar` no devuelve ningún valor, solo realiza una acción.
+
+---
+
+#### **6.7. Funciones de Alto Orden**
+
+Una función de alto orden es una función que toma otras funciones como parámetros o devuelve una función como resultado. TypeScript te permite tipar correctamente las funciones de alto orden, lo que proporciona mayor seguridad en el manejo de las mismas.
+
+**Ejemplo de función de alto orden:**
+
+```typescript
+function aplicarOperacion(a: number, b: number, operacion: (x: number, y: number) => number): number {
+  return operacion(a, b);
+}
+
+const suma = (x: number, y: number): number => x + y;
+const resta = (x: number, y: number): number => x - y;
+
+console.log(aplicarOperacion(5, 3, suma));  // 8
+console.log(aplicarOperacion(5, 3, resta)); // 2
+```
+
+En este caso, `aplicarOperacion` es una función de alto orden que toma dos números y una función `operacion` que realiza una operación sobre esos números. La función `operacion` se pasa como parámetro y puede ser cualquier función que cumpla con la firma `(x: number, y: number) => number`.
+
+---
+
+#### **6.8. Funciones Genéricas**
+
+Las funciones genéricas permiten que una función opere con diferentes tipos de datos sin perder la seguridad de tipos. En lugar de especificar un tipo fijo, puedes usar un parámetro de tipo que se define en el momento de la llamada a la función.
+
+**Sintaxis de función genérica:**
+
+```typescript
+function nombreDeLaFuncion<T>(param: T): T {
+  return param;
+}
+```
+
+**Ejemplo de función genérica:**
+
+```typescript
+function identidad<T>(valor: T): T {
+  return valor;
+}
+
+let numero = identidad(42);  // T es inferido como number
+let texto = identidad("Hola");  // T es inferido como string
+```
+
+En este caso, la función `identidad` es genérica y puede trabajar con cualquier tipo, asegurando que el tipo de entrada sea el mismo que el tipo de salida.
+
+---
+
+#### **6.9. Tipos de Funciones como Parámetros**
+
+Puedes definir el tipo de una función como un parámetro, lo que te permite pasar funciones de manera más controlada dentro de otras funciones.
+
+**Sintaxis:**
+
+```typescript
+function ejecutarOperacion(operacion: (x: number, y: number) => number): void {
+  // Lógica de la función
+}
+```
+
+**Ejemplo:**
+
+```typescript
+function ejecutarOperacion(operacion: (x: number, y: number) => number): void {
+  console.log(operacion(5, 10));
+}
+
+const multiplicar = (x: number, y: number): number => x * y;
+
+ejecutarOperacion(multiplicar);  // 50
+```
+
+---
+
+#### **6.10. Conclusión**
+
+Las funciones en TypeScript son esenciales para estructurar y organizar el código. Además de los conceptos básicos, TypeScript agrega seguridad de tipos al permitir definir tipos para los parámetros y el valor de retorno de las funciones. Esto mejora la robustez del código y ayuda a prevenir errores. También, las funciones genéricas y de alto orden, junto con los parámetros opcionales y por defecto, permiten crear soluciones más flexibles y reutilizables.

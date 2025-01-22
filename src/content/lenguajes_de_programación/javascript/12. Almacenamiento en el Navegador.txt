@@ -1,0 +1,211 @@
+Aquí tienes el desarrollo del **Tema 12: Almacenamiento en el Navegador**:
+
+---
+
+### **12. Almacenamiento en el Navegador**
+
+El almacenamiento en el navegador permite guardar datos de manera persistente en el dispositivo del usuario, lo cual puede ser útil para recordar preferencias, mantener sesiones activas, almacenar información sin necesidad de acceder a un servidor, etc. En JavaScript, existen varias opciones de almacenamiento que ofrecen diferentes capacidades y características.
+
+Las principales opciones de almacenamiento en el navegador son:
+1. **Cookies**
+2. **LocalStorage**
+3. **SessionStorage**
+4. **IndexedDB**
+
+---
+
+#### **12.1. Cookies**
+
+Las **cookies** son pequeños archivos de texto que se almacenan en el navegador y que pueden ser enviados junto con cada solicitud HTTP. Son útiles para almacenar información que debe persistir entre sesiones, como credenciales de usuario o preferencias.
+
+**Ventajas**:
+- Persistencia entre sesiones.
+- Se envían automáticamente con cada solicitud HTTP.
+
+**Desventajas**:
+- Capacidad limitada (alrededor de 4KB por cookie).
+- No son ideales para almacenar grandes cantidades de datos.
+
+**Sintaxis de uso de cookies:**
+
+- **Establecer una cookie**:
+```javascript
+document.cookie = "usuario=Juan; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+```
+
+- **Leer una cookie**:
+```javascript
+console.log(document.cookie);
+```
+
+- **Eliminar una cookie**:
+Para eliminar una cookie, se establece su fecha de expiración en una fecha pasada:
+```javascript
+document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+```
+
+**Ejemplo completo de uso de cookies**:
+```javascript
+// Establecer una cookie
+document.cookie = "usuario=Juan; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+
+// Leer la cookie
+console.log(document.cookie);
+
+// Eliminar la cookie
+document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+```
+
+---
+
+#### **12.2. LocalStorage**
+
+**`localStorage`** es una forma de almacenar datos de manera persistente en el navegador. A diferencia de las cookies, `localStorage` tiene una mayor capacidad de almacenamiento (aproximadamente 5MB por dominio). Los datos almacenados en `localStorage` no tienen fecha de expiración y permanecen hasta que se eliminen explícitamente.
+
+**Ventajas**:
+- Almacenamiento persistente.
+- Capacidad mayor que las cookies (aproximadamente 5MB por dominio).
+- No se envía con las solicitudes HTTP, por lo que no afecta el rendimiento de las peticiones.
+
+**Desventajas**:
+- No es accesible desde otros dominios.
+- Solo almacena datos en formato de texto (se deben convertir los objetos a cadenas JSON).
+
+**Métodos de `localStorage`**:
+- **`setItem(key, value)`**: Guarda un par clave-valor.
+- **`getItem(key)`**: Obtiene el valor asociado a la clave.
+- **`removeItem(key)`**: Elimina el valor asociado a una clave.
+- **`clear()`**: Elimina todos los elementos almacenados.
+
+**Ejemplo de uso de `localStorage`**:
+```javascript
+// Guardar datos
+localStorage.setItem("nombre", "Juan");
+localStorage.setItem("edad", 30);
+
+// Leer datos
+console.log(localStorage.getItem("nombre")); // "Juan"
+console.log(localStorage.getItem("edad"));  // 30
+
+// Eliminar un item
+localStorage.removeItem("edad");
+
+// Eliminar todo el almacenamiento
+localStorage.clear();
+```
+
+**Nota**: Como `localStorage` solo almacena cadenas de texto, si necesitas almacenar objetos, puedes usar `JSON.stringify()` para convertir el objeto en una cadena JSON y `JSON.parse()` para convertirlo de nuevo a un objeto.
+
+**Ejemplo con objetos**:
+```javascript
+let usuario = { nombre: "Juan", edad: 30 };
+
+// Convertir el objeto a cadena y almacenarlo
+localStorage.setItem("usuario", JSON.stringify(usuario));
+
+// Obtener el objeto y convertirlo de nuevo a un objeto
+let usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+console.log(usuarioGuardado.nombre);  // "Juan"
+```
+
+---
+
+#### **12.3. SessionStorage**
+
+**`sessionStorage`** es similar a `localStorage`, pero con una diferencia clave: los datos almacenados en `sessionStorage` solo permanecen durante la sesión de navegación (es decir, mientras la pestaña o ventana del navegador esté abierta). Una vez que se cierra la pestaña o ventana, los datos se eliminan.
+
+**Ventajas**:
+- Almacenamiento durante una sesión específica.
+- Capacidad similar a `localStorage` (aproximadamente 5MB por dominio).
+
+**Desventajas**:
+- Los datos no se mantienen después de cerrar la pestaña o el navegador.
+- No se comparte entre diferentes pestañas o ventanas del navegador.
+
+**Métodos de `sessionStorage`**:
+- **`setItem(key, value)`**: Guarda un par clave-valor.
+- **`getItem(key)`**: Obtiene el valor asociado a la clave.
+- **`removeItem(key)`**: Elimina el valor asociado a una clave.
+- **`clear()`**: Elimina todos los elementos almacenados.
+
+**Ejemplo de uso de `sessionStorage`**:
+```javascript
+// Guardar datos en sessionStorage
+sessionStorage.setItem("sessionUsuario", "Juan");
+
+// Leer datos
+console.log(sessionStorage.getItem("sessionUsuario")); // "Juan"
+
+// Eliminar un item
+sessionStorage.removeItem("sessionUsuario");
+
+// Eliminar todo el sessionStorage
+sessionStorage.clear();
+```
+
+---
+
+#### **12.4. IndexedDB**
+
+**`IndexedDB`** es una base de datos en el navegador que permite almacenar grandes cantidades de datos estructurados, incluidos objetos JavaScript. Es una opción más avanzada para aplicaciones web que necesitan almacenar y consultar grandes volúmenes de datos de manera persistente.
+
+**Ventajas**:
+- Almacenamiento estructurado de datos (puedes guardar objetos complejos).
+- Capacidad mucho mayor que `localStorage` (puede almacenar cientos de MB).
+- Ideal para aplicaciones web complejas que necesitan almacenar y consultar grandes cantidades de datos.
+
+**Desventajas**:
+- Más compleja de usar en comparación con `localStorage` y `sessionStorage`.
+- No es compatible con todos los navegadores (aunque la mayoría de los navegadores modernos la soportan).
+
+**Ejemplo básico de uso de IndexedDB**:
+```javascript
+let request = window.indexedDB.open("miBaseDeDatos", 1);
+
+request.onsuccess = function(event) {
+    let db = event.target.result;
+    let transaction = db.transaction("usuarios", "readwrite");
+    let objectStore = transaction.objectStore("usuarios");
+
+    let nuevoUsuario = { id: 1, nombre: "Juan", edad: 30 };
+    objectStore.add(nuevoUsuario);
+
+    transaction.oncomplete = function() {
+        console.log("Usuario agregado");
+    };
+
+    transaction.onerror = function(event) {
+        console.error("Error al agregar el usuario", event);
+    };
+};
+
+request.onerror = function(event) {
+    console.error("Error al abrir la base de datos", event);
+};
+```
+
+---
+
+#### **12.5. Comparación entre las opciones de almacenamiento**
+
+| Característica      | **Cookies**                         | **localStorage**                  | **sessionStorage**                | **IndexedDB**                         |
+|---------------------|-------------------------------------|-----------------------------------|-----------------------------------|---------------------------------------|
+| **Capacidad**        | 4KB por cookie                      | ~5MB por dominio                  | ~5MB por dominio                  | Grandes volúmenes (varios MB/GB)     |
+| **Persistencia**     | Hasta la fecha de expiración        | Persistente (hasta que se elimina) | Solo durante la sesión            | Persistente (hasta que se elimina)    |
+| **Accesibilidad**    | Enviado con cada solicitud HTTP     | Solo accesible desde el mismo dominio | Solo accesible desde la misma pestaña | Accesible mediante JavaScript          |
+| **Soporte de datos** | Solo texto                          | Solo texto (puede usar JSON)       | Solo texto (puede usar JSON)       | Almacena datos estructurados (objetos, arrays) |
+| **Usos típicos**     | Sesiones, rastreo, autenticación    | Almacenamiento de datos persistentes | Almacenar datos durante una sesión | Aplicaciones que requieren grandes volúmenes de datos |
+
+---
+
+#### **12.6. Ejercicios Prácticos**
+
+1. **Guardar y recuperar datos con `localStorage`**: Guarda una lista de tareas en `localStorage` y muéstralas en la consola cada vez que se recarga la página.
+   
+2. **Crear una sesión con `sessionStorage`**: Almacena el nombre de usuario en `sessionStorage` cuando el usuario inicia sesión y muestra un saludo en la página solo si la sesión está activa.
+
+3. **Usar IndexedDB**: Crea una pequeña base de datos con `IndexedDB` para almacenar información de productos (nombre, precio) y luego recupérala.
+
+---
+
+¿Te gustaría más ejemplos o una explicación más detallada sobre algún tipo de almacenamiento específico? 😊

@@ -1,0 +1,322 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Express"/>
+
+# 11. Conexión con Bases de Datos en Express
+
+La conexión con bases de datos es una parte esencial para crear aplicaciones web dinámicas y persistentes. En Express, puedes conectar fácilmente tu aplicación con varias bases de datos utilizando bibliotecas como `mongoose` (para MongoDB) o `sequelize` (para SQL). Este tema cubre cómo configurar y trabajar con bases de datos en aplicaciones Express, incluyendo la configuración de conexiones y la realización de operaciones CRUD.
+
+## 11.1. Conexión con MongoDB usando Mongoose
+
+Mongoose es una librería de Node.js que proporciona una solución elegante y flexible para interactuar con MongoDB. Facilita la creación y validación de esquemas y la gestión de consultas.
+
+### 11.1.1. Instalación de Mongoose
+
+Primero, necesitas instalar Mongoose en tu proyecto:
+
+```bash
+npm install mongoose
+```
+
+### 11.1.2. Conectar Express con MongoDB
+
+Para conectar tu aplicación Express a una base de datos MongoDB, debes usar el método `connect` de Mongoose, proporcionando la URL de tu base de datos.
+
+```javascript
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+
+// Conectar a MongoDB
+mongoose.connect('mongodb://localhost:27017/miBaseDeDatos', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected', () => {
+  console.log('Conectado a MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('Error de conexión a MongoDB:', err);
+});
+
+app.listen(3000, () => {
+  console.log('Servidor Express en http://localhost:3000');
+});
+```
+
+En este ejemplo, la aplicación Express se conecta a una base de datos MongoDB llamada `miBaseDeDatos`. Puedes sustituir `localhost:27017` con la URL de tu base de datos en la nube si estás usando MongoDB Atlas.
+
+### 11.1.3. Definir un Esquema de Mongoose
+
+Un esquema en Mongoose define cómo deben lucir los documentos dentro de una colección. Los esquemas son muy flexibles y permiten agregar validaciones, tipos de datos, y métodos personalizados.
+
+```javascript
+const { Schema } = mongoose;
+
+// Crear un esquema de usuario
+const usuarioSchema = new Schema({
+  nombre: { type: String, required: true },
+  edad: { type: Number, required: true },
+  email: { type: String, required: true, unique: true },
+});
+
+// Crear un modelo basado en el esquema
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+```
+
+### 11.1.4. Operaciones CRUD con Mongoose
+
+Ahora que hemos configurado la base de datos y el modelo, veamos cómo realizar operaciones CRUD en MongoDB usando Mongoose.
+
+#### Crear un Nuevo Documento
+
+```javascript
+app.post('/usuario', express.json(), (req, res) => {
+  const nuevoUsuario = new Usuario({
+    nombre: req.body.nombre,
+    edad: req.body.edad,
+    email: req.body.email,
+  });
+
+  nuevoUsuario.save((err, usuario) => {
+    if (err) {
+      return res.status(500).send('Error al guardar el usuario');
+    }
+    res.status(201).json(usuario);
+  });
+});
+```
+
+#### Obtener Todos los Documentos
+
+```javascript
+app.get('/usuarios', (req, res) => {
+  Usuario.find({}, (err, usuarios) => {
+    if (err) {
+      return res.status(500).send('Error al obtener usuarios');
+    }
+    res.json(usuarios);
+  });
+});
+```
+
+#### Actualizar un Documento
+
+```javascript
+app.put('/usuario/:id', express.json(), (req, res) => {
+  Usuario.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, usuario) => {
+      if (err) {
+        return res.status(500).send('Error al actualizar el usuario');
+      }
+      res.json(usuario);
+    }
+  );
+});
+```
+
+#### Eliminar un Documento
+
+```javascript
+app.delete('/usuario/:id', (req, res) => {
+  Usuario.findByIdAndDelete(req.params.id, (err, usuario) => {
+    if (err) {
+      return res.status(500).send('Error al eliminar el usuario');
+    }
+    if (!usuario) {
+      return res.status(404).send('Usuario no encontrado');
+    }
+    res.status(204).send();
+  });
+});
+```
+
+## 11.2. Conexión con Bases de Datos SQL usando Sequelize
+
+Si prefieres trabajar con bases de datos SQL, `sequelize` es una excelente opción para interactuar con bases de datos como MySQL, PostgreSQL, y SQLite.
+
+### 11.2.1. Instalación de Sequelize
+
+Primero, instala Sequelize y el paquete del controlador de la base de datos correspondiente (por ejemplo, `mysql2` para MySQL).
+
+```bash
+npm install sequelize mysql2
+```
+
+### 11.2.2. Conectar Express con una Base de Datos SQL
+
+Configura y establece la conexión con la base de datos SQL:
+
+```javascript
+const express = require('express');
+const { Sequelize, DataTypes } = require('sequelize');
+const app = express();
+
+// Configurar la conexión a la base de datos
+const sequelize = new Sequelize('miBaseDeDatos', 'usuario', 'contraseña', {
+  host: 'localhost',
+  dialect: 'mysql', // O usa 'postgres', 'sqlite', etc.
+});
+
+// Probar la conexión
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conectado a la base de datos SQL');
+  })
+  .catch(err => {
+    console.error('No se pudo conectar a la base de datos:', err);
+  });
+
+app.listen(3000, () => {
+  console.log('Servidor Express en http://localhost:3000');
+});
+```
+
+### 11.2.3. Definir un Modelo de Sequelize
+
+Los modelos en Sequelize definen la estructura de las tablas en la base de datos y permiten realizar consultas de forma sencilla.
+
+```javascript
+const Usuario = sequelize.define('Usuario', {
+  nombre: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  edad: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+});
+```
+
+### 11.2.4. Operaciones CRUD con Sequelize
+
+Ahora, veamos cómo realizar operaciones CRUD usando Sequelize.
+
+#### Crear un Nuevo Usuario
+
+```javascript
+app.post('/usuario', express.json(), async (req, res) => {
+  try {
+    const usuario = await Usuario.create({
+      nombre: req.body.nombre,
+      edad: req.body.edad,
+      email: req.body.email,
+    });
+    res.status(201).json(usuario);
+  } catch (err) {
+    res.status(500).send('Error al crear el usuario');
+  }
+});
+```
+
+#### Obtener Todos los Usuarios
+
+```javascript
+app.get('/usuarios', async (req, res) => {
+  try {
+    const usuarios = await Usuario.findAll();
+    res.json(usuarios);
+  } catch (err) {
+    res.status(500).send('Error al obtener usuarios');
+  }
+});
+```
+
+#### Actualizar un Usuario
+
+```javascript
+app.put('/usuario/:id', express.json(), async (req, res) => {
+  try {
+    const usuario = await Usuario.update(req.body, {
+      where: { id: req.params.id },
+      returning: true,
+    });
+    if (usuario[0] === 0) {
+      return res.status(404).send('Usuario no encontrado');
+    }
+    res.json(usuario[1][0]);
+  } catch (err) {
+    res.status(500).send('Error al actualizar el usuario');
+  }
+});
+```
+
+#### Eliminar un Usuario
+
+```javascript
+app.delete('/usuario/:id', async (req, res) => {
+  try {
+    const result = await Usuario.destroy({
+      where: { id: req.params.id },
+    });
+    if (result === 0) {
+      return res.status(404).send('Usuario no encontrado');
+    }
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).send('Error al eliminar el usuario');
+  }
+});
+```
+
+## 11.3. Consideraciones de Seguridad
+
+### 11.3.1. Protección Contra Inyecciones SQL
+
+Cuando trabajes con bases de datos SQL, asegúrate de usar consultas parametrizadas para prevenir ataques de inyección SQL. Sequelize maneja esto automáticamente al usar sus métodos como `findAll`, `create`, `update`, etc.
+
+```javascript
+Usuario.findAll({
+  where: {
+    email: req.query.email,  // Parámetro seguro
+  }
+});
+```
+
+### 11.3.2. Encriptación de Contraseñas
+
+Si estás manejando contraseñas de usuarios, nunca las guardes en texto claro. Utiliza una librería como `bcrypt` para encriptarlas antes de almacenarlas.
+
+```bash
+npm install bcrypt
+```
+
+```javascript
+const bcrypt = require('bcrypt');
+
+app.post('/usuario', express.json(), async (req, res) => {
+  try {
+    const hash = await bcrypt.hash(req.body.password, 10);
+    const usuario = await Usuario.create({
+      nombre: req.body.nombre,
+      email: req.body.email,
+      password: hash,
+    });
+    res.status(201).json(usuario);
+  } catch (err) {
+    res.status(500).send('Error al crear el usuario');
+  }
+});
+```
+
+>La conexión con bases de datos es crucial para crear aplicaciones Express dinámicas y persistentes. Puedes utilizar herramientas como **Mongoose** para interactuar con MongoDB, o **Sequelize** para bases de datos SQL como MySQL o PostgreSQL. Ambas bibliotecas permiten realizar operaciones CRUD fácilmente, así como manejar relaciones entre datos y optimizar consultas. Asegúrate de considerar las mejores prácticas de seguridad, como la encriptación de contraseñas y la protección contra inyecciones SQL, para mantener tu aplicación segura.
+
+>Conectar y gestionar bases de datos en Express es una tarea sencilla y poderosa que te permitirá desarrollar aplicaciones más ricas y funcionales.
+
+
+>Este tema cubre cómo establecer conexiones con bases de datos tanto **MongoDB** (usando **Mongoose**) como bases de datos **SQL** (usando **Sequelize**). Se exploran las operaciones CRUD básicas, la configuración de la conexión, y las consideraciones de seguridad como la encriptación de contraseñas y la protección contra inyecciones SQL. Con estas herramientas, podrás crear aplicaciones Express completas con almacenamiento persistente de datos.

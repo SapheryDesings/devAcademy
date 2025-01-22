@@ -1,0 +1,158 @@
+### **11. Módulos en TypeScript**
+
+Los **módulos** en TypeScript (y en JavaScript moderno) son una forma de organizar el código en archivos separados, permitiendo que el código de una aplicación se divida en partes reutilizables y fáciles de gestionar. Los módulos ayudan a mantener el código limpio y modular, además de facilitar su mantenimiento, escalabilidad y reutilización.
+
+En TypeScript, los módulos permiten dividir el código en diferentes archivos y gestionarlos de manera eficiente, utilizando las declaraciones `import` y `export`. Esto hace posible importar funcionalidades de otros archivos y exportar las propias, creando un sistema organizado y manejable.
+
+En este tema, exploraremos cómo trabajar con módulos en TypeScript, cómo usar `import` y `export`, y cómo organizar adecuadamente tu código utilizando estos conceptos.
+
+---
+
+#### **11.1. ¿Qué Son los Módulos en TypeScript?**
+
+En TypeScript, un **módulo** es cualquier archivo que contiene un bloque de código que es independiente y puede ser reutilizado en otros lugares. Los módulos son la unidad básica de organización en aplicaciones grandes y complejas. En TypeScript, los módulos son archivos con extensión `.ts` o `.tsx` que utilizan las palabras clave `import` y `export` para gestionar el acceso a las funciones, clases, objetos o variables definidas dentro de ellos.
+
+Cada archivo en TypeScript se trata como un módulo en sí mismo, lo que significa que su contenido no está disponible de manera global en otros archivos a menos que se exporte explícitamente y se importe donde sea necesario.
+
+---
+
+#### **11.2. Exportando en TypeScript**
+
+Para que un componente de un módulo esté disponible para otros módulos, necesitamos **exportarlo**. En TypeScript, podemos exportar tanto funciones como clases, objetos, variables, interfaces, y tipos. Existen dos formas de exportar: **exportación nombrada** y **exportación por defecto**.
+
+##### **11.2.1. Exportación Nombrada**
+
+La exportación nombrada permite exportar varias entidades desde un módulo y luego importarlas de forma específica en otros módulos. Se usa la palabra clave `export` antes de la declaración.
+
+**Ejemplo de exportación nombrada:**
+
+```typescript
+// archivo: matematicas.ts
+export function suma(a: number, b: number): number {
+  return a + b;
+}
+
+export function resta(a: number, b: number): number {
+  return a - b;
+}
+```
+
+En este ejemplo, estamos exportando las funciones `suma` y `resta` desde el módulo `matematicas.ts`.
+
+##### **11.2.2. Exportación por Defecto**
+
+La exportación por defecto se utiliza cuando un módulo tiene un solo valor principal para exportar. Esto puede ser una función, clase u objeto. La exportación por defecto permite importar la entidad sin utilizar su nombre exacto en la importación.
+
+**Ejemplo de exportación por defecto:**
+
+```typescript
+// archivo: calculadora.ts
+export default function multiplicar(a: number, b: number): number {
+  return a * b;
+}
+```
+
+En este ejemplo, estamos exportando una función `multiplicar` como exportación por defecto desde el módulo `calculadora.ts`.
+
+---
+
+#### **11.3. Importando en TypeScript**
+
+Una vez que hemos exportado elementos desde un módulo, podemos **importarlos** en otro módulo utilizando la palabra clave `import`. Al igual que con la exportación, existen dos formas de importar: **importación nombrada** e **importación por defecto**.
+
+##### **11.3.1. Importación Nombrada**
+
+Para importar funciones o variables específicas de un módulo, usamos la importación nombrada. Aquí, debemos usar el mismo nombre que el que hemos exportado, y las importaciones se encierran entre llaves `{}`.
+
+**Ejemplo de importación nombrada:**
+
+```typescript
+// archivo: principal.ts
+import { suma, resta } from './matematicas';
+
+console.log(suma(5, 3));   // 8
+console.log(resta(5, 3));  // 2
+```
+
+En este caso, estamos importando las funciones `suma` y `resta` desde el módulo `matematicas.ts`. La sintaxis `{ suma, resta }` indica que solo esas funciones serán importadas.
+
+##### **11.3.2. Importación por Defecto**
+
+Cuando un módulo tiene una exportación por defecto, podemos importarla sin necesidad de usar su nombre original. En lugar de poner el nombre del valor exportado, le asignamos el nombre que queramos.
+
+**Ejemplo de importación por defecto:**
+
+```typescript
+// archivo: principal.ts
+import multiplicar from './calculadora';
+
+console.log(multiplicar(4, 2));  // 8
+```
+
+En este ejemplo, estamos importando la función `multiplicar` desde `calculadora.ts`, la cual fue exportada como exportación por defecto. En la importación, no necesitamos usar llaves ni el nombre exacto de la función, ya que se trata de la exportación principal del archivo.
+
+##### **11.3.3. Renombrando las Importaciones**
+
+Es posible renombrar las importaciones para evitar conflictos de nombres o para mejorar la legibilidad del código. Esto se hace con la palabra clave `as`.
+
+**Ejemplo de renombrar importaciones:**
+
+```typescript
+// archivo: principal.ts
+import { suma as sumar, resta as restar } from './matematicas';
+
+console.log(sumar(5, 3));  // 8
+console.log(restar(5, 3)); // 2
+```
+
+En este caso, hemos renombrado las funciones `suma` y `resta` como `sumar` y `restar`, respectivamente, al importarlas.
+
+---
+
+#### **11.4. Organización de Módulos**
+
+La organización de los módulos en un proyecto es crucial para mantener un código limpio y fácil de mantener. Es importante estructurar el proyecto de manera que cada módulo tenga una responsabilidad clara. Aquí algunos consejos de organización:
+
+1. **Divide el código en módulos lógicos**: Agrupa las funciones, clases y otros elementos relacionados en módulos separados, como por ejemplo, `utils.ts` para utilidades, `models.ts` para definiciones de clases o interfaces, y `services.ts` para la lógica de negocio.
+  
+2. **Evita los módulos grandes**: Si un archivo se hace demasiado grande, es mejor dividirlo en varios módulos más pequeños para mejorar la legibilidad y reutilización del código.
+
+3. **Usa nombres descriptivos**: Nombra los archivos de los módulos de forma descriptiva y coherente, como `calculadora.ts` o `validadores.ts`, para indicar claramente su propósito.
+
+4. **Módulos de terceros**: Cuando utilices bibliotecas externas, generalmente puedes importar módulos desde el archivo de la biblioteca sin preocuparte por la implementación interna.
+
+---
+
+#### **11.5. Espacios de Nombres (Namespaces) vs Módulos**
+
+Antes de la introducción de los módulos ECMAScript, TypeScript utilizaba **espacios de nombres** (`namespace`) para organizar el código. Aunque los espacios de nombres aún son soportados, los módulos son la forma recomendada de organizar el código, ya que ofrecen una mayor flexibilidad y compatibilidad con el estándar ECMAScript.
+
+**Ejemplo de espacio de nombres:**
+
+```typescript
+// archivo: matematicas.ts
+namespace Matematicas {
+  export function suma(a: number, b: number): number {
+    return a + b;
+  }
+
+  export function resta(a: number, b: number): number {
+    return a - b;
+  }
+}
+
+// archivo: principal.ts
+/// <reference path="matematicas.ts" />
+console.log(Matematicas.suma(5, 3));   // 8
+console.log(Matematicas.resta(5, 3));  // 2
+```
+
+Si bien el uso de `namespace` puede ser útil en aplicaciones más pequeñas o para agrupaciones específicas dentro de un archivo, los módulos son preferidos en proyectos más grandes debido a su estructura y compatibilidad con otras herramientas.
+
+---
+
+#### **11.6. Conclusión**
+
+Los **módulos en TypeScript** son una característica fundamental para organizar y estructurar el código en aplicaciones modernas. Usando `import` y `export`, puedes dividir tu código en partes reutilizables, lo que facilita la gestión, la escalabilidad y la mantenibilidad de tu aplicación. Al entender y aplicar correctamente los módulos, puedes mejorar la modularidad de tu código y aprovechar al máximo el potencial de TypeScript para crear aplicaciones robustas y bien organizadas.
+
+Recuerda que los módulos no solo permiten importar y exportar funciones, clases o variables, sino que también mejoran la legibilidad y el mantenimiento del código, algo crucial en proyectos grandes y complejos.

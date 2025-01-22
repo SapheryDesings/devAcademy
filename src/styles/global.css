@@ -107,6 +107,7 @@ header {
 
 a {
   text-decoration: none;
+  color: var(--color-fuente-principal-blanco);
 }
 
 hr {

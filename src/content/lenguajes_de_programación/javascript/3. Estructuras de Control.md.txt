@@ -1,0 +1,220 @@
+Aquí tienes el desarrollo del **Tema 3: Estructuras de Control en JavaScript**:
+
+---
+
+### **3. Estructuras de Control**
+
+Las estructuras de control permiten dirigir el flujo de ejecución de un programa en función de condiciones o repeticiones. Se dividen en **estructuras condicionales** y **estructuras de bucles**.
+
+---
+
+#### **3.1. Condicionales**  
+
+##### **3.1.1. `if`, `else if`, y `else`**  
+La estructura condicional básica se utiliza para ejecutar código según una condición lógica.  
+
+**Sintaxis básica:**  
+```javascript
+if (condición) {
+    // Código si la condición es verdadera
+} else if (otraCondición) {
+    // Código si la otra condición es verdadera
+} else {
+    // Código si ninguna condición es verdadera
+}
+```
+
+**Ejemplo:**  
+```javascript
+let edad = 20;
+
+if (edad < 18) {
+    console.log("Eres menor de edad.");
+} else if (edad >= 18 && edad < 65) {
+    console.log("Eres adulto.");
+} else {
+    console.log("Eres mayor de 65 años.");
+}
+```
+
+---
+
+##### **3.1.2. Operador ternario**  
+Es una forma compacta de escribir un condicional simple.  
+**Sintaxis:**  
+```javascript
+condición ? expresiónSiVerdadero : expresiónSiFalso;
+```
+
+**Ejemplo:**  
+```javascript
+let edad = 20;
+let mensaje = edad >= 18 ? "Eres mayor de edad." : "Eres menor de edad.";
+console.log(mensaje);
+```
+
+---
+
+##### **3.1.3. `switch`**  
+Se utiliza cuando hay varias condiciones a evaluar sobre un mismo valor.  
+**Sintaxis:**  
+```javascript
+switch (expresión) {
+    case valor1:
+        // Código si expresión === valor1
+        break;
+    case valor2:
+        // Código si expresión === valor2
+        break;
+    default:
+        // Código si no coincide con ningún caso
+}
+```
+
+**Ejemplo:**  
+```javascript
+let dia = 3;
+
+switch (dia) {
+    case 1:
+        console.log("Lunes");
+        break;
+    case 2:
+        console.log("Martes");
+        break;
+    case 3:
+        console.log("Miércoles");
+        break;
+    default:
+        console.log("Día no válido.");
+}
+```
+
+---
+
+#### **3.2. Bucles**
+
+##### **3.2.1. `for`**  
+Se utiliza cuando se conoce de antemano el número de iteraciones.  
+**Sintaxis:**  
+```javascript
+for (inicialización; condición; incremento/decremento) {
+    // Código a ejecutar en cada iteración
+}
+```
+
+**Ejemplo:**  
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log("Iteración número: " + i);
+}
+```
+
+---
+
+##### **3.2.2. `while`**  
+Ejecuta un bloque de código mientras la condición sea verdadera.  
+**Sintaxis:**  
+```javascript
+while (condición) {
+    // Código a ejecutar mientras la condición sea verdadera
+}
+```
+
+**Ejemplo:**  
+```javascript
+let contador = 0;
+
+while (contador < 3) {
+    console.log("Contador: " + contador);
+    contador++;
+}
+```
+
+---
+
+##### **3.2.3. `do...while`**  
+Es similar al `while`, pero garantiza que el bloque de código se ejecute al menos una vez.  
+**Sintaxis:**  
+```javascript
+do {
+    // Código a ejecutar
+} while (condición);
+```
+
+**Ejemplo:**  
+```javascript
+let numero = 0;
+
+do {
+    console.log("Número: " + numero);
+    numero++;
+} while (numero < 3);
+```
+
+---
+
+##### **3.2.4. `for...of`**  
+Se utiliza para recorrer valores de un array o iterable.  
+**Ejemplo:**  
+```javascript
+let frutas = ["Manzana", "Banana", "Cereza"];
+
+for (let fruta of frutas) {
+    console.log(fruta);
+}
+```
+
+---
+
+##### **3.2.5. `for...in`**  
+Se utiliza para recorrer las propiedades de un objeto.  
+**Ejemplo:**  
+```javascript
+let persona = { nombre: "Ana", edad: 25, ciudad: "Madrid" };
+
+for (let clave in persona) {
+    console.log(clave + ": " + persona[clave]);
+}
+```
+
+---
+
+#### **3.3. Manejo de interrupciones en bucles**
+
+##### **3.3.1. `break`**  
+Interrumpe un bucle o estructura `switch` antes de que termine.  
+**Ejemplo:**  
+```javascript
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break; // Salir del bucle cuando i sea 5
+    }
+    console.log(i);
+}
+```
+
+---
+
+##### **3.3.2. `continue`**  
+Salta a la siguiente iteración del bucle, omitiendo el código restante en esa iteración.  
+**Ejemplo:**  
+```javascript
+for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // Saltar números pares
+    }
+    console.log(i);
+}
+```
+
+---
+
+#### **Ejercicio práctico**  
+1. Crea un programa que pregunte al usuario su edad. Si tiene menos de 18, muestra "Eres menor de edad". Si tiene entre 18 y 65, muestra "Eres adulto". Si tiene más de 65, muestra "Eres jubilado".  
+2. Usa un bucle `for` para mostrar los números del 1 al 10.  
+3. Usa un `while` para contar regresivamente de 5 a 1 y mostrar "¡Despegue!".  
+
+---
+
+¿Te gustaría que amplíe con ejercicios más avanzados o ejemplos interactivos? 😊

@@ -1,0 +1,181 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 7. **Colaboración en Git**
+
+La colaboración en Git es uno de los principales usos de este sistema de control de versiones distribuido. Permite que múltiples desarrolladores trabajen simultáneamente en el mismo proyecto, manteniendo un historial claro y evitando conflictos mediante una serie de herramientas y buenas prácticas. 
+
+Este tema cubrirá las principales estrategias y herramientas que facilitan la colaboración en proyectos gestionados con Git, como el uso de ramas, la resolución de conflictos, la revisión de código y la integración de cambios desde diferentes colaboradores.
+
+---
+
+#### **1. Flujo de Trabajo en Equipo con Git**
+
+Cuando varias personas están trabajando en el mismo proyecto, es fundamental tener un flujo de trabajo organizado para evitar confusión y conflictos. Existen varios modelos de flujo de trabajo para colaborar eficientemente en Git:
+
+- **Flujo de trabajo básico con ramas:**
+
+  Este es el flujo de trabajo más simple y consiste en crear una rama para cada tarea o característica nueva, y luego fusionar esa rama en la rama principal (`main` o `master`) cuando el trabajo esté terminado y probado. El flujo básico de trabajo sigue estos pasos:
+
+  1. Clonar el repositorio remoto: `git clone <URL_del_repositorio>`
+  2. Crear una nueva rama para una tarea: `git checkout -b nombre_de_la_rama`
+  3. Realizar cambios y hacer commits regularmente: `git commit -m "Descripción del cambio"`
+  4. Empujar la rama al repositorio remoto: `git push origin nombre_de_la_rama`
+  5. Crear una **pull request** o **merge request** en plataformas como GitHub, GitLab o Bitbucket para que los cambios sean revisados y fusionados con la rama principal.
+  6. Cuando se apruebe, fusionar los cambios de la rama a `main`.
+
+- **Flujo de trabajo Git Flow:**
+
+  Git Flow es un modelo de ramificación popular para equipos más grandes y proyectos más complejos. Define ramas específicas para desarrollo, producción y características nuevas:
+
+  - **Rama `main`**: Contiene la versión estable del proyecto.
+  - **Rama `develop`**: Contiene el código en desarrollo que está listo para pruebas.
+  - **Ramas de características (`feature`)**: Se crean desde `develop` para trabajar en nuevas características.
+  - **Ramas de liberación (`release`)**: Se crean desde `develop` cuando el código está listo para ser lanzado, pero necesita pruebas finales.
+  - **Ramas de corrección de errores (`hotfix`)**: Se crean desde `main` para corregir errores críticos en producción.
+
+  El flujo de trabajo de Git Flow es más estructurado, con reglas claras sobre cuándo crear, fusionar y eliminar ramas, lo cual es útil para equipos grandes.
+
+---
+
+#### **2. Usando Pull Requests (PR) o Merge Requests (MR)**
+
+Las **pull requests** (GitHub, Bitbucket) o **merge requests** (GitLab) son herramientas que facilitan la colaboración en Git. Permiten que los cambios de una rama sean revisados y discutidos antes de ser fusionados a la rama principal.
+
+- **Crear una Pull Request:**
+
+  1. Trabaja en una rama localmente.
+  2. Empuja esa rama a un repositorio remoto usando `git push`.
+  3. Ve a la plataforma de Git (GitHub, GitLab, etc.) y crea una pull request, seleccionando la rama a fusionar y la rama de destino (normalmente `main` o `develop`).
+  4. Los colaboradores revisan los cambios, hacen comentarios y sugieren modificaciones si es necesario.
+  5. Una vez aprobada, la pull request puede ser fusionada.
+
+- **Revisión de código:**
+
+  Durante el proceso de revisión de una pull request, se pueden identificar errores, mejorar el estilo de código y discutir la implementación. La revisión de código es crucial para mantener un código de alta calidad y asegurar que el equipo esté alineado en las decisiones de desarrollo.
+
+---
+
+#### **3. Resolución de Conflictos de Fusión (Merge Conflicts)**
+
+Los **conflictos de fusión** ocurren cuando dos desarrolladores realizan cambios en la misma línea de código en un archivo, o modifican partes relacionadas del mismo archivo. Git no puede fusionar estos cambios automáticamente y te solicita que los resuelvas manualmente.
+
+- **Comando para fusionar ramas:**
+
+  ```bash
+  git checkout main
+  git merge nombre_de_la_rama
+  ```
+
+- **Cómo resolver un conflicto:**
+
+  Cuando ocurre un conflicto, Git marca las áreas del archivo que no pudo fusionar, insertando delimitadores como:
+
+  ```
+  <<<<<<< HEAD
+  Cambios en la rama principal.
+  =======
+  Cambios en la rama de características.
+  >>>>>>> nombre_de_la_rama
+  ```
+
+  Para resolver el conflicto, debes editar el archivo manualmente, eligiendo qué cambios conservar o cómo combinarlos. Después de resolver el conflicto:
+
+  1. Elimina las marcas de conflicto.
+  2. Usa `git add` para marcar el conflicto como resuelto.
+  3. Realiza un commit para finalizar la fusión: `git commit`.
+
+  Si tienes dudas sobre qué cambios elegir, es útil pedir la opinión de otros miembros del equipo o revisar el contexto completo del proyecto.
+
+---
+
+#### **4. Sincronización de Cambios con Repositorios Remotos**
+
+Para colaborar efectivamente en un proyecto, es importante mantener tu repositorio local sincronizado con el repositorio remoto. Esto te permite acceder a los cambios realizados por otros colaboradores y evitar conflictos de integración.
+
+- **Obtener cambios del repositorio remoto (fetch):**
+
+  ```bash
+  git fetch origin
+  ```
+
+  Este comando descarga los cambios más recientes del repositorio remoto, pero no los fusiona automáticamente con tu rama local.
+
+- **Fusionar cambios desde el repositorio remoto (pull):**
+
+  ```bash
+  git pull origin main
+  ```
+
+  `git pull` descarga y fusiona los cambios de la rama remota en tu rama local.
+
+- **Actualizar tu rama antes de empujar (push):**
+
+  Siempre es una buena práctica actualizar tu rama local con los cambios más recientes del repositorio remoto antes de empujar tus propios cambios. Esto ayuda a evitar conflictos.
+
+  ```bash
+  git pull origin nombre_de_la_rama
+  ```
+
+---
+
+#### **5. Usando Etiquetas (Tags) para Versiones**
+
+Las **etiquetas** o **tags** en Git se utilizan para marcar puntos específicos en el historial del proyecto, como versiones importantes o lanzamientos. Esto es útil para tener un punto de referencia claro para las versiones estables del código.
+
+- **Crear una etiqueta:**
+
+  ```bash
+  git tag -a v1.0 -m "Versión 1.0"
+  ```
+
+  Este comando crea una etiqueta llamada `v1.0` y asocia un mensaje con ella.
+
+- **Listar etiquetas existentes:**
+
+  ```bash
+  git tag
+  ```
+
+- **Empujar etiquetas al repositorio remoto:**
+
+  Para compartir etiquetas con el equipo, empújalas al repositorio remoto:
+
+  ```bash
+  git push origin v1.0
+  ```
+
+  O para empujar todas las etiquetas de una vez:
+
+  ```bash
+  git push --tags
+  ```
+
+---
+
+#### **6. Buenas Prácticas para Colaborar en Git**
+
+La colaboración efectiva en Git requiere seguir algunas buenas prácticas para minimizar errores y facilitar la integración de cambios. Aquí te presentamos algunas de las mejores prácticas más comunes:
+
+- **Commits pequeños y frecuentes**: Realiza commits pequeños y con mensajes claros para facilitar la revisión de cambios y la resolución de problemas.
+- **Usa ramas para cada tarea**: Crea una nueva rama para cada tarea o característica. Esto te permite trabajar en múltiples características sin que interfieran entre sí.
+- **Revisión de código**: Siempre realiza una revisión de código antes de fusionar cambios, para asegurar que el código cumple con los estándares y no introduce errores.
+- **Mantén tu rama sincronizada**: Antes de empujar tus cambios, asegúrate de actualizar tu rama local con los últimos cambios del repositorio remoto para evitar conflictos.
+- **Resolución de conflictos**: Si encuentras conflictos durante una fusión, resuélvelos cuidadosamente, solicitando ayuda si es necesario.
+
+---
+
+
+1. **Flujos de trabajo**: Usa flujos de trabajo como el flujo básico con ramas o Git Flow para organizar cómo trabajar en equipo.
+2. **Pull requests / Merge requests**: Usa pull requests para revisión de código antes de fusionar cambios en la rama principal.
+3. **Resolución de conflictos**: Resuelve conflictos de fusión cuando Git no pueda combinar cambios automáticamente.
+4. **Sincronización con el remoto**: Mantén tu repositorio local actualizado con los cambios del repositorio remoto y empuja tus propios cambios cuando estés listo.
+5. **Etiquetas**: Usa etiquetas para marcar versiones importantes del proyecto.
+6. **Buenas prácticas**: Sigue buenas prácticas de trabajo en equipo, como commits pequeños y claros, y revisión de código.
+
+>El trabajo colaborativo en Git facilita la integración de cambios de múltiples colaboradores en proyectos grandes, asegurando un desarrollo eficiente y controlado.

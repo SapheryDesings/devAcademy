@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import PlantillaMd from '../../layouts/PlantillaMd.astro';
+
+export async function getStaticPaths() {
+  const entradasAstro = await getCollection('prueba');
+  return entradasAstro.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<PlantillaMd frontmatter={entry.data}>
+  <Content />
+</PlantillaMd>
+

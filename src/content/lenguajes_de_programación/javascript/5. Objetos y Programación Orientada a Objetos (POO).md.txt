@@ -1,0 +1,242 @@
+Aquí tienes el desarrollo del **Tema 5: Objetos y Programación Orientada a Objetos (POO) en JavaScript**:
+
+---
+
+### **5. Objetos y Programación Orientada a Objetos (POO)**
+
+JavaScript es un lenguaje basado en objetos, lo que significa que los objetos son fundamentales para organizar datos y comportamientos. La Programación Orientada a Objetos (POO) permite estructurar el código de forma modular y reutilizable.
+
+---
+
+#### **5.1. ¿Qué es un objeto?**
+
+Un objeto es una colección de propiedades y métodos (funciones asociadas).  
+**Sintaxis básica:**  
+```javascript
+let objeto = {
+    propiedad1: valor1,
+    propiedad2: valor2,
+    metodo1: function () {
+        // Código
+    }
+};
+```
+
+**Ejemplo:**  
+```javascript
+let persona = {
+    nombre: "Juan",
+    edad: 30,
+    saludar: function () {
+        console.log("Hola, mi nombre es " + this.nombre);
+    }
+};
+
+console.log(persona.nombre); // "Juan"
+persona.saludar();          // "Hola, mi nombre es Juan"
+```
+
+---
+
+#### **5.2. Creación de objetos**
+
+##### **5.2.1. Objeto literal**  
+La forma más sencilla de crear un objeto.  
+```javascript
+let coche = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    encender: function () {
+        console.log("El coche está encendido.");
+    }
+};
+```
+
+---
+
+##### **5.2.2. Objeto con `new Object()`**  
+Otra forma de crear un objeto, menos común.  
+```javascript
+let libro = new Object();
+libro.titulo = "JavaScript Básico";
+libro.autor = "Anónimo";
+libro.leer = function () {
+    console.log("Leyendo " + this.titulo);
+};
+```
+
+---
+
+##### **5.2.3. Constructores de objetos**  
+Permiten crear varios objetos con la misma estructura.  
+**Ejemplo:**  
+```javascript
+function Persona(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.saludar = function () {
+        console.log("Hola, soy " + this.nombre);
+    };
+}
+
+let persona1 = new Persona("Ana", 25);
+let persona2 = new Persona("Luis", 35);
+
+persona1.saludar(); // "Hola, soy Ana"
+persona2.saludar(); // "Hola, soy Luis"
+```
+
+---
+
+#### **5.3. Métodos y propiedades de los objetos**
+
+##### **5.3.1. Métodos de los objetos**  
+Los métodos son funciones dentro de los objetos que pueden operar sobre sus propiedades.  
+
+**Ejemplo:**  
+```javascript
+let calculadora = {
+    sumar: function (a, b) {
+        return a + b;
+    },
+    restar: function (a, b) {
+        return a - b;
+    }
+};
+
+console.log(calculadora.sumar(5, 3)); // 8
+console.log(calculadora.restar(5, 3)); // 2
+```
+
+---
+
+##### **5.3.2. Acceso a propiedades y métodos**  
+1. **Notación de punto:**  
+   ```javascript
+   console.log(persona.nombre);
+   persona.saludar();
+   ```
+
+2. **Notación de corchetes:**  
+   ```javascript
+   console.log(persona["nombre"]);
+   ```
+
+---
+
+#### **5.4. POO en JavaScript**
+
+##### **5.4.1. Clases**  
+Las clases son una forma moderna de definir objetos en JavaScript (introducidas en ES6).  
+
+**Ejemplo básico de clase:**  
+```javascript
+class Animal {
+    constructor(nombre, tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+
+    describir() {
+        console.log(`Este es un ${this.tipo} llamado ${this.nombre}.`);
+    }
+}
+
+let perro = new Animal("Rex", "perro");
+perro.describir(); // "Este es un perro llamado Rex."
+```
+
+---
+
+##### **5.4.2. Herencia**  
+Permite que una clase herede propiedades y métodos de otra clase.  
+
+**Ejemplo:**  
+```javascript
+class Animal {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+
+    hablar() {
+        console.log(this.nombre + " hace un ruido.");
+    }
+}
+
+class Perro extends Animal {
+    hablar() {
+        console.log(this.nombre + " ladra.");
+    }
+}
+
+let perro = new Perro("Rex");
+perro.hablar(); // "Rex ladra."
+```
+
+---
+
+##### **5.4.3. Encapsulación**  
+Esconde detalles internos del objeto mediante propiedades privadas y públicas.  
+**Ejemplo:**  
+```javascript
+class CuentaBancaria {
+    #saldo; // Propiedad privada
+
+    constructor(saldoInicial) {
+        this.#saldo = saldoInicial;
+    }
+
+    depositar(cantidad) {
+        this.#saldo += cantidad;
+    }
+
+    obtenerSaldo() {
+        return this.#saldo;
+    }
+}
+
+let cuenta = new CuentaBancaria(1000);
+cuenta.depositar(500);
+console.log(cuenta.obtenerSaldo()); // 1500
+// console.log(cuenta.#saldo); // Error: Propiedad privada
+```
+
+---
+
+##### **5.4.4. Polimorfismo**  
+Permite que métodos con el mismo nombre actúen de manera diferente según la clase.  
+
+**Ejemplo:**  
+```javascript
+class Vehiculo {
+    conducir() {
+        console.log("Conduciendo un vehículo genérico.");
+    }
+}
+
+class Coche extends Vehiculo {
+    conducir() {
+        console.log("Conduciendo un coche.");
+    }
+}
+
+let vehiculo = new Vehiculo();
+let coche = new Coche();
+
+vehiculo.conducir(); // "Conduciendo un vehículo genérico."
+coche.conducir();    // "Conduciendo un coche."
+```
+
+---
+
+#### **5.5. Ejercicios prácticos**
+
+1. Crea un objeto literal llamado `persona` con propiedades `nombre`, `edad` y un método `presentarse` que imprima `"Hola, soy <nombre> y tengo <edad> años."`.  
+
+2. Define una clase `Rectangulo` con propiedades `base` y `altura` y un método `calcularArea`. Crea una instancia de `Rectangulo` y calcula el área.
+
+3. Implementa una jerarquía de clases donde una clase `Animal` sea la base, y `Gato` y `Perro` hereden de ella. Define un método `hacerSonido` en cada clase derivada.  
+
+---
+
+¿Te gustaría que detalle más conceptos, añada ejercicios adicionales o profundice en un aspecto específico? 😊

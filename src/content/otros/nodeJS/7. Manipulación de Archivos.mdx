@@ -1,0 +1,237 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Backend" asignatura = "NodeJs"/>
+
+# 7. Manejo de Errores en Node.js
+
+El manejo de errores es una parte crucial en cualquier aplicación. En Node.js, el manejo adecuado de errores asegura que la aplicación sea robusta, confiable y fácil de depurar. Este tema cubre cómo manejar errores en Node.js utilizando varias técnicas y patrones estándar.
+
+## 7.1. Tipos de Errores
+
+En Node.js, los errores pueden ser clasificados en dos categorías principales:
+
+### 7.1.1. Errores de JavaScript
+
+Estos son los errores que ocurren durante la ejecución del código JavaScript, como cualquier otro lenguaje de programación. Estos errores suelen ser causados por:
+
+- **Sintaxis incorrecta**.
+- **Referencias a variables no definidas**.
+- **Errores lógicos** que no son detectados en tiempo de compilación.
+
+**Ejemplo de error de JavaScript**:
+
+```javascript
+console.log(a);  // ReferenceError: a is not defined
+```
+
+### 7.1.2. Errores del Sistema o del Entorno
+
+Estos errores son causados por problemas fuera del control del programa, como fallos en el sistema de archivos, fallos de red, o problemas con dependencias externas.
+
+**Ejemplo de error de archivo no encontrado**:
+
+```javascript
+const fs = require('fs');
+
+fs.readFile('archivoInexistente.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error al leer el archivo:', err);
+  } else {
+    console.log(data);
+  }
+});
+```
+
+## 7.2. Manejo Básico de Errores
+
+Node.js proporciona varias formas de manejar errores, tanto síncronas como asincrónicas. El manejo de errores puede involucrar la captura de excepciones, la verificación de errores en las funciones de callback y el uso de promesas.
+
+### 7.2.1. Uso de `try...catch`
+
+En código síncrono, puedes utilizar **`try...catch`** para atrapar errores y manejarlos adecuadamente. Si un bloque de código dentro de `try` lanza un error, el flujo de ejecución pasa al bloque `catch`.
+
+**Ejemplo de `try...catch`**:
+
+```javascript
+try {
+  let resultado = 10 / 0;  // No lanza error, pero simula un comportamiento no esperado.
+  console.log(resultado);
+} catch (error) {
+  console.error('Ocurrió un error:', error);
+}
+```
+
+### 7.2.2. Manejo de Errores en Callbacks
+
+Node.js utiliza el patrón **error-first callback** en muchas de sus funciones asincrónicas. Este patrón implica que la primera posición del callback debe ser un parámetro `error`. Si hay un error, ese parámetro contendrá el error; si no hay error, el parámetro `error` será `null`.
+
+**Ejemplo de manejo de errores en un callback**:
+
+```javascript
+const fs = require('fs');
+
+fs.readFile('archivo.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error al leer el archivo:', err);
+    return;
+  }
+  console.log(data);
+});
+```
+
+En este caso, si ocurre un error (por ejemplo, si el archivo no existe), el bloque `if (err)` se ejecutará y el error será manejado.
+
+### 7.2.3. Manejo de Errores con Promesas
+
+Las promesas en JavaScript también proporcionan una forma de manejar errores de manera más limpia y fácil de leer, especialmente en operaciones asincrónicas.
+
+**Ejemplo de manejo de errores con promesas**:
+
+```javascript
+const fs = require('fs').promises;
+
+fs.readFile('archivo.txt', 'utf8')
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error('Error al leer el archivo:', err);
+  });
+```
+
+Aquí, el manejo del error se realiza utilizando el método `.catch()` en la promesa devuelta por `fs.readFile`.
+
+## 7.3. Manejo de Errores en Operaciones Asincrónicas
+
+Node.js se basa en operaciones asincrónicas para manejar tareas que involucran I/O (entrada/salida), como la lectura de archivos, la interacción con bases de datos o la comunicación en red. Estas operaciones son propensas a errores, por lo que es crucial manejarlas correctamente.
+
+### 7.3.1. Uso de `process.on('uncaughtException')`
+
+Cuando un error no es atrapado por un bloque `try...catch` o en un callback, Node.js emite un evento `uncaughtException`. Es posible manejar este tipo de errores mediante un **manejador de eventos**.
+
+**Ejemplo de manejo de `uncaughtException`**:
+
+```javascript
+process.on('uncaughtException', (error) => {
+  console.error('Excepción no capturada:', error);
+  process.exit(1);  // Finaliza el proceso con un código de salida 1 (error).
+});
+
+// Simulación de error no capturado
+setTimeout(() => {
+  throw new Error('Algo salió mal');
+}, 1000);
+```
+
+En este ejemplo, el proceso termina correctamente con un mensaje de error cuando se lanza una excepción no capturada.
+
+**Nota**: Usar `uncaughtException` para manejar errores no es una práctica recomendada para aplicaciones en producción, ya que puede ocultar errores importantes. Es más adecuado para aplicaciones pequeñas o para realizar pruebas.
+
+### 7.3.2. Promesas no gestionadas
+
+Si una promesa se rechaza y no se maneja, Node.js emite una advertencia. En versiones recientes de Node.js, las promesas no manejadas provocarán que el proceso se termine con un código de salida 1, lo que indica un error.
+
+**Ejemplo de promesa no manejada**:
+
+```javascript
+new Promise((resolve, reject) => {
+  reject(new Error('Error en la promesa'));
+});
+```
+
+Este error puede ser manejado agregando un `.catch()` a la promesa o utilizando un manejador global de promesas no gestionadas:
+
+```javascript
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Promesa no gestionada:', reason);
+});
+```
+
+## 7.4. Propagación de Errores
+
+En aplicaciones más grandes, es importante propagar los errores a lo largo del flujo de ejecución para garantizar que se gestionen correctamente en el nivel adecuado. A continuación, te explicamos cómo se puede realizar la propagación de errores:
+
+### 7.4.1. Lanzar Errores Manualmente
+
+Puedes lanzar errores personalizados utilizando el comando `throw`. Esto es útil cuando necesitas detener la ejecución de un código en un punto específico si algo no va bien.
+
+**Ejemplo de lanzar un error**:
+
+```javascript
+function dividir(a, b) {
+  if (b === 0) {
+    throw new Error('No se puede dividir por cero');
+  }
+  return a / b;
+}
+
+try {
+  console.log(dividir(10, 0));
+} catch (error) {
+  console.error('Error:', error.message);  // Imprime: Error: No se puede dividir por cero
+}
+```
+
+Aquí, si se intenta dividir por cero, el error se lanza y se captura con `try...catch`.
+
+### 7.4.2. Uso de `next()` en Middleware (Express)
+
+En aplicaciones basadas en Express, los errores pueden ser manejados usando el patrón de middleware. Si un error ocurre en una función de middleware, puedes pasarlo al siguiente middleware de manejo de errores utilizando la función `next()`.
+
+**Ejemplo de manejo de errores con Express**:
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Middleware para manejar errores
+app.use((req, res, next) => {
+  const error = new Error('Algo salió mal');
+  next(error);  // Pasar el error al siguiente middleware de manejo de errores
+});
+
+// Middleware para manejar el error
+app.use((err, req, res, next) => {
+  res.status(500).send('Error interno del servidor: ' + err.message);
+});
+
+app.listen(3000, () => {
+  console.log('Servidor corriendo en el puerto 3000');
+});
+```
+
+En este ejemplo, el primer middleware genera un error y lo pasa al siguiente middleware de manejo de errores, que responde con un mensaje adecuado.
+
+## 7.5. Mejor Práctica para el Manejo de Errores
+
+A continuación, algunas de las mejores prácticas para el manejo de errores en Node.js:
+
+1. **Siempre maneja los errores en las operaciones asincrónicas**. Si usas callbacks, asegúrate de comprobar el primer parámetro (`err`). Si usas promesas, asegúrate de manejar los errores con `.catch()`.
+
+2. **Usa `try...catch` en código síncrono** para capturar errores que pueden ocurrir durante la ejecución del código.
+
+3. **Evita los errores no gestionados**. Asegúrate de manejar todos los errores de las promesas utilizando `.catch()` o `async/await` con bloques `try...catch`.
+
+4. **No ignores los errores**. Si se produce un error y no lo gestionas adecuadamente, podrías estar arriesgando la estabilidad de tu aplicación.
+
+5. **Haz que los errores sean informativos**. Los mensajes de error deben ser claros y descriptivos para que los desarrolladores puedan diagnosticar rápidamente el problema.
+
+6. **Utiliza un manejador global de errores para capturar errores no gestionados** como `uncaughtException` o promesas no gestionadas, pero recuerda que es mejor evitar que ocurran en primer lugar.
+
+
+>El manejo adecuado de errores es fundamental para crear aplicaciones fiables en Node.js. En este tema, hemos cubierto:
+
+- Los tipos de errores en Node.js.
+- Cómo manejar errores utilizando `try...catch`, callbacks, y promesas.
+- Técnicas de manejo de errores asincrónicos, como `uncaughtException` y `unhandledRejection`.
+- Cómo propagar errores a través de funciones y middleware.
+- Mejores prácticas para el manejo de errores en aplicaciones Node.js.
+
+>Un buen manejo de errores ayuda a hacer que tu aplicación sea más estable, depurable y fácil de mantener, mejorando la experiencia de desarrollo y la confiabilidad de la aplicación en producción.
+
+
+>Este desarrollo cubre el **Tema 7: Manejo de Errores en Node.js** en su totalidad, explicando los tipos de errores que pueden ocurrir, cómo manejarlos usando diferentes técnicas (callbacks, promesas, `try...catch`), y cómo seguir buenas prácticas para asegurarse de que los errores se gestionen correctamente en una aplicación Node.js.

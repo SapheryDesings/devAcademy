@@ -1,0 +1,223 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Express"/>
+
+# 2. Instalación de Express.js
+
+## 2.1. Requisitos previos
+
+Antes de instalar y comenzar a trabajar con Express.js, asegúrate de cumplir con los siguientes requisitos previos:
+
+- **Node.js**: Express es un framework para Node.js, por lo que es necesario tener Node.js instalado en tu sistema. Puedes verificar si tienes Node.js instalado ejecutando el siguiente comando en tu terminal:
+
+  ```bash
+  node -v
+  ```
+
+  Si no tienes Node.js, puedes descargarlo desde el sitio web oficial [https://nodejs.org](https://nodejs.org) y seguir las instrucciones de instalación.
+
+- **npm (Node Package Manager)**: npm es el gestor de paquetes de Node.js, que te permite instalar dependencias como Express. npm se instala automáticamente cuando instalas Node.js. Puedes verificar si npm está instalado con el siguiente comando:
+
+  ```bash
+  npm -v
+  ```
+
+## 2.2. Instalación de Express
+
+Para instalar Express en tu proyecto, debes seguir estos pasos:
+
+### 2.2.1. Crear un Proyecto Node.js
+
+Primero, crea una carpeta para tu proyecto y accede a ella en la terminal. Luego, inicializa un nuevo proyecto Node.js utilizando `npm init`:
+
+```bash
+mkdir mi-aplicacion-express
+cd mi-aplicacion-express
+npm init -y
+```
+
+El comando `npm init -y` generará un archivo `package.json` con configuraciones predeterminadas.
+
+### 2.2.2. Instalar Express
+
+Una vez que hayas creado tu proyecto, puedes instalar Express como una dependencia utilizando el siguiente comando:
+
+```bash
+npm install express --save
+```
+
+El flag `--save` asegura que Express se agregue a las dependencias en tu archivo `package.json`. En versiones más recientes de npm (a partir de npm 5), el flag `--save` es opcional, ya que se agrega automáticamente.
+
+Al ejecutar este comando, npm descargará Express y sus dependencias, y las almacenará en la carpeta `node_modules` de tu proyecto.
+
+### 2.2.3. Verificar la Instalación
+
+Para asegurarte de que Express se ha instalado correctamente, verifica la presencia de `express` en las dependencias de tu archivo `package.json`:
+
+```json
+{
+  "name": "mi-aplicacion-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+Aquí, `"express": "^4.17.1"` indica que Express está correctamente instalado.
+
+## 2.3. Crear una Aplicación Básica con Express
+
+Una vez que Express esté instalado, puedes crear un archivo básico para iniciar tu servidor. Crea un archivo `index.js` en la raíz de tu proyecto:
+
+```javascript
+// index.js
+const express = require('express');
+const app = express();
+
+// Definir una ruta básica
+app.get('/', (req, res) => {
+  res.send('¡Hola, mundo desde Express!');
+});
+
+// Iniciar el servidor en el puerto 3000
+app.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
+});
+```
+
+En este ejemplo:
+
+- Se importa el módulo `express`.
+- Se crea una instancia de una aplicación Express con `express()`.
+- Se define una ruta básica con `app.get()`, que responde con "¡Hola, mundo desde Express!" cuando un cliente hace una solicitud GET a la ruta raíz (`/`).
+- Se inicia el servidor con `app.listen()`, que escuchará en el puerto 3000.
+
+### 2.3.1. Ejecutar la Aplicación
+
+Para ejecutar la aplicación, abre una terminal en la carpeta del proyecto y ejecuta el siguiente comando:
+
+```bash
+node index.js
+```
+
+Verás el siguiente mensaje en la terminal:
+
+```
+Servidor corriendo en http://localhost:3000
+```
+
+Esto indica que el servidor Express se está ejecutando correctamente. Ahora puedes abrir un navegador web y acceder a `http://localhost:3000`, donde verás el mensaje "¡Hola, mundo desde Express!".
+
+## 2.4. Instalación de Express de Forma Global
+
+Si prefieres instalar Express globalmente en tu sistema (aunque no es lo más común), puedes usar el siguiente comando:
+
+```bash
+npm install -g express
+```
+
+Sin embargo, la instalación global de Express no es necesaria para el desarrollo de la mayoría de las aplicaciones. Es recomendable instalar Express localmente en cada proyecto para evitar conflictos y problemas de dependencias.
+
+## 2.5. Usar `express-generator` para Crear un Proyecto de Express
+
+Si deseas configurar rápidamente un proyecto Express con una estructura básica y archivos preconfigurados, puedes utilizar la herramienta `express-generator`, que genera una plantilla de aplicación Express con directorios y archivos estándar.
+
+### 2.5.1. Instalar `express-generator`
+
+Primero, instala `express-generator` globalmente utilizando el siguiente comando:
+
+```bash
+npm install -g express-generator
+```
+
+### 2.5.2. Crear un Proyecto con `express-generator`
+
+Una vez instalado, puedes crear un proyecto Express con el siguiente comando:
+
+```bash
+express mi-nueva-aplicacion
+```
+
+Esto generará una estructura básica de proyecto Express en una carpeta llamada `mi-nueva-aplicacion`. Para instalar las dependencias del proyecto, navega a la carpeta generada e instala los módulos con npm:
+
+```bash
+cd mi-nueva-aplicacion
+npm install
+```
+
+Luego, ejecuta el servidor:
+
+```bash
+npm start
+```
+
+La aplicación estará disponible en `http://localhost:3000`.
+
+## 2.6. Estructura de Archivos del Proyecto
+
+Al crear una aplicación Express, es posible que quieras organizar tu proyecto en varias carpetas y archivos para mantenerlo limpio y modular. Aquí te presentamos una estructura básica de un proyecto Express:
+
+```bash
+mi-aplicacion-express/
+│
+├── node_modules/           # Dependencias instaladas
+├── public/                 # Archivos estáticos (CSS, imágenes, JavaScript, etc.)
+├── routes/                 # Rutas de la aplicación
+│   └── index.js            # Ruta principal
+├── views/                  # Plantillas de vistas (si se usan motores de plantillas)
+│   └── index.pug           # Plantilla Pug
+├── app.js                  # Archivo principal de configuración de la app
+├── package.json            # Configuración del proyecto y dependencias
+└── package-lock.json       # Archivo de bloqueo de versiones de dependencias
+```
+
+### 2.6.1. Explicación de la Estructura
+
+- **`node_modules/`**: Contiene todas las dependencias que se instalan mediante npm.
+- **`public/`**: Carpeta donde se almacenan archivos estáticos como imágenes, hojas de estilo CSS y scripts JavaScript.
+- **`routes/`**: Carpeta que contiene los archivos de rutas. Cada archivo se encarga de definir las rutas y sus respectivos controladores.
+- **`views/`**: Carpeta que contiene las plantillas de vistas. Si usas un motor de plantillas como Pug, EJS o Handlebars, las vistas estarán aquí.
+- **`app.js`**: Archivo principal donde se configuran las rutas, middlewares y el servidor Express.
+- **`package.json`**: Archivo que contiene la configuración del proyecto, las dependencias y los scripts que se pueden ejecutar.
+- **`package-lock.json`**: Archivo que guarda las versiones exactas de las dependencias para garantizar la misma instalación en todos los entornos.
+
+## 2.7. Actualización de Dependencias
+
+Si alguna vez necesitas actualizar Express o cualquier otra dependencia, puedes ejecutar el siguiente comando para actualizar a la última versión:
+
+```bash
+npm update express
+```
+
+Si deseas actualizar todas las dependencias del proyecto, puedes ejecutar:
+
+```bash
+npm update
+```
+
+## 2.8. Desinstalar Express
+
+Si en algún momento decides eliminar Express de tu proyecto, puedes hacerlo ejecutando el siguiente comando:
+
+```bash
+npm uninstall express
+```
+
+Esto eliminará Express de las dependencias de tu proyecto y también borrará la carpeta `node_modules/` relacionada.
+
+>La instalación de Express es un proceso sencillo y rápido. Después de seguir los pasos descritos en este tema, estarás listo para comenzar a construir aplicaciones web y APIs con Express. Ya sea que elijas una instalación manual o utilices `express-generator` para crear un proyecto más estructurado, Express ofrece un entorno flexible y potente para desarrollar aplicaciones con Node.js.
+
+>Este tema cubre todo lo relacionado con la **instalación de Express.js**, desde los requisitos previos, hasta la creación de una aplicación básica, la instalación de `express-generator` y la organización de los archivos del proyecto.

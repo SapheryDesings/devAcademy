@@ -1,0 +1,291 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Backend" asignatura = "NodeJs"/>
+
+# 9. Bases de Datos en Node.js
+
+Node.js es una excelente opción para crear aplicaciones web y servicios que requieren almacenar y recuperar datos de bases de datos. En este tema, exploraremos cómo interactuar con diferentes tipos de bases de datos en Node.js, como bases de datos relacionales (MySQL, PostgreSQL) y bases de datos NoSQL (MongoDB). Aprenderás a conectarte a estas bases de datos, realizar consultas y manejar los resultados en tus aplicaciones.
+
+## 9.1. Introducción a las Bases de Datos en Node.js
+
+En Node.js, puedes interactuar con bases de datos utilizando bibliotecas y módulos específicos que permiten la conexión, ejecución de consultas y manejo de datos de manera eficiente. La elección entre una base de datos relacional o NoSQL depende de las necesidades de tu aplicación:
+
+- **Bases de datos relacionales (SQL)**: Utilizan un modelo de datos tabular. Son útiles cuando se requieren relaciones complejas entre los datos y operaciones de consulta SQL avanzadas. Ejemplos: MySQL, PostgreSQL.
+- **Bases de datos NoSQL**: Utilizan un modelo de datos flexible y no estructurado. Son adecuadas para aplicaciones con datos no estructurados o que cambian rápidamente. Ejemplos: MongoDB, Redis.
+
+## 9.2. Bases de Datos Relacionales (SQL)
+
+Las bases de datos relacionales utilizan tablas con filas y columnas para almacenar datos. Se accede a estos datos mediante el lenguaje de consulta estructurado (SQL). En Node.js, puedes utilizar bibliotecas como `mysql2` o `pg` para interactuar con bases de datos SQL.
+
+### 9.2.1. Conexión a MySQL
+
+Para interactuar con MySQL en Node.js, puedes usar el paquete `mysql2`. Primero, instálalo utilizando NPM:
+
+```bash
+npm install mysql2
+```
+
+#### 9.2.1.1. Ejemplo de Conexión y Consulta a MySQL
+
+```javascript
+const mysql = require('mysql2');
+
+// Crear la conexión a la base de datos
+const conexion = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'contraseña',
+  database: 'mi_base_de_datos'
+});
+
+// Conectar a la base de datos
+conexion.connect((err) => {
+  if (err) {
+    console.error('Error al conectar:', err.stack);
+    return;
+  }
+  console.log('Conectado a la base de datos como id ' + conexion.threadId);
+});
+
+// Realizar una consulta SQL
+conexion.query('SELECT * FROM usuarios', (err, resultados, campos) => {
+  if (err) {
+    console.error('Error en la consulta:', err);
+    return;
+  }
+  console.log('Resultados:', resultados);
+});
+
+// Cerrar la conexión
+conexion.end();
+```
+
+Este ejemplo muestra cómo conectar a una base de datos MySQL y realizar una consulta `SELECT` para obtener datos de la tabla `usuarios`.
+
+#### 9.2.1.2. Ejemplo de Inserción de Datos
+
+```javascript
+conexion.query('INSERT INTO usuarios (nombre, edad) VALUES (?, ?)', ['Juan', 30], (err, resultados) => {
+  if (err) {
+    console.error('Error al insertar:', err);
+    return;
+  }
+  console.log('Datos insertados:', resultados);
+});
+```
+
+Aquí, utilizamos el método `query` para insertar un nuevo usuario en la base de datos.
+
+### 9.2.2. Conexión a PostgreSQL
+
+Para interactuar con PostgreSQL en Node.js, puedes usar la biblioteca `pg`. Primero, instálala:
+
+```bash
+npm install pg
+```
+
+#### 9.2.2.1. Ejemplo de Conexión y Consulta a PostgreSQL
+
+```javascript
+const { Client } = require('pg');
+
+// Crear el cliente de la base de datos
+const cliente = new Client({
+  host: 'localhost',
+  user: 'usuario',
+  password: 'contraseña',
+  database: 'mi_base_de_datos',
+  port: 5432,
+});
+
+// Conectar a la base de datos
+cliente.connect((err) => {
+  if (err) {
+    console.error('Error al conectar:', err.stack);
+    return;
+  }
+  console.log('Conectado a PostgreSQL');
+});
+
+// Realizar una consulta SQL
+cliente.query('SELECT * FROM usuarios', (err, res) => {
+  if (err) {
+    console.error('Error en la consulta:', err);
+    return;
+  }
+  console.log('Resultados:', res.rows);
+});
+
+// Cerrar la conexión
+cliente.end();
+```
+
+En este ejemplo, nos conectamos a PostgreSQL, ejecutamos una consulta `SELECT` y mostramos los resultados.
+
+## 9.3. Bases de Datos NoSQL
+
+Las bases de datos NoSQL son una alternativa a las bases de datos relacionales. Son más flexibles y están diseñadas para manejar grandes volúmenes de datos no estructurados. Un ejemplo popular de base de datos NoSQL es **MongoDB**.
+
+### 9.3.1. Conexión a MongoDB
+
+MongoDB es una base de datos NoSQL orientada a documentos. Para interactuar con MongoDB en Node.js, puedes usar el paquete `mongoose`, que proporciona una interfaz sencilla y elegante.
+
+#### 9.3.1.1. Instalación de Mongoose
+
+Primero, instala el paquete `mongoose`:
+
+```bash
+npm install mongoose
+```
+
+#### 9.3.1.2. Ejemplo de Conexión y Consulta a MongoDB
+
+```javascript
+const mongoose = require('mongoose');
+
+// Conectar a MongoDB
+mongoose.connect('mongodb://localhost:27017/mi_base_de_datos', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Conectado a MongoDB'))
+.catch((err) => console.error('Error al conectar a MongoDB:', err));
+
+// Definir un esquema y modelo para usuarios
+const usuarioSchema = new mongoose.Schema({
+  nombre: String,
+  edad: Number,
+});
+
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+
+// Consultar usuarios
+Usuario.find({}, (err, usuarios) => {
+  if (err) {
+    console.error('Error al obtener usuarios:', err);
+    return;
+  }
+  console.log('Usuarios:', usuarios);
+});
+```
+
+En este ejemplo, nos conectamos a MongoDB, definimos un modelo de datos para la colección `usuarios` y realizamos una consulta para obtener todos los usuarios.
+
+### 9.3.2. Inserción de Datos en MongoDB
+
+```javascript
+// Crear un nuevo usuario
+const nuevoUsuario = new Usuario({ nombre: 'Ana', edad: 25 });
+
+// Guardar el nuevo usuario en la base de datos
+nuevoUsuario.save((err) => {
+  if (err) {
+    console.error('Error al guardar el usuario:', err);
+    return;
+  }
+  console.log('Usuario guardado');
+});
+```
+
+En este ejemplo, creamos un nuevo usuario e insertamos los datos en la base de datos MongoDB.
+
+## 9.4. Consultas Avanzadas
+
+### 9.4.1. Consultas con Condiciones (MySQL, PostgreSQL)
+
+Tanto en bases de datos SQL como NoSQL, puedes realizar consultas con condiciones específicas para filtrar los datos que deseas recuperar.
+
+#### 9.4.1.1. Consulta con Condiciones en MySQL
+
+```javascript
+conexion.query('SELECT * FROM usuarios WHERE edad > ?', [18], (err, resultados) => {
+  if (err) {
+    console.error('Error en la consulta:', err);
+    return;
+  }
+  console.log('Usuarios mayores de 18:', resultados);
+});
+```
+
+#### 9.4.1.2. Consulta con Condiciones en MongoDB
+
+```javascript
+Usuario.find({ edad: { $gt: 18 } }, (err, usuarios) => {
+  if (err) {
+    console.error('Error en la consulta:', err);
+    return;
+  }
+  console.log('Usuarios mayores de 18:', usuarios);
+});
+```
+
+En estos ejemplos, consultamos los usuarios que tienen una edad mayor a 18 años, tanto en MySQL como en MongoDB.
+
+## 9.5. Transacciones
+
+Las transacciones son una característica importante en bases de datos relacionales, ya que garantizan que un conjunto de operaciones se ejecute de manera atómica (todo o nada).
+
+### 9.5.1. Transacciones en MySQL
+
+```javascript
+conexion.beginTransaction((err) => {
+  if (err) {
+    console.error('Error al iniciar la transacción:', err);
+    return;
+  }
+
+  conexion.query('INSERT INTO usuarios (nombre, edad) VALUES (?, ?)', ['Carlos', 35], (err, resultados) => {
+    if (err) {
+      return conexion.rollback(() => {
+        console.error('Error en la consulta, deshaciendo transacción:', err);
+      });
+    }
+
+    conexion.commit((err) => {
+      if (err) {
+        return conexion.rollback(() => {
+          console.error('Error al hacer commit, deshaciendo transacción:', err);
+        });
+      }
+      console.log('Transacción completada');
+    });
+  });
+});
+```
+
+### 9.5.2. Transacciones en MongoDB
+
+MongoDB también soporta transacciones, pero debes asegurarte de que estás usando una versión que las permita (v4.0 o superior).
+
+```javascript
+const session = await mongoose.startSession();
+session.startTransaction();
+
+try {
+  const usuario = new Usuario({ nombre: 'Lucía', edad: 28 });
+  await usuario.save({ session });
+  await session.commitTransaction();
+  console.log('Transacción completada');
+} catch (err) {
+  await session.abortTransaction();
+  console.error('Error en la transacción:', err);
+} finally {
+  session.endSession();
+}
+```
+
+En este tema, hemos cubierto los aspectos fundamentales de cómo interactuar con bases de datos en Node.js:
+
+- **Bases de datos relacionales (SQL)**: Usamos `mysql2` para MySQL y `pg` para PostgreSQL.
+- **Bases de datos NoSQL**: Utilizamos `mongoose` para interactuar con MongoDB.
+- Realizamos **consultas básicas y avanzadas**, incluyendo condiciones en las consultas.
+- Aprendimos a trabajar con **transacciones** tanto en bases de datos SQL como NoSQL.
+
+>Al dominar estas técnicas, podrás construir aplicaciones Node.js con bases de datos tanto relacionales como NoSQL, lo que te permitirá manejar datos de manera eficiente y escalable en tus proyectos.
+
+
+>Este desarrollo cubre el **Tema 9: Bases de Datos en Node.js**, incluyendo cómo conectarse y trabajar con bases de datos SQL (MySQL, PostgreSQL) y NoSQL (MongoDB), cómo realizar consultas, insertar datos, trabajar con transacciones y manejar consultas avanzadas.

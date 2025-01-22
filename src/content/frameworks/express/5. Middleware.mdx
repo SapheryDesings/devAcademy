@@ -1,0 +1,208 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Express"/>
+
+# 5. Middleware en Express
+
+El **middleware** es uno de los conceptos clave al trabajar con Express.js. Un middleware es una función que tiene acceso al objeto de solicitud (`req`), al objeto de respuesta (`res`), y a la función `next` en el ciclo de vida de una solicitud HTTP. Los middlewares pueden realizar diversas tareas como manipular la solicitud, la respuesta, agregar nuevas funcionalidades, o incluso terminar el ciclo de vida de la solicitud. Este tema cubre cómo funcionan los middlewares en Express, cómo se utilizan y algunos ejemplos comunes.
+
+## 4.1. ¿Qué es un Middleware?
+
+En términos simples, un middleware es una función que se ejecuta durante el ciclo de vida de una solicitud HTTP, antes de que se envíe la respuesta al cliente. Los middlewares pueden hacer varias cosas:
+
+- **Ejecutar código**: Puedes escribir funciones que se ejecutan durante el procesamiento de la solicitud.
+- **Modificar el objeto `req` o `res`**: Los middlewares pueden modificar las solicitudes o respuestas, agregar datos a ellas o cambiar su formato.
+- **Finalizar la solicitud/respuesta**: Un middleware puede devolver una respuesta directamente sin que se ejecute ningún otro middleware posterior.
+- **Llamar al siguiente middleware**: Si el middleware no finaliza la solicitud, puede pasar el control al siguiente middleware llamando a la función `next()`.
+
+## 4.2. Uso Básico de Middleware
+
+### 4.2.1. Middleware Global
+
+Un middleware global es una función que se ejecuta en todas las solicitudes que pasan por tu aplicación Express. Para usar un middleware global, usas `app.use()`. Este método registra un middleware que se ejecuta para todas las rutas y solicitudes.
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Middleware global
+app.use((req, res, next) => {
+  console.log('Middleware global: Solicitud recibida');
+  next();  // Llama al siguiente middleware o ruta
+});
+
+// Ruta de ejemplo
+app.get('/', (req, res) => {
+  res.send('Hola desde Express');
+});
+
+// Iniciar el servidor
+app.listen(3000, () => {
+  console.log('Servidor en http://localhost:3000');
+});
+```
+
+En este ejemplo, cada vez que se hace una solicitud a cualquier ruta de la aplicación, el middleware global imprime "Middleware global: Solicitud recibida" en la consola antes de continuar con la solicitud.
+
+### 4.2.2. Middleware Específico de Ruta
+
+También puedes definir middleware que se aplique solo a rutas específicas. Esto es útil si deseas realizar tareas específicas solo cuando se accede a una ruta particular.
+
+```javascript
+// Middleware específico para la ruta '/usuario'
+app.use('/usuario', (req, res, next) => {
+  console.log('Middleware para ruta /usuario');
+  next();  // Llama al siguiente middleware o controlador de la ruta
+});
+
+// Ruta '/usuario'
+app.get('/usuario', (req, res) => {
+  res.send('Página de usuario');
+});
+```
+
+En este caso, el middleware solo se ejecuta cuando se realiza una solicitud a la ruta `/usuario`.
+
+## 4.3. Tipos Comunes de Middleware
+
+### 4.3.1. Middleware para Manejar Errores
+
+El manejo de errores es uno de los usos más comunes de los middlewares en Express. Un middleware de manejo de errores tiene un cuarto parámetro `err` que se utiliza para manejar excepciones y errores.
+
+```javascript
+app.use((err, req, res, next) => {
+  console.error(err.stack);  // Imprime el error en la consola
+  res.status(500).send('Algo salió mal');  // Responde con un error 500
+});
+```
+
+Este middleware captura cualquier error que ocurra en las rutas o middlewares anteriores y devuelve una respuesta adecuada al cliente.
+
+### 4.3.2. Middleware de Autenticación
+
+Otro uso común de los middlewares es la autenticación. Puedes crear un middleware para verificar si un usuario está autenticado antes de permitirle acceder a ciertas rutas.
+
+```javascript
+function autenticar(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();  // Si está autenticado, continúa con la siguiente ruta
+  }
+  res.status(401).send('No autorizado');  // Si no está autenticado, devuelve un error
+}
+
+// Ruta protegida que requiere autenticación
+app.get('/perfil', autenticar, (req, res) => {
+  res.send('Bienvenido a tu perfil');
+});
+```
+
+En este ejemplo, la función `autenticar` es un middleware que verifica si el usuario está autenticado antes de acceder a la ruta `/perfil`.
+
+### 4.3.3. Middleware para Manejo de Archivos Estáticos
+
+Express permite servir archivos estáticos (como imágenes, CSS, JavaScript) usando un middleware especial: `express.static`.
+
+```javascript
+app.use(express.static('public'));
+```
+
+Este middleware sirve archivos estáticos desde la carpeta `public`. Si tienes una imagen llamada `logo.png` en esa carpeta, puedes acceder a ella mediante la URL `http://localhost:3000/logo.png`.
+
+### 4.3.4. Middleware de Body Parsing
+
+Cuando recibimos datos en el cuerpo de una solicitud (por ejemplo, datos de un formulario), necesitamos un middleware para analizar esos datos y hacerlos accesibles a través de `req.body`. Express proporciona un middleware integrado llamado `express.json()` para manejar solicitudes con contenido JSON y `express.urlencoded()` para datos de formularios.
+
+```javascript
+// Middleware para analizar cuerpos JSON
+app.use(express.json());
+
+// Middleware para analizar datos de formularios
+app.use(express.urlencoded({ extended: true }));
+```
+
+### 4.3.5. Middleware para Registro de Solicitudes (Logging)
+
+Un middleware útil en muchas aplicaciones es el de registro de solicitudes. Este middleware puede imprimir información sobre cada solicitud que llegue a tu servidor.
+
+```javascript
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+```
+
+Este middleware imprimirá el método HTTP y la URL de cada solicitud que pase por la aplicación, lo que puede ser útil para depuración y monitoreo.
+
+## 4.4. Orden de Ejecución de los Middlewares
+
+El orden en que defines los middlewares es importante. Express ejecuta los middlewares en el orden en que los registras. Si un middleware maneja la solicitud o respuesta, los siguientes middlewares no se ejecutarán a menos que explícitamente se llame a `next()`.
+
+```javascript
+app.use((req, res, next) => {
+  console.log('Middleware 1');
+  next();  // Pasa al siguiente middleware
+});
+
+app.use((req, res, next) => {
+  console.log('Middleware 2');
+  next();
+});
+
+app.use((req, res) => {
+  res.send('Respuesta final');
+});
+```
+
+En este ejemplo, la consola imprimirá "Middleware 1", luego "Middleware 2" antes de enviar la respuesta "Respuesta final". Si no se llama a `next()`, los middlewares posteriores no se ejecutarán.
+
+## 4.5. Middleware para Manejo de Archivos Subidos
+
+Si necesitas permitir la carga de archivos en tu aplicación, puedes usar middlewares como `multer`, que facilita el procesamiento de archivos enviados a través de formularios.
+
+Primero, instala `multer`:
+
+```bash
+npm install multer
+```
+
+Luego, configura el middleware para manejar los archivos subidos:
+
+```javascript
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+// Ruta para subir archivos
+app.post('/subir', upload.single('archivo'), (req, res) => {
+  res.send('Archivo subido con éxito');
+});
+```
+
+En este ejemplo, `upload.single('archivo')` se encarga de manejar la carga de un archivo enviado con el nombre `archivo`.
+
+## 4.6. Middleware de Terceros
+
+Express también soporta middlewares de terceros. Por ejemplo, puedes usar middlewares como **helmet** para mejorar la seguridad o **cors** para habilitar CORS (Cross-Origin Resource Sharing).
+
+Para instalar y usar **helmet**:
+
+```bash
+npm install helmet
+app.use(helmet());
+```
+
+Y para usar **cors**:
+
+```bash
+npm install cors
+app.use(cors());
+```
+
+Estos middlewares ayudan a proteger y mejorar el funcionamiento de tu aplicación.
+
+>El uso de middleware en Express es una parte fundamental del proceso de desarrollo. Los middlewares te permiten manejar solicitudes, modificar respuestas, ejecutar tareas específicas, y hacer todo tipo de manipulaciones en tu aplicación antes de enviar una respuesta al cliente. Al comprender y utilizar middleware, puedes hacer que tu aplicación Express sea más robusta, segura y eficiente. Con este conocimiento, puedes implementar autenticación, manejo de errores, archivos estáticos, y mucho más.
+
+>Este tema cubre cómo usar **middleware** en Express, cómo funcionan, cómo puedes configurarlos globalmente o para rutas específicas, y proporciona ejemplos comunes como autenticación, manejo de errores, y procesamiento de datos de formulario. También se cubren middlewares de terceros, como `helmet` para seguridad o `cors` para compartir recursos entre orígenes. Con esta información, puedes aprovechar el poder de los middlewares en tus aplicaciones Express.

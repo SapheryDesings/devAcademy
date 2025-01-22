@@ -1,0 +1,235 @@
+Aquí tienes el desarrollo del **Tema 7: Trabajando con Formularios en JavaScript**:
+
+---
+
+### **7. Trabajando con Formularios**
+
+Los formularios son una de las formas principales de interactuar con los usuarios en una página web. JavaScript permite acceder, validar y manipular los datos de los formularios antes de enviarlos al servidor.
+
+---
+
+#### **7.1. Estructura de un formulario HTML**
+
+Un formulario HTML incluye campos de entrada (`input`), áreas de texto (`textarea`), menús desplegables (`select`), botones (`button`), y más.
+
+**Ejemplo de formulario básico:**
+```html
+<form id="miFormulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <button type="submit">Enviar</button>
+</form>
+```
+
+---
+
+#### **7.2. Seleccionar formularios y elementos del formulario**
+
+Para interactuar con formularios y sus elementos, se utilizan métodos de selección del DOM.
+
+**Seleccionar un formulario:**
+```javascript
+let formulario = document.getElementById("miFormulario");
+```
+
+**Seleccionar elementos específicos:**
+```javascript
+let nombre = document.getElementById("nombre");
+let email = document.querySelector("#email");
+```
+
+---
+
+#### **7.3. Eventos en los formularios**
+
+Los formularios tienen eventos específicos que permiten capturar y manejar interacciones.
+
+##### **7.3.1. `submit`**
+Se dispara cuando se envía un formulario.
+```javascript
+let formulario = document.getElementById("miFormulario");
+
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault(); // Evita que el formulario se envíe
+    console.log("Formulario enviado.");
+});
+```
+
+##### **7.3.2. `input` y `change`**
+- **`input`**: Se dispara cada vez que se modifica el valor de un campo.
+- **`change`**: Se dispara cuando el campo pierde el foco tras ser modificado.
+
+**Ejemplo:**
+```javascript
+let nombre = document.getElementById("nombre");
+
+nombre.addEventListener("input", function () {
+    console.log("Valor actual: " + nombre.value);
+});
+```
+
+---
+
+#### **7.4. Validación de formularios**
+
+La validación puede realizarse tanto en el lado del cliente como en el servidor. Con JavaScript, puedes agregar validaciones personalizadas.
+
+##### **7.4.1. Validación HTML5**
+HTML5 incluye atributos como `required`, `pattern`, `min`, `max`, etc.  
+**Ejemplo:**
+```html
+<input type="text" id="telefono" pattern="[0-9]{10}" required>
+```
+
+##### **7.4.2. Validación con JavaScript**
+Puedes comprobar manualmente los valores de los campos.
+
+**Ejemplo:**
+```javascript
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    
+    let nombre = document.getElementById("nombre").value;
+    let email = document.getElementById("email").value;
+    
+    if (nombre === "" || email === "") {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+    
+    if (!email.includes("@")) {
+        alert("Por favor, introduce un correo válido.");
+        return;
+    }
+    
+    console.log("Formulario válido. Datos enviados.");
+});
+```
+
+---
+
+#### **7.5. Obtener y establecer valores de campos**
+
+1. **Obtener valores:**
+   ```javascript
+   let valorNombre = document.getElementById("nombre").value;
+   console.log(valorNombre);
+   ```
+
+2. **Establecer valores:**
+   ```javascript
+   document.getElementById("nombre").value = "Nuevo Nombre";
+   ```
+
+---
+
+#### **7.6. Manipulación dinámica de formularios**
+
+Puedes agregar o eliminar campos dinámicamente según las necesidades del usuario.
+
+**Ejemplo: Agregar un nuevo campo:**
+```javascript
+let formulario = document.getElementById("miFormulario");
+
+let botonAgregar = document.createElement("button");
+botonAgregar.textContent = "Agregar Campo";
+botonAgregar.type = "button";
+
+botonAgregar.addEventListener("click", function () {
+    let nuevoCampo = document.createElement("input");
+    nuevoCampo.type = "text";
+    nuevoCampo.name = "campoDinamico";
+    formulario.appendChild(nuevoCampo);
+});
+
+formulario.appendChild(botonAgregar);
+```
+
+---
+
+#### **7.7. Formularios y almacenamiento local**
+
+Puedes guardar y recuperar datos de los formularios usando `localStorage` o `sessionStorage`.
+
+**Guardar datos en localStorage:**
+```javascript
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    let nombre = document.getElementById("nombre").value;
+    localStorage.setItem("nombre", nombre);
+    alert("Datos guardados en localStorage.");
+});
+```
+
+**Recuperar datos de localStorage:**
+```javascript
+window.addEventListener("load", function () {
+    let nombreGuardado = localStorage.getItem("nombre");
+    if (nombreGuardado) {
+        document.getElementById("nombre").value = nombreGuardado;
+    }
+});
+```
+
+---
+
+#### **7.8. Ejercicios prácticos**
+
+1. **Validación básica de un formulario:**
+   - Crea un formulario con campos `nombre` y `edad`.
+   - Asegúrate de que `nombre` no esté vacío y que `edad` sea mayor a 18 antes de enviar.
+
+2. **Formulario dinámico:**
+   - Crea un formulario que permita agregar múltiples correos electrónicos mediante un botón "Agregar correo".
+
+3. **Guardar y recuperar datos:**
+   - Haz que los valores del formulario se guarden en `localStorage` y se recuperen automáticamente al recargar la página.
+
+---
+
+#### **Ejemplo completo**
+
+**HTML:**
+```html
+<form id="miFormulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" min="1" required>
+
+    <button type="submit">Enviar</button>
+</form>
+```
+
+**JavaScript:**
+```javascript
+let formulario = document.getElementById("miFormulario");
+
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    let nombre = document.getElementById("nombre").value;
+    let edad = document.getElementById("edad").value;
+
+    if (nombre === "") {
+        alert("El nombre es obligatorio.");
+        return;
+    }
+
+    if (edad < 18) {
+        alert("Debes ser mayor de 18 años.");
+        return;
+    }
+
+    alert("Formulario enviado correctamente.");
+});
+```
+
+---
+
+¿Te gustaría que desarrolle más ejemplos o ejercicios adicionales relacionados con formularios? 😊

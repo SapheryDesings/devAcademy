@@ -1,0 +1,207 @@
+### **16. Async/Await y Promesas en TypeScript**
+
+El manejo de operaciones asincrónicas es fundamental en el desarrollo moderno de aplicaciones, especialmente cuando se trabaja con operaciones como solicitudes HTTP, acceso a bases de datos, operaciones de archivos, etc. TypeScript, al ser un superconjunto de JavaScript, también soporta de manera nativa las **promesas** y el patrón **async/await**, que permiten escribir código asincrónico de manera más fácil y legible.
+
+En este tema, aprenderemos sobre **promesas** en TypeScript, cómo usar `async/await` para hacer que el código asincrónico sea más legible, y cómo manejar errores en estas operaciones asincrónicas.
+
+---
+
+#### **16.1. Promesas en TypeScript**
+
+Una **promesa** es un objeto que representa la eventual finalización (o falla) de una operación asincrónica. Las promesas tienen tres estados posibles:
+
+1. **Pendiente**: La operación asincrónica aún no ha finalizado.
+2. **Cumplida (Resolved)**: La operación se completó con éxito y la promesa tiene un valor resultante.
+3. **Rechazada (Rejected)**: La operación falló y la promesa tiene un error.
+
+En TypeScript, las promesas se manejan de la misma forma que en JavaScript, pero podemos aprovechar el sistema de tipos para definir qué tipo de datos esperaremos cuando la promesa se cumpla o se rechace.
+
+**Sintaxis básica de una promesa:**
+
+```typescript
+let promesa = new Promise<string>((resolve, reject) => {
+  let exito = true;  // Cambiar a false para probar el caso de error
+  if (exito) {
+    resolve("Operación exitosa");
+  } else {
+    reject("Hubo un error en la operación");
+  }
+});
+
+promesa
+  .then((resultado) => {
+    console.log("Resultado:", resultado);  // Si la promesa se cumple
+  })
+  .catch((error) => {
+    console.log("Error:", error);  // Si la promesa es rechazada
+  });
+```
+
+En este ejemplo, la promesa `promesa` puede resolverse con un valor de tipo `string` o rechazarse con un mensaje de error. El uso de `then` y `catch` permite manejar ambos casos: cuando la promesa se cumple o cuando se rechaza.
+
+**Uso de tipos con promesas:**
+
+En TypeScript, puedes especificar el tipo de valor que se espera cuando una promesa se resuelve, lo que hace que el código sea más seguro.
+
+```typescript
+function obtenerDatos(): Promise<number> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(42);  // Resolvemos con un número
+    }, 1000);
+  });
+}
+
+obtenerDatos()
+  .then((valor) => {
+    console.log("Datos obtenidos:", valor);  // 42
+  })
+  .catch((error) => {
+    console.log("Error:", error);
+  });
+```
+
+En este caso, la función `obtenerDatos` devuelve una promesa que se resuelve con un `number`, lo que se refleja en el tipo `Promise<number>`.
+
+---
+
+#### **16.2. `async` y `await` en TypeScript**
+
+El uso de promesas con `then` y `catch` puede llevar a un código difícil de leer, especialmente cuando hay múltiples operaciones asincrónicas que dependen unas de otras. Para hacer el código más legible, TypeScript (y JavaScript) introduce las palabras clave `async` y `await`.
+
+- **`async`**: La palabra clave `async` se coloca antes de una función para indicar que la función devuelve una promesa. Dentro de una función `async`, se puede utilizar la palabra clave `await`.
+  
+- **`await`**: La palabra clave `await` se utiliza dentro de funciones `async` para esperar a que una promesa se resuelva antes de continuar con la ejecución del código. `await` hace que el código sea más fácil de leer y entender, ya que parece un flujo síncrono, aunque en realidad está esperando que se resuelvan las promesas.
+
+**Ejemplo básico de `async` y `await`:**
+
+```typescript
+async function obtenerDatosAsync(): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Datos obtenidos correctamente");
+    }, 2000);
+  });
+}
+
+async function ejecutar() {
+  console.log("Esperando datos...");
+  let resultado = await obtenerDatosAsync();
+  console.log(resultado);  // "Datos obtenidos correctamente"
+}
+
+ejecutar();
+```
+
+En este ejemplo, la función `obtenerDatosAsync` devuelve una promesa que se resuelve después de 2 segundos. La función `ejecutar` usa `await` para esperar a que se resuelva la promesa antes de continuar con la ejecución del código.
+
+---
+
+#### **16.3. Manejo de Errores con `async/await`**
+
+Cuando se usa `async/await`, los errores en las promesas se manejan de una forma más sencilla mediante `try...catch`. Esto facilita el manejo de errores en operaciones asincrónicas, ya que el flujo de código parece más lineal y fácil de seguir.
+
+**Ejemplo de manejo de errores con `async/await`:**
+
+```typescript
+async function obtenerDatosConError(): Promise<number> {
+  return new Promise((_, reject) => {
+    setTimeout(() => {
+      reject("Hubo un error al obtener los datos");
+    }, 2000);
+  });
+}
+
+async function ejecutarConError() {
+  try {
+    let resultado = await obtenerDatosConError();
+    console.log("Resultado:", resultado);
+  } catch (error) {
+    console.log("Error:", error);  // "Hubo un error al obtener los datos"
+  }
+}
+
+ejecutarConError();
+```
+
+En este ejemplo, la promesa lanzada por `obtenerDatosConError` se rechaza, y el error es capturado en el bloque `catch` de la función `ejecutarConError`.
+
+---
+
+#### **16.4. Funciones `async` que retornan una Promesa**
+
+Aunque `async` permite escribir código asincrónico de manera secuencial, es importante recordar que las funciones `async` siempre devuelven una promesa. Si una función `async` no devuelve explícitamente una promesa, TypeScript automáticamente envuelve el valor de retorno en una promesa.
+
+**Ejemplo de una función `async` que retorna una promesa:**
+
+```typescript
+async function saludo(): Promise<string> {
+  return "Hola, mundo!";
+}
+
+saludo().then((mensaje) => {
+  console.log(mensaje);  // "Hola, mundo!"
+});
+```
+
+A pesar de que la función `saludo` devuelve una cadena directamente, el valor retornado es envuelto en una promesa, por lo que debemos usar `then` para obtener el valor resuelto de la promesa.
+
+---
+
+#### **16.5. `Promise.all()` y `Promise.allSettled()`**
+
+En ocasiones, es necesario esperar a que varias promesas se resuelvan al mismo tiempo. Para esto, TypeScript y JavaScript proporcionan métodos como `Promise.all()` y `Promise.allSettled()`.
+
+- **`Promise.all()`**: Espera a que todas las promesas pasadas como argumento se resuelvan. Si alguna de las promesas se rechaza, toda la operación fallará.
+  
+- **`Promise.allSettled()`**: Espera a que todas las promesas se resuelvan, independientemente de si se resuelven exitosamente o se rechazan. Devuelve una lista de resultados, donde cada elemento contiene el estado de la promesa (resuelta o rechazada).
+
+**Ejemplo con `Promise.all()`:**
+
+```typescript
+async function tarea1(): Promise<string> {
+  return "Tarea 1 completada";
+}
+
+async function tarea2(): Promise<string> {
+  return "Tarea 2 completada";
+}
+
+async function ejecutarTodas() {
+  let resultados = await Promise.all([tarea1(), tarea2()]);
+  console.log(resultados);  // ["Tarea 1 completada", "Tarea 2 completada"]
+}
+
+ejecutarTodas();
+```
+
+**Ejemplo con `Promise.allSettled()`:**
+
+```typescript
+async function tareaConError(): Promise<string> {
+  return new Promise((_, reject) => setTimeout(() => reject("Error en tarea"), 1000));
+}
+
+async function ejecutarTodasSettled() {
+  let resultados = await Promise.allSettled([tarea1(), tareaConError()]);
+  console.log(resultados);
+  // [
+  //   { status: 'fulfilled', value: 'Tarea 1 completada' },
+  //   { status: 'rejected', reason: 'Error en tarea' }
+  // ]
+}
+
+ejecutarTodasSettled();
+```
+
+---
+
+#### **16.6. Conclusión**
+
+En TypeScript, el manejo de operaciones asincrónicas mediante **promesas** y el uso de **`async`/`await`** mejora considerablemente la legibilidad y el mantenimiento del código. A través de estas herramientas, podemos escribir código asincrónico de manera secuencial, manejar errores de forma más intuitiva y aprovechar el sistema de tipos de TypeScript para garantizar que trabajamos con los tipos correctos.
+
+Las promesas son fundamentales en la programación asincrónica, y las funciones `async` y `await` permiten escribir código de manera más sencilla y concisa, evitando el llamado "callback hell" o infierno de los callbacks. Además, con herramientas como `Promise.all()` y `Promise.allSettled()`, podemos manejar múltiples
+
+ promesas de manera eficiente.
+
+En resumen, el uso adecuado de **promesas**, **`async/await`** y **manejo de errores** en TypeScript es esencial para desarrollar aplicaciones modernas y robustas que realicen operaciones asincrónicas de forma eficiente y legible.

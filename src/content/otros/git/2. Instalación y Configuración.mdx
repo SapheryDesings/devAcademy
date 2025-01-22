@@ -1,0 +1,189 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 2. **Instalación y Configuración**
+
+En esta sección, exploraremos los pasos para instalar Git en diferentes sistemas operativos y cómo configurarlo adecuadamente para comenzar a usarlo en tus proyectos.
+
+---
+
+#### **Instalación de Git**
+
+##### **Requisitos previos**
+Para instalar Git, asegúrate de que tu sistema cumpla con los siguientes requisitos:
+
+- **Windows**: Sistema operativo Windows 7 o superior.
+- **macOS**: Cualquier versión reciente de macOS.
+- **Linux**: Distribución de Linux moderna (Ubuntu, Debian, Fedora, etc.).
+
+##### **Instalación en Windows**
+
+1. **Descargar el instalador:**
+   - Visita la página oficial de Git: [https://git-scm.com](https://git-scm.com).
+   - En la página de inicio, selecciona el enlace correspondiente a la versión de Windows (por ejemplo, "Download for Windows").
+   - Esto descargará un archivo ejecutable `.exe`.
+
+2. **Ejecutar el instalador:**
+   - Haz doble clic en el archivo descargado para iniciar el proceso de instalación.
+   - Sigue las instrucciones del instalador. Asegúrate de dejar las opciones predeterminadas seleccionadas a menos que tengas preferencias específicas.
+     - **Opciones recomendadas**:
+       - Dejar la opción “Use Git from the Windows Command Prompt” seleccionada para asegurarte de que puedas usar Git desde la línea de comandos de Windows.
+       - Seleccionar "Git Bash Here" para tener acceso a un terminal específico de Git.
+       - Activar la opción de "Checkout Windows-style, commit Unix-style line endings" para evitar problemas de saltos de línea entre sistemas operativos.
+  
+3. **Verificar la instalación:**
+   - Una vez que el instalador haya finalizado, abre el **Git Bash** o el **Símbolo del sistema**.
+   - Escribe el siguiente comando para verificar que Git está correctamente instalado:
+     ```bash
+     git --version
+     ```
+   - Si todo ha ido bien, deberías ver una respuesta similar a:
+     ```
+     git version 2.x.x.windows.x
+     ```
+
+##### **Instalación en macOS**
+
+1. **Usar Homebrew (recomendado):**
+   - Si tienes **Homebrew** instalado, puedes instalar Git fácilmente con el siguiente comando en tu terminal:
+     ```bash
+     brew install git
+     ```
+
+2. **Instalación sin Homebrew (usando el instalador oficial):**
+   - Ve a [https://git-scm.com](https://git-scm.com) y descarga el archivo `.dmg` para macOS.
+   - Ejecuta el archivo `.dmg` y sigue las instrucciones del asistente de instalación.
+
+3. **Verificar la instalación:**
+   - Abre una terminal y escribe:
+     ```bash
+     git --version
+     ```
+   - Deberías ver una salida similar a:
+     ```
+     git version 2.x.x
+     ```
+
+##### **Instalación en Linux**
+
+1. **Usando el gestor de paquetes (Ubuntu/Debian):**
+   - En una terminal, usa el siguiente comando para instalar Git:
+     ```bash
+     sudo apt update
+     sudo apt install git
+     ```
+
+2. **Usando el gestor de paquetes (Fedora):**
+   - Para Fedora y distribuciones basadas en RedHat, usa:
+     ```bash
+     sudo dnf install git
+     ```
+
+3. **Verificar la instalación:**
+   - Después de la instalación, verifica que Git se haya instalado correctamente ejecutando:
+     ```bash
+     git --version
+     ```
+   - La salida debería ser algo similar a:
+     ```
+     git version 2.x.x
+     ```
+
+---
+
+#### **Configuración de Git**
+
+Después de instalar Git, es esencial configurarlo para que funcione correctamente con tu identidad. Git registra información como el nombre de usuario y el correo electrónico, los cuales se incluyen en cada commit que realices. Aquí te mostramos cómo configurarlo:
+
+##### **1. Configurar tu nombre de usuario**
+
+Git requiere que asignes tu nombre para identificar quién está haciendo los commits. Para configurarlo, ejecuta el siguiente comando en la terminal:
+
+```bash
+git config --global user.name "Tu Nombre"
+```
+
+Este comando establece tu nombre de usuario globalmente (para todos los repositorios en tu sistema).
+
+##### **2. Configurar tu correo electrónico**
+
+Git también necesita saber tu correo electrónico, ya que este aparecerá junto con tus commits. Configúralo con el siguiente comando:
+
+```bash
+git config --global user.email "tucorreo@dominio.com"
+```
+
+Este comando establece tu correo electrónico globalmente. Ten en cuenta que el correo electrónico debe coincidir con el correo que usas en plataformas como GitHub, GitLab o Bitbucket, ya que algunos servicios asocian tus commits con tu cuenta.
+
+##### **3. Verificar la configuración**
+
+Para verificar que la configuración se ha realizado correctamente, puedes usar el siguiente comando:
+
+```bash
+git config --list
+```
+
+Este comando muestra la configuración actual de Git, como tu nombre de usuario y correo electrónico, y otras configuraciones predeterminadas.
+
+##### **4. Configuración de la línea de comandos**
+
+Git permite personalizar el comportamiento de la terminal o el "prompt" para que sea más cómodo trabajar con él. Algunas configuraciones útiles incluyen:
+
+- **Cambiar el editor predeterminado**: Git utiliza un editor de texto para crear mensajes de commit y realizar otras ediciones. Si prefieres un editor diferente, como Visual Studio Code o Sublime Text, puedes cambiarlo usando el siguiente comando:
+  ```bash
+  git config --global core.editor "code --wait"
+  ```
+
+- **Configuración del color de la terminal**: Git puede resaltar la salida de comandos (como `git status`) con colores, lo que hace que sea más fácil de leer. Para activar el color, usa:
+  ```bash
+  git config --global color.ui auto
+  ```
+
+- **Configuración del nombre de la rama predeterminada (opcional)**: Desde Git 2.28, puedes cambiar el nombre de la rama principal predeterminada. Si prefieres que la rama principal sea "main" en lugar de "master", usa:
+  ```bash
+  git config --global init.defaultBranch main
+  ```
+
+---
+
+#### **Configuración de Git para un Repositorio Específico**
+
+Aunque la configuración global se aplica a todos los repositorios en tu máquina, también puedes realizar configuraciones específicas para un repositorio en particular. Para esto, simplemente navega al directorio del repositorio y ejecuta los mismos comandos de configuración, pero sin la opción `--global`:
+
+```bash
+git config user.name "Nombre para este repositorio"
+git config user.email "correo@repositorio.com"
+```
+
+Este ajuste solo se aplicará al repositorio en el que lo ejecutes.
+
+---
+
+#### **Configuraciones adicionales recomendadas**
+
+- **Configurar la fusión de ramas (Merge):**
+  Si prefieres usar una herramienta visual para la fusión de ramas, puedes configurar Git para que use una herramienta externa, como Kdiff3 o Meld:
+  ```bash
+  git config --global merge.tool meld
+  ```
+
+- **Configuración del `gitignore` global**:
+  Si trabajas con muchos proyectos y quieres ignorar ciertos archivos o directorios en todos ellos (por ejemplo, archivos temporales o binarios), puedes crear un archivo `.gitignore` global:
+  ```bash
+  git config --global core.excludesfile ~/.gitignore_global
+  ```
+
+  Luego, en el archivo `~/.gitignore_global`, puedes listar los patrones de archivos a ignorar globalmente, como:
+  ```
+  *.log
+  *.tmp
+  .DS_Store
+  ```
+
+
+>La instalación de Git es simple y rápida en todas las plataformas principales. La configuración adecuada es fundamental para asegurar que tus commits estén correctamente identificados y que tu flujo de trabajo sea eficiente. Después de instalar Git, recuerda configurar tu nombre de usuario y correo electrónico, y personalizar algunas opciones según tus necesidades.

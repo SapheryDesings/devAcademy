@@ -1,0 +1,200 @@
+Aquí tienes el desarrollo del **Tema 11: APIs y Fetch en JavaScript**:
+
+---
+
+### **11. APIs y Fetch en JavaScript**
+
+Las **APIs (Interfaces de Programación de Aplicaciones)** son conjuntos de funciones y procedimientos que permiten a las aplicaciones interactuar entre sí. En JavaScript, las APIs más comunes son las que permiten interactuar con el navegador y con servicios externos a través de solicitudes HTTP, como las APIs RESTful.
+
+El método `fetch` es una forma moderna de hacer solicitudes HTTP, que se ha integrado a JavaScript para facilitar la comunicación con servidores y APIs externas.
+
+---
+
+#### **11.1. ¿Qué son las APIs?**
+
+Una **API** es un conjunto de reglas que permite a diferentes aplicaciones comunicarse entre sí. Las APIs en la web permiten que las aplicaciones cliente (como tu navegador) obtengan datos de servidores remotos o interactúen con otros servicios de la web.
+
+Algunos ejemplos comunes de APIs incluyen:
+- APIs de servicios de clima, como OpenWeatherMap.
+- APIs de redes sociales, como la API de Twitter o Facebook.
+- APIs de mapas, como la API de Google Maps.
+
+Las APIs suelen responder en formatos como **JSON** o **XML**, y las solicitudes suelen hacerse usando los métodos HTTP como `GET`, `POST`, `PUT` o `DELETE`.
+
+---
+
+#### **11.2. El Método `fetch()`**
+
+La función `fetch()` es una API de JavaScript que permite hacer solicitudes HTTP a un servidor para obtener o enviar datos. Es una alternativa moderna y más sencilla en comparación con el antiguo método `XMLHttpRequest`.
+
+**Sintaxis básica:**
+```javascript
+fetch(url, opciones)
+    .then(response => response.json())  // Convertimos la respuesta en JSON
+    .then(data => console.log(data))     // Trabajamos con los datos
+    .catch(error => console.error('Error:', error));  // Manejamos los errores
+```
+
+**Parámetros de `fetch`:**
+- **`url`**: La URL a la que se realiza la solicitud.
+- **`opciones`** (opcional): Un objeto que contiene configuraciones adicionales, como el método HTTP (`GET`, `POST`, etc.), cabeceras, cuerpo de la solicitud, etc.
+
+---
+
+#### **11.3. Hacer una Solicitud `GET` con `fetch()`**
+
+El método `GET` se utiliza para obtener datos de un servidor. El siguiente ejemplo muestra cómo hacer una solicitud `GET` usando `fetch()` para obtener datos de una API.
+
+**Ejemplo de solicitud `GET`:**
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())  // Convertimos la respuesta a JSON
+    .then(posts => {
+        console.log(posts);  // Imprimimos los datos obtenidos
+    })
+    .catch(error => console.error('Error:', error));  // Manejamos los errores
+```
+
+**Salida (Ejemplo de datos obtenidos):**
+```json
+[
+    { "userId": 1, "id": 1, "title": "Post 1", "body": "Contenido del post 1" },
+    { "userId": 1, "id": 2, "title": "Post 2", "body": "Contenido del post 2" },
+    ...
+]
+```
+
+En este ejemplo, estamos solicitando los posts de una API pública (JSONPlaceholder). Los datos se devuelven en formato JSON, y se procesan con el método `.json()`.
+
+---
+
+#### **11.4. Hacer una Solicitud `POST` con `fetch()`**
+
+El método `POST` se utiliza para enviar datos a un servidor. A menudo se usa para enviar datos de formularios o para crear nuevos recursos en el servidor.
+
+**Ejemplo de solicitud `POST`:**
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',  // Especificamos el método HTTP
+    headers: {
+        'Content-Type': 'application/json',  // Indicamos el tipo de contenido
+    },
+    body: JSON.stringify({  // Convertimos los datos a formato JSON
+        title: 'Nuevo post',
+        body: 'Este es el cuerpo del nuevo post.',
+        userId: 1
+    })
+})
+    .then(response => response.json())  // Convertimos la respuesta a JSON
+    .then(data => {
+        console.log('Nuevo post creado:', data);  // Mostramos los datos devueltos
+    })
+    .catch(error => console.error('Error:', error));  // Manejamos los errores
+```
+
+**Salida (Ejemplo de datos devueltos):**
+```json
+{
+    "title": "Nuevo post",
+    "body": "Este es el cuerpo del nuevo post.",
+    "userId": 1,
+    "id": 101
+}
+```
+
+En este caso, estamos enviando datos JSON al servidor, que responde con la representación del nuevo recurso creado.
+
+---
+
+#### **11.5. Configuración de `fetch()` con Opciones Avanzadas**
+
+Aparte de las solicitudes `GET` y `POST`, puedes configurar `fetch()` para hacer solicitudes más avanzadas, como las de `PUT` o `DELETE`, y agregar cabeceras personalizadas.
+
+**Ejemplo de solicitud `PUT` (actualizar datos):**
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts/1', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        title: 'Post actualizado',
+        body: 'Este es el cuerpo del post actualizado.',
+        userId: 1
+    })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Post actualizado:', data);
+    })
+    .catch(error => console.error('Error:', error));
+```
+
+**Ejemplo de solicitud `DELETE` (eliminar datos):**
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts/1', {
+    method: 'DELETE'
+})
+    .then(response => {
+        if (response.ok) {
+            console.log('Post eliminado');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+```
+
+---
+
+#### **11.6. Manejo de Errores en `fetch()`**
+
+Aunque `fetch()` es bastante sencillo, hay que tener en cuenta que no lanza un error automáticamente si la respuesta del servidor es un código de estado 4xx o 5xx (como "404 No encontrado" o "500 Error interno del servidor"). Para capturar estos errores, debes comprobar explícitamente el estado de la respuesta.
+
+**Ejemplo de manejo de errores de estado HTTP:**
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => {
+        if (!response.ok) {  // Verificamos si la respuesta fue exitosa
+            throw new Error('Error en la solicitud: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));  // Manejamos el error
+```
+
+---
+
+#### **11.7. APIs del Navegador**
+
+JavaScript también permite interactuar con varias APIs integradas en el navegador. Algunas de las más comunes son:
+
+- **API de Geolocalización**: Permite obtener la ubicación geográfica del usuario.
+- **API de almacenamiento local (`localStorage` y `sessionStorage`)**: Permite almacenar datos en el navegador.
+- **API de Notificaciones**: Permite enviar notificaciones al usuario.
+
+**Ejemplo de la API de Geolocalización:**
+```javascript
+navigator.geolocation.getCurrentPosition(function(position) {
+    console.log('Latitud:', position.coords.latitude);
+    console.log('Longitud:', position.coords.longitude);
+});
+```
+
+**Ejemplo de almacenamiento local (`localStorage`):**
+```javascript
+localStorage.setItem('nombre', 'Juan');
+let nombre = localStorage.getItem('nombre');
+console.log(nombre);  // "Juan"
+```
+
+---
+
+#### **11.8. Ejercicios Prácticos**
+
+1. **Hacer una solicitud `GET` a una API pública**: Realiza una solicitud a la API pública `https://jsonplaceholder.typicode.com/users` para obtener una lista de usuarios y mostrar sus nombres en la consola.
+
+2. **Crear un formulario y enviar datos con `POST`**: Crea un formulario con campos de nombre y correo electrónico. Cuando el formulario se envíe, usa `fetch()` para enviar esos datos a una API (como `https://jsonplaceholder.typicode.com/users`).
+
+---
+
+¿Te gustaría más detalles sobre algún tipo de API específica o más ejemplos prácticos con `fetch`? 😊

@@ -1,0 +1,271 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Astro"/>
+
+### 6. **Uso de Componentes y Frameworks en Astro**
+
+Astro es un framework muy flexible que permite utilizar **componentes** creados con **otros frameworks** como **React**, **Vue**, **Svelte**, **Preact**, y **Solid** dentro de un mismo proyecto. Esta capacidad de integrar componentes de varios frameworks te permite aprovechar las ventajas de cada uno, mientras mantienes un sitio altamente optimizado y rápido. En este tema, vamos a explorar cómo trabajar con **componentes** y cómo **integrar frameworks** en Astro para maximizar la productividad y la eficiencia en tus proyectos.
+
+---
+
+#### **1. Componentes en Astro**
+
+Los **componentes** en Astro son bloques de código reutilizables que encapsulan HTML, CSS y JavaScript. Los componentes pueden definirse con **Astro** (usando archivos `.astro`), o pueden ser integrados desde otros frameworks como React, Vue, Svelte, entre otros.
+
+##### **1.1. Creación de Componentes en Astro**
+
+Un componente básico en Astro se define dentro de un archivo con extensión `.astro`. Estos componentes pueden contener tanto **estructura** (HTML) como **estilos** (CSS) y **comportamiento** (JavaScript).
+
+**Ejemplo de un componente simple en Astro:**
+
+```astro
+---
+// src/components/Button.astro
+const { label = 'Click me' } = Astro.props;
+---
+<button class="btn">{label}</button>
+
+<style>
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+```
+
+En este ejemplo, el componente `Button` acepta una propiedad llamada `label` para personalizar el texto del botón. Además, tiene su propio estilo CSS definido de manera local dentro del componente.
+
+##### **1.2. Uso de Componentes en Páginas**
+
+Una vez que se ha creado un componente en Astro, puedes importarlo y utilizarlo en una página o en otro componente.
+
+**Ejemplo de uso de un componente dentro de una página:**
+
+```astro
+---
+// src/pages/index.astro
+import Button from '../components/Button.astro';
+---
+<html>
+  <head>
+    <title>Mi Sitio Astro</title>
+  </head>
+  <body>
+    <h1>Bienvenido a mi sitio</h1>
+    <Button label="Haz clic aquí" />
+  </body>
+</html>
+```
+
+En este caso, el componente `Button` es importado y utilizado en la página `index.astro`, pasando una propiedad personalizada para el texto del botón.
+
+---
+
+#### **2. Uso de Componentes de Frameworks Externos**
+
+Astro permite utilizar componentes de otros frameworks como **React**, **Vue**, **Svelte**, **Preact**, **Solid**, entre otros, dentro de un proyecto Astro. Esto te permite aprovechar las características específicas de cada framework sin renunciar a las ventajas del enfoque estático de Astro.
+
+##### **2.1. Uso de Componentes React en Astro**
+
+Astro permite usar componentes de **React** de forma eficiente. Estos componentes de React se **cargan solo cuando son necesarios**, lo que permite optimizar el rendimiento general del sitio.
+
+**Pasos para usar React en Astro:**
+
+1. Primero, instala React y React DOM:
+
+   ```bash
+   npm install react react-dom
+   ```
+
+2. Crea un componente React como normalmente lo harías en un proyecto React:
+
+   **Ejemplo:**
+   ```jsx
+   // src/components/Counter.jsx
+   import { useState } from 'react';
+
+   export function Counter() {
+     const [count, setCount] = useState(0);
+     return (
+       <div>
+         <p>Contador: {count}</p>
+         <button onClick={() => setCount(count + 1)}>Incrementar</button>
+       </div>
+     );
+   }
+   ```
+
+3. Luego, puedes importar el componente React en tu archivo `.astro` y usarlo dentro del código de Astro:
+
+   **Ejemplo de uso en un archivo Astro:**
+   ```astro
+   ---
+// src/pages/index.astro
+import { Counter } from '../components/Counter.jsx';
+   ---
+   <html>
+     <head>
+       <title>Mi Sitio Astro con React</title>
+     </head>
+     <body>
+       <h1>Bienvenido</h1>
+       <Counter />
+     </body>
+   </html>
+   ```
+
+   En este ejemplo, el componente `Counter` de React se importa y se utiliza dentro de una página Astro.
+
+##### **2.2. Uso de Componentes Vue en Astro**
+
+También puedes integrar **componentes Vue** en tu proyecto Astro de manera similar a los componentes React. De nuevo, los componentes Vue se cargan solo cuando se requieren, lo que ayuda a mantener el sitio optimizado.
+
+**Pasos para usar Vue en Astro:**
+
+1. Instala Vue:
+
+   ```bash
+   npm install vue
+   ```
+
+2. Crea un componente Vue como normalmente lo harías:
+
+   **Ejemplo de componente Vue:**
+   ```vue
+   <!-- src/components/HelloWorld.vue -->
+   <template>
+     <div>
+       <p>Hola, Vue en Astro</p>
+     </div>
+   </template>
+
+   <script>
+   export default {
+     name: 'HelloWorld',
+   };
+   </script>
+   ```
+
+3. Luego, importa y usa el componente Vue en tu archivo `.astro`:
+
+   **Ejemplo de uso en Astro:**
+   ```astro
+   ---
+// src/pages/index.astro
+import HelloWorld from '../components/HelloWorld.vue';
+   ---
+   <html>
+     <head>
+       <title>Mi Sitio con Vue</title>
+     </head>
+     <body>
+       <h1>Bienvenido a Astro con Vue</h1>
+       <HelloWorld />
+     </body>
+   </html>
+   ```
+
+   Aquí, el componente `HelloWorld` de Vue se integra dentro de una página Astro sin problemas.
+
+##### **2.3. Uso de Componentes Svelte en Astro**
+
+Astro también soporta componentes **Svelte**, un framework que compila componentes en JavaScript altamente optimizados.
+
+**Pasos para usar Svelte en Astro:**
+
+1. Instala Svelte:
+
+   ```bash
+   npm install @sveltejs/kit svelte
+   ```
+
+2. Crea un componente Svelte:
+
+   **Ejemplo de componente Svelte:**
+   ```svelte
+   <!-- src/components/HelloSvelte.svelte -->
+   <script>
+     let message = "¡Hola desde Svelte!";
+   </script>
+
+   <div>
+     <p>{message}</p>
+   </div>
+   ```
+
+3. Luego, integra el componente Svelte en tu página Astro:
+
+   **Ejemplo de uso en Astro:**
+   ```astro
+   ---
+// src/pages/index.astro
+import HelloSvelte from '../components/HelloSvelte.svelte';
+   ---
+   <html>
+     <head>
+       <title>Mi Sitio con Svelte</title>
+     </head>
+     <body>
+       <h1>Bienvenido a Astro con Svelte</h1>
+       <HelloSvelte />
+     </body>
+   </html>
+   ```
+
+---
+
+#### **3. Carga Condicional de Componentes (Client-side Rendering)**
+
+Una característica poderosa de Astro es su enfoque de **renderizado estático**, pero aún así permite la carga condicional de **componentes dinámicos** usando un enfoque de **renderizado del lado del cliente** cuando es necesario. Esto es útil cuando tienes componentes interactivos o dinámicos, como formularios o botones con estados cambiantes, que solo deben cargarse en el cliente.
+
+Astro proporciona el atributo `client:` para especificar cómo y cuándo un componente debe ser renderizado en el cliente.
+
+- **`client:load`**: Carga el componente al cargar la página.
+- **`client:idle`**: Carga el componente cuando el navegador está inactivo.
+- **`client:visible`**: Carga el componente cuando se despliega en la pantalla (típico para imágenes y elementos fuera de la vista inicial).
+
+**Ejemplo de uso de carga condicional en un componente React:**
+
+```astro
+---
+import { Counter } from '../components/Counter.jsx';
+---
+<html>
+  <head>
+    <title>Mi Sitio con React</title>
+  </head>
+  <body>
+    <h1>Bienvenido a Astro</h1>
+    <Counter client:load />
+  </body>
+</html>
+```
+
+En este ejemplo, el componente `Counter` solo se carga en el cliente después de que la página ha sido cargada, mejorando así el rendimiento inicial de la página.
+
+---
+
+#### **4. Compatibilidad con Otros Frameworks**
+
+Astro también es compatible con otros frameworks como **Preact** y **Solid**. La integración de estos frameworks sigue el mismo patrón que React, Vue y Svelte, permitiendo que los desarrolladores elijan el framework que mejor se adapte a sus necesidades y utilicen sus componentes de manera eficiente dentro de un proyecto Astro.
+
+---
+
+### **Resumen**
+
+1. **Componentes en Astro**: Puedes crear componentes con Astro usando archivos `.astro` que contienen HTML, CSS y JavaScript.
+2. **Integración de Frameworks Externos**: Astro permite la integración de componentes de React, Vue, Svelte, Preact y Solid dentro de un proyecto.
+3. **Carga Condicional**: Usa el atributo `client:` para cargar componentes de manera condicional, mejorando el rendimiento.
+4. **Flexibilidad**: Gracias a la compatibilidad con varios frameworks, puedes usar Astro junto con el framework que mejor se adapte a tu proyecto, todo dentro de un mismo sitio.
+
+Astro te ofrece una flexibilidad excepcional para trabajar con diferentes componentes y frameworks, permitiéndote aprovechar lo mejor de cada tecnología mientras mantienes un enfoque optimizado para el rendimiento.

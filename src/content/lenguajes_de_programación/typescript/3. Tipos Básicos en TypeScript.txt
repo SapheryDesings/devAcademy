@@ -1,0 +1,211 @@
+### **3. Tipos Básicos en TypeScript**
+
+TypeScript introduce la capacidad de declarar tipos explícitos en variables, parámetros de funciones, y valores de retorno, lo que proporciona una forma más robusta de trabajar con datos en comparación con JavaScript, que es un lenguaje sin tipos estáticos. A continuación, exploraremos los tipos básicos que puedes utilizar en TypeScript.
+
+---
+
+#### **3.1. Tipos Primitivos**
+
+Los tipos primitivos en TypeScript son similares a los de JavaScript. Sin embargo, con TypeScript, puedes especificar explícitamente el tipo de una variable, lo que ayuda a prevenir errores y mejora la claridad del código.
+
+##### **3.1.1. `string` (Cadena de texto)**
+
+El tipo `string` se utiliza para almacenar valores de texto. Puedes declarar una variable de tipo `string` usando el tipo de dato explícito:
+
+```typescript
+let nombre: string = "Juan";
+let saludo: string = "Hola, ¿cómo estás?";
+```
+
+Además de usar comillas simples o dobles, también puedes utilizar plantillas literales (template literals) para crear cadenas:
+
+```typescript
+let edad: number = 25;
+let mensaje: string = `Mi nombre es Juan y tengo ${edad} años.`;
+```
+
+##### **3.1.2. `number` (Número)**
+
+El tipo `number` se usa para almacenar valores numéricos, ya sea enteros o de punto flotante. TypeScript no distingue entre enteros y números de punto flotante, ya que ambos se representan de la misma manera.
+
+```typescript
+let edad: number = 30;
+let precio: number = 99.99;
+let temperatura: number = -5;
+```
+
+##### **3.1.3. `boolean` (Booleano)**
+
+El tipo `boolean` se utiliza para representar valores de verdadero o falso. Es ideal para variables que contienen resultados de comparaciones o decisiones lógicas.
+
+```typescript
+let esAdulto: boolean = true;
+let tienePermiso: boolean = false;
+```
+
+##### **3.1.4. `void` (Vacío)**
+
+El tipo `void` se usa generalmente para especificar que una función no devuelve ningún valor. Este tipo es comúnmente utilizado para las funciones que solo realizan una acción sin necesidad de retornar un valor.
+
+```typescript
+function saludar(nombre: string): void {
+  console.log("Hola, " + nombre);
+}
+
+saludar("Juan");  // Imprime "Hola, Juan"
+```
+
+##### **3.1.5. `null` y `undefined`**
+
+En TypeScript, `null` y `undefined` son tipos que pueden ser utilizados explícitamente, aunque en JavaScript ambos son valores primitivos. TypeScript trata estos tipos de manera más estricta.
+
+- **`null`**: Representa la ausencia intencionada de un valor.
+- **`undefined`**: Representa la ausencia de un valor, pero no intencionada.
+
+```typescript
+let valorNulo: null = null;
+let valorIndefinido: undefined = undefined;
+```
+
+Por defecto, TypeScript no permite asignar `null` o `undefined` a cualquier tipo, a menos que se habiliten mediante configuraciones de compilación o se utilicen de manera explícita.
+
+##### **3.1.6. Tipado Implícito y Explícito**
+
+En TypeScript, puedes especificar los tipos de las variables de dos maneras:
+
+1. **Tipado explícito**: Se asigna el tipo a la variable al declararla.
+   
+   ```typescript
+   let nombre: string = "Juan";
+   let edad: number = 30;
+   ```
+
+2. **Tipado implícito**: TypeScript puede inferir el tipo de una variable automáticamente según el valor asignado.
+
+   ```typescript
+   let nombre = "Juan";  // Tipo implícito: string
+   let edad = 30;        // Tipo implícito: number
+   ```
+
+Aunque el tipado implícito es conveniente, el tipado explícito mejora la legibilidad del código y reduce posibles errores.
+
+---
+
+#### **3.2. Tipos Especiales**
+
+TypeScript también incluye algunos tipos especiales que ofrecen un mayor control sobre el comportamiento de las variables y funciones.
+
+##### **3.2.1. `any` (Cualquier tipo)**
+
+El tipo `any` permite que una variable acepte cualquier tipo de valor, similar a cómo funciona una variable en JavaScript. Si no deseas especificar un tipo, puedes usar `any` para evitar que TypeScript verifique el tipo de la variable.
+
+```typescript
+let cualquierCosa: any = "Esto es una cadena";
+cualquierCosa = 123;  // Ahora es un número
+cualquierCosa = true;  // Ahora es un booleano
+```
+
+**Uso de `any`**: Se debe usar con precaución, ya que elimina las comprobaciones de tipos de TypeScript y puede resultar en errores difíciles de detectar.
+
+##### **3.2.2. `unknown` (Desconocido)**
+
+El tipo `unknown` es similar a `any` en el sentido de que puede almacenar cualquier valor. Sin embargo, a diferencia de `any`, el tipo `unknown` requiere que hagas una comprobación de tipo antes de que puedas realizar ciertas operaciones sobre la variable.
+
+```typescript
+let algoDesconocido: unknown = "Un texto";
+
+// Necesitas realizar una comprobación de tipo antes de usar la variable
+if (typeof algoDesconocido === "string") {
+  console.log(algoDesconocido.length);  // Correcto, porque sabemos que es un string
+}
+```
+
+`unknown` es más seguro que `any` porque obliga a realizar verificaciones de tipo antes de interactuar con la variable.
+
+##### **3.2.3. `never` (Nunca)**
+
+El tipo `never` representa valores que nunca ocurrirán. Se utiliza principalmente en situaciones como las funciones que nunca terminan correctamente (por ejemplo, lanzan excepciones o entran en un bucle infinito).
+
+```typescript
+function error(mensaje: string): never {
+  throw new Error(mensaje);
+}
+
+function bucleInfinito(): never {
+  while (true) {
+    // Nunca terminará
+  }
+}
+```
+
+Las funciones que retornan `never` son aquellas que no completan su ejecución de manera normal. Este tipo es útil para detectar errores en el flujo del programa.
+
+---
+
+#### **3.3. Tipos de Arrays y Tuplas**
+
+TypeScript también ofrece una manera más precisa de trabajar con estructuras de datos como los arrays y las tuplas.
+
+##### **3.3.1. Arrays**
+
+Un array es una colección de elementos del mismo tipo. En TypeScript, se puede declarar un array utilizando una de las siguientes sintaxis:
+
+1. **Usando el tipo de elementos seguido de `[]`**:
+
+   ```typescript
+   let numeros: number[] = [1, 2, 3, 4];
+   ```
+
+2. **Usando `Array<tipo>`**:
+
+   ```typescript
+   let numeros: Array<number> = [1, 2, 3, 4];
+   ```
+
+Ambas formas son válidas y se utilizan indistintamente.
+
+##### **3.3.2. Tuplas**
+
+Las tuplas en TypeScript permiten almacenar elementos de diferentes tipos en un solo array, pero con posiciones predefinidas. A diferencia de los arrays tradicionales, las tuplas tienen un número fijo de elementos, cada uno con un tipo específico.
+
+```typescript
+let persona: [string, number] = ["Juan", 30];
+```
+
+En este ejemplo, `persona` es una tupla que tiene un primer elemento de tipo `string` (el nombre) y un segundo elemento de tipo `number` (la edad).
+
+---
+
+#### **3.4. Enum (Enumerados)**
+
+Los `enum` en TypeScript permiten definir un conjunto de valores constantes con nombre, lo que mejora la legibilidad del código. Un `enum` asigna valores enteros automáticamente a los miembros del enumerado, pero también se puede personalizar.
+
+```typescript
+enum Color {
+  Rojo,  // 0
+  Verde, // 1
+  Azul   // 2
+}
+
+let colorFavorito: Color = Color.Verde;
+console.log(colorFavorito);  // 1
+```
+
+Puedes también asignar valores personalizados a los elementos del `enum`:
+
+```typescript
+enum Estado {
+  Pendiente = "PENDIENTE",
+  Aprobado = "APROBADO",
+  Rechazado = "RECHAZADO"
+}
+
+let estadoActual: Estado = Estado.Aprobado;
+console.log(estadoActual);  // "APROBADO"
+```
+
+---
+
+#### **3.5. Conclusión**
+
+En TypeScript, los tipos básicos proporcionan una manera más controlada y segura de trabajar con datos. Al usar tipos como `string`, `number`, `boolean`, `void`, `any`, `unknown`, `never`, y `enum`, puedes escribir código más predecible y fácil de mantener. La correcta utilización de estos tipos, junto con las herramientas de TypeScript, ayudará a evitar errores comunes de JavaScript y mejorará la calidad de tus aplicaciones.

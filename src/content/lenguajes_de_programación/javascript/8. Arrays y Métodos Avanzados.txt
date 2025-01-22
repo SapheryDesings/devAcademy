@@ -1,0 +1,217 @@
+Aquí tienes el desarrollo del **Tema 8: Arrays y Métodos Avanzados en JavaScript**:
+
+---
+
+### **8. Arrays y Métodos Avanzados**
+
+Un **array** en JavaScript es una estructura de datos utilizada para almacenar colecciones de elementos, ya sean números, cadenas, objetos u otros arrays. Además, JavaScript proporciona diversos métodos avanzados para manipularlos de manera eficiente.
+
+---
+
+#### **8.1. Introducción a los Arrays**
+
+1. **Creación de Arrays**
+   ```javascript
+   let numeros = [1, 2, 3, 4, 5];
+   let frutas = ["manzana", "naranja", "plátano"];
+   let mixto = [1, "hola", true];
+   ```
+
+2. **Propiedades principales**
+   - `length`: Retorna el número de elementos en el array.  
+     ```javascript
+     console.log(frutas.length); // 3
+     ```
+
+3. **Acceso a elementos**
+   - Los elementos se acceden por su índice, que comienza en `0`.  
+     ```javascript
+     console.log(frutas[0]); // "manzana"
+     ```
+
+4. **Modificar elementos**
+   ```javascript
+   frutas[1] = "pera"; // Cambia "naranja" por "pera"
+   ```
+
+---
+
+#### **8.2. Métodos Básicos de Arrays**
+
+1. **Agregar elementos**
+   - `push`: Agrega elementos al final del array.  
+     ```javascript
+     frutas.push("fresa"); // ["manzana", "pera", "plátano", "fresa"]
+     ```
+   - `unshift`: Agrega elementos al inicio del array.  
+     ```javascript
+     frutas.unshift("mango"); // ["mango", "manzana", "pera", "plátano"]
+     ```
+
+2. **Eliminar elementos**
+   - `pop`: Elimina el último elemento.  
+     ```javascript
+     frutas.pop(); // ["manzana", "pera", "plátano"]
+     ```
+   - `shift`: Elimina el primer elemento.  
+     ```javascript
+     frutas.shift(); // ["pera", "plátano"]
+     ```
+
+3. **Encontrar elementos**
+   - `indexOf`: Devuelve el índice del primer elemento coincidente.  
+     ```javascript
+     console.log(frutas.indexOf("pera")); // 0
+     ```
+   - `includes`: Verifica si un elemento existe en el array.  
+     ```javascript
+     console.log(frutas.includes("plátano")); // true
+     ```
+
+---
+
+#### **8.3. Métodos Avanzados de Arrays**
+
+1. **Recorrer arrays (`forEach`)**
+   Ejecuta una función para cada elemento del array.  
+   ```javascript
+   frutas.forEach((fruta, indice) => {
+       console.log(`${indice}: ${fruta}`);
+   });
+   ```
+
+2. **Transformar arrays (`map`)**
+   Crea un nuevo array aplicando una función a cada elemento.  
+   ```javascript
+   let longitudes = frutas.map(fruta => fruta.length);
+   console.log(longitudes); // [5, 4, 7]
+   ```
+
+3. **Filtrar arrays (`filter`)**
+   Crea un nuevo array con los elementos que cumplen una condición.  
+   ```javascript
+   let largos = frutas.filter(fruta => fruta.length > 5);
+   console.log(largos); // ["plátano"]
+   ```
+
+4. **Reducir arrays (`reduce`)**
+   Reduce todos los elementos a un único valor.  
+   ```javascript
+   let suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+   console.log(suma); // 15
+   ```
+
+5. **Buscar elementos (`find` y `findIndex`)**
+   - `find`: Devuelve el primer elemento que cumple una condición.  
+     ```javascript
+     let resultado = numeros.find(numero => numero > 3);
+     console.log(resultado); // 4
+     ```
+   - `findIndex`: Devuelve el índice del primer elemento que cumple una condición.  
+     ```javascript
+     let indice = numeros.findIndex(numero => numero > 3);
+     console.log(indice); // 3
+     ```
+
+---
+
+#### **8.4. Métodos de Ordenación y Manipulación**
+
+1. **Ordenar elementos (`sort`)**
+   Ordena los elementos de un array.  
+   ```javascript
+   let numeros = [5, 2, 9, 1];
+   numeros.sort((a, b) => a - b); // Ascendente
+   console.log(numeros); // [1, 2, 5, 9]
+   ```
+
+2. **Invertir el orden (`reverse`)**
+   ```javascript
+   numeros.reverse();
+   console.log(numeros); // [9, 5, 2, 1]
+   ```
+
+3. **Combinar arrays (`concat`)**
+   ```javascript
+   let todos = frutas.concat(numeros);
+   console.log(todos); // ["pera", "plátano", 9, 5, 2, 1]
+   ```
+
+4. **Extraer una parte del array (`slice`)**
+   ```javascript
+   let subArray = frutas.slice(0, 2);
+   console.log(subArray); // ["pera", "plátano"]
+   ```
+
+5. **Modificar arrays (`splice`)**
+   - Agregar, eliminar o reemplazar elementos.
+   ```javascript
+   frutas.splice(1, 1, "durazno", "uva");
+   console.log(frutas); // ["pera", "durazno", "uva", "plátano"]
+   ```
+
+---
+
+#### **8.5. Arrays Multidimensionales**
+
+Un array puede contener otros arrays, formando estructuras más complejas.
+
+**Ejemplo:**
+```javascript
+let matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(matriz[1][2]); // 6
+```
+
+---
+
+#### **8.6. Ejercicios Prácticos**
+
+1. **Filtrar números pares:**
+   ```javascript
+   let numeros = [1, 2, 3, 4, 5, 6];
+   let pares = numeros.filter(numero => numero % 2 === 0);
+   console.log(pares); // [2, 4, 6]
+   ```
+
+2. **Contar ocurrencias de un valor:**
+   ```javascript
+   let valores = ["a", "b", "a", "c", "a", "b"];
+   let ocurrencias = valores.reduce((contador, valor) => {
+       contador[valor] = (contador[valor] || 0) + 1;
+       return contador;
+   }, {});
+   console.log(ocurrencias); // { a: 3, b: 2, c: 1 }
+   ```
+
+3. **Transformar un array de objetos:**
+   ```javascript
+   let usuarios = [
+       { nombre: "Juan", edad: 25 },
+       { nombre: "Ana", edad: 30 },
+       { nombre: "Luis", edad: 22 }
+   ];
+   let nombres = usuarios.map(usuario => usuario.nombre);
+   console.log(nombres); // ["Juan", "Ana", "Luis"]
+   ```
+
+4. **Ordenar un array de objetos por una propiedad:**
+   ```javascript
+   usuarios.sort((a, b) => a.edad - b.edad);
+   console.log(usuarios);
+   // [{ nombre: "Luis", edad: 22 }, { nombre: "Juan", edad: 25 }, { nombre: "Ana", edad: 30 }]
+   ```
+
+5. **Eliminar duplicados en un array:**
+   ```javascript
+   let duplicados = [1, 2, 2, 3, 4, 4, 5];
+   let unicos = [...new Set(duplicados)];
+   console.log(unicos); // [1, 2, 3, 4, 5]
+   ```
+
+---
+
+¿Te gustaría que ampliemos alguno de estos temas o que agreguemos más ejercicios? 😊

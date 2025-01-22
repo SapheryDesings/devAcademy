@@ -1,0 +1,181 @@
+### **14. Manipulación de Tipos con `typeof`, `keyof`, y `instanceof`**
+
+En TypeScript, la manipulación de tipos es una de las características más poderosas, ya que permite definir reglas de tipo dinámicas y realizar comprobaciones de tipos más flexibles. TypeScript proporciona varias herramientas para trabajar con los tipos de datos de manera más precisa, como `typeof`, `keyof` y `instanceof`. Estas herramientas permiten obtener información sobre los tipos en tiempo de compilación o realizar comprobaciones en tiempo de ejecución. En este tema, exploraremos cómo usar estas herramientas y cómo aprovechan el sistema de tipos en TypeScript.
+
+---
+
+#### **14.1. `typeof` en TypeScript**
+
+El operador `typeof` en TypeScript se utiliza tanto en tiempo de compilación como en tiempo de ejecución. En tiempo de compilación, `typeof` permite obtener el tipo de una variable o expresión, lo que es útil cuando queremos referirnos al tipo de una variable o constante ya definida.
+
+**Uso de `typeof` en tiempo de compilación:**
+
+En TypeScript, puedes usar `typeof` para crear tipos basados en una variable o expresión. Este uso es útil para crear tipos dinámicos sin necesidad de definir explícitamente el tipo.
+
+**Ejemplo:**
+
+```typescript
+let num = 42;
+type TipoDeNum = typeof num;  // TipoDeNum será 'number'
+
+let texto = "Hola mundo";
+type TipoDeTexto = typeof texto;  // TipoDeTexto será 'string'
+
+const valor: TipoDeNum = 100;  // Válido
+const otroValor: TipoDeTexto = "Nuevo mensaje";  // Válido
+```
+
+En este ejemplo, `typeof` se utiliza para obtener el tipo de las variables `num` y `texto`. Luego, esos tipos son usados para crear alias de tipos `TipoDeNum` y `TipoDeTexto`, que pueden ser utilizados posteriormente.
+
+**Uso de `typeof` en tiempo de ejecución:**
+
+En tiempo de ejecución, el operador `typeof` se utiliza para verificar el tipo de una variable. Esto es especialmente útil cuando queremos realizar validaciones en el código.
+
+**Ejemplo de `typeof` en tiempo de ejecución:**
+
+```typescript
+function esNumero(valor: any): boolean {
+  return typeof valor === 'number';
+}
+
+console.log(esNumero(123));  // true
+console.log(esNumero("Hola"));  // false
+```
+
+En este caso, `typeof valor === 'number'` comprueba si la variable `valor` es de tipo `number` en tiempo de ejecución.
+
+---
+
+#### **14.2. `keyof` en TypeScript**
+
+El operador `keyof` se utiliza para obtener un tipo que representa todas las claves de un objeto. Es un operador de tipo que genera un conjunto de cadenas que son las claves de un tipo o interfaz. Es útil cuando necesitamos restringir el tipo de una variable a las claves de un objeto.
+
+**Ejemplo de `keyof`:**
+
+```typescript
+interface Persona {
+  nombre: string;
+  edad: number;
+  direccion: string;
+}
+
+type ClavesDePersona = keyof Persona;  // "nombre" | "edad" | "direccion"
+
+let clave: ClavesDePersona;
+
+clave = "nombre";  // Válido
+clave = "edad";    // Válido
+clave = "telefono";  // Error: "telefono" no es una clave de 'Persona'
+```
+
+En este ejemplo, `keyof Persona` produce un tipo que representa las claves de la interfaz `Persona`, es decir, `"nombre" | "edad" | "direccion"`. Luego, la variable `clave` solo puede tomar valores que sean claves de `Persona`.
+
+**Uso de `keyof` con un objeto:**
+
+Puedes usar `keyof` para crear funciones genéricas que operen sobre las claves de un objeto. Esto es útil cuando trabajas con objetos cuyo conjunto de claves puede variar.
+
+```typescript
+function obtenerValor<T, K extends keyof T>(objeto: T, clave: K): T[K] {
+  return objeto[clave];
+}
+
+const persona = {
+  nombre: 'Juan',
+  edad: 30,
+  direccion: 'Calle 123'
+};
+
+const nombre = obtenerValor(persona, 'nombre');  // Válido
+const edad = obtenerValor(persona, 'edad');    // Válido
+// const telefono = obtenerValor(persona, 'telefono');  // Error: 'telefono' no es una clave válida
+```
+
+En este caso, la función `obtenerValor` toma un objeto `objeto` y una clave `clave`, y devuelve el valor correspondiente a esa clave. El tipo `K extends keyof T` asegura que solo se puedan pasar claves válidas del objeto.
+
+---
+
+#### **14.3. `instanceof` en TypeScript**
+
+El operador `instanceof` en TypeScript se utiliza para comprobar si un objeto es una instancia de una clase específica o de una interfaz. En tiempo de compilación, TypeScript puede inferir el tipo de un objeto basado en las clases o interfaces que implementa.
+
+**Uso de `instanceof` en tiempo de ejecución:**
+
+En tiempo de ejecución, `instanceof` se puede usar para verificar la clase de un objeto. Esto es útil cuando se trabaja con jerarquías de clases o interfaces y necesitamos hacer una validación para determinar el tipo de una instancia.
+
+**Ejemplo de `instanceof`:**
+
+```typescript
+class Animal {
+  constructor(public nombre: string) {}
+}
+
+class Perro extends Animal {
+  ladrar() {
+    console.log('¡Guau!');
+  }
+}
+
+class Gato extends Animal {
+  maullar() {
+    console.log('¡Miau!');
+  }
+}
+
+const perro = new Perro('Rex');
+const gato = new Gato('Felix');
+
+function hablarSiEsPerro(animal: Animal) {
+  if (animal instanceof Perro) {
+    animal.ladrar();  // ¡Guau!
+  } else {
+    console.log('No es un perro');
+  }
+}
+
+hablarSiEsPerro(perro);  // ¡Guau!
+hablarSiEsPerro(gato);   // No es un perro
+```
+
+En este ejemplo, `instanceof` verifica si el objeto `animal` es una instancia de la clase `Perro`. Si lo es, se llama al método `ladrar`; si no lo es, se muestra un mensaje indicando que no es un perro.
+
+**Uso de `instanceof` con tipos personalizados:**
+
+El operador `instanceof` también se puede usar con tipos personalizados que utilicen clases. Cuando se utiliza con clases, `instanceof` verifica la cadena de prototipos de un objeto.
+
+```typescript
+class Circulo {
+  constructor(public radio: number) {}
+}
+
+class Cuadrado {
+  constructor(public lado: number) {}
+}
+
+function calcularArea(forma: Circulo | Cuadrado) {
+  if (forma instanceof Circulo) {
+    return Math.PI * forma.radio ** 2;
+  } else if (forma instanceof Cuadrado) {
+    return forma.lado ** 2;
+  }
+}
+
+const forma1 = new Circulo(10);
+const forma2 = new Cuadrado(5);
+
+console.log(calcularArea(forma1));  // Área del círculo
+console.log(calcularArea(forma2));  // Área del cuadrado
+```
+
+En este caso, el operador `instanceof` se utiliza para determinar si `forma` es una instancia de `Circulo` o `Cuadrado`, y luego calcular el área correspondiente de cada forma.
+
+---
+
+#### **14.4. Conclusión**
+
+Los operadores `typeof`, `keyof` y `instanceof` en TypeScript son herramientas poderosas para manipular y validar tipos de manera más precisa y dinámica. Cada uno de estos operadores tiene un propósito diferente:
+
+- **`typeof`** se utiliza para obtener tipos en tiempo de compilación o hacer verificaciones en tiempo de ejecución sobre el tipo de una variable o expresión.
+- **`keyof`** permite trabajar con las claves de un objeto o interfaz, y es útil para crear funciones que se adaptan dinámicamente a las claves de un objeto.
+- **`instanceof`** se usa en tiempo de ejecución para verificar si un objeto es una instancia de una clase o una estructura específica.
+
+Comprender cómo y cuándo usar estos operadores te permitirá escribir código más seguro, flexible y legible, aprovechando al máximo el sistema de tipos de TypeScript.

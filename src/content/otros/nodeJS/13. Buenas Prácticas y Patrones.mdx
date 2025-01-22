@@ -1,0 +1,277 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Backend" asignatura = "NodeJs"/>
+
+# 13. Testing en Node.js
+
+El testing es una parte fundamental en el desarrollo de aplicaciones, ya que asegura que el código funcione como se espera y ayuda a identificar errores antes de que lleguen al entorno de producción. En Node.js, existen múltiples herramientas y enfoques para realizar pruebas unitarias, de integración y de extremo a extremo. En este tema, exploraremos las mejores prácticas y las herramientas más comunes para realizar testing en Node.js.
+
+## 13.1. Importancia del Testing
+
+El testing ayuda a:
+
+- **Detectar errores temprano**: Al ejecutar pruebas de manera regular, es más probable que los errores se encuentren antes de que la aplicación llegue a producción.
+- **Asegurar la calidad del código**: Las pruebas aseguran que el código que implementas cumpla con los requisitos y que los cambios no afecten negativamente el comportamiento de la aplicación.
+- **Facilitar el mantenimiento**: Las pruebas ayudan a garantizar que el código siga funcionando de la misma manera incluso después de realizar modificaciones o agregar nuevas características.
+
+## 13.2. Tipos de Pruebas
+
+Existen varios tipos de pruebas que puedes realizar en Node.js:
+
+### 13.2.1. Pruebas Unitarias
+
+Las **pruebas unitarias** se centran en probar componentes pequeños del sistema, como funciones o métodos individuales, para asegurarse de que se comporten como se espera. Estas pruebas son rápidas y proporcionan una retroalimentación inmediata sobre si el código está funcionando correctamente.
+
+### 13.2.2. Pruebas de Integración
+
+Las **pruebas de integración** verifican la interacción entre diferentes módulos o servicios dentro de la aplicación. Estas pruebas aseguran que los diferentes componentes de la aplicación trabajen bien juntos.
+
+### 13.2.3. Pruebas de Extremo a Extremo (E2E)
+
+Las **pruebas de extremo a extremo** simulan cómo un usuario interactuaría con la aplicación, verificando que todo el sistema funcione correctamente desde el principio hasta el final.
+
+## 13.3. Herramientas de Testing en Node.js
+
+Existen varias herramientas populares para realizar pruebas en aplicaciones Node.js. A continuación, exploramos algunas de las más utilizadas.
+
+### 13.3.1. Mocha
+
+**Mocha** es uno de los frameworks de testing más populares en Node.js. Permite realizar pruebas unitarias y de integración de manera flexible.
+
+#### 13.3.1.1. Instalación
+
+Para comenzar a usar Mocha, instálalo como dependencia de desarrollo:
+
+```bash
+npm install --save-dev mocha
+```
+
+#### 13.3.1.2. Ejemplo Básico de Uso
+
+En un archivo de prueba, puedes escribir tus pruebas de la siguiente manera:
+
+```javascript
+const assert = require('assert');
+
+describe('Mi función', function() {
+  it('debería devolver 4 cuando se suman 2 y 2', function() {
+    const resultado = 2 + 2;
+    assert.strictEqual(resultado, 4);
+  });
+});
+```
+
+Luego, ejecuta Mocha desde la línea de comandos para correr las pruebas:
+
+```bash
+npx mocha
+```
+
+### 13.3.2. Chai
+
+**Chai** es una biblioteca de afirmaciones (assertions) que se usa comúnmente junto con Mocha. Permite escribir pruebas más legibles y expresivas.
+
+#### 13.3.2.1. Instalación
+
+Instálalo con npm:
+
+```bash
+npm install --save-dev chai
+```
+
+#### 13.3.2.2. Ejemplo de Uso con Mocha
+
+```javascript
+const chai = require('chai');
+const expect = chai.expect;
+
+describe('Mi función', function() {
+  it('debería devolver 4 cuando se suman 2 y 2', function() {
+    const resultado = 2 + 2;
+    expect(resultado).to.equal(4);
+  });
+});
+```
+
+### 13.3.3. Jest
+
+**Jest** es otro popular framework de testing desarrollado por Facebook. Es conocido por su simplicidad, velocidad y características adicionales como el mocking de funciones y la cobertura de código.
+
+#### 13.3.3.1. Instalación
+
+Instala Jest en tu proyecto:
+
+```bash
+npm install --save-dev jest
+```
+
+#### 13.3.3.2. Ejemplo de Uso
+
+En un archivo de prueba:
+
+```javascript
+test('debe devolver 4 cuando se suman 2 y 2', () => {
+  expect(2 + 2).toBe(4);
+});
+```
+
+Para ejecutar las pruebas con Jest:
+
+```bash
+npx jest
+```
+
+### 13.3.4. Supertest
+
+**Supertest** es una biblioteca que facilita las pruebas de las API REST. Se utiliza para hacer solicitudes HTTP a tu servidor y verificar las respuestas.
+
+#### 13.3.4.1. Instalación
+
+Instala Supertest:
+
+```bash
+npm install --save-dev supertest
+```
+
+#### 13.3.4.2. Ejemplo de Uso con Express
+
+Si tienes una API Express, puedes escribir pruebas de la siguiente manera:
+
+```javascript
+const request = require('supertest');
+const app = require('./app');  // tu archivo de servidor Express
+
+describe('GET /api/usuarios', function() {
+  it('debe devolver un status 200 y una lista de usuarios', function(done) {
+    request(app)
+      .get('/api/usuarios')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(done);
+  });
+});
+```
+
+### 13.3.5. Sinon
+
+**Sinon** es una biblioteca para crear mocks, stubs y espías en pruebas. Es útil cuando necesitas simular comportamientos en tus pruebas, como llamadas a funciones o interacciones con objetos externos.
+
+#### 13.3.5.1. Instalación
+
+Instala Sinon:
+
+```bash
+npm install --save-dev sinon
+```
+
+#### 13.3.5.2. Ejemplo de Uso
+
+```javascript
+const sinon = require('sinon');
+const myFunction = require('./myFunction'); // tu función a testear
+
+describe('Pruebas con Sinon', function() {
+  it('debería llamar a la función una vez', function() {
+    const spy = sinon.spy(myFunction);
+    spy();
+    sinon.assert.calledOnce(spy);
+  });
+});
+```
+
+## 13.4. Organización de Pruebas
+
+Organizar las pruebas es esencial para mantener un proyecto limpio y manejable. Algunas prácticas recomendadas incluyen:
+
+- **Carpetas separadas para pruebas**: Generalmente, las pruebas se colocan en una carpeta llamada `test` o `tests` en la raíz del proyecto.
+- **Archivos de prueba específicos**: Se recomienda que cada módulo o componente de la aplicación tenga su propio archivo de prueba.
+- **Convenciones de nombres**: Usa convenciones claras para nombrar los archivos de prueba, como `nombreDelModulo.test.js`.
+
+## 13.5. Ejecución de Pruebas
+
+Puedes ejecutar las pruebas de diferentes maneras dependiendo de la herramienta que estés utilizando. Las opciones comunes son:
+
+### 13.5.1. Ejecutar Pruebas con Mocha
+
+Para ejecutar las pruebas con Mocha:
+
+```bash
+npx mocha
+```
+
+### 13.5.2. Ejecutar Pruebas con Jest
+
+Para ejecutar las pruebas con Jest:
+
+```bash
+npx jest
+```
+
+### 13.5.3. Ejecutar Pruebas de Forma Automática
+
+Si deseas ejecutar las pruebas cada vez que se realiza un cambio en el código, puedes usar herramientas como `nodemon` o `mocha --watch`.
+
+Para instalar nodemon:
+
+```bash
+npm install --save-dev nodemon
+```
+
+Y luego configurar tu archivo `package.json` para usarlo en la ejecución de pruebas:
+
+```json
+"scripts": {
+  "test": "mocha --watch"
+}
+```
+
+### 13.5.4. Cobertura de Código
+
+Puedes generar informes de cobertura de código para asegurarte de que todas las partes del código están siendo probadas.
+
+#### 13.5.4.1. Cobertura con Mocha
+
+Instala `nyc` (un paquete para cobertura de código):
+
+```bash
+npm install --save-dev nyc
+```
+
+Agrega la siguiente configuración en tu archivo `package.json`:
+
+```json
+"scripts": {
+  "test": "nyc mocha"
+}
+```
+
+Luego, ejecuta las pruebas con cobertura:
+
+```bash
+npm test
+```
+
+### 13.5.5. Pruebas en CI/CD
+
+La integración continua (CI) y el despliegue continuo (CD) son prácticas que automatizan la ejecución de pruebas y el despliegue de aplicaciones. Usar un servicio de CI/CD como **Travis CI**, **GitHub Actions**, o **CircleCI** puede ayudarte a ejecutar las pruebas automáticamente cada vez que haces un push al repositorio.
+
+## 13.6. Buenas Prácticas para Testing
+
+Algunas buenas prácticas al realizar pruebas son:
+
+- **Escribir pruebas pequeñas y enfocadas**: Cada prueba debe verificar un solo comportamiento.
+- **Mantener las pruebas rápidas**: Las pruebas unitarias deben ser rápidas para que se puedan ejecutar con frecuencia.
+- **Evitar dependencias externas**: Si es posible, evita que las pruebas dependan de recursos externos (como bases de datos o servicios externos).
+- **Refactorizar las pruebas**: A medida que el código cambia, asegúrate de mantener las pruebas actualizadas y eliminar las pruebas obsoletas.
+
+
+>El testing es una parte esencial en el ciclo de desarrollo de una aplicación Node.js. Utilizando herramientas como Mocha, Jest, Chai, Supertest y Sinon, puedes asegurarte de que tu código sea confiable y de alta calidad. Además, organizar las pruebas, automatizarlas y ejecutar informes de cobertura son prácticas que te ayudarán a mantener un código bien probado y de fácil mantenimiento.
+
+>Al implementar testing en tu flujo de trabajo, mejorarás la estabilidad de tu aplicación y reducirás la probabilidad de introducir errores en producción.
+
+
+>Este desarrollo cubre el **Tema 13: Testing en Node.js**, detallando los diferentes tipos de pruebas (unitarias, de integración, de extremo a extremo), las herramientas populares para testing (como Mocha, Jest, Chai, Supertest y Sinon), y las mejores prácticas para llevar a cabo un proceso de testing efectivo en aplicaciones Node.js.

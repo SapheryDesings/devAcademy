@@ -1,0 +1,92 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 1. **Introducción a Git**
+   - ¿Qué es Git?
+   - Historia de Git
+   - Beneficios de usar Git
+   - Conceptos básicos de control de versiones
+
+### 2. **Instalación y Configuración**
+   - Requisitos previos
+   - Instalación de Git
+     - Windows
+     - macOS
+     - Linux
+   - Configuración inicial
+     - `git config --global user.name`
+     - `git config --global user.email`
+     - Verificar configuración (`git config --list`)
+
+### 3. **Flujo de Trabajo Básico**
+   - Crear un repositorio: `git init`
+   - Clonar un repositorio: `git clone [url]`
+   - Estructura de un repositorio (archivos `.git`)
+
+### 4. **Operaciones Básicas**
+   - **Agregar archivos:**
+     - `git add [archivo]`
+     - `git add .` (agregar todos los archivos)
+   - **Realizar un commit:**
+     - `git commit -m "Mensaje del commit"`
+   - **Ver el estado:**
+     - `git status`
+   - **Ver el historial de commits:**
+     - `git log`
+   
+### 5. **Trabajo con Ramas**
+   - ¿Qué es una rama?
+   - Crear una rama nueva: `git branch [nombre_rama]`
+   - Cambiar de rama: `git checkout [nombre_rama]`
+   - Fusionar ramas: `git merge [nombre_rama]`
+   - Eliminar una rama: `git branch -d [nombre_rama]`
+
+### 6. **Trabajo con Remotos**
+   - Ver repositorios remotos: `git remote -v`
+   - Agregar un remoto: `git remote add [nombre] [url]`
+   - Obtener cambios del remoto: `git fetch`
+   - Sincronizar cambios (Push y Pull):
+     - Subir cambios: `git push [remoto] [rama]`
+     - Descargar cambios: `git pull [remoto] [rama]`
+   - Ver diferencias entre el repositorio local y remoto: `git diff`
+
+### 7. **Colaboración en Git**
+   - **Trabajo en equipo:**
+     - Clonar un repositorio compartido
+     - Sincronizar con el repositorio remoto
+   - **Resolución de conflictos:**
+     - Cómo detectar conflictos
+     - Cómo resolverlos manualmente
+
+### 8. **Revertir Cambios**
+   - Descartar cambios no confirmados: `git checkout -- [archivo]`
+   - Deshacer un commit: `git reset --soft HEAD~1`
+   - Eliminar cambios de un archivo: `git rm [archivo]`
+   - Restaurar un archivo a un commit anterior: `git checkout [commit_id] -- [archivo]`
+
+### 9. **Etiquetas (Tags)**
+   - Crear una etiqueta: `git tag [nombre_etiqueta]`
+   - Ver etiquetas: `git tag`
+   - Subir etiquetas al repositorio remoto: `git push origin [nombre_etiqueta]`
+
+### 10. **Mejores Prácticas**
+   - Convenciones para los mensajes de commit
+   - Uso de `.gitignore`
+   - Estructura de ramas (Main/Master, Desarrollo, Feature, etc.)
+   - Revisión de código y Pull Requests
+
+### 11. **Comandos Avanzados**
+   - Rebase: `git rebase`
+   - Cherry-pick: `git cherry-pick [commit_id]`
+   - Stash: `git stash`
+   - Submódulos: `git submodule`
+
+### 12. **Recursos adicionales**
+   - Documentación oficial de Git
+   - Tutoriales y guías
+   - Comunidades y foros

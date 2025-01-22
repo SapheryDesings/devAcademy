@@ -1,0 +1,257 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Backend" asignatura = "NodeJs"/>
+
+# 3. Módulos en Node.js
+
+Node.js es una plataforma basada en JavaScript que permite crear aplicaciones escalables y eficientes, especialmente para el desarrollo de aplicaciones web y de red. Una de las características clave de Node.js es su sistema de **módulos**, que permite dividir el código en piezas reutilizables y organizadas. Node.js es modular por diseño, lo que facilita la creación de aplicaciones más estructuradas y mantenibles.
+
+En este tema, exploraremos los diferentes tipos de módulos en Node.js, cómo usarlos, y cómo crear módulos propios.
+
+## 3.1. Módulos Nativos en Node.js
+
+Node.js incluye una serie de módulos integrados en su núcleo que proporcionan funcionalidades esenciales para el desarrollo de aplicaciones. Estos módulos son muy útiles y no requieren la instalación de dependencias adicionales. Algunos de los módulos más comunes incluyen:
+
+### 3.1.1. Módulo `fs` (File System)
+
+El módulo `fs` (File System) permite interactuar con el sistema de archivos. Puedes leer, escribir, crear, y eliminar archivos y directorios.
+
+- **Ejemplo de uso**: Leer un archivo de forma asíncrona.
+
+  ```javascript
+  const fs = require('fs');
+
+  fs.readFile('archivo.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error al leer el archivo:', err);
+      return;
+    }
+    console.log(data);
+  });
+  ```
+
+### 3.1.2. Módulo `http`
+
+El módulo `http` permite crear servidores web y manejar solicitudes HTTP. Es uno de los módulos más utilizados para crear aplicaciones web en Node.js.
+
+- **Ejemplo de uso**: Crear un servidor HTTP básico.
+
+  ```javascript
+  const http = require('http');
+
+  const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('¡Hola, mundo!');
+  });
+
+  server.listen(3000, () => {
+    console.log('Servidor corriendo en http://localhost:3000/');
+  });
+  ```
+
+### 3.1.3. Módulo `path`
+
+El módulo `path` proporciona utilidades para trabajar con rutas de archivos y directorios. Facilita la manipulación de rutas en sistemas operativos diferentes.
+
+- **Ejemplo de uso**: Unir rutas de archivos de manera segura.
+
+  ```javascript
+  const path = require('path');
+
+  const rutaCompleta = path.join(__dirname, 'miCarpeta', 'archivo.txt');
+  console.log(rutaCompleta); // /ruta/al/directorio/miCarpeta/archivo.txt
+  ```
+
+### 3.1.4. Módulo `events`
+
+El módulo `events` permite trabajar con un modelo de programación basado en eventos. Puedes emitir eventos personalizados y manejarlos de manera eficiente.
+
+- **Ejemplo de uso**: Crear un emisor de eventos personalizado.
+
+  ```javascript
+  const EventEmitter = require('events');
+  const emisor = new EventEmitter();
+
+  emisor.on('evento', () => {
+    console.log('¡Se ha emitido un evento!');
+  });
+
+  emisor.emit('evento');
+  ```
+
+### 3.1.5. Módulo `url`
+
+El módulo `url` permite analizar y manipular URLs. Es útil cuando necesitas trabajar con direcciones web, obtener parámetros de consulta o construir URLs completas.
+
+- **Ejemplo de uso**: Parsear una URL y obtener sus componentes.
+
+  ```javascript
+  const url = require('url');
+
+  const direccion = 'http://www.ejemplo.com:8080/path?nombre=juan#seccion';
+  const parsedUrl = url.parse(direccion);
+  console.log(parsedUrl);
+  ```
+
+## 3.2. Módulos de Terceros
+
+Node.js tiene un vasto ecosistema de módulos de terceros disponibles a través de **npm** (Node Package Manager). Estos módulos proporcionan una gran variedad de funcionalidades adicionales para trabajar con bases de datos, manejar rutas, implementar autenticación, y mucho más.
+
+### 3.2.1. Instalación de Módulos de Terceros
+
+Para instalar módulos de terceros, se utiliza **npm**. Existen dos formas principales de instalación:
+
+- **Instalación global**: Instala el módulo globalmente, lo que permite usarlo en cualquier lugar del sistema.
+  ```bash
+  npm install -g <nombre-del-paquete>
+  ```
+
+- **Instalación local**: Instala el módulo dentro de tu proyecto en la carpeta `node_modules`.
+  ```bash
+  npm install <nombre-del-paquete>
+  ```
+
+### 3.2.2. Ejemplos de Módulos Populares
+
+#### 3.2.2.1. **Express**
+
+**Express** es uno de los frameworks web más populares para Node.js. Permite crear servidores web y APIs de forma sencilla y eficiente.
+
+- **Instalación**:
+  ```bash
+  npm install express
+  ```
+
+- **Ejemplo de uso**: Crear un servidor básico con Express.
+
+  ```javascript
+  const express = require('express');
+  const app = express();
+
+  app.get('/', (req, res) => {
+    res.send('¡Hola desde Express!');
+  });
+
+  app.listen(3000, () => {
+    console.log('Servidor corriendo en http://localhost:3000');
+  });
+  ```
+
+#### 3.2.2.2. **Lodash**
+
+**Lodash** es una biblioteca de utilidades que ofrece una serie de funciones para manipular objetos, arrays y funciones. Es muy útil para realizar tareas comunes en JavaScript de manera más eficiente.
+
+- **Instalación**:
+  ```bash
+  npm install lodash
+  ```
+
+- **Ejemplo de uso**: Usar Lodash para clonar un objeto.
+
+  ```javascript
+  const _ = require('lodash');
+
+  const objetoOriginal = { a: 1, b: 2 };
+  const objetoClonado = _.cloneDeep(objetoOriginal);
+
+  console.log(objetoClonado); // { a: 1, b: 2 }
+  ```
+
+#### 3.2.2.3. **Axios**
+
+**Axios** es una librería que facilita el trabajo con solicitudes HTTP. Es ampliamente utilizada para consumir APIs desde el navegador o desde aplicaciones Node.js.
+
+- **Instalación**:
+  ```bash
+  npm install axios
+  ```
+
+- **Ejemplo de uso**: Realizar una solicitud GET a una API.
+
+  ```javascript
+  const axios = require('axios');
+
+  axios.get('https://api.ejemplo.com/datos')
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error al realizar la solicitud:', error);
+    });
+  ```
+
+## 3.3. Creación de Módulos Propios
+
+Además de usar los módulos nativos o de terceros, también puedes crear tus propios módulos en Node.js para organizar y reutilizar tu código.
+
+### 3.3.1. Creación de un Módulo Personalizado
+
+Para crear un módulo personalizado en Node.js, basta con crear un archivo JavaScript y exportar las funciones o variables que deseas hacer accesibles desde otros archivos.
+
+- **Ejemplo de un módulo `saludo.js`**:
+
+  ```javascript
+  // saludo.js
+  function saludar(nombre) {
+    return `¡Hola, ${nombre}!`;
+  }
+
+  module.exports = saludar;
+  ```
+
+- **Uso del módulo en otro archivo `app.js`**:
+
+  ```javascript
+  // app.js
+  const saludar = require('./saludo');
+
+  console.log(saludar('Juan')); // ¡Hola, Juan!
+  ```
+
+### 3.3.2. Exportación de Múltiples Elementos
+
+Un módulo también puede exportar varios elementos, como funciones, objetos o clases. Para ello, se pueden usar diferentes formas de exportación.
+
+- **Ejemplo con varias exportaciones**:
+
+  ```javascript
+  // matematicas.js
+  function sumar(a, b) {
+    return a + b;
+  }
+
+  function restar(a, b) {
+    return a - b;
+  }
+
+  module.exports = {
+    sumar,
+    restar
+  };
+  ```
+
+- **Uso del módulo en otro archivo**:
+
+  ```javascript
+  // app.js
+  const { sumar, restar } = require('./matematicas');
+
+  console.log(sumar(3, 2));  // 5
+  console.log(restar(5, 2)); // 3
+  ```
+
+- **Módulos Nativos**: Node.js incluye varios módulos nativos como `fs`, `http`, `path`, `events`, y `url`, que proporcionan funcionalidades esenciales para interactuar con el sistema de archivos, crear servidores web, manejar rutas, y más.
+
+- **Módulos de Terceros**: A través de npm, puedes acceder a una amplia gama de módulos de terceros como **Express**, **Lodash** y **Axios**, que extienden la funcionalidad de Node.js y facilitan tareas comunes.
+
+- **Creación de Módulos Propios**: Node.js permite crear módulos personalizados que puedes exportar y reutilizar en diferentes partes de tu aplicación, lo que facilita la organización y la mantenibilidad del código.
+
+>Los módulos son una parte esencial del ecosistema de Node.js, y saber cómo trabajar con ellos te permitirá crear aplicaciones más robustas y organizadas.
+
+
+>Este desarrollo cubre los aspectos esenciales de los **módulos en Node.js**, incluyendo los módulos nativos, cómo trabajar con módulos de terceros, y cómo crear y exportar tus propios módulos personalizados. Es un tema fundamental para la estructuración y organización de aplicaciones en Node.js.

@@ -1,0 +1,90 @@
+Aquí tienes un desarrollo del tema **1. Introducción a JavaScript**:
+
+---
+
+### **1. Introducción a JavaScript**
+
+#### **1.1. ¿Qué es JavaScript?**  
+JavaScript es un lenguaje de programación interpretado, dinámico y de alto nivel que se utiliza principalmente para el desarrollo web. Se ejecuta en el navegador y permite agregar interactividad y dinamismo a las páginas web. Algunos ejemplos de su uso incluyen:  
+- Crear animaciones y efectos visuales.  
+- Validar formularios antes de enviarlos.  
+- Actualizar contenido dinámicamente sin recargar la página (usando AJAX).  
+- Crear aplicaciones web completas (frontend y backend).  
+
+#### **1.2. Historia y evolución del lenguaje**  
+JavaScript fue desarrollado por **Brendan Eich** en 1995 mientras trabajaba para Netscape Communications. En solo 10 días creó un lenguaje llamado Mocha, que más tarde fue renombrado a JavaScript.  
+- **1997**: JavaScript fue estandarizado por ECMA International como **ECMAScript**.  
+- **2009**: Llega Node.js, lo que permite usar JavaScript en el lado del servidor.  
+- **2015**: ECMAScript 6 (ES6) introduce características modernas como `let`, `const`, funciones flecha y clases.  
+
+#### **1.3. Instalación y configuración del entorno**  
+JavaScript no requiere instalación porque está integrado en todos los navegadores modernos. Sin embargo, para desarrollo profesional, se recomienda usar:  
+- **Editor de código**: Visual Studio Code, Sublime Text o cualquier otro.  
+- **Navegador**: Google Chrome, Firefox o Edge (incluyen herramientas de desarrollo).  
+- **Entorno avanzado**: Node.js (para ejecutar JavaScript fuera del navegador).  
+
+#### **1.4. Integración de JavaScript en HTML**  
+Hay dos formas principales de usar JavaScript en una página web:  
+1. **Incrustado en el HTML**:  
+   ```html
+   <!DOCTYPE html>
+   <html lang="es">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>JavaScript Incrustado</title>
+   </head>
+   <body>
+       <h1>¡Hola, JavaScript!</h1>
+       <script>
+           console.log('Hola desde un script incrustado');
+       </script>
+   </body>
+   </html>
+   ```
+2. **Archivo externo**:  
+   Guardar el código JavaScript en un archivo `.js` y enlazarlo en el HTML:  
+   ```html
+   <!DOCTYPE html>
+   <html lang="es">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>JavaScript Externo</title>
+       <script src="script.js"></script>
+   </head>
+   <body>
+       <h1>¡Hola, JavaScript Externo!</h1>
+   </body>
+   </html>
+   ```
+   **Archivo `script.js`:**  
+   ```javascript
+   console.log('Hola desde un archivo externo');
+   ```
+
+#### **1.5. Primer programa: "Hola Mundo"**  
+El clásico "Hola Mundo" es la forma más sencilla de empezar con JavaScript. Puedes mostrar un mensaje en:  
+1. **La consola del navegador**:  
+   ```javascript
+   console.log('¡Hola Mundo!');
+   ```
+   Abre las herramientas de desarrollo (F12) en el navegador para verlo.  
+
+2. **Una ventana emergente**:  
+   ```javascript
+   alert('¡Hola Mundo!');
+   ```
+
+3. **El contenido de la página**:  
+   ```html
+   <body>
+       <script>
+           document.write('¡Hola Mundo desde la página!');
+       </script>
+   </body>
+   ```
+
+---
+
+¿Te gustaría que profundice en algún subtema o que prepare ejercicios prácticos para esta sección? 😊

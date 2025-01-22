@@ -1,0 +1,263 @@
+Aquí tienes el desarrollo del **Tema 9: Manejo de Errores en JavaScript**:
+
+---
+
+### **9. Manejo de Errores**
+
+El manejo de errores en JavaScript es una práctica esencial para construir aplicaciones robustas y evitar que errores inesperados interrumpan la ejecución de tu código. JavaScript proporciona herramientas para detectar, manejar y resolver errores de manera eficiente.
+
+---
+
+#### **9.1. Conceptos Básicos**
+
+Un error puede ocurrir por diversas razones, como:
+- Referencias a variables no definidas.
+- Intentos de acceder a propiedades de valores `null` o `undefined`.
+- Operaciones inválidas como divisiones entre cero o tipos incompatibles.
+
+**Errores comunes:**
+- **`ReferenceError`**: Variable o función no definida.
+- **`TypeError`**: Operación sobre un tipo de dato incorrecto.
+- **`SyntaxError`**: Código con errores de sintaxis.
+
+**Ejemplo de error:**
+```javascript
+console.log(variableNoDefinida); // ReferenceError
+```
+
+---
+
+#### **9.2. Uso de `try...catch`**
+
+El bloque `try...catch` permite ejecutar un código y capturar los errores para manejarlos sin que interrumpan la ejecución.
+
+**Estructura básica:**
+```javascript
+try {
+    // Código que puede generar un error
+} catch (error) {
+    // Manejo del error
+}
+```
+
+**Ejemplo:**
+```javascript
+try {
+    let resultado = 10 / 0;
+    console.log("Resultado:", resultado);
+    console.log(variableNoDefinida); // Error
+} catch (error) {
+    console.log("Se produjo un error:", error.message);
+}
+```
+
+**Salida:**
+```
+Se produjo un error: variableNoDefinida is not defined
+```
+
+---
+
+#### **9.3. Bloque `finally`**
+
+El bloque `finally` es opcional y se ejecuta siempre, independientemente de si ocurrió o no un error.
+
+**Ejemplo:**
+```javascript
+try {
+    let resultado = 10 / 0;
+    console.log(resultado);
+} catch (error) {
+    console.log("Error:", error.message);
+} finally {
+    console.log("Este bloque siempre se ejecuta.");
+}
+```
+
+**Salida:**
+```
+Infinity
+Este bloque siempre se ejecuta.
+```
+
+---
+
+#### **9.4. Lanzar errores con `throw`**
+
+Puedes generar tus propios errores usando la palabra clave `throw`.
+
+**Ejemplo:**
+```javascript
+function dividir(a, b) {
+    if (b === 0) {
+        throw new Error("No se puede dividir entre cero.");
+    }
+    return a / b;
+}
+
+try {
+    console.log(dividir(10, 0));
+} catch (error) {
+    console.log("Error:", error.message);
+}
+```
+
+**Salida:**
+```
+Error: No se puede dividir entre cero.
+```
+
+---
+
+#### **9.5. Tipos de Errores Predefinidos**
+
+JavaScript proporciona varios tipos de errores predefinidos:
+
+1. **`Error`**: Clase base para todos los errores.
+2. **`ReferenceError`**: Intento de usar una variable no definida.
+3. **`TypeError`**: Operaciones inválidas para un tipo de dato.
+4. **`SyntaxError`**: Errores de sintaxis (detectados en tiempo de análisis).
+5. **`RangeError`**: Uso de un número fuera de su rango permitido.
+6. **`EvalError`**: Errores en el uso de `eval()`.
+
+**Ejemplo:**
+```javascript
+try {
+    JSON.parse("{malformado}"); // SyntaxError
+} catch (error) {
+    console.log("Error:", error.name); // SyntaxError
+    console.log("Mensaje:", error.message); // Unexpected token m in JSON
+}
+```
+
+---
+
+#### **9.6. Validaciones y Errores Personalizados**
+
+Puedes crear clases de error personalizadas para adaptarte a escenarios específicos.
+
+**Ejemplo:**
+```javascript
+class ValidationError extends Error {
+    constructor(mensaje) {
+        super(mensaje);
+        this.name = "ValidationError";
+    }
+}
+
+function validarEdad(edad) {
+    if (edad < 18) {
+        throw new ValidationError("La edad debe ser mayor o igual a 18.");
+    }
+    return true;
+}
+
+try {
+    validarEdad(15);
+} catch (error) {
+    console.log(`${error.name}: ${error.message}`);
+}
+```
+
+**Salida:**
+```
+ValidationError: La edad debe ser mayor o igual a 18.
+```
+
+---
+
+#### **9.7. Manejo de Errores Asíncronos**
+
+En funciones asíncronas, puedes manejar errores usando `try...catch` junto con `async/await`.
+
+**Ejemplo:**
+```javascript
+async function obtenerDatos() {
+    try {
+        let respuesta = await fetch("https://api.ejemplo.com/datos");
+        if (!respuesta.ok) {
+            throw new Error("Error en la solicitud: " + respuesta.status);
+        }
+        let datos = await respuesta.json();
+        console.log(datos);
+    } catch (error) {
+        console.log("Error capturado:", error.message);
+    }
+}
+
+obtenerDatos();
+```
+
+---
+
+#### **9.8. Ejercicios Prácticos**
+
+1. **Validar entrada de usuario:**
+   Escribe una función que valide si un número es positivo. Si no lo es, lanza un error.
+
+   **Ejemplo:**
+   ```javascript
+   function validarNumero(numero) {
+       if (numero < 0) {
+           throw new Error("El número debe ser positivo.");
+       }
+       return true;
+   }
+   
+   try {
+       validarNumero(-5);
+   } catch (error) {
+       console.log(error.message);
+   }
+   ```
+
+2. **Manejo de errores en Promesas:**
+   Crea una función que simule una solicitud HTTP y maneje errores con `.catch`.
+
+   **Ejemplo:**
+   ```javascript
+   function solicitudHTTP() {
+       return new Promise((resolve, reject) => {
+           let exito = false; // Simula fallo
+           if (exito) {
+               resolve("Solicitud exitosa.");
+           } else {
+               reject(new Error("Error en la solicitud."));
+           }
+       });
+   }
+
+   solicitudHTTP()
+       .then(respuesta => console.log(respuesta))
+       .catch(error => console.log(error.message));
+   ```
+
+3. **Lanzar y capturar errores personalizados:**
+   Implementa una función que valide si un usuario tiene permisos para acceder a un recurso. Si no tiene permisos, lanza un error personalizado.
+
+   **Ejemplo:**
+   ```javascript
+   class PermisoError extends Error {
+       constructor(mensaje) {
+           super(mensaje);
+           this.name = "PermisoError";
+       }
+   }
+
+   function verificarPermiso(usuario) {
+       if (!usuario.esAdmin) {
+           throw new PermisoError("No tienes permisos para acceder a este recurso.");
+       }
+       return true;
+   }
+
+   try {
+       verificarPermiso({ esAdmin: false });
+   } catch (error) {
+       console.log(`${error.name}: ${error.message}`);
+   }
+   ```
+
+---
+
+¿Te gustaría profundizar en algún aspecto del manejo de errores o agregar más ejercicios prácticos? 😊

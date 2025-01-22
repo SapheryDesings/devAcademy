@@ -1,0 +1,317 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Express"/>
+
+# 18. Documentación de API
+
+La **documentación de la API** es esencial para cualquier aplicación que exponga servicios web, ya que proporciona a los desarrolladores y usuarios la información necesaria sobre cómo interactuar con la API. Una documentación clara y bien estructurada puede facilitar el uso de la API, acelerar el desarrollo y mejorar la mantenibilidad del sistema.
+
+En este tema, exploraremos la importancia de documentar una API, cómo hacerlo de manera efectiva y qué herramientas y prácticas pueden ayudar a crear una documentación completa y accesible.
+
+## 18.1. ¿Por qué es Importante la Documentación de una API?
+
+La documentación de una API es un componente esencial para su éxito. Los desarrolladores que consumen una API deben entender cómo interactuar con ella correctamente, qué parámetros se esperan, qué datos se retornan y cómo manejar los errores. Sin una documentación adecuada, incluso la API mejor diseñada puede resultar difícil de usar.
+
+### Beneficios de una buena documentación de API:
+- **Facilita el desarrollo**: Los desarrolladores pueden integrar la API más rápidamente si tienen acceso a información clara sobre los endpoints, parámetros y respuestas.
+- **Reduce los errores**: Una documentación bien detallada ayuda a evitar malentendidos, reduciendo errores en el uso de la API.
+- **Mejora la adopción**: Las APIs bien documentadas son más fáciles de adoptar por otros equipos de desarrollo, lo que aumenta la base de usuarios.
+- **Facilita el mantenimiento**: La documentación puede servir como referencia para los equipos de desarrollo, especialmente cuando se realizan actualizaciones o cambios en la API.
+  
+## 18.2. Componentes Clave de la Documentación de una API
+
+Una documentación de API efectiva debe contener varios componentes clave que permitan a los usuarios comprender cómo interactuar con la API de manera eficiente. A continuación, describimos los elementos más comunes que deben incluirse.
+
+### 18.2.1. Introducción
+
+La introducción debe explicar el propósito de la API, a quién está dirigida y qué funcionalidades ofrece. Debe ser breve pero informativa, proporcionando a los desarrolladores una visión general de la API y sus capacidades.
+
+#### Ejemplo de Introducción:
+
+```markdown
+# API de Gestión de Tareas
+
+La API de Gestión de Tareas permite a los usuarios crear, actualizar, eliminar y consultar tareas. Está diseñada para ayudar a los desarrolladores a integrar la gestión de tareas en sus aplicaciones web y móviles.
+
+## Características:
+- Crear tareas
+- Obtener una lista de tareas
+- Actualizar tareas existentes
+- Eliminar tareas
+```
+
+### 18.2.2. Autenticación y Autorización
+
+Explica cómo los usuarios deben autenticar sus solicitudes para acceder a la API. Esto puede incluir el uso de **tokens de autenticación**, **JWT (JSON Web Tokens)**, **OAuth**, o cualquier otro mecanismo de seguridad utilizado.
+
+#### Ejemplo de Autenticación:
+
+```markdown
+## Autenticación
+
+La API utiliza **JWT (JSON Web Tokens)** para autenticar las solicitudes. Para obtener un token, debes realizar una solicitud POST al endpoint `/auth/login` con tus credenciales de usuario. El token debe enviarse en el encabezado `Authorization` de cada solicitud.
+
+### Obtener un Token
+```bash
+POST /auth/login
+```
+
+**Cuerpo de la Solicitud:**
+
+```json
+{
+  "username": "usuario",
+  "password": "contraseña"
+}
+```
+
+**Respuesta:**
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+**Cabecera de Autenticación:**
+
+```bash
+Authorization: Bearer <token>
+```
+```
+
+### 18.2.3. Descripción de Endpoints
+
+La descripción de los endpoints es la parte más crucial de la documentación de una API. Debe detallar los métodos HTTP (GET, POST, PUT, DELETE, etc.) y los recursos que están disponibles, así como la estructura de los parámetros y las respuestas.
+
+#### Ejemplo de Descripción de Endpoint:
+
+```markdown
+## Endpoints
+
+### 1. Crear una tarea
+
+**Método:** `POST`  
+**URL:** `/tasks`
+
+**Descripción:**  
+Crea una nueva tarea.
+
+**Cuerpo de la Solicitud:**
+
+```json
+{
+  "title": "Nueva tarea",
+  "description": "Descripción de la tarea",
+  "dueDate": "2025-02-01"
+}
+```
+
+**Respuesta Exitosa:**
+
+```json
+{
+  "id": 1,
+  "title": "Nueva tarea",
+  "description": "Descripción de la tarea",
+  "dueDate": "2025-02-01",
+  "status": "pendiente"
+}
+```
+
+**Respuesta de Error:**
+
+```json
+{
+  "error": "Falta el campo 'title'"
+}
+```
+
+---
+
+### 2. Obtener lista de tareas
+
+**Método:** `GET`  
+**URL:** `/tasks`
+
+**Descripción:**  
+Recupera una lista de todas las tareas.
+
+**Parámetros de Consulta:**
+
+- `status` (opcional): Filtra las tareas por estado (e.g., "pendiente", "completada").
+- `dueDate` (opcional): Filtra las tareas por fecha de vencimiento.
+
+**Respuesta Exitosa:**
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Tarea pendiente",
+    "status": "pendiente",
+    "dueDate": "2025-02-01"
+  },
+  {
+    "id": 2,
+    "title": "Tarea completada",
+    "status": "completada",
+    "dueDate": "2025-01-20"
+  }
+]
+```
+```
+
+### 18.2.4. Estructura de Respuestas
+
+Proporciona ejemplos detallados de las respuestas que la API puede devolver. Esto incluye tanto respuestas exitosas como errores. Las respuestas deben estar estructuradas de manera consistente para facilitar su manejo en el cliente.
+
+#### Ejemplo de Estructura de Respuesta:
+
+```markdown
+## Respuesta
+
+Las respuestas de la API están formateadas en JSON y contienen un objeto principal con los datos y posibles mensajes de error.
+
+**Respuesta Exitosa:**
+
+```json
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "title": "Tarea creada",
+    "description": "Descripción de la tarea",
+    "dueDate": "2025-02-01"
+  }
+}
+```
+
+**Respuesta de Error:**
+
+```json
+{
+  "status": "error",
+  "message": "Falta el campo 'title'"
+}
+```
+
+### Códigos de Estado HTTP:
+
+- `200 OK`: La solicitud fue exitosa.
+- `201 Created`: El recurso fue creado con éxito.
+- `400 Bad Request`: La solicitud es incorrecta o incompleta.
+- `401 Unauthorized`: El usuario no está autenticado.
+- `404 Not Found`: El recurso solicitado no existe.
+- `500 Internal Server Error`: Error en el servidor.
+```
+
+### 18.2.5. Manejo de Errores
+
+Describir los posibles errores que pueden ocurrir y cómo los usuarios deben manejarlos. Esto incluye códigos de error HTTP y mensajes específicos de la API.
+
+#### Ejemplo de Manejo de Errores:
+
+```markdown
+## Errores Comunes
+
+- **400 Bad Request**: Indica que la solicitud está mal formada o faltan parámetros necesarios.
+
+- **401 Unauthorized**: El usuario no está autenticado o el token JWT ha expirado.
+
+- **404 Not Found**: El recurso solicitado no existe.
+
+- **500 Internal Server Error**: Hubo un error en el servidor al procesar la solicitud.
+
+### Ejemplo de Respuesta de Error:
+
+```json
+{
+  "status": "error",
+  "message": "Token de autenticación inválido"
+}
+```
+```
+
+### 18.2.6. Limitaciones de la API
+
+En algunos casos, puede ser útil proporcionar detalles sobre cualquier limitación o restricción que tenga la API, como límites de tasa (rate limits), límites de tamaño de carga útil (payload size), o limitaciones en los parámetros que pueden enviarse.
+
+#### Ejemplo de Limitaciones:
+
+```markdown
+## Limitaciones
+
+- **Límites de tasa**: La API está limitada a 1000 solicitudes por hora.
+- **Tamaño máximo de solicitud**: El tamaño máximo para una solicitud POST es de 2 MB.
+```
+
+## 18.3. Herramientas para Documentar una API
+
+Existen varias herramientas y enfoques para crear documentación interactiva y actualizada para tu API.
+
+### 18.3.1. Swagger/OpenAPI
+
+**Swagger** (ahora conocido como **OpenAPI**) es uno de los estándares más populares para la documentación de APIs RESTful. Con Swagger, puedes generar documentación interactiva que permite a los usuarios probar la API directamente desde el navegador.
+
+#### Generación de Documentación con Swagger:
+
+1. Instala **Swagger UI** y **Swagger JSdoc**:
+
+```bash
+npm install swagger-ui-express swagger-jsdoc
+```
+
+2. Configura Swagger en tu aplicación Express:
+
+```javascript
+const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+const app = express();
+
+// Configuración de Swagger
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'API de Tareas',
+      description: 'API para gestionar tareas',
+      version: '1.0.0',
+    },
+  },
+  apis: ['./routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Iniciar servidor
+app.listen(3000, () => {
+  console.log('Servidor Express corriendo en http://localhost:3000');
+  console.log('Documentación de API disponible en http://localhost:3000/api-docs');
+});
+```
+
+### 18.3.2. Postman
+
+**Postman** es una herramienta popular para probar APIs y también permite generar documentación interactiva basada en colecciones de solicitudes.
+
+## 18.4. Buenas Prácticas para la Documentación de APIs
+
+- **Sé claro y conciso**: La documentación debe ser fácil de entender y directa.
+- **Usa ejemplos**: Proporciona ejemplos de solicitudes y respuestas para cada endpoint.
+- **Actualiza la documentación**: Mantén la documentación sincronizada con los cambios de la API.
+- **Usa un formato estructurado**: Un formato consistente, como JSON, ayuda a los desarrolladores a interpretar fácilmente la documentación.
+- **Incluye ejemplos de código**: Los fragmentos de código en lenguajes comunes (JavaScript, Python, etc.) ayudan a los desarrolladores a integrar la API más rápidamente.
+
+
+>Una documentación de API clara y accesible es fundamental para el éxito de cualquier API. Una documentación bien hecha no solo facilita el uso de la API, sino que también mejora la adopción, reduce los errores y facilita el mantenimiento a largo plazo. Usar herramientas como **Swagger/OpenAPI** o **Postman** puede ayudar a generar documentación interactiva y mantenerla actualizada.
+
+>Al seguir las mejores prácticas y asegurarte de que la documentación esté bien estructurada y fácil de entender, proporcionarás una experiencia mucho más fluida tanto a los desarrolladores como a los usuarios finales de tu API.
+
+
+>Este tema cubre todos los aspectos clave de la documentación de una API, desde la importancia de la documentación hasta las herramientas disponibles para crearla, y las mejores prácticas para garantizar que sea clara, útil y actualizada.

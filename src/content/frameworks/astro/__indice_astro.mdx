@@ -1,0 +1,191 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "FrontEnd" asignatura = "FrameWork Astro"/>
+
+> Aquí encontrarás todos los aspectos importantes para trabajar con **Astro**, desde la instalación hasta las características avanzadas, optimización y mejores prácticas. Cada sección está diseñada para abordar un tema específico, lo que permite a los desarrolladores comprender y utilizar el framework de manera efectiva en sus proyectos.
+
+#### **1. Introducción a Astro**
+- ¿Qué es Astro?
+  - Definición y filosofía detrás de Astro.
+  - Características principales: renderizado estático, soporte de componentes, integración con otros frameworks.
+- Casos de uso de Astro.
+  - Creación de sitios estáticos.
+  - Optimización de rendimiento y SEO.
+- Diferencias con otros frameworks (como React, Vue, Svelte).
+
+---
+
+#### **2. Instalación y Configuración Inicial**
+- **Requisitos previos**:
+  - Node.js y NPM.
+  - Herramientas adicionales necesarias (editor de código, etc.).
+- **Instalación de Astro**:
+  - Usando `npm` o `yarn`.
+  - Comandos básicos de instalación.
+  - Crear un proyecto con Astro desde cero.
+    ```bash
+    npm create astro@latest
+    ```
+- **Estructura del Proyecto**:
+  - Archivos y carpetas principales (src, public, etc.).
+  - Configuración básica (astro.config.mjs).
+  
+---
+
+#### **3. Conceptos Básicos de Astro**
+- **Componentes en Astro**:
+  - Componentes estáticos.
+  - Componentes dinámicos con JavaScript.
+  - Integración con frameworks (React, Vue, Svelte, etc.).
+- **Layout en Astro**:
+  - Uso de layouts para la reutilización de estructuras comunes.
+  - Definir y aplicar layouts a las páginas.
+- **Páginas en Astro**:
+  - Creación de páginas estáticas.
+  - Uso de rutas y enlaces entre páginas.
+
+---
+
+#### **4. Funcionalidades Avanzadas**
+- **Soporte de Plantillas**:
+  - Plantillas personalizadas para páginas o secciones.
+  - Uso de herramientas de plantillas como Markdown o MDX.
+- **Renderizado de Contenido**:
+  - Renderizado estático (pre-rendering).
+  - Server-side rendering (SSR) y su configuración.
+- **Integración con APIs y Datos Dinámicos**:
+  - Obtención de datos de APIs externas.
+  - Renderizado de datos dinámicos en componentes.
+  - Ejemplo de integración de una API externa en Astro.
+  
+---
+
+#### **5. Estilos y CSS en Astro**
+- **Uso de CSS en Astro**:
+  - CSS tradicional.
+  - Preprocesadores CSS (SASS, LESS, etc.).
+  - Uso de `styled-components` y otras herramientas CSS-in-JS.
+- **Integración con frameworks de CSS**:
+  - Tailwind CSS, Bootstrap, y otros frameworks populares.
+- **Optimización y Rendimiento**:
+  - Carga selectiva de CSS (solo cargar lo necesario).
+  - Optimizaciones para una carga más rápida.
+
+---
+
+#### **6. Uso de Componentes y Frameworks**
+- **Integración con Frameworks JavaScript**:
+  - Integración con React, Vue, Svelte y otros.
+  - Ejemplo de creación de un componente React en Astro.
+- **Componentes de Solo HTML**:
+  - Creación de componentes estáticos sin JavaScript.
+  - Beneficios del uso de componentes simples para rendimiento.
+- **Uso de Markdown y MDX en Componentes**:
+  - Ventajas de usar Markdown para la creación de contenido.
+  - Uso de MDX para incluir componentes de React/Vue/Svelte en Markdown.
+
+---
+
+#### **7. Rutas y Navegación**
+- **Estructura de Rutas en Astro**:
+  - Sistema de enrutamiento basado en archivos.
+  - Creación de rutas dinámicas.
+  - Uso de rutas anidadas.
+- **Navegación entre Páginas**:
+  - Uso de `<Link />` en Astro.
+  - Navegación sin recarga completa (migración hacia aplicaciones SPA).
+  
+---
+
+#### **8. Optimización y Rendimiento**
+- **Generación de Páginas Estáticas**:
+  - Pre-renderizado de páginas.
+  - Beneficios para SEO y velocidad.
+- **Optimización de Imágenes**:
+  - Uso de componentes `<Image />` para optimizar imágenes.
+  - Optimización automática de imágenes en la construcción.
+- **Cargar Solo lo Necesario**:
+  - Lazy loading de componentes y recursos.
+  - Carga diferida de JavaScript y CSS.
+- **Análisis de Rendimiento**:
+  - Herramientas integradas para medir el rendimiento.
+  - Mejorar el tiempo de carga y el Core Web Vitals.
+
+---
+
+#### **9. Despliegue y Hosting**
+- **Despliegue de Proyectos Astro**:
+  - Despliegue en plataformas como Vercel, Netlify, GitHub Pages, etc.
+  - Generación de build para producción.
+    ```bash
+    npm run build
+    ```
+- **Configuración de dominio personalizado**:
+  - Enlazar tu dominio a Astro en plataformas de hosting.
+- **Despliegue y optimización en servidores**:
+  - Servir tu proyecto con Node.js, servicios de CDN, etc.
+
+---
+
+#### **10. Integración con Herramientas y APIs**
+- **Integración con CMSs (Sistemas de Gestión de Contenido)**:
+  - Conectar Astro con CMSs como Contentful, Sanity, Strapi, etc.
+- **Uso de Astro con Webhooks y APIs**:
+  - Configuración para recibir actualizaciones en tiempo real.
+- **Generación de Contenido Dinámico**:
+  - Uso de datos en tiempo real para páginas estáticas.
+  - Cómo configurar páginas para que se actualicen automáticamente.
+
+---
+
+#### **11. Funcionalidades Experimentales y Características Futuras**
+- **Nuevas características en desarrollo**:
+  - Plugins experimentales.
+  - Compatibilidad con características futuras del lenguaje.
+- **Roadmap de Astro**:
+  - Características planeadas para futuras versiones.
+  - Cómo contribuir al proyecto y estar al tanto de los cambios.
+
+---
+
+#### **12. Comunidad y Soporte**
+- **Participar en la Comunidad Astro**:
+  - Foros, grupos y canales oficiales.
+  - Repositorio de GitHub y cómo contribuir.
+- **Soporte y Recursos adicionales**:
+  - Foros de ayuda, preguntas frecuentes y solución de problemas comunes.
+  - Recursos como el Slack, Discord y Reddit.
+
+---
+
+#### **13. Buenas Prácticas**
+- **Estrategias para la escalabilidad de proyectos**:
+  - Mejorar la estructura y organización del proyecto.
+  - Optimización para proyectos de gran escala.
+- **Manejo de errores y Debugging**:
+  - Uso de herramientas de depuración y logs.
+  - Solución de problemas comunes en Astro.
+
+---
+
+### **Resumen del Esquema**
+
+1. **Introducción a Astro**
+2. **Instalación y Configuración Inicial**
+3. **Conceptos Básicos de Astro**
+4. **Funcionalidades Avanzadas**
+5. **Estilos y CSS en Astro**
+6. **Uso de Componentes y Frameworks**
+7. **Rutas y Navegación**
+8. **Optimización y Rendimiento**
+9. **Despliegue y Hosting**
+10. **Integración con Herramientas y APIs**
+11. **Funcionalidades Experimentales y Características Futuras**
+12. **Comunidad y Soporte**
+13. **Buenas Prácticas**
+
+

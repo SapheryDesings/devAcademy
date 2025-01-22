@@ -1,0 +1,233 @@
+### 13. Tipos Personalizados en TypeScript
+
+En TypeScript, los tipos personalizados permiten a los desarrolladores crear tipos que son más específicos y adecuados para sus necesidades, más allá de los tipos básicos proporcionados por el lenguaje (como `string`, `number`, `boolean`, etc.). Los tipos personalizados son fundamentales cuando trabajamos con estructuras de datos complejas o cuando deseamos mejorar la seguridad y claridad del código, asegurando que solo se puedan usar valores válidos de acuerdo con nuestras definiciones.
+
+En este tema, exploraremos cómo crear y utilizar tipos personalizados en TypeScript mediante alias de tipos, interfaces, tipos literales, tipos unión y discriminados, tipos de tupla y tipos genéricos.
+
+---
+
+#### 13.1. Alias de Tipos (Type Aliases)
+
+Un alias de tipo en TypeScript te permite crear un nuevo nombre para un tipo existente. Es una forma de simplificar y hacer que el código sea más legible, especialmente cuando trabajamos con tipos complejos o tipos compuestos.
+
+Los alias de tipo se definen utilizando la palabra clave `type` seguida del nombre del alias y la definición del tipo.
+
+Ejemplo de alias de tipo
+
+```typescript
+type Coordenada = {
+  x number;
+  y number;
+};
+
+const punto Coordenada = { x 10, y 20 };
+```
+
+En este ejemplo, hemos creado un alias de tipo `Coordenada` que describe un objeto con dos propiedades `x` e `y`, ambas de tipo `number`. Luego, podemos usar `Coordenada` para declarar variables con esta estructura.
+
+Alias de tipos para funciones
+
+```typescript
+type Operacion = (a number, b number) = number;
+
+const sumar Operacion = (a, b) = a + b;
+const restar Operacion = (a, b) = a - b;
+```
+
+Aquí, hemos definido un alias de tipo `Operacion`, que es una función que recibe dos parámetros de tipo `number` y devuelve un `number`. Usamos este alias para declarar las funciones `sumar` y `restar`.
+
+---
+
+#### 13.2. Interfaces
+
+Una interfaz en TypeScript es otra forma de crear tipos personalizados, pero con más énfasis en la estructura de objetos y la definición de contratos para clases o funciones. Las interfaces son similares a los alias de tipos, pero con la ventaja de que las interfaces pueden ser extendidas y combinadas.
+
+Ejemplo de interfaz
+
+```typescript
+interface Persona {
+  nombre string;
+  edad number;
+}
+
+const juan Persona = {
+  nombre 'Juan',
+  edad 30
+};
+```
+
+En este ejemplo, la interfaz `Persona` define la estructura de un objeto con las propiedades `nombre` (de tipo `string`) y `edad` (de tipo `number`). Luego, declaramos una variable `juan` que debe cumplir con esta estructura.
+
+Interfaz con métodos
+
+```typescript
+interface Saludo {
+  mensaje string;
+  saludar() void;
+}
+
+const saludo Saludo = {
+  mensaje Hola,
+  saludar() {
+    console.log(this.mensaje);
+  }
+};
+
+saludo.saludar();   Hola
+```
+
+Las interfaces también pueden incluir métodos. En este caso, `Saludo` define una propiedad `mensaje` de tipo `string` y un método `saludar` que no recibe parámetros y no devuelve nada (`void`).
+
+Extensión de interfaces
+
+Las interfaces en TypeScript pueden extenderse, lo que permite la reutilización de estructuras de tipos.
+
+```typescript
+interface Persona {
+  nombre string;
+  edad number;
+}
+
+interface Empleado extends Persona {
+  puesto string;
+}
+
+const empleado Empleado = {
+  nombre 'Ana',
+  edad 25,
+  puesto 'Desarrolladora'
+};
+```
+
+La interfaz `Empleado` extiende de `Persona`, lo que significa que hereda las propiedades `nombre` y `edad`, y además agrega la propiedad `puesto`.
+
+---
+
+#### 13.3. Tipos Literales
+
+Un tipo literal en TypeScript te permite restringir el valor de una variable a un conjunto específico de valores. Los tipos literales son útiles cuando necesitas asegurar que una variable solo pueda contener ciertos valores predefinidos.
+
+Ejemplo de tipo literal
+
+```typescript
+type Color = 'rojo'  'verde'  'azul';
+
+let colorFavorito Color = 'rojo';
+colorFavorito = 'verde';   Válido
+colorFavorito = 'amarillo';   Error 'amarillo' no es un valor de tipo 'Color'
+```
+
+En este ejemplo, el tipo `Color` solo permite los valores `'rojo'`, `'verde'` y `'azul'`. Si intentamos asignar un valor que no sea uno de estos, TypeScript generará un error de tipo.
+
+---
+
+#### 13.4. Tipos Unión y Tipos Discriminados
+
+Tipos unión permiten que una variable pueda tener varios tipos posibles. Esto es útil cuando un valor puede pertenecer a más de un tipo, y TypeScript manejará las validaciones adecuadas.
+
+Ejemplo de tipos unión
+
+```typescript
+type AceptarNumerosODatos = number  string;
+
+let valor AceptarNumerosODatos = 10;
+valor = 'Hola';   Válido
+valor = true;   Error 'boolean' no es un tipo válido
+```
+
+En este ejemplo, `valor` puede ser de tipo `number` o `string`, pero no puede ser otro tipo como `boolean`.
+
+Tipos discriminados (Union con literal types) En situaciones más complejas, a veces necesitamos utilizar un tipo discriminado, donde TypeScript puede identificar de manera precisa qué tipo de una unión se está usando, basado en un campo adicional.
+
+Ejemplo de tipo discriminado
+
+```typescript
+type Forma = 
+   { tipo 'circulo'; radio number }
+   { tipo 'cuadrado'; lado number };
+
+function area(forma Forma) number {
+  if (forma.tipo === 'circulo') {
+    return Math.PI  forma.radio  forma.radio;
+  } else {
+    return forma.lado  forma.lado;
+  }
+}
+
+const circulo = { tipo 'circulo', radio 10 };
+const cuadrado = { tipo 'cuadrado', lado 5 };
+
+console.log(area(circulo));   Área del círculo
+console.log(area(cuadrado));   Área del cuadrado
+```
+
+Aquí, `Forma` es un tipo unión que tiene dos variantes, una para un `circulo` y otra para un `cuadrado`. Dependiendo del valor de la propiedad `tipo`, TypeScript sabe qué propiedad adicional esperar, lo que permite escribir código de manera segura.
+
+---
+
+#### 13.5. Tipos de Tupla
+
+Una tupla es un tipo especial de array en TypeScript donde el número de elementos y los tipos de cada uno de los elementos están predefinidos.
+
+Ejemplo de tupla
+
+```typescript
+let coordenada [number, number] = [10, 20];
+coordenada = [30, 40];   Válido
+coordenada = [10, '20'];   Error 'string' no es un tipo válido
+```
+
+En este ejemplo, la variable `coordenada` debe ser un array con exactamente dos elementos, un `number` en cada posición. Si intentamos agregar un valor de tipo incorrecto o cambiar la cantidad de elementos, TypeScript generará un error.
+
+---
+
+#### 13.6. Tipos Genéricos (Generics)
+
+Los tipos genéricos permiten crear funciones, clases e interfaces que trabajen con diferentes tipos de manera flexible. Usar genéricos proporciona la posibilidad de escribir código más reutilizable y seguro sin sacrificar el control de los tipos.
+
+Ejemplo de tipos genéricos
+
+```typescript
+function identidadT(valor T) T {
+  return valor;
+}
+
+let numero = identidad(42);   T es inferido como 'number'
+let texto = identidad('Hola');   T es inferido como 'string'
+```
+
+En este ejemplo, la función `identidad` es genérica, lo que significa que puede trabajar con cualquier tipo. El tipo `T` es inferido automáticamente en función del tipo del valor que se le pase, y el valor devuelto será del mismo tipo.
+
+Uso de genéricos en clases
+
+```typescript
+class CajaT {
+  private contenido T;
+
+  constructor(contenido T) {
+    this.contenido = contenido;
+  }
+
+  obtenerContenido() T {
+    return this.contenido;
+  }
+}
+
+const cajaNumero = new Caja(123);
+console.log(cajaNumero.obtenerContenido());   123
+
+const cajaTexto = new Caja('Texto');
+console.log(cajaTexto.obtenerContenido());   'Texto'
+```
+
+Aquí, la clase `Caja` es genérica y puede almacenar un valor de cualquier tipo, ya sea `number`, `string`, o cualquier otro tipo.
+
+---
+
+#### 13.7. Conclusión
+
+En TypeScript, los tipos personalizados son esenciales para aprovechar al máximo el sistema de tipos del lenguaje, proporcionando flexibilidad, seguridad y claridad en el código. A través de alias de tipos, interfaces, tipos literales, tipos unión, tuplas y genéricos, podemos modelar datos y estructuras de forma precisa y robusta, mejorando la mantenibilidad y escalabilidad de las aplicaciones.
+
+El uso
+
+ adecuado de tipos personalizados es una de las claves para escribir código seguro, legible y fácil de entender, y es especialmente útil cuando trabajamos en proyectos grandes o en equipos de desarrollo.

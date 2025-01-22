@@ -1,0 +1,224 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 11. **Comandos Avanzados en Git**
+
+Git ofrece una amplia variedad de comandos avanzados que permiten a los desarrolladores gestionar proyectos de manera más eficiente y efectiva, especialmente cuando se trabaja con repositorios complejos y equipos grandes. Estos comandos permiten realizar tareas como la manipulación avanzada del historial de commits, la reestructuración de ramas, la resolución de conflictos complejos y la optimización de repositorios.
+
+A continuación, vamos a explorar algunos de los comandos más avanzados de Git que son útiles para usuarios intermedios y avanzados.
+
+---
+
+#### **1. `git rebase`**
+
+El comando `git rebase` permite reescribir el historial de commits de una rama, aplicando los commits de una rama sobre otra base. Es una forma poderosa de mantener un historial más limpio y lineal, especialmente cuando se trabaja en ramas de características.
+
+- **Uso básico del rebase**:
+
+  ```bash
+  git rebase <rama-base>
+  ```
+
+  Este comando toma los cambios de la rama actual y los "aplica" sobre la última versión de la rama base (por ejemplo, `main` o `develop`).
+
+- **Rebase interactivo**:
+
+  El rebase interactivo permite modificar el historial de commits de una forma más detallada, como reordenar, fusionar, editar o eliminar commits.
+
+  ```bash
+  git rebase -i <commit-hash>
+  ```
+
+  Este comando abre una lista interactiva de los commits desde el commit especificado hasta el HEAD. Puedes modificar esta lista para realizar cambios como:
+
+  - **pick**: Mantener el commit tal cual.
+  - **reword**: Cambiar el mensaje del commit.
+  - **edit**: Editar el contenido del commit.
+  - **squash**: Fusionar commits.
+  - **drop**: Eliminar un commit.
+
+  Después de hacer tus modificaciones, Git procederá con el rebase según las instrucciones proporcionadas.
+
+- **Usos comunes del rebase**:
+  - Mantener un historial limpio en una rama de desarrollo.
+  - Actualizar tu rama de trabajo con los últimos cambios de la rama principal.
+  - Eliminar commits no deseados antes de hacer un `push`.
+
+**Advertencia**: El rebase cambia el historial de la rama, por lo que no se recomienda hacer un rebase en ramas que ya han sido compartidas con otros, ya que puede causar conflictos en los colaboradores.
+
+---
+
+#### **2. `git cherry-pick`**
+
+El comando `git cherry-pick` permite aplicar un commit específico de una rama a otra. Este comando es útil cuando se desea integrar un cambio específico de una rama sin fusionar toda la rama.
+
+- **Uso básico de cherry-pick**:
+
+  ```bash
+  git cherry-pick <commit-hash>
+  ```
+
+  Este comando toma un commit específico de otra rama y lo aplica a la rama actual. Si hay conflictos, Git te pedirá que los resuelvas antes de continuar.
+
+- **Usos comunes de cherry-pick**:
+  - Aplicar correcciones de errores desde una rama de características a la rama principal.
+  - Extraer commits específicos para aplicar en ramas de mantenimiento o en otras ramas de características.
+
+---
+
+#### **3. `git reflog`**
+
+El comando `git reflog` te permite ver el registro de cambios de tu repositorio, incluso aquellos que no están reflejados en el historial estándar de `git log`. Es útil para recuperar commits que han sido "perdidos" debido a un rebase, un reset o un checkout.
+
+- **Ver el reflog**:
+
+  ```bash
+  git reflog
+  ```
+
+  Este comando muestra un historial de las acciones realizadas en tu repositorio, incluyendo cambios de ramas, resets, y otros comandos que han modificado tu HEAD.
+
+- **Recuperar un commit perdido**:
+
+  Si accidentalmente haces un reset o un rebase y pierdes un commit, puedes encontrar el commit en el reflog y luego restablecer el HEAD a ese punto.
+
+  ```bash
+  git checkout <commit-hash>
+  ```
+
+  O para restablecer la rama a ese commit:
+
+  ```bash
+  git reset --hard <commit-hash>
+  ```
+
+  El `git reflog` es especialmente útil en situaciones en las que necesitas deshacer cambios que no están reflejados en el historial normal de Git.
+
+---
+
+#### **4. `git bisect`**
+
+El comando `git bisect` es una herramienta poderosa para localizar un commit que introdujo un error en tu proyecto. Utilizando un enfoque de búsqueda binaria, Git te ayuda a encontrar el commit defectuoso de manera eficiente.
+
+- **Uso básico de git bisect**:
+
+  1. Inicia `git bisect` con los siguientes comandos:
+
+     ```bash
+     git bisect start
+     git bisect bad  # El commit actual es defectuoso
+     git bisect good <commit-hash>  # Un commit conocido que funciona correctamente
+     ```
+
+  2. Git seleccionará un commit intermedio entre los dos puntos (bueno y malo). Ahora, debes comprobar si ese commit es bueno o defectuoso.
+
+  3. Marca el commit como "bueno" o "malo" según sea el caso:
+
+     ```bash
+     git bisect good
+     git bisect bad
+     ```
+
+  4. Git continuará el proceso de búsqueda binaria hasta que localice el commit defectuoso.
+
+- **Ejemplo completo**:
+
+  Si sabes que el error apareció después de una cierta versión, puedes usar `git bisect` para buscar el commit que introdujo el error, ahorrando mucho tiempo en la depuración.
+
+  ```bash
+  git bisect start
+  git bisect bad
+  git bisect good v1.0
+  ```
+
+  Esto te permitirá encontrar el commit problemático de manera rápida, especialmente en proyectos grandes con muchos commits.
+
+---
+
+#### **5. `git filter-branch`** (Descontinuado en favor de `git filter-repo`)
+
+El comando `git filter-branch` permite reescribir el historial de Git, de forma que puedas modificar todos los commits de un repositorio, como eliminar un archivo de todos los commits o cambiar el autor de los commits.
+
+Aunque este comando es muy potente, ha sido reemplazado en muchos casos por la herramienta `git filter-repo`, que es más eficiente y rápida. Sin embargo, aquí te presentamos un ejemplo del uso básico de `git filter-branch`:
+
+- **Eliminar un archivo de todo el historial de Git**:
+
+  ```bash
+  git filter-branch --tree-filter 'rm -rf archivo_a_eliminar' --prune-empty --force
+  ```
+
+  Este comando eliminará el archivo especificado de todos los commits en el repositorio. La opción `--prune-empty` elimina los commits vacíos que resultan de la eliminación del archivo.
+
+- **Cambiar el autor de todos los commits**:
+
+  ```bash
+  git filter-branch --env-filter '
+  if [ "$GIT_AUTHOR_NAME" = "Old Name" ]
+  then
+    export GIT_AUTHOR_NAME="New Name"
+    export GIT_AUTHOR_EMAIL="newemail@example.com"
+  fi
+  ' --tag-name-filter cat -- --branches --tags
+  ```
+
+  Esto cambia el nombre y el correo electrónico del autor de todos los commits realizados por un autor específico.
+
+**Advertencia**: `git filter-branch` puede ser muy destructivo si se usa incorrectamente, especialmente en repositorios compartidos, ya que reescribe el historial de Git. Es recomendable hacer un respaldo antes de usarlo.
+
+---
+
+#### **6. `git merge --no-ff`**
+
+El comando `git merge --no-ff` se utiliza para forzar que Git cree un commit de fusión incluso si no es necesario (es decir, si la fusión podría realizarse con un avance rápido). Esto es útil para mantener un historial de Git más claro y reflejar la fusión de una rama como un evento significativo, incluso si no hay cambios conflictivos.
+
+- **Uso básico de no-ff**:
+
+  ```bash
+  git merge --no-ff nombre_de_la_rama
+  ```
+
+  Este comando asegura que la fusión de la rama sea registrada como un commit de fusión, lo que puede ser útil en proyectos donde deseas conservar un registro claro de cuándo se ha integrado una característica.
+
+- **Ventajas**:
+  - Mantiene un historial de fusión más claro y organizado.
+  - Evita que las fusiones sean "invisibles" en el historial de commits.
+
+---
+
+#### **7. `git clean`**
+
+El comando `git clean` se utiliza para eliminar archivos no rastreados del directorio de trabajo. Esto puede ser útil cuando tienes archivos generados automáticamente (como archivos de compilación o de configuración) que no necesitas seguir rastreando en Git.
+
+- **Uso básico de git clean**:
+
+  ```bash
+  git clean -n
+  ```
+
+  Este comando te muestra qué archivos se eliminarían si ejecutaras el comando sin hacer nada (modo de prueba).
+
+  Para eliminar realmente los archivos no rastreados:
+
+  ```bash
+  git clean -f
+  ```
+
+  - **`-f`**: Fuerza la eliminación de archivos no rastreados.
+  - **`-d`**: Elimina directorios no rastreados además de los archivos.
+
+---
+
+1. **`git rebase`**: Reescribe el historial de commits de una rama, ideal para mantener un historial limpio y lineal.
+2. **`git cherry-pick`**: Aplica commits específicos de una rama a otra sin fusionar toda la rama.
+3. **`git reflog`**: Muestra un registro de todas las acciones realizadas en el repositorio, útil para recuperar commits "perdidos".
+4. **`git bisect`**: Utiliza búsqueda binaria para encontrar el commit que introdujo un error en el proyecto.
+5. **`git filter-branch`**: Reescribe el historial de Git, útil para cambiar autores, eliminar archivos o realizar otras modificaciones.
+6. **`git merge --no-ff`**: Fuerza la creación de un commit de fusión, incluso cuando no es necesario.
+7. **`git clean`**: Elimina archivos no rastreados en el directorio de trabajo, útil para limpiar el proyecto.
+
+>Estos comandos avanzados pueden ayudarte a gestionar de manera más eficiente tu proyecto en Git, permitiéndote realizar tareas complejas como manipular el historial, resolver problemas rápidamente y mantener un flujo de trabajo limpio y organizado. Sin embargo, siempre es recomendable tener cuidado, especialmente con comandos como `filter-branch`, que reescriben el historial de manera irreversible.

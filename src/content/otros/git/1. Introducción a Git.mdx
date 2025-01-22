@@ -1,0 +1,73 @@
+---
+layout: ../../layouts/PlantillaMd.astro
+---
+
+import EtiquetaPost from '../../components/EtiquetaPost.astro';
+
+<EtiquetaPost curso = "Habilidades" asignatura = "Git"/>
+
+### 1. **Introducción a Git**
+
+#### ¿Qué es Git?
+
+Git es un **sistema de control de versiones distribuido** que permite a los desarrolladores gestionar y realizar un seguimiento de los cambios en el código fuente de un proyecto. A diferencia de otros sistemas de control de versiones, Git permite que cada desarrollador tenga una copia completa del repositorio, lo que significa que pueden trabajar de forma independiente y sincronizar sus cambios de manera eficiente.
+
+Con Git, es posible realizar un seguimiento de todas las modificaciones hechas a los archivos de un proyecto a lo largo del tiempo, permitiendo volver a versiones anteriores, comparar cambios y colaborar de manera efectiva con otros miembros de un equipo.
+
+#### Historia de Git
+
+Git fue creado por **Linus Torvalds** en 2005, como respuesta a la necesidad de un sistema de control de versiones más eficiente para el desarrollo del kernel de Linux. Antes de Git, el proyecto utilizaba un sistema de control de versiones llamado **BitKeeper**, pero este sistema dejó de ser gratuito para los proyectos de código abierto. Como resultado, Linus Torvalds desarrolló Git con el objetivo de ser:
+
+- **Rápido** y eficiente para grandes proyectos.
+- **Distribuido**, lo que significa que no hay un único punto de fallo.
+- **Flexible**, permitiendo flujos de trabajo muy variados.
+
+El nombre "Git" es un término que Torvalds eligió como una broma. En inglés, "git" es una palabra coloquial que puede traducirse como "tonto" o "idiota", aunque en este contexto se refería a él mismo de manera humorística.
+
+#### Beneficios de usar Git
+
+1. **Distribución:**
+   Git es un sistema distribuido, lo que significa que cada desarrollador tiene una copia completa del historial del repositorio en su máquina local. Esto permite trabajar sin necesidad de estar conectado a un servidor remoto y mejora la eficiencia.
+
+2. **Velocidad:**
+   Las operaciones en Git son extremadamente rápidas, especialmente aquellas que afectan al repositorio local, como los commits, los merges y las fusiones de ramas.
+
+3. **Descentralización:**
+   Al ser un sistema distribuido, Git no depende de un único servidor. Si el servidor remoto de un proyecto se cae o se pierde, los desarrolladores todavía tienen una copia completa del proyecto.
+
+4. **Control total de la versión:**
+   Git permite a los desarrolladores tener control sobre los diferentes estados del proyecto, poder retroceder a versiones anteriores, comparar cambios y gestionar ramas de desarrollo de forma fácil y eficiente.
+
+5. **Colaboración:**
+   Git facilita enormemente el trabajo en equipo, permitiendo a varios desarrolladores trabajar en paralelo sobre diferentes características del proyecto, fusionar sus cambios y resolver conflictos de manera ordenada.
+
+6. **Ramas y fusión (Branching y Merging):**
+   Git facilita la creación de ramas para desarrollar nuevas características o experimentar con cambios, sin afectar al proyecto principal. Además, ofrece potentes herramientas para fusionar las ramas de forma sencilla.
+
+7. **Manejo de grandes proyectos:**
+   Git está diseñado para manejar proyectos de cualquier tamaño, desde pequeños proyectos personales hasta grandes aplicaciones con millones de líneas de código.
+
+8. **Trabajo Offline:**
+   Dado que cada desarrollador tiene una copia completa del repositorio, puede trabajar sin necesidad de estar conectado a internet. Los cambios pueden ser realizados y guardados localmente, para luego ser sincronizados con el repositorio remoto cuando sea necesario.
+
+#### Conceptos Básicos de Control de Versiones
+
+Un **sistema de control de versiones** (VCS, por sus siglas en inglés) es una herramienta que ayuda a gestionar los cambios en los archivos de un proyecto. Los VCS permiten a los usuarios:
+
+- **Registrar cambios** en los archivos a medida que se producen.
+- **Ver el historial** de esos cambios, permitiendo regresar a versiones anteriores si es necesario.
+- **Colaborar** en equipo sin sobrescribir el trabajo de los demás.
+
+Git se clasifica como un **sistema de control de versiones distribuido** porque permite que cada colaborador tenga una copia completa del repositorio con su propio historial completo de cambios. A diferencia de los sistemas tradicionales (como Subversion o CVS), que se basan en un único repositorio central, Git permite a cada usuario tener su propio "repositorio" local con todas las funcionalidades de un sistema de control de versiones completo.
+
+#### Características clave de los sistemas de control de versiones
+
+1. **Repositorio:** Es donde se almacena el código fuente de un proyecto y su historial de versiones.
+2. **Commit:** Es el acto de guardar una instantánea de los cambios realizados en el proyecto, creando un punto en el tiempo al que puedes regresar más tarde.
+3. **Rama (Branch):** Una línea de desarrollo independiente que permite trabajar de manera aislada sin afectar el proyecto principal. Las ramas pueden fusionarse más tarde para integrar los cambios realizados.
+4. **Merge:** Es el proceso de combinar los cambios realizados en diferentes ramas.
+5. **Conflicto:** Ocurre cuando dos personas modifican la misma parte del código de manera diferente, lo que requiere intervención manual para resolverlo.
+
+---
+
+>Git ha transformado la manera en que los desarrolladores gestionan proyectos, se comunican y colaboran. Su adopción generalizada en la comunidad de desarrollo de software y en grandes empresas ha sido impulsada por su flexibilidad, eficiencia y robustez.

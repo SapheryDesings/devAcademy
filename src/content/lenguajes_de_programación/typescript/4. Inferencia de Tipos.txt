@@ -1,0 +1,180 @@
+### **4. Inferencia de Tipos en TypeScript**
+
+Uno de los mayores beneficios de usar TypeScript es su capacidad de inferir tipos de manera automática. Esto significa que, en muchos casos, no es necesario declarar explícitamente el tipo de una variable, ya que TypeScript es capaz de deducirlo por sí mismo en función del valor que se le asigna. La inferencia de tipos ayuda a escribir código más limpio y reduce la cantidad de anotaciones de tipo necesarias sin perder las ventajas de la seguridad de tipos.
+
+A continuación, exploraremos cómo TypeScript realiza la inferencia de tipos, los casos en los que esta se produce, y cómo puedes aprovecharla en tu desarrollo.
+
+---
+
+#### **4.1. ¿Qué es la Inferencia de Tipos?**
+
+La inferencia de tipos es el proceso mediante el cual TypeScript determina automáticamente el tipo de una variable basándose en su valor inicial. En lugar de requerir que el desarrollador especifique explícitamente el tipo de una variable, TypeScript examina el valor asignado a la variable y deduce el tipo más adecuado para ella.
+
+**Ejemplo básico de inferencia:**
+
+```typescript
+let mensaje = "Hola, mundo";
+```
+
+En este caso, TypeScript infiere que `mensaje` es de tipo `string` debido al valor asignado (`"Hola, mundo"`). No es necesario declarar explícitamente el tipo, pero aún se puede acceder a las ventajas del tipado estático.
+
+---
+
+#### **4.2. Casos Comunes de Inferencia de Tipos**
+
+TypeScript realiza la inferencia de tipos en diversas situaciones. A continuación, veremos los casos más comunes en los que esta inferencia tiene lugar:
+
+##### **4.2.1. Inferencia de Tipos en Variables Inicializadas**
+
+Cuando asignas un valor a una variable en el momento de su declaración, TypeScript puede inferir el tipo automáticamente.
+
+```typescript
+let nombre = "Ana";  // Inferido como string
+let edad = 25;       // Inferido como number
+let activo = true;    // Inferido como boolean
+```
+
+En este caso:
+- `nombre` es inferido como `string` porque se le asigna un valor de texto.
+- `edad` es inferido como `number` porque se le asigna un valor numérico.
+- `activo` es inferido como `boolean` porque se le asigna un valor booleano.
+
+##### **4.2.2. Inferencia de Tipos en Funciones**
+
+Cuando declaras funciones y proporcionas valores de retorno, TypeScript también puede inferir el tipo de retorno si no se especifica explícitamente.
+
+```typescript
+function sumar(a: number, b: number) {
+  return a + b;  // Inferido como number
+}
+
+let resultado = sumar(3, 5);  // resultado es inferido como number
+```
+
+En este caso, TypeScript infiere que la función `sumar` devuelve un valor de tipo `number` porque el valor retornado es el resultado de sumar dos números.
+
+##### **4.2.3. Inferencia en Arrays y Objetos**
+
+Cuando se inicializa un array u objeto con valores, TypeScript también puede inferir el tipo de los elementos.
+
+```typescript
+let numeros = [1, 2, 3, 4];  // Inferido como number[]
+let persona = { nombre: "Juan", edad: 30 };  // Inferido como { nombre: string, edad: number }
+```
+
+- `numeros` es inferido como un array de números (`number[]`) porque contiene valores numéricos.
+- `persona` es inferido como un objeto con las propiedades `nombre` (de tipo `string`) y `edad` (de tipo `number`).
+
+##### **4.2.4. Inferencia de Tipos con Funciones de Array**
+
+Cuando trabajas con métodos de arrays que devuelven un valor, TypeScript puede inferir el tipo de los elementos del array resultante.
+
+```typescript
+let numeros = [1, 2, 3, 4];
+let resultado = numeros.map(num => num * 2);  // Inferido como number[]
+```
+
+En este caso, `resultado` es inferido como `number[]` porque el método `map()` toma los elementos del array `numeros`, los multiplica por 2 y retorna un nuevo array con valores numéricos.
+
+---
+
+#### **4.3. Inferencia de Tipos en Contextos Complejos**
+
+TypeScript no solo infiere tipos en declaraciones simples, sino también en situaciones más complejas, como el uso de clases, funciones genéricas o callbacks. A continuación, se detallan algunos casos avanzados.
+
+##### **4.3.1. Inferencia en Funciones con Parámetros y Valores de Retorno**
+
+Aunque es recomendable declarar los tipos de los parámetros y valores de retorno de las funciones, TypeScript puede inferir estos tipos basándose en el cuerpo de la función.
+
+```typescript
+function dividir(a: number, b: number) {
+  return a / b;  // Inferido como number
+}
+```
+
+En este ejemplo, TypeScript infiere que `dividir` retorna un `number` porque está realizando una operación matemática entre dos números (`a` y `b`).
+
+##### **4.3.2. Inferencia en Funciones de Alto Orden (Callbacks)**
+
+Cuando trabajas con funciones de alto orden, como las que reciben funciones como parámetros, TypeScript también puede inferir los tipos de los parámetros de la función de callback.
+
+```typescript
+function procesarNumeros(arr: number[], callback: (num: number) => void) {
+  arr.forEach(callback);
+}
+
+procesarNumeros([1, 2, 3], (num) => {
+  console.log(num * 2);  // `num` es inferido como number
+});
+```
+
+En este caso, el parámetro `num` dentro del callback es inferido como `number`, ya que `arr` es un array de números y `forEach` recorre cada elemento de ese array.
+
+##### **4.3.3. Inferencia de Tipos con Genéricos**
+
+Los genéricos permiten que las funciones trabajen con diferentes tipos de datos sin perder la seguridad de tipos. TypeScript puede inferir los tipos de los parámetros genéricos cuando se usan correctamente.
+
+```typescript
+function identidad<T>(valor: T): T {
+  return valor;
+}
+
+let cadena = identidad("Hola Mundo");  // T es inferido como string
+let numero = identidad(42);            // T es inferido como number
+```
+
+En este ejemplo, TypeScript infiere que `T` es `string` cuando se pasa una cadena, y `number` cuando se pasa un número.
+
+---
+
+#### **4.4. Casos en los que la Inferencia No Funciona**
+
+Aunque la inferencia de tipos en TypeScript es muy poderosa, hay situaciones en las que el compilador no puede inferir correctamente el tipo de una variable. En estos casos, es recomendable proporcionar un tipo explícito para evitar errores.
+
+##### **4.4.1. Inicialización sin Valor**
+
+Si una variable es declarada sin un valor inicial, TypeScript no puede inferir el tipo automáticamente y asigna el tipo `any` por defecto.
+
+```typescript
+let resultado;  // Inferido como any
+
+resultado = 42;  // Ahora `resultado` es un número
+```
+
+En este caso, es una buena práctica especificar explícitamente el tipo de la variable si no se asigna un valor inicial:
+
+```typescript
+let resultado: number;  // Se asegura de que `resultado` sea de tipo number
+```
+
+##### **4.4.2. Inferencia en Funciones con Tipos Mixtos**
+
+Si una función puede retornar varios tipos de datos, TypeScript podría inferir un tipo de unión, pero puede que no sea el tipo esperado.
+
+```typescript
+function obtenerValor(b: boolean) {
+  if (b) {
+    return "Texto";  // Retorna string
+  } else {
+    return 42;       // Retorna number
+  }
+}
+
+let valor = obtenerValor(true);  // Inferido como string | number
+```
+
+En este caso, `valor` es inferido como `string | number`, lo cual es una unión de los dos tipos. Si esperas un solo tipo, debes especificarlo explícitamente.
+
+---
+
+#### **4.5. Beneficios de la Inferencia de Tipos**
+
+- **Reducción de la Verbosidad**: Al no necesitar especificar tipos en cada declaración de variable, se reduce la cantidad de código.
+- **Mantenimiento más fácil**: TypeScript ayuda a detectar errores temprano, ya que puede verificar los tipos de forma automática sin requerir un exceso de anotaciones.
+- **Mayor Flexibilidad**: TypeScript mantiene la capacidad de inferir tipos en función del valor inicial de las variables, lo que permite una gran flexibilidad mientras aún se obtiene la seguridad de tipos.
+
+---
+
+#### **4.6. Conclusión**
+
+La inferencia de tipos es una característica poderosa de TypeScript que reduce la cantidad de código que necesitas escribir y mantiene la seguridad de tipos. Al dejar que TypeScript infiera los tipos en la mayoría de los casos, puedes concentrarte más en la lógica de tu aplicación sin perder los beneficios de un sistema de tipos estático. Sin embargo, es importante saber cuándo proporcionar tipos explícitos, especialmente cuando la inferencia no es lo suficientemente clara o cuando los valores son ambiguos.
