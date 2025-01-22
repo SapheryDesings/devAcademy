@@ -1,10 +1,3 @@
----
-title: "Introducción a MongoDB"
-description: "Una guía básica para empezar con MongoDB."
-pubDate: "2025-01-21"
-slug: "introduccion-a-mongodb"
----
-
 A continuación te proporciono un índice sugerido para la documentación de MongoDB que podrías utilizar para tus apuntes:
 
 ---
