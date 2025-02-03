@@ -2,26 +2,62 @@
 
 ---
 <header>
-  <h1>
-    <a href="/devAcademy">
-      <span class="text-orange-500">dev</span><span class="text-sky-500">Academy</span>
-    </a>
-  </h1>
+  <div class="logoDev">
+    <h1>
+      <a href="/devAcademy">
+        <span class="text-orange-500">dev</span><span class="text-sky-500">Academy</span>
+      </a>
+    </h1>
+  </div>
+  <div class="nav">
+    <ul>
+      <li><a href="./devAcademy/devAcademy">devAcademy</a></li>
+      <li><a href="devAcademy/proyectos">proyectos</a></li>
+      <li><a href="/devAcademy/blogAcademy">blogAcademy</a></li>
+      <li><a href="/devAcademy/prueba">pueba</a></li>
+    </ul>
+  </div>
 </header>
 
 <style>
-  h1 {
+  header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f3f4f6;
+
+    /* logoDev */ 
+    h1 {
     font-weight: bold;
     font-size: 2.25rem /* 36px */;
     line-height: 2.5rem /* 40px */;
-  }
-  a {
-    text-decoration: none;
-  }
-  .text-orange-500 {
-    color: rgb(249 115 22);
-  }
-  .text-sky-500 {
-    color: rgb(14 165 233);
+
+      a {
+        text-decoration: none;
+        .text-orange-500 {
+          color: rgb(249 115 22);
+        }
+        .text-sky-500 {
+          color: rgb(14 165 233);
+        }
+      }
+    }
+
+    /* nav */
+    ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      li {
+        a {
+          text-decoration: none;
+          color: #333;
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    } 
   }
 </style>

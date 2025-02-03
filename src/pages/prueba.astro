@@ -10,7 +10,7 @@ const allPosts = await getCollection("prueba");
   <ul>
     {allPosts.map((post) => (
       <li>
-        <a href={`/rutas/${post.slug}/`} title={post.data.titulo}>
+        <a href={`./rutas/${post.slug}/`} title={post.data.titulo}>
           {post.data.titulo}
         </a>
       </li>
