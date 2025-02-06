@@ -7,5 +7,5 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   integrations: [mdx()],
   site: 'https://SapheryDesings.github.io',
-  base: 'devAcademy'
+  //base: 'devAcademy'
 });
