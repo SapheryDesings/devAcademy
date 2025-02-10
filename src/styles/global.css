@@ -47,8 +47,10 @@ header {
     justify-content: center;
 
     width: 70%; /* 70% */
-    margin: 0 auto;
-    /*border: 1px dashed darkcyan;*/
+    margin: 1rem auto;
+    /*border: 1px dashed hotpink;*/
+
+    /* otros */
 
     .sectionDaw {
       display: flex;

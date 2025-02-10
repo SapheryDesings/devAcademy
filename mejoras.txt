@@ -1,8 +1,0 @@
-NAVEGACION
-
-        -> BARRA STICKY SCROLL
-        -> FLECHA ARRIBA STICKY
-        -> +1280 BARRA LATERAL
-
-
-funcionalidad Drag and Drop
