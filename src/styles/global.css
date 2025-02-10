@@ -121,12 +121,12 @@ hr {
 footer {
   background-color: var(--color-fuente-principal-blanco);
   color: var(--color-principal-gris);
-  min-height: 100px;
+  padding: 1rem;
   margin-top: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-size: clamp(.6rem, 1.4vw, .8rem);
 }
 
 
@@ -140,5 +140,5 @@ footer {
 }
 
 @media (width < 768px) {
-  .contenidoPrincipal { width: 100%;}
+  .contenidoPrincipal { width: 98%;}
 }
