@@ -58,7 +58,7 @@ body {
 header {
   background-color: var(--color-fuente-principal-blanco);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 
   position: fixed;
