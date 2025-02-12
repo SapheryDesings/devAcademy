@@ -1,13 +1,16 @@
 ---
 
 ---
-<header>
-  <div class="logoDev">
-    <h1>
-      <a href="/devAcademy">
-        <span class="text-orange-500">dev</span><span class="text-sky-500">Academy</span>
-      </a>
-    </h1>
+<header id="header">
+  <a href="/devAcademy">
+    <div class="logoDev">
+        <div class="text-orange-500">JL</div>
+        <div class="text-sky-500">Desarrollador Web</div>
+    </div>
+  </a>
+  <div class="enlaces">
+    <button class="btn-header">Curriculum</button>
+    <button class="btn-header">mail</button>
   </div>
   <div class="nav">
     <ul>
@@ -19,52 +22,71 @@
 </header>
 
 <style>
-  header {
+/* -- Logo -- */
+a {
+    text-decoration: none;
+        .logoDev {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-family: 'orbitron', sans-serif;
+                .text-orange-500 {
+                    color: rgb(249 115 22);
+                    font-size: 2.25rem 
+                }
+
+                .text-sky-500 {
+                    color: rgb(14 165 233);
+                    font-size: 1rem;
+                }
+        }
+}/* Fin Logo */
+
+/* -- Botones -- */
+.enlaces {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-    background-color: #f3f4f6;
-
-    /* logoDev */ 
-    h1 {
-    font-weight: bold;
-    font-size: 2.25rem /* 36px */;
-    line-height: 2.5rem /* 40px */;
-
-      a {
-        text-decoration: none;
-        .text-orange-500 {
-          color: rgb(249 115 22);
-        }
-        .text-sky-500 {
-          color: rgb(14 165 233);
-        }
-      }
-    }
-
-    /* nav */
-    ul {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
-      li {
-        a {
-          text-decoration: none;
-          color: #333;
-          &:hover {
-            color: #000;
-          }
-        }
-      }
-    } 
-  }
-
-@media (width < 768px) {
-  header { 
-    flex-flow: column wrap;
-    justify-content: center;
     gap: .5rem;
-  }
+        .btn-header {
+            width: 100px;
+            padding: .4rem .8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f3f4f6;
+            color: #aaa;
+            cursor: pointer;
+                &:hover {
+                background-color: #ddd;
+                color: #f3f4f6;
+                }
+        }
+} /* Fin Botones */
+
+
+/* -- Nav -- */
+.nav {
+    ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+
+        li a {
+            text-decoration: none;
+            color: #333;
+            &:hover { font-weight: bold; }
+        }
+        li:nth-child(odd) a:hover { color: rgb(249 115 22); } /* IMPARES */
+        li:nth-child(even) a:hover { color: rgb(14 165 233); } /* PARES */
+    } 
+}/* Fin Nav */
+
+
+@media (width < 1024px) {
+    header { 
+        flex-flow: column wrap;
+        justify-content: center;
+        gap: .5rem;
+    }
 }
 </style>

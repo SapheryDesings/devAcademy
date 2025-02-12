@@ -20,13 +20,35 @@
   --color-detalles-md-amarillo: #F5E663;
   --color-detalles-md-ocre: #FFAD69;
   --color-detalles-md-rojo: #9C3848;
-  --fuente-principal: "Montserrat";
 }
+
+/* -- FUENTES -- */
+@font-face {
+  font-family: 'montserrat';
+  src: url('/devAcademy/fonts/Montserrat.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'orbitron';
+  src: url('/devAcademy/fonts/Orbitron.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'titanone';
+  src: url('/devAcademy/fonts/TitanOne.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 body {
   background-color: var(--color-principal-gris);
   color: var(--color-fuente-principal-blanco);
-  font-family: var(--fuente-principal);
+  font-family: 'montserrat', sans-serif;
 
   display: flex;
   flex-direction: column;
@@ -36,9 +58,22 @@ body {
 header {
   background-color: var(--color-fuente-principal-blanco);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  min-height: 150px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: .5rem;
+  transition: all 0.8s ease-in-out;
+}
+
+header.scrolled {
+  background-color: #f8fafcee;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .contenidoPrincipal {
@@ -46,9 +81,9 @@ header {
     flex-flow: column;
     justify-content: center;
 
-    width: 70%; /* 70% */
-    margin: 1rem auto;
-    /*border: 1px dashed hotpink;*/
+    width: 70%;
+    margin: 9.5rem auto;
+    padding: 2rem 0;
 
     /* otros */
 
